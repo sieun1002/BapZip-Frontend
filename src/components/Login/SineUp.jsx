@@ -205,15 +205,27 @@ export default function SineUp() {
 
           <Label htmlFor="schoolEmail">본인 인증</Label>
           <InputDiv>
-            <Input
+            {/* <Input
               type="email"
               id="schoolEmail"
               value={form.schoolEmail}
               onChange={handleSchEM}
               placeholder="학교 이메일을 입력해 주세요."
               width="330px"
+            /> */}
+
+            <Input
+              type="email"
+              id="schoolEmail"
+              value={form.schoolEmail}
+              onChange={handleSchEM}
+              placeholder="학교 ."
+              width="330px"
             />
-            <Button>인증 요청</Button>
+
+            {/* <Button>인증 요청</Button> */}
+            <Button>인증</Button>
+
           </InputDiv>
 
           <InputDiv>
