@@ -9,6 +9,11 @@ import BottomNav from "./components/BottomNav2/BottomNav";
 import Header from "./components/BottomNav2/Header";
 import ReviewRanking from "./components/BottomNav2/ReviewRanking";
 import ReviewTimeline from "./components/BottomNav2/ReviewTimeline";
+import Searchbar from "./components/BottomNav1/searchbar";
+import Silsi from "./components/BottomNav1/silsi";
+import Honjap from "./components/BottomNav1/honjap";
+import Hot from "./components/BottomNav1/hot";
+import Review from "./components/BottomNav1/reviewimage";
 
 function App() {
   return (
@@ -22,13 +27,21 @@ function App() {
     //     </Routes>
     //   </BrowserRouter>
     // </div>
-    <div className="App">
-    <Header />
-    <ReviewRanking />
-    <Ad />
-    <ReviewTimeline />
-    <BottomNav />
-  </div>
+//     <div className="App">
+//     <Header />
+//     <ReviewRanking />
+//     <Ad />
+//     <ReviewTimeline />
+//     <BottomNav />
+//   </div>
+
+    <div>
+    <Searchbar />
+    <Silsi />
+    <Honjap />
+    <Hot />
+    <Review />
+    </div>
   );
 }
 
