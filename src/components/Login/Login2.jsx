@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BodyDiv, WrapperDiv, Div } from "../styles/LoginSelection.style";
+import { BodyDiv, WrapperDiv, Div } from "../../styles/LoginSelection.style";
 import {
   HeaderDiv,
   ArrowLeftImage,
@@ -15,13 +15,13 @@ import {
   SearchLink,
   Div2,
   PDiv,
-} from "../styles/Login2.style";
+} from "../../styles/Login2.style";
 
-import arrowLeft from "../images/arrowLeft.svg";
-import emptyCircle from "../images/emptyCircle.svg";
-import checkCircle from "../images/checkCircle.svg";
-import show from "../images/show.svg";
-import secret from "../images/secret.svg";
+import arrowLeft from "../../images/Login/arrowLeft.svg";
+import emptyCircle from "../../images/Login/emptyCircle.svg";
+import checkCircle from "../../images/Login/checkCircle.svg";
+import show from "../../images/Login/show.svg";
+import secret from "../../images/Login/secret.svg";
 
 export default function Login2() {
   const [Circle, setCircle] = useState(false);

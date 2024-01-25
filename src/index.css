@@ -1,13 +1,222 @@
-body {
+body{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App{
+  width: 480px;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 120px;
+}
+
+/*default font*/
+p{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/*BottomNav*/
+.container-bottomNav{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: fixed;
+  bottom: 0;
+  height: 58px;
+  width: 480px;
+  background-color: #FFFFFF;
+  margin: 0;
+  img{
+    width: 120px;
+  }
+}
+
+/*Header*/
+.container-header{
+  height: 40px;
+}
+.title-header{
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/*Ranking*/
+.container-reviewRanking{
+  height: 275px;
+  background-color: #f6f6f6;
+  margin-bottom: 36px;
+}
+.title-reviewRanking{
+  height: 70px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffba35;
+  p{
+    padding-top: 10px;
+  }
+}
+.contents-reviewRanking{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.section-rankFirst{
+  position: relative;
+  width: 137px;
+  height: 172px;
+}
+.section-rank{
+  position: relative;
+  width: 127px;
+  height: 159.45px;
+}
+.rankfirst{
+  position: absolute;
+  top: -35px;
+  left: -15px;
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  background-color: #FFBA35;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 28px;
+}
+.rankSecond{
+  position: absolute;
+  top: -35px;
+  left: -15px;
+  width: 33.37px;
+  height: 33.37px;
+  border-radius: 100%;
+  background-color: #b9b9b9;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 28px;
+}
+.rankThird{
+  position: absolute;
+  top: -35px;
+  left: -15px;
+  width: 33.37px;
+  height: 33.37px;
+  border-radius: 100%;
+  background-color: #d2a57b;
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 28px;
+}
+.detail-firstRank{
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  width: 122px;
+  height: 170px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  border: 1.5px solid #FFBA35;
+}
+.detail-rank{
+  width: 113.09px;
+  height: 160px;
+  border-radius: 9.27px;
+  background-color: #FFFFFF;
+  border: 1.5px solid #FFBA35;
+}
+.img-ranking{
+  width: 68px;
+  height: 68px;
+  border-radius: 100%;
+  margin-top: 10px;
+}
+.name{
+  height: 19px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.likes{
+  height: 19px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19px;
+}
+
+/*Review-timeline*/
+.container-timeline{
+  margin-top: 36px;
+}
+.title-timeline{
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 27px;
+  margin-left: 30px;
+  text-align: left;
+}
+.menuBtnSection-timeline{
+  display: flex;
+  button{
+    width: 74px;
+    height: 33px;
+    border-radius: 40px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 3%;
+    
+  }
+}
+.btn-timeline{
+  border: 1px solid #dbdbdb;
+  background-color: #FFFFFF;
+  color: #767676;
+}
+.btnActive-timeline{
+  border: 1px solid #FFBA35;
+  background-color: #FFF8EC;
+  color: #FFBA35;
+}
+/*review*/
+.container-review{
+  width: 420PX;
+  height: 180px;
+  border-radius: 10px;
+  background-color: #D9D9D9;
+  margin-top: 10px;
+  margin-left: 3%;
+}
+.contents-review{
+  margin-left: 20px;
+  text-align: left;
+}
+.name-review{
+  padding-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 27px;
+}
+.topReview-review{
+  border-left: 1px solid;
+  padding-left: 10px;
+}
+.txt-review{
+  width: 250px;
+  height: 38px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 19.07px;
+}
+.userDetail-review{
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.07px;
+}
+.likes-review{
+  text-align: right;
+  img{
+    width: 37px;
+    height: 37px;
+  }
+  margin-right: 15px;
 }

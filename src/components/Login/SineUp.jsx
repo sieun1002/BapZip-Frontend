@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BodyDiv, WrapperDiv } from "../styles/LoginSelection.style";
+import { BodyDiv, WrapperDiv } from "../../styles/LoginSelection.style";
 import { Link } from "react-router-dom";
 
 import {
@@ -9,7 +9,7 @@ import {
   SearchLink,
   HeaderDiv,
   PDiv,
-} from "../styles/Login2.style";
+} from "../../styles/Login2.style";
 import {
   Label,
   Input,
@@ -17,8 +17,8 @@ import {
   CheckDivX,
   Button,
   InputDiv,
-} from "../styles/SineUp.style";
-import arrowLeft from "../images/arrowLeft.svg";
+} from "../../styles/SineUp.style";
+import arrowLeft from "../../images/Login/arrowLeft.svg";
 
 export default function SineUp() {
   const [form, setForm] = useState({
