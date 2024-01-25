@@ -12,6 +12,7 @@ import ReviewTimeline from "./components/BottomNav2/ReviewTimeline";
 
 function App() {
   return (
+    // mergeCrash test
     // <div className="root-wrap">
     //   <BrowserRouter>
     //     <Routes>
