@@ -7,12 +7,11 @@ export default function Review(item) {
   let howManylike = item.likes;
   function clickLike(){
     if(!likeState){
-      howManylike++;
+      howManylike = howManylike + 1;
       setLike(!likeState);
       console.log(howManylike);
     }
     else{
-      howManylike--;
       setLike(!likeState); 
       console.log(howManylike);
     }

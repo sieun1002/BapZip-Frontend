@@ -6,6 +6,7 @@ import srcBtnMypageOff from '../../images/BottomNav2/btnMypageOff.png'
 
 export default function BottomNav() {
   return (
+    //asdfasdf
     <nav className='container-bottomNav'>
         <div className='btnHome'>
           <img src={srcBtnHomeOff} alt="btn"/>
