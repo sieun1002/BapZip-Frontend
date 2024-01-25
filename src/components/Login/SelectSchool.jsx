@@ -1,11 +1,11 @@
 import React from "react";
-import { BodyDiv, WrapperDiv, Div } from "../styles/LoginSelection.style";
-import { HeaderDiv, Submit } from "../styles/Login2.style";
-import { XImage, MainPDiv, Highlight } from "../styles/Select.style";
+import { BodyDiv, WrapperDiv, Div } from "../../styles/LoginSelection.style";
+import { HeaderDiv, Submit } from "../../styles/Login2.style";
+import { XImage, MainPDiv, Highlight } from "../../styles/Select.style";
 
 import { Link } from "react-router-dom";
 
-import X from "../images/X.svg";
+import X from "../../images/Login/X.svg";
 
 export default function SelectSchool() {
   return (

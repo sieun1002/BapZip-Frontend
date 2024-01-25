@@ -12,10 +12,10 @@ import {
   PersonImage,
   Font3P,
   Div,
-} from "../styles/LoginSelection.style";
-import logo from "../images/logo.svg";
-import owner from "../images/owner.svg";
-import customer from "../images/customer.svg";
+} from "../../styles/LoginSelection.style";
+import logo from "../../images/Login/logo.svg";
+import owner from "../../images/Login/owner.svg";
+import customer from "../../images/Login/customer.svg";
 
 export default function LoginSelection() {
   return (
