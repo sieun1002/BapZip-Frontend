@@ -17,6 +17,7 @@ import Review from "./components/BottomNav1/reviewimage";
 
 function App() {
   return (
+    // mergeCrash test
     // <div className="root-wrap">
     //   <BrowserRouter>
     //     <Routes>
