@@ -41,6 +41,7 @@ function App() {
     <Honjap />
     <Hot />
     <Review />
+    <Review />
     </div>
   );
 }
