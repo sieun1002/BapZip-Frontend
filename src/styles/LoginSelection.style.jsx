@@ -30,7 +30,7 @@ export const WrapperDiv = styled.div`
 
 export const Div = styled.div`
   width: 480px;
-  height: 100vh;
+  height: ${(props) => props.height || "100vh"};
   ${flexCenter()}
   flex-direction: column;
   justify-content: flex-start;
