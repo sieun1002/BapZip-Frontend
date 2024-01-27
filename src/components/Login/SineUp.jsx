@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BodyDiv, WrapperDiv } from "../../styles/LoginSelection.style";
+import { BodyDiv, WrapperDiv, Div } from "../../styles/LoginSelection.style";
 import { Link } from "react-router-dom";
 
 import {
@@ -114,141 +114,132 @@ export default function SineUp() {
   return (
     <BodyDiv>
       <WrapperDiv justifyContent="flex-start">
-        <HeaderDiv>
-          <SearchLink to="/Login2">
-            <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
-          </SearchLink>
-          <PDiv>회원가입</PDiv>
-        </HeaderDiv>
+        <Div>
+          <HeaderDiv>
+            <SearchLink to="/Login2">
+              <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
+            </SearchLink>
+            <PDiv>회원가입</PDiv>
+          </HeaderDiv>
 
-        <Form margin="auto" padding="45px 0">
-          <Label htmlFor="nickName">닉네임</Label>
-          <InputDiv>
-            <Input
-              type="text"
-              id="nickName"
-              value={form.nickName}
-              onChange={handleNNCh}
-              placeholder="닉네임을 입력해 주세요."
-              width="330px"
-            />
-            <Button>중복 확인</Button>
-          </InputDiv>
+          <Form margin="auto" padding="45px 0">
+            <Label htmlFor="nickName">닉네임</Label>
+            <InputDiv>
+              <Input
+                type="text"
+                id="nickName"
+                value={form.nickName}
+                onChange={handleNNCh}
+                placeholder="닉네임을 입력해 주세요."
+                width="330px"
+              />
+              <Button>중복 확인</Button>
+            </InputDiv>
 
-          {/* <CheckDivX>중복된 닉네임입니다.</CheckDivX> */}
-          {/* <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO> */}
-          <CheckDivX></CheckDivX>
-
-          <Label htmlFor="id">아이디</Label>
-          <InputDiv>
-            <Input
-              type="text"
-              id="id"
-              value={form.id}
-              onChange={handleIdCh}
-              placeholder="아이디를 입력해 주세요."
-              width="330px"
-            />
-            <Button>중복 확인</Button>
-          </InputDiv>
-
-          {/* <CheckDivX>중복된 아이디입니다.</CheckDivX> */}
-          {/* <CheckDivO>사용 가능한 아이디입니다.</CheckDivO> */}
-          <CheckDivX></CheckDivX>
-
-          <Label htmlFor="password">비밀번호</Label>
-          <InputDiv>
-            <Input
-              type="password"
-              id="password"
-              value={form.password}
-              onChange={handlePWCh}
-              placeholder="비밀번호를 입력해 주세요."
-            />
-          </InputDiv>
-
-          <InputDiv>
-            <Input
-              type="password"
-              id="passwordCheck"
-              value={form.passwordCheck}
-              onChange={handlePWChCh}
-              placeholder="비밀번호 확인."
-            />
-          </InputDiv>
-
-          {validPassword === false ? (
-            <CheckDivX>
-              비밀번호를 영문, 숫자, 특수문자 포함 8~12자리로 설정해주세요.
-            </CheckDivX>
-          ) : validPassword === true ? (
-            <CheckDivO>사용 가능한 비밀번호입니다.</CheckDivO>
-          ) : (
+            {/* <CheckDivX>중복된 닉네임입니다.</CheckDivX> */}
+            {/* <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO> */}
             <CheckDivX></CheckDivX>
-          )}
 
-          <Label htmlFor="schoolAndMajor">학교 및 전공</Label>
-          <InputDiv>
-            <Input
-              type="text"
-              id="schoolAndMajor"
-              value={form.schoolAndMajor}
-              onChange={handleSchM}
-              placeholder="학교와 전공을 입력해 주세요."
-              width="330px"
-            />
-            <Link to="/SineUp/Select_School">
-              <Button>입력하기</Button>
-            </Link>
-          </InputDiv>
-          <CheckDivX></CheckDivX>
+            <Label htmlFor="id">아이디</Label>
+            <InputDiv>
+              <Input
+                type="text"
+                id="id"
+                value={form.id}
+                onChange={handleIdCh}
+                placeholder="아이디를 입력해 주세요."
+                width="330px"
+              />
+              <Button>중복 확인</Button>
+            </InputDiv>
 
-          <Label htmlFor="schoolEmail">본인 인증</Label>
-          <InputDiv>
-            {/* <Input
-              type="email"
-              id="schoolEmail"
-              value={form.schoolEmail}
-              onChange={handleSchEM}
-              placeholder="학교 이메일을 입력해 주세요."
-              width="330px"
-            /> */}
+            {/* <CheckDivX>중복된 아이디입니다.</CheckDivX> */}
+            {/* <CheckDivO>사용 가능한 아이디입니다.</CheckDivO> */}
+            <CheckDivX></CheckDivX>
 
-            <Input
-              type="email"
-              id="schoolEmail"
-              value={form.schoolEmail}
-              onChange={handleSchEM}
-              placeholder="학교 ."
-              width="330px"
-            />
+            <Label htmlFor="password">비밀번호</Label>
+            <InputDiv>
+              <Input
+                type="password"
+                id="password"
+                value={form.password}
+                onChange={handlePWCh}
+                placeholder="비밀번호를 입력해 주세요."
+              />
+            </InputDiv>
 
-            {/* <Button>인증 요청</Button> */}
-            <Button>인증</Button>
+            <InputDiv>
+              <Input
+                type="password"
+                id="passwordCheck"
+                value={form.passwordCheck}
+                onChange={handlePWChCh}
+                placeholder="비밀번호 확인."
+              />
+            </InputDiv>
 
-          </InputDiv>
+            {validPassword === false ? (
+              <CheckDivX>
+                비밀번호를 영문, 숫자, 특수문자 포함 8~12자리로 설정해주세요.
+              </CheckDivX>
+            ) : validPassword === true ? (
+              <CheckDivO>사용 가능한 비밀번호입니다.</CheckDivO>
+            ) : (
+              <CheckDivX></CheckDivX>
+            )}
 
-          <InputDiv>
-            <Input
-              type="text"
-              id="schoolEmailCheck"
-              value={form.schoolEmailCheck}
-              onChange={handleSchEMCh}
-              placeholder="인증번호 입력"
-            />
-          </InputDiv>
+            <Label htmlFor="schoolAndMajor">학교 및 전공</Label>
+            <InputDiv>
+              <Input
+                type="text"
+                id="schoolAndMajor"
+                value={form.schoolAndMajor}
+                onChange={handleSchM}
+                placeholder="학교와 전공을 입력해 주세요."
+                width="330px"
+              />
+              <Link to="/SineUp/Select_School">
+                <Button>입력하기</Button>
+              </Link>
+            </InputDiv>
+            <CheckDivX></CheckDivX>
 
-          {/* <CheckDivX>인증번호가 올바르지 않습니다.</CheckDivX> */}
-          {/* <CheckDivO>모두 인증 완료되었습니다.</CheckDivO> */}
-          <CheckDivX></CheckDivX>
-        </Form>
+            <Label htmlFor="schoolEmail">본인 인증</Label>
+            <InputDiv>
+              <Input
+                type="email"
+                id="schoolEmail"
+                value={form.schoolEmail}
+                onChange={handleSchEM}
+                placeholder="학교 이메일을 입력해 주세요."
+                width="330px"
+              />
 
-        <Submit
-          type="submit"
-          value="회원 가입"
-          backgroundColor="#EDEDED"
-          marginBottom="30px"
-        />
+              <Button>인증 요청</Button>
+            </InputDiv>
+
+            <InputDiv>
+              <Input
+                type="text"
+                id="schoolEmailCheck"
+                value={form.schoolEmailCheck}
+                onChange={handleSchEMCh}
+                placeholder="인증번호 입력"
+              />
+            </InputDiv>
+
+            {/* <CheckDivX>인증번호가 올바르지 않습니다.</CheckDivX> */}
+            {/* <CheckDivO>모두 인증 완료되었습니다.</CheckDivO> */}
+            <CheckDivX></CheckDivX>
+          </Form>
+
+          <Submit
+            type="submit"
+            value="회원 가입"
+            backgroundColor="#EDEDED"
+            marginBottom="30px"
+          />
+        </Div>
       </WrapperDiv>
     </BodyDiv>
   );
