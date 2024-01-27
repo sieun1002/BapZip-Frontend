@@ -114,7 +114,7 @@ export default function SineUp() {
   return (
     <BodyDiv>
       <WrapperDiv justifyContent="flex-start">
-        <Div>
+        <Div height="100%">
           <HeaderDiv>
             <SearchLink to="/Login2">
               <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
