@@ -109,6 +109,8 @@ export const Submit = styled.input`
   font-size: 18px;
   font-weight: 700;
   color: #ffffff;
+
+  cursor: pointer;
 `;
 
 export const SearchDiv = styled.div`

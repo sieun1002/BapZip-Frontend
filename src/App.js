@@ -5,6 +5,7 @@ import Login1 from "./pages/Login1";
 import Login2 from "./components/Login/Login2";
 import SineUp from "./components/Login/SineUp";
 import SelectSchool from "./components/Login/SelectSchool";
+import SelectMajor from "./components/Login/SelectMajor";
 
 // BottomNav2---------------------------------------------------------------
 import Ad from "./components/BottomNav2/Ad";
@@ -29,6 +30,7 @@ function App() {
           <Route path="/Login2" element={<Login2 />} />
           <Route path="/SineUp" element={<SineUp />} />
           <Route path="/SineUp/Select_School" element={<SelectSchool />} />
+          <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
         </Routes>
       </BrowserRouter>
     </div>

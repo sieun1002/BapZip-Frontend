@@ -6,6 +6,13 @@ const flexCenter = () => `
   align-items: center;
 `;
 
+export const ArrowLeftImage = styled.img`
+  width: 40px;
+  height: 18.15px;
+  padding-left: 20px;
+  box-sizing: border-box;
+`;
+
 export const XImage = styled.img`
   width: 40px;
   height: 18.15px;
@@ -34,6 +41,7 @@ export const MainP = styled.div`
 
 export const Highlight = styled.div`
   color: #ffba35;
+  margin: 0 4px;
 `;
 
 export const SearchBoxDiv = styled.div`

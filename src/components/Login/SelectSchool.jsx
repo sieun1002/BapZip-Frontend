@@ -29,7 +29,9 @@ export default function SelectSchool() {
       <WrapperDiv>
         <Div height="100%">
           <HeaderDiv justifyContent="flex-end">
-            <XImage src={X} alt="X" />
+            <Link to="/SineUp">
+              <XImage src={X} alt="X" />
+            </Link>
           </HeaderDiv>
 
           <MainPDiv>
@@ -62,8 +64,15 @@ export default function SelectSchool() {
             marginBottom="30px"
           /> */}
 
-          <Link to="#" style={{ textDecoration: "none" }}>
-            <Submit type="submit" value="다음" marginBottom="30px" />
+          <Link
+            to="/SineUp/Select_major"
+            style={{
+              textDecoration: "none",
+              marginBottom: "30px",
+              cursor: "default",
+            }}
+          >
+            <Submit type="submit" value="다음" />
           </Link>
         </Div>
       </WrapperDiv>
