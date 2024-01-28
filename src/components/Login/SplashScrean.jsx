@@ -5,7 +5,7 @@ import {
   ContentDiv,
   LogoImage,
   MainP,
-} from "../../styles/SplashScrean.style";
+} from "../../styles/Login/SplashScrean.style";
 import logo from "../../images/Login/logo.svg";
 
 function SplashScrean() {

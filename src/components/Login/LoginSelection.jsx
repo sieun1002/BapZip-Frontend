@@ -12,7 +12,7 @@ import {
   PersonImage,
   Font3P,
   Div,
-} from "../../styles/LoginSelection.style";
+} from "../../styles/Login/LoginSelection.style";
 import logo from "../../images/Login/logo.svg";
 import owner from "../../images/Login/owner.svg";
 import customer from "../../images/Login/customer.svg";

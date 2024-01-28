@@ -1,6 +1,14 @@
 import { React, useState, useEffect } from "react";
-import { BodyDiv, WrapperDiv, Div } from "../../styles/LoginSelection.style";
-import { HeaderDiv, Submit, CircleImage } from "../../styles/Login2.style";
+import {
+  BodyDiv,
+  WrapperDiv,
+  Div,
+} from "../../styles/Login/LoginSelection.style";
+import {
+  HeaderDiv,
+  Submit,
+  CircleImage,
+} from "../../styles/Login/Login2.style";
 import {
   LogoImage,
   LogoDiv,
@@ -10,7 +18,7 @@ import {
   AgreementDiv,
   LineDiv,
   DetailImage,
-} from "../../styles/SineUpCompletion.style";
+} from "../../styles/Login/SineUpCompletion.style";
 
 import { Link } from "react-router-dom";
 
@@ -150,7 +158,7 @@ export default function SineUpCompletion() {
                 textDecoration: "none",
               }}
             >
-              <Submit type="submit" value="시작하기" />
+              <Submit type="submit" value="시작하기" marginTop="80px" />
             </Link>
           ) : (
             <Submit

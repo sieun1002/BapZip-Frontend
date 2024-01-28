@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { BodyDiv, WrapperDiv, Div } from "../../styles/LoginSelection.style";
+import {
+  BodyDiv,
+  WrapperDiv,
+  Div,
+} from "../../styles/Login/LoginSelection.style";
 import {
   HeaderDiv,
   ArrowLeftImage,
@@ -15,7 +19,7 @@ import {
   SearchLink,
   Div2,
   PDiv,
-} from "../../styles/Login2.style";
+} from "../../styles/Login/Login2.style";
 
 import arrowLeft from "../../images/Login/arrowLeft.svg";
 import emptyCircle from "../../images/Login/emptyCircle.svg";

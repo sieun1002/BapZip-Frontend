@@ -1,6 +1,10 @@
 import React from "react";
-import { BodyDiv, WrapperDiv, Div } from "../../styles/LoginSelection.style";
-import { HeaderDiv, Submit } from "../../styles/Login2.style";
+import {
+  BodyDiv,
+  WrapperDiv,
+  Div,
+} from "../../styles/Login/LoginSelection.style";
+import { HeaderDiv, Submit } from "../../styles/Login/Login2.style";
 import {
   XImage,
   MainPDiv,
@@ -15,7 +19,7 @@ import {
   CircleImgDiv,
   CircleImage,
   ArrowLeftImage,
-} from "../../styles/Select.style";
+} from "../../styles/Login/Select.style";
 
 import { Link } from "react-router-dom";
 
@@ -28,7 +32,7 @@ export default function SelectMajor() {
   return (
     <BodyDiv>
       <WrapperDiv>
-        <Div height="100%">
+        <Div>
           <HeaderDiv justifyContent="space-between">
             <Link to="/SineUp/Select_school">
               <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
