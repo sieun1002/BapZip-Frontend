@@ -103,8 +103,8 @@ export const Submit = styled.input`
   border: solid 0px;
   ${flexCenter()}
 
-  margin: 35px 0 15px 0;
-  margin-bottom: ${(props) => props.marginBottom};
+  margin-bottom: ${(props) => props.marginBottom || "15px"};
+  margin-top: ${(props) => props.marginTop || "35px"};
 
   font-size: 18px;
   font-weight: 700;

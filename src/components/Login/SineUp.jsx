@@ -233,12 +233,19 @@ export default function SineUp() {
             <CheckDivX></CheckDivX>
           </Form>
 
-          <Submit
-            type="submit"
-            value="회원 가입"
-            backgroundColor="#EDEDED"
-            marginBottom="30px"
-          />
+          <Link
+            to="/SineUp/SineUp-Completion"
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <Submit
+              type="submit"
+              value="회원 가입"
+              backgroundColor="#EDEDED"
+              marginBottom="30px"
+            />
+          </Link>
         </Div>
       </WrapperDiv>
     </BodyDiv>

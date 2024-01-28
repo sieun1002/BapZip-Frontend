@@ -24,7 +24,7 @@ import X from "../../images/Login/X.svg";
 import search from "../../images/Login/search.svg";
 import yellowCircle from "../../images/Login/yellowCircle.svg";
 
-export default function SelectSchool() {
+export default function SelectMajor() {
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -70,7 +70,7 @@ export default function SelectSchool() {
           /> */}
 
           <Link
-            to="/SineUp/Select_major"
+            to="/SineUp"
             style={{
               textDecoration: "none",
               marginBottom: "30px",

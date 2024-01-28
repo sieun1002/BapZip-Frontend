@@ -6,6 +6,7 @@ import Login2 from "./components/Login/Login2";
 import SineUp from "./components/Login/SineUp";
 import SelectSchool from "./components/Login/SelectSchool";
 import SelectMajor from "./components/Login/SelectMajor";
+import SineUpCompletion from "./components/Login/SineUpCompletion";
 
 // BottomNav2---------------------------------------------------------------
 import Ad from "./components/BottomNav2/Ad";
@@ -31,23 +32,27 @@ function App() {
           <Route path="/SineUp" element={<SineUp />} />
           <Route path="/SineUp/Select_School" element={<SelectSchool />} />
           <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
+          <Route
+            path="/SineUp/SineUp-Completion"
+            element={<SineUpCompletion />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
-    //     <div className="App">
-    //     <Header />
-    //     <ReviewRanking />
-    //     <Ad />
-    //     <ReviewTimeline />
-    //     <BottomNav />
-    //   </div>
+    // <div className="App">
+    //   <Header />
+    //   <ReviewRanking />
+    //   <Ad />
+    //   <ReviewTimeline />
+    //   <BottomNav />
+    // </div>
 
     // <div>
-    // <Searchbar />
-    // <Silsi />
-    // <Honjap />
-    // <Hot />
-    // <Review />
+    //   <Searchbar />
+    //   <Silsi />
+    //   <Honjap />
+    //   <Hot />
+    //   <Review />
     // </div>
   );
 }
