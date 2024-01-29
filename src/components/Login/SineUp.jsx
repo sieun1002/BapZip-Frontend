@@ -135,10 +135,8 @@ export default function SineUp() {
             <Button>중복 확인</Button>
           </InputDiv>
 
-          {/* <CheckDivX>중복된 닉네임입니다.</CheckDivX> */}
-          {/* <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO> */}
-          <CheckDivX></CheckDivX>
-
+          <CheckDivX>중복된 닉네임입니다.</CheckDivX>
+          <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO>
           <Label htmlFor="id">아이디</Label>
           <InputDiv>
             <Input
@@ -152,9 +150,8 @@ export default function SineUp() {
             <Button>중복 확인</Button>
           </InputDiv>
 
-          {/* <CheckDivX>중복된 아이디입니다.</CheckDivX> */}
-          {/* <CheckDivO>사용 가능한 아이디입니다.</CheckDivO> */}
-          <CheckDivX></CheckDivX>
+          <CheckDivX>중복된 아이디입니다.</CheckDivX>
+          <CheckDivO>사용 가능한 아이디입니다.</CheckDivO>
 
           <Label htmlFor="password">비밀번호</Label>
           <InputDiv>
@@ -205,27 +202,15 @@ export default function SineUp() {
 
           <Label htmlFor="schoolEmail">본인 인증</Label>
           <InputDiv>
-            {/* <Input
+            <Input
               type="email"
               id="schoolEmail"
               value={form.schoolEmail}
               onChange={handleSchEM}
               placeholder="학교 이메일을 입력해 주세요."
               width="330px"
-            /> */}
-
-            <Input
-              type="email"
-              id="schoolEmail"
-              value={form.schoolEmail}
-              onChange={handleSchEM}
-              placeholder="학교 ."
-              width="330px"
             />
-
-            {/* <Button>인증 요청</Button> */}
-            <Button>인증</Button>
-
+            <Button>인증 요청</Button>
           </InputDiv>
 
           <InputDiv>
@@ -238,9 +223,8 @@ export default function SineUp() {
             />
           </InputDiv>
 
-          {/* <CheckDivX>인증번호가 올바르지 않습니다.</CheckDivX> */}
-          {/* <CheckDivO>모두 인증 완료되었습니다.</CheckDivO> */}
-          <CheckDivX></CheckDivX>
+          <CheckDivX>인증번호가 올바르지 않습니다.</CheckDivX>
+          <CheckDivO>모두 인증 완료되었습니다.</CheckDivO>
         </Form>
 
         <Submit

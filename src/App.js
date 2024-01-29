@@ -4,15 +4,11 @@ import Login1 from "./pages/Login1";
 import Login2 from "./components/Login/Login2";
 import SineUp from "./components/Login/SineUp";
 import SelectSchool from "./components/Login/SelectSchool";
-import Ad from "./components/BottomNav2/Ad";
-import BottomNav from "./components/BottomNav2/BottomNav";
-import Header from "./components/BottomNav2/Header";
-import ReviewRanking from "./components/BottomNav2/ReviewRanking";
-import ReviewTimeline from "./components/BottomNav2/ReviewTimeline";
+import BottomNav2 from "./pages/BottomNav2";
+import WriteReview from "./pages/WriteReview";
 
 function App() {
   return (
-    // mergeCrash test
     // <div className="root-wrap">
     //   <BrowserRouter>
     //     <Routes>
@@ -24,12 +20,13 @@ function App() {
     //   </BrowserRouter>
     // </div>
     <div className="App">
-    <Header />
-    <ReviewRanking />
-    <Ad />
-    <ReviewTimeline />
-    <BottomNav />
-  </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Review" element={<BottomNav2 />}/>
+          <Route path="/WriteReview" element={<WriteReview />}/>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

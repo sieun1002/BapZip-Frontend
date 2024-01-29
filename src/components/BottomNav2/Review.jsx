@@ -4,20 +4,20 @@ import srcBtnLikeOn from '../../images/BottomNav2/likeBtnActive.png'
 
 export default function Review(item) {
   const [likeState,setLike] = useState(false);
-  let howManylike = item.likes;
+  const [howManyLike,sethowManyLike] = useState(item.likes);
+  let value = howManyLike;
   function clickLike(){
     if(!likeState){
-      howManylike = howManylike + 1;
+      sethowManyLike(++value);
       setLike(!likeState);
-      console.log(howManylike);
     }
     else{
+      sethowManyLike(--value);
       setLike(!likeState); 
-      console.log(howManylike);
     }
   }
   return (
-    <div className='container-review' >
+    <div className='container-review' style={{backgroundImage: `url(${item.picturePath})`, backgroundSize: "cover"}} >
       <div className='contents-review'>
         <p className='name-review'>{item.name}</p>
         <div className='topReview-review'>
@@ -29,7 +29,7 @@ export default function Review(item) {
         {likeState?
         <img src={srcBtnLikeOn} alt="like" onClick={()=>clickLike()} />:
         <img src={srcBtnLikeOff} alt="like" onClick={()=>clickLike()}/>}
-        <p>{howManylike}</p>
+        <p className='likeTxt-review' style={likeState?{color:"red"}:{color:"white"}}>{howManyLike}</p>
       </div>
     </div>
   )
