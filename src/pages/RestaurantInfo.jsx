@@ -21,6 +21,8 @@ import star from "../images/RestaurantInfo/star.svg";
 import good from "../images/RestaurantInfo/good.svg";
 import scrap from "../images/RestaurantInfo/scrap.svg";
 
+import InfoHome from "../components/RestaurantInfo/InfoHome";
+
 export default function RestaurantInfo() {
   return (
     <BodyDiv>
@@ -52,6 +54,7 @@ export default function RestaurantInfo() {
               <TagDiv>#맛있음</TagDiv>
             </WaitingAndStarDiv>
           </RestaurantMainInfoDiv>
+          <InfoHome></InfoHome>
         </Div>
       </WrapperDiv>
     </BodyDiv>
