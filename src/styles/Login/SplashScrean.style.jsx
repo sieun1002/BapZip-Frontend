@@ -17,8 +17,7 @@ export const WrapperDiv = styled.div`
   /* height: 844px; */
   height: 100vh;
   background-color: #fff8ec;
-  ${flexCenter()}
-  border: solid 1px black;
+  ${flexCenter()}/* border: solid 1px black; */
 `;
 
 export const ContentDiv = styled.div`

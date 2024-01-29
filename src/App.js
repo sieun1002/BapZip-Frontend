@@ -22,6 +22,9 @@ import Honjap from "./components/BottomNav1/honjap";
 import Hot from "./components/BottomNav1/hot";
 import Review from "./components/BottomNav1/reviewimage";
 
+// RestaurantInfo---------------------------------------------------------------
+import RestaurantInfo from "./pages/RestaurantInfo";
+
 function App() {
   return (
     <div className="root-wrap">
@@ -36,6 +39,7 @@ function App() {
             path="/SineUp/SineUp-Completion"
             element={<SineUpCompletion />}
           />
+          <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
         </Routes>
       </BrowserRouter>
     </div>
