@@ -154,6 +154,13 @@ p{
   margin-left: 30px;
   text-align: left;
 }
+.title-timeline2{
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 27px;
+  margin-left: 10px;
+  text-align: left;
+}
 .menuBtnSection-timeline{
   display: flex;
   button{
@@ -164,6 +171,21 @@ p{
     font-size: 16px;
     font-weight: 500;
     margin-left: 3%;
+    
+  }
+}
+.menuBtnSection-timeline2{
+  display: flex;
+  margin-right: 20px;
+  button{
+    width: 74px;
+    height: 33px;
+    border-radius: 40px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 4%;
+    
     
   }
 }
@@ -220,3 +242,10 @@ p{
   }
   margin-right: 15px;
 }
+/* swiperapper */
+.swiper-wrapper{
+ margin-top: 30px;
+}
+.swiper-wrapper2{
+  margin-top: 10px;
+ }

@@ -14,6 +14,8 @@ import Silsi from "./components/BottomNav1/silsi";
 import Honjap from "./components/BottomNav1/honjap";
 import Hot from "./components/BottomNav1/hot";
 import Review from "./components/BottomNav1/reviewimage";
+import MySwiperComponent from "./components/BottomNav1/todayplace";
+import Recommend from "./components/BottomNav1/recommend";
 
 function App() {
   return (
@@ -35,13 +37,14 @@ function App() {
 //     <BottomNav />
 //   </div>
 
-    <div>
+    <div className="App">
     <Searchbar />
     <Silsi />
     <Honjap />
     <Hot />
     <Review />
-    <Review />
+    <MySwiperComponent />
+    <Recommend />
     </div>
   );
 }

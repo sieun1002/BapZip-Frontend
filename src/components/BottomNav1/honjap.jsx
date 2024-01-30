@@ -124,7 +124,7 @@ const Out3 = styled.img`
   top: 0;
   right: 0;
   z-index: 2;
-  margin-right: -380px;
+  margin-right: -365px;
   margin-top: 35px;
 `;
 
