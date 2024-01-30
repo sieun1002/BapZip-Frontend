@@ -18,6 +18,8 @@ import Silsi from "./components/BottomNav1/silsi";
 import Honjap from "./components/BottomNav1/honjap";
 import Hot from "./components/BottomNav1/hot";
 import Review from "./components/BottomNav1/reviewimage";
+import MySwiperComponent from "./components/BottomNav1/todayplace";
+import Recommend from "./components/BottomNav1/recommend";
 
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
@@ -41,21 +43,23 @@ function App() {
     //   </BrowserRouter>
     // </div>
     <div className="App">
-    <BrowserRouter>
-      <Routes>
-        <Route path="/Review" element={<BottomNav2 />}/>
-        <Route path="/WriteReview" element={<WriteReview />}/>
-      </Routes>
-    </BrowserRouter>
-  </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/Review" element={<BottomNav2 />} />
+          <Route path="/WriteReview" element={<WriteReview />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
 
-    // <div>
-    //   <Searchbar />
-    //   <Silsi />
-    //   <Honjap />
-    //   <Hot />
-    //   <Review />
-    // </div>
+    //<div>
+    //<Searchbar />
+    //<Silsi />
+    //<Honjap />
+    //<Hot />
+    //<Review />
+    //<MySwiperComponent />
+    //<Recommend />
+    //</div>
   );
 }
 

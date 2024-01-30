@@ -25,9 +25,9 @@ const Circle = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between; /* 내부 요소 사이의 공간을 최대화합니다 */
-  width: 350px;
-  height: 50px;
-  background-color: #ddd;
+  width: 320px;
+  height: 35px;
+  background-color: #F6F6F6;
   border-radius: 25px;
   cursor: text;
 `;
@@ -43,6 +43,7 @@ const SearchInput = styled.input`
   height: 100%;
   border: none;
   outline: none;
+  font-family: 'Noto Sans';
   font-size: 16px;
   background: transparent;
   margin-left: 40px; /* 원하는 만큼 조정하세요 */
@@ -58,8 +59,8 @@ const Placeholder = styled.span`
 `;
 
 const Icon = styled.img`
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   margin-right: 5px;
 `;
 
