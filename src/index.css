@@ -30,6 +30,7 @@ p{
     width: 120px;
   }
 }
+/* --------------------------BottomNav2--------------------------- */
 /* writeBtn */
 .WriteBtn-BottomNav2{
   position: fixed;
@@ -40,12 +41,12 @@ p{
 }
 
 /*Header*/
-.container-header{
+.header-BottomNav2{
   height: 40px;
-}
-.title-header{
-  font-size: 18px;
-  font-weight: 600;
+  .title-header{
+    font-size: 18px;
+    font-weight: 600;
+  }
 }
 
 /*Ranking*/
@@ -241,4 +242,27 @@ p{
       margin: 0;
   }
   margin-right: 15px;
+}
+
+/* --------------------------WriteReview--------------------------- */
+/* Header */
+.header-WriteReview{
+  height: 40px;
+  display: flex;
+  justify-content: left;
+  img{
+    margin-top: 20px;
+    margin-left: 27px;
+    width: 26px;
+    height: 26px;
+  }
+  .title-header{
+    font-size: 18px;
+    font-weight: 600;
+    width: 230px;
+    height: 26px;
+    margin-top: 20px;
+    margin-left: 72px;
+
+  }
 }
