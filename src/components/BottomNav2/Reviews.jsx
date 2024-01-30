@@ -7,7 +7,7 @@ export default function Reviews(reviews) {
         {
           reviews.result.map((item) => {
             return (
-              <Review {...item}/>
+              <Review {...item} key={item.name}/>
 
             )
           })

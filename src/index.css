@@ -7,7 +7,8 @@ body{
   width: 480px;
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 120px;
+  padding-bottom: 70px;
+  border: solid 1px black;
 }
 
 /*default font*/
@@ -21,22 +22,31 @@ p{
   grid-template-columns: repeat(4, 1fr);
   position: fixed;
   bottom: 0;
-  height: 58px;
   width: 480px;
   background-color: #FFFFFF;
+
   margin: 0;
   img{
     width: 120px;
   }
 }
+/* --------------------------BottomNav2--------------------------- */
+/* writeBtn */
+.WriteBtn-BottomNav2{
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  bottom: 90px;
+  right: 485px;
+}
 
 /*Header*/
-.container-header{
+.header-BottomNav2{
   height: 40px;
-}
-.title-header{
-  font-size: 18px;
-  font-weight: 600;
+  .title-header{
+    font-size: 18px;
+    font-weight: 600;
+  }
 }
 
 /*Ranking*/
@@ -146,6 +156,7 @@ p{
 /*Review-timeline*/
 .container-timeline{
   margin-top: 36px;
+  margin-bottom: 100px;
 }
 .title-timeline{
   font-size: 20px;
@@ -156,6 +167,7 @@ p{
 }
 .menuBtnSection-timeline{
   display: flex;
+  margin-left: 30px;
   button{
     width: 74px;
     height: 33px;
@@ -163,8 +175,7 @@ p{
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 16px;
     font-weight: 500;
-    margin-left: 3%;
-    
+    margin-right: 3%;
   }
 }
 .btn-timeline{
@@ -179,22 +190,27 @@ p{
 }
 /*review*/
 .container-review{
-  width: 420PX;
+  display: flex;
+  width: 420px;
   height: 180px;
   border-radius: 10px;
   background-color: #D9D9D9;
-  margin-top: 10px;
-  margin-left: 3%;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 .contents-review{
+  width: 400px;
+  height: fit-content;
   margin-left: 20px;
   text-align: left;
+  color: #FFFFFF;
 }
 .name-review{
-  padding-top: 15px;
   font-size: 20px;
   font-weight: 700;
   line-height: 27px;
+  margin-top: 14px;
+  margin-bottom: 0;
 }
 .topReview-review{
   border-left: 1px solid;
@@ -213,10 +229,40 @@ p{
   line-height: 19.07px;
 }
 .likes-review{
-  text-align: right;
+  width: fit-content;
+  height: fit-content;
+  margin-top: 110px;
+  text-align: center;
   img{
+    margin: 0;
     width: 37px;
     height: 37px;
   }
+  p{
+      margin: 0;
+  }
   margin-right: 15px;
+}
+
+/* --------------------------WriteReview--------------------------- */
+/* Header */
+.header-WriteReview{
+  height: 40px;
+  display: flex;
+  justify-content: left;
+  img{
+    margin-top: 20px;
+    margin-left: 27px;
+    width: 26px;
+    height: 26px;
+  }
+  .title-header{
+    font-size: 18px;
+    font-weight: 600;
+    width: 230px;
+    height: 26px;
+    margin-top: 20px;
+    margin-left: 72px;
+
+  }
 }

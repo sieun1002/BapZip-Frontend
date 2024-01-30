@@ -9,11 +9,8 @@ import SelectMajor from "./components/Login/SelectMajor";
 import SineUpCompletion from "./components/Login/SineUpCompletion";
 
 // BottomNav2---------------------------------------------------------------
-import Ad from "./components/BottomNav2/Ad";
-import BottomNav from "./components/BottomNav2/BottomNav";
-import Header from "./components/BottomNav2/Header";
-import ReviewRanking from "./components/BottomNav2/ReviewRanking";
-import ReviewTimeline from "./components/BottomNav2/ReviewTimeline";
+import BottomNav2 from "./pages/BottomNav2";
+import WriteReview from "./pages/WriteReview";
 
 // BottomNav---------------------------------------------------------------
 import Searchbar from "./components/BottomNav1/searchbar";
@@ -27,29 +24,30 @@ import RestaurantInfo from "./pages/RestaurantInfo";
 
 function App() {
   return (
-    <div className="root-wrap">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login1 />} />
-          <Route path="/Login2" element={<Login2 />} />
-          <Route path="/SineUp" element={<SineUp />} />
-          <Route path="/SineUp/Select_School" element={<SelectSchool />} />
-          <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
-          <Route
-            path="/SineUp/SineUp-Completion"
-            element={<SineUpCompletion />}
-          />
-          <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-    // <div className="App">
-    //   <Header />
-    //   <ReviewRanking />
-    //   <Ad />
-    //   <ReviewTimeline />
-    //   <BottomNav />
+    // <div className="root-wrap">
+    //   <BrowserRouter>
+    //     <Routes>
+    //       <Route path="/" element={<Login1 />} />
+    //       <Route path="/Login2" element={<Login2 />} />
+    //       <Route path="/SineUp" element={<SineUp />} />
+    //       <Route path="/SineUp/Select_School" element={<SelectSchool />} />
+    //       <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
+    //       <Route
+    //         path="/SineUp/SineUp-Completion"
+    //         element={<SineUpCompletion />}
+    //       />
+    //       <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
+    //     </Routes>
+    //   </BrowserRouter>
     // </div>
+    <div className="App">
+    <BrowserRouter>
+      <Routes>
+        <Route path="/Review" element={<BottomNav2 />}/>
+        <Route path="/WriteReview" element={<WriteReview />}/>
+      </Routes>
+    </BrowserRouter>
+  </div>
 
     // <div>
     //   <Searchbar />
