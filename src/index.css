@@ -30,6 +30,16 @@ p{
     width: 120px;
   }
 }
+
+/* --------------------------BottomNav1--------------------------- */
+/* swiperapper */
+.swiper-wrapper{
+  margin-top: 30px;
+ }
+ .swiper-wrapper2{
+   margin-top: 10px;
+  }
+
 /* --------------------------BottomNav2--------------------------- */
 /* writeBtn */
 .WriteBtn-BottomNav2{
@@ -265,7 +275,6 @@ p{
   }
   margin-right: 15px;
 }
-<<<<<<< HEAD
 
 /* --------------------------WriteReview--------------------------- */
 /* Header */
@@ -289,12 +298,3 @@ p{
 
   }
 }
-=======
-/* swiperapper */
-.swiper-wrapper{
- margin-top: 30px;
-}
-.swiper-wrapper2{
-  margin-top: 10px;
- }
->>>>>>> frontend/BottomNav1
