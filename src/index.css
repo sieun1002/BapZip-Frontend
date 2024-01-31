@@ -273,7 +273,6 @@ p{
   p{
       margin: 0;
   }
-  margin-right: 15px;
 }
 
 /* --------------------------WriteReview--------------------------- */
@@ -296,5 +295,48 @@ p{
     margin-top: 20px;
     margin-left: 72px;
 
+  }
+}
+/* SearchStore */
+.searchStore-WriteReview{
+  margin-top: 30px;
+  .beforeSearch-SearchStore{
+    img{
+      width: 420px; 
+      height: 108px;
+    }
+  }
+}
+/* StarRating */
+.starRating-WriteReview{
+  margin-top: 50px;
+  margin-left: 30px;
+  justify-content: left;
+  .txt-starRating{
+    display: flex;
+    width: 397px;
+    height: 25px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .stars-starRating{
+    display: flex;
+    height: 58px;
+    margin: 0;
+    margin-top: 25px;
+    img{
+      width: 60px;
+      height: 57.71px;
+      margin-right: 10px;
+    }
+    p{
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 21.79px;
+      text-align: right;
+      color: #767676;
+      margin-left: 10px;
+      margin-top: 30px;
+    }
   }
 }
