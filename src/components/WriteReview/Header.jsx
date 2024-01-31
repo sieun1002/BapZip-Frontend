@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import scrBackBtn from '../../images/BottomNav2/backBtn.png'
+import scrBackBtn from '../../images/WriteReview/backBtn.png'
 
 export default function Header() {
   return (
