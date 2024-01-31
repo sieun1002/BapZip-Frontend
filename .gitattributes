@@ -1,0 +1,2 @@
+# Specify that yarn.lock should use LF line endings
+yarn.lock text eol=lf
