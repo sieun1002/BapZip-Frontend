@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import srcEmptyStar from '../../images/WriteReview/emptyStarBtn.png'
 import srcFullStar from '../../images/WriteReview/fullStarBtn.png'
 
-let index_s = 0;
 export default function StarRating() {
   const [stars, setStar] = useState([false,false,false,false,false]);
+  const [index_s, setIndex] = useState(0);
 
   function clickStar(index){
     let stars_f = [false,false,false,false,false];
-    index_s = index + 1;
+    setIndex(index + 1);
     for (let i = 0; i <= index; i++) {
       stars_f[i] = true;
     }
