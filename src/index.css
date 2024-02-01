@@ -449,3 +449,91 @@ p {
     height: 109px;
   }
 }
+.updatediv {
+  width: 480px;
+  height: 94px;
+  position: relative; /* updatediv를 기준으로 위치 설정 */
+}
+
+.txtdate {
+  position: relative;
+  width: 80px;
+  height: 16px;
+  left: 20px;
+  top: 20px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #767676;
+}
+
+.txtupdate2 {
+  position: relative;
+  width: 277px;
+  height: 22px;
+  left: 26px;
+  top: 30px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #555;
+  white-space: nowrap;
+}
+.txtupdate2::before {
+  content: "[업데이트] ";
+  color: red; /* 빨간색으로 변경 */
+}
+.txtupdate {
+  position: relative;
+  width: 277px;
+  height: 22px;
+  left: 26px;
+  top: 30px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #555;
+  white-space: nowrap;
+}
+
+.txtupdate::before {
+  content: "[이벤트] ";
+  color: black; /* 빨간색으로 변경 */
+}
+.txtupdate3 {
+  position: relative;
+  width: 277px;
+  height: 22px;
+  left: 26px;
+  top: 30px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #555;
+  white-space: nowrap;
+}
+.txtupdate3::before {
+  content: "[공지] ";
+  color: black; /* 빨간색으로 변경 */
+}
+
+.txtline {
+  width: 480px;
+  height: 0px;
+  border: 1px solid #dbdbdb;
+  position: absolute;
+  bottom: 0; /* updatediv 하단에 위치하도록 설정 */
+}
+
+.updateimg {
+  position: absolute;
+  left: 420px;
+}
