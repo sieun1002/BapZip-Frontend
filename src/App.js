@@ -21,6 +21,7 @@ import Review from "./components/BottomNav1/reviewimage";
 import MySwiperComponent from "./components/BottomNav1/todayplace";
 import Recommend from "./components/BottomNav1/recommend";
 import BottomNav1 from "./pages/BottomNav1";
+import Arlim from "./components/BottomNav1/arlim";
 
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
@@ -49,6 +50,7 @@ function App() {
           <Route path="/Review" element={<BottomNav2 />} />
           <Route path="/WriteReview" element={<WriteReview />} />
           <Route path="/Home" element={<BottomNav1 />} />
+          <Route path="/arlim" element={<Arlim />} />
         </Routes>
       </BrowserRouter>
     </div>
