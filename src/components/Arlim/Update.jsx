@@ -27,13 +27,13 @@ export default function Arlim() {
         <div className="updateimg">
           <img src={UpdateImage} alt="실시간 이미지" />
         </div>
-        <div className="updatediv">
-          <div className="txtdate">2024-01-30</div>
-          <div className="txtupdate">서비스 오픈 안내</div>
-          <div className="txtline" />
-          <div className="updateimg">
-            <img src={UpdateImage} alt="실시간 이미지" />
-          </div>
+      </div>
+      <div className="updatediv">
+        <div className="txtdate">2024-01-30</div>
+        <div className="txtupdate3">서비스 오픈 안내</div>
+        <div className="txtline" />
+        <div className="updateimg">
+          <img src={UpdateImage} alt="실시간 이미지" />
         </div>
       </div>
     </div>

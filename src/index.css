@@ -471,7 +471,7 @@ p {
 
 .txtupdate2 {
   position: relative;
-  width: 277px;
+  width: 100px;
   height: 22px;
   left: 26px;
   top: 30px;
@@ -489,7 +489,7 @@ p {
 }
 .txtupdate {
   position: relative;
-  width: 277px;
+  width: 100px;
   height: 22px;
   left: 26px;
   top: 30px;
@@ -508,7 +508,7 @@ p {
 }
 .txtupdate3 {
   position: relative;
-  width: 277px;
+  width: 100px;
   height: 22px;
   left: 26px;
   top: 30px;
@@ -536,4 +536,8 @@ p {
 .updateimg {
   position: absolute;
   left: 420px;
+}
+
+.asd {
+  height: 700px;
 }
