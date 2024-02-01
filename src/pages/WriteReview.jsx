@@ -2,6 +2,7 @@ import React from 'react'
 import Header from "../components/WriteReview/Header";
 import SearchStore from '../components/WriteReview/SearchStore';
 import StarRating from '../components/WriteReview/StarRating';
+import SelectBenefit from '../components/WriteReview/SelectBenefit';
 
 export default function WriteReview() {
   return (
@@ -9,6 +10,7 @@ export default function WriteReview() {
         <Header />
         <SearchStore />
         <StarRating />
+        <SelectBenefit />
     </div>
   )
 }
