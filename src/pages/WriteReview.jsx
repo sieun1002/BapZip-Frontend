@@ -4,6 +4,7 @@ import SearchStore from '../components/WriteReview/SearchStore';
 import StarRating from '../components/WriteReview/StarRating';
 import SelectBenefit from '../components/WriteReview/SelectGood';
 import WriteTxt from '../components/WriteReview/WriteTxt';
+import UploadImg from '../components/WriteReview/UploadImg';
 
 export default function WriteReview() {
   return (
@@ -13,6 +14,7 @@ export default function WriteReview() {
         <StarRating />
         <SelectBenefit />
         <WriteTxt />
+        <UploadImg />
     </div>
   )
 }
