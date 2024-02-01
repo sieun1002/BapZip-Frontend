@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import logoicon from "../../images/BottomNav1/logo.svg";
 import SearchIcon from "../../images/BottomNav1/icon_search.svg";
@@ -16,7 +16,7 @@ const AppContainer = styled.div`
 const OuterContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* 로고를 왼쪽에 정렬합니다 */
+  justify-content: flex-start;
   margin-bottom: 20px;
 `;
 
@@ -24,10 +24,10 @@ const Circle = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 내부 요소 사이의 공간을 최대화합니다 */
+  justify-content: space-between;
   width: 320px;
   height: 35px;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   border-radius: 25px;
   cursor: text;
 `;
@@ -35,7 +35,7 @@ const Circle = styled.div`
 const Logo = styled.img`
   height: 45px;
   width: 45px;
-  margin-right: 20px; /* 로고와의 간격 조정 */
+  margin-right: 20px;
 `;
 
 const SearchInput = styled.input`
@@ -43,11 +43,11 @@ const SearchInput = styled.input`
   height: 100%;
   border: none;
   outline: none;
-  font-family: 'Noto Sans';
+  font-family: "Noto Sans";
   font-size: 16px;
   background: transparent;
-  margin-left: 40px; /* 원하는 만큼 조정하세요 */
-  box-sizing: border-box; /* 추가 */
+  margin-left: 40px;
+  box-sizing: border-box;
 `;
 
 const Placeholder = styled.span`
@@ -62,6 +62,7 @@ const Icon = styled.img`
   height: 30px;
   width: 30px;
   margin-right: 5px;
+  cursor: pointer;
 `;
 
 const Icon1 = styled.img`
@@ -75,8 +76,40 @@ const AdditionalIcons = styled.div`
   align-items: center;
 `;
 
+const Modal = styled.div`
+  position: fixed;
+  width: 152px;
+  height: 212px;
+  left: 278px;
+  top: 61px;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: ${(props) => (props.visible ? "block" : "none")};
+`;
+
 const Searchbar = () => {
   const [searchText, setSearchText] = useState("");
+  const [isModalVisible, setModalVisibility] = useState(false);
+  const modalRef = useRef();
+
+  const handleIconClick = () => {
+    setModalVisibility(true);
+  };
+
+  const handleOutsideClick = (e) => {
+    if (modalRef.current && !modalRef.current.contains(e.target)) {
+      setModalVisibility(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <AppContainer>
@@ -95,10 +128,18 @@ const Searchbar = () => {
           />
         </Circle>
         <AdditionalIcons>
-          <Icon src={Haticon} alt="Additional Icon 1" />
+          <Icon
+            src={Haticon}
+            alt="Additional Icon 1"
+            onClick={handleIconClick}
+          />
           <Icon src={Bellicon} alt="Additional Icon 2" />
         </AdditionalIcons>
       </OuterContainer>
+      <Modal ref={modalRef} visible={isModalVisible}>
+        {/* 내용 추가 */}
+        모달 내용이 여기에 들어갑니다.
+      </Modal>
     </AppContainer>
   );
 };

@@ -20,6 +20,7 @@ import Hot from "./components/BottomNav1/hot";
 import Review from "./components/BottomNav1/reviewimage";
 import MySwiperComponent from "./components/BottomNav1/todayplace";
 import Recommend from "./components/BottomNav1/recommend";
+import BottomNav1 from "./pages/BottomNav1";
 
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
@@ -47,6 +48,7 @@ function App() {
         <Routes>
           <Route path="/Review" element={<BottomNav2 />} />
           <Route path="/WriteReview" element={<WriteReview />} />
+          <Route path="/Home" element={<BottomNav1 />} />
         </Routes>
       </BrowserRouter>
     </div>
