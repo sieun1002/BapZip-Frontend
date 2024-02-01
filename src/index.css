@@ -1,9 +1,9 @@
-body{
+body {
   margin: 0;
   overflow-y: scroll;
 }
 
-.App{
+.App {
   width: 480px;
   text-align: center;
   margin: 0 auto;
@@ -12,37 +12,37 @@ body{
 }
 
 /*default font*/
-p{
-  font-family: 'Noto Sans KR', sans-serif;
+p {
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 /*BottomNav*/
-.container-bottomNav{
+.container-bottomNav {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   position: fixed;
   bottom: 0;
   width: 480px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 
   margin: 0;
-  img{
+  img {
     width: 120px;
   }
 }
 
 /* --------------------------BottomNav1--------------------------- */
 /* swiperapper */
-.swiper-wrapper{
+.swiper-wrapper {
   margin-top: 30px;
- }
- .swiper-wrapper2{
-   margin-top: 10px;
-  }
+}
+.swiper-wrapper2 {
+  margin-top: 10px;
+}
 
 /* --------------------------BottomNav2--------------------------- */
 /* writeBtn */
-.WriteBtn-BottomNav2{
+.WriteBtn-BottomNav2 {
   position: fixed;
   width: 70px;
   height: 70px;
@@ -51,58 +51,58 @@ p{
 }
 
 /*Header*/
-.header-BottomNav2{
+.header-BottomNav2 {
   height: 40px;
-  .title-header{
+  .title-header {
     font-size: 18px;
     font-weight: 600;
   }
 }
 
 /*Ranking*/
-.container-reviewRanking{
+.container-reviewRanking {
   height: 275px;
   background-color: #f6f6f6;
   margin-bottom: 36px;
 }
-.title-reviewRanking{
+.title-reviewRanking {
   height: 70px;
   font-size: 20px;
   font-weight: 700;
   color: #ffba35;
-  p{
+  p {
     padding-top: 10px;
   }
 }
-.contents-reviewRanking{
+.contents-reviewRanking {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-.section-rankFirst{
+.section-rankFirst {
   position: relative;
   width: 137px;
   height: 172px;
 }
-.section-rank{
+.section-rank {
   position: relative;
   width: 127px;
   height: 159.45px;
 }
-.rankfirst{
+.rankfirst {
   position: absolute;
   top: -35px;
   left: -15px;
   width: 36px;
   height: 36px;
   border-radius: 100%;
-  background-color: #FFBA35;
+  background-color: #ffba35;
   font-size: 20px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   line-height: 28px;
 }
-.rankSecond{
+.rankSecond {
   position: absolute;
   top: -35px;
   left: -15px;
@@ -112,10 +112,10 @@ p{
   background-color: #b9b9b9;
   font-size: 20px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   line-height: 28px;
 }
-.rankThird{
+.rankThird {
   position: absolute;
   top: -35px;
   left: -15px;
@@ -125,38 +125,38 @@ p{
   background-color: #d2a57b;
   font-size: 20px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   line-height: 28px;
 }
-.detail-firstRank{
+.detail-firstRank {
   position: absolute;
   bottom: 0px;
   right: 10px;
   width: 122px;
   height: 170px;
   border-radius: 10px;
-  background-color: #FFFFFF;
-  border: 1.5px solid #FFBA35;
+  background-color: #ffffff;
+  border: 1.5px solid #ffba35;
 }
-.detail-rank{
+.detail-rank {
   width: 113.09px;
   height: 160px;
   border-radius: 9.27px;
-  background-color: #FFFFFF;
-  border: 1.5px solid #FFBA35;
+  background-color: #ffffff;
+  border: 1.5px solid #ffba35;
 }
-.img-ranking{
+.img-ranking {
   width: 68px;
   height: 68px;
   border-radius: 100%;
   margin-top: 10px;
 }
-.name{
+.name {
   height: 19px;
   font-size: 14px;
   font-weight: 600;
 }
-.likes{
+.likes {
   height: 19px;
   font-size: 14px;
   font-weight: 500;
@@ -164,172 +164,169 @@ p{
 }
 
 /*Review-timeline*/
-.container-timeline{
+.container-timeline {
   margin-top: 36px;
   margin-bottom: 100px;
 }
-.title-timeline{
+.title-timeline {
   font-size: 20px;
   font-weight: 600;
   line-height: 27px;
   margin-left: 30px;
   text-align: left;
 }
-.title-timeline2{
+.title-timeline2 {
   font-size: 20px;
   font-weight: 600;
   line-height: 27px;
   margin-left: 10px;
   text-align: left;
 }
-.menuBtnSection-timeline{
+.menuBtnSection-timeline {
   display: flex;
   margin-left: 30px;
-  button{
+  button {
     width: 74px;
     height: 33px;
     border-radius: 40px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 16px;
     font-weight: 500;
     margin-right: 3%;
   }
 }
-.menuBtnSection-timeline2{
+.menuBtnSection-timeline2 {
   display: flex;
   margin-right: 20px;
-  button{
+  button {
     width: 74px;
     height: 33px;
     border-radius: 40px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 16px;
     font-weight: 500;
     margin-left: 4%;
-    
-    
   }
 }
-.btn-timeline{
+.btn-timeline {
   border: 1px solid #dbdbdb;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #767676;
 }
-.btnActive-timeline{
-  border: 1px solid #FFBA35;
-  background-color: #FFF8EC;
-  color: #FFBA35;
+.btnActive-timeline {
+  border: 1px solid #ffba35;
+  background-color: #fff8ec;
+  color: #ffba35;
 }
 /*review*/
-.container-review{
+.container-review {
   display: flex;
   width: 420px;
   height: 180px;
   border-radius: 10px;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   margin: 0 auto;
   margin-top: 20px;
 }
-.contents-review{
+.contents-review {
   width: 400px;
   height: fit-content;
   margin-left: 20px;
   text-align: left;
-  color: #FFFFFF;
+  color: #ffffff;
 }
-.name-review{
+.name-review {
   font-size: 20px;
   font-weight: 700;
   line-height: 27px;
   margin-top: 14px;
   margin-bottom: 0;
 }
-.topReview-review{
+.topReview-review {
   border-left: 1px solid;
   padding-left: 10px;
 }
-.txt-review{
+.txt-review {
   width: 250px;
   height: 38px;
   font-size: 14px;
   font-weight: 600;
   line-height: 19.07px;
 }
-.userDetail-review{
+.userDetail-review {
   font-size: 14px;
   font-weight: 500;
   line-height: 19.07px;
 }
-.likes-review{
+.likes-review {
   width: fit-content;
   height: fit-content;
   margin-top: 110px;
   text-align: center;
-  img{
+  img {
     margin: 0;
     width: 37px;
     height: 37px;
   }
-  p{
-      margin: 0;
+  p {
+    margin: 0;
   }
 }
 
 /* --------------------------WriteReview--------------------------- */
 /* Header */
-.header-WriteReview{
+.header-WriteReview {
   height: 66px;
   display: flex;
   justify-content: left;
-  img{
+  img {
     margin-top: 20px;
     margin-left: 27px;
     width: 26px;
     height: 26px;
   }
-  .title-header{
+  .title-header {
     font-size: 18px;
     font-weight: 600;
     width: 230px;
     height: 26px;
     margin-top: 20px;
     margin-left: 72px;
-
   }
 }
 /* SearchStore */
-.searchStore-WriteReview{
+.searchStore-WriteReview {
   margin-top: 30px;
-  .beforeSearch-SearchStore{
-    img{
-      width: 420px; 
+  .beforeSearch-SearchStore {
+    img {
+      width: 420px;
       height: 108px;
     }
   }
 }
 /* StarRating */
-.starRating-WriteReview{
+.starRating-WriteReview {
   margin-top: 50px;
   margin-left: 30px;
   justify-content: left;
-  .txt-starRating{
+  .txt-starRating {
     display: flex;
     width: 397px;
     height: 25px;
     font-weight: 600;
     font-size: 18px;
   }
-  .stars-starRating{
+  .stars-starRating {
     display: flex;
     height: 58px;
     margin: 0;
     margin-top: 25px;
-    img{
+    img {
       width: 60px;
       height: 57.71px;
       margin-right: 10px;
     }
-    p{
+    p {
       font-size: 16px;
       font-weight: 500;
       line-height: 21.79px;
@@ -341,12 +338,12 @@ p{
   }
 }
 /* selectBenefit */
-.selectBenefit-WriteReview{
+.selectBenefit-WriteReview {
   margin-top: 50px;
   margin-left: 30px;
   margin-right: 30px;
   justify-content: left;
-  .txt-selectBenefit{
+  .txt-selectBenefit {
     display: flex;
     width: 397px;
     height: 25px;
@@ -354,37 +351,37 @@ p{
     font-size: 18px;
   }
 }
-.container-selectBenefit{
+.container-selectBenefit {
   display: grid;
   grid-template-columns: repeat(4, 3fr);
   margin-top: 30px;
-  button{
+  button {
     height: 33px;
     border-radius: 40px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 16px;
     font-weight: 500;
     margin-right: 10px;
     margin-bottom: 15px;
   }
 }
-.btn-selectBenefit{
+.btn-selectBenefit {
   border: 1px solid #dbdbdb;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #767676;
 }
-.btnActive-selectBenefit{
-  border: 1px solid #FFBA35;
-  background-color: #FFBA35;
-  color: #FFFFFF;
+.btnActive-selectBenefit {
+  border: 1px solid #ffba35;
+  background-color: #ffba35;
+  color: #ffffff;
 }
 /* WriteTxt */
-.writeTxt-WriteReview{
+.writeTxt-WriteReview {
   margin-top: 40px;
   margin-left: 30px;
   margin-right: 30px;
   justify-content: left;
-  .txt-writeTxt{
+  .txt-writeTxt {
     display: flex;
     width: 397px;
     height: 25px;
@@ -392,14 +389,14 @@ p{
     font-size: 18px;
   }
 }
-.txtArea-writeTxt{
+.txtArea-writeTxt {
   margin-top: 30px;
   width: 420px;
   height: 268px;
   background-color: #f6f6f6;
   border-radius: 10px;
 }
-.txtBox-writeTxt{
+.txtBox-writeTxt {
   outline: none;
   margin: 15px;
   width: 390px;
@@ -407,26 +404,26 @@ p{
   background-color: #f6f6f6;
   border: none;
   resize: none;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 500;
   font-size: 14px;
 }
 /* UploadImg */
-.uploadImg-WriteReview{
+.uploadImg-WriteReview {
   margin-top: 40px;
   margin-left: 30px;
   margin-right: 30px;
   justify-content: left;
-  .txt-uploadImg{
+  .txt-uploadImg {
     display: flex;
     align-items: baseline;
     width: 397px;
     height: 25px;
-    .title-uploadImg{
+    .title-uploadImg {
       font-weight: 600;
       font-size: 18px;
     }
-    .detail-uploadImg{
+    .detail-uploadImg {
       margin-left: 10px;
       font-weight: 500;
       font-size: 14px;
@@ -434,14 +431,21 @@ p{
     }
   }
 }
-.img-uploadImg{
+.img-uploadImg {
   display: flex;
   margin-top: 30px;
-  .uploadBtn-uploadImg{
+  .uploadBtn-uploadImg {
     width: 132px;
     height: 132px;
     outline: none;
     border: none;
   }
+}
 
+/* --------------------------Arlim--------------------------- */
+.silsigan-image {
+  img {
+    width: 480px;
+    height: 109px;
+  }
 }

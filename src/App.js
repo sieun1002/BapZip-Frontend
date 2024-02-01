@@ -13,15 +13,9 @@ import BottomNav2 from "./pages/BottomNav2";
 import WriteReview from "./pages/WriteReview";
 
 // BottomNav---------------------------------------------------------------
-import Searchbar from "./components/BottomNav1/searchbar";
-import Silsi from "./components/BottomNav1/silsi";
-import Honjap from "./components/BottomNav1/honjap";
-import Hot from "./components/BottomNav1/hot";
-import Review from "./components/BottomNav1/reviewimage";
-import MySwiperComponent from "./components/BottomNav1/todayplace";
-import Recommend from "./components/BottomNav1/recommend";
+
 import BottomNav1 from "./pages/BottomNav1";
-import Arlim from "./components/BottomNav1/arlim";
+import Arlim from "./pages/Arlim";
 
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
@@ -54,16 +48,6 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
-
-    //<div>
-    //<Searchbar />
-    //<Silsi />
-    //<Honjap />
-    //<Hot />
-    //<Review />
-    //<MySwiperComponent />
-    //<Recommend />
-    //</div>
   );
 }
 
