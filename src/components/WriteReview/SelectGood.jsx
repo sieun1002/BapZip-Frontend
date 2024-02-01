@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function SelectBenefit() {
+export default function SelectGood() {
   const [stateBtn, setBtn] = useState([false, false, false, false, false, false, false, false, false, false]);
   
   function clickBtn(index){
