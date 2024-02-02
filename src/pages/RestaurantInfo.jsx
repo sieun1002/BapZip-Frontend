@@ -14,6 +14,8 @@ import {
   GoodImage,
   TagDiv,
   ScrapImage,
+  InfoNavDiv,
+  InfoNav,
 } from "../styles/RestaurantInfo/RestaurantInfo.styled";
 import restaurant from "../images/RestaurantInfo/restaurant.svg";
 import clock from "../images/RestaurantInfo/clock.svg";
@@ -22,6 +24,7 @@ import good from "../images/RestaurantInfo/good.svg";
 import scrap from "../images/RestaurantInfo/scrap.svg";
 
 import InfoHome from "../components/RestaurantInfo/InfoHome";
+import InfoMenu from "../components/RestaurantInfo/InfoMenu";
 
 export default function RestaurantInfo() {
   return (
@@ -54,7 +57,14 @@ export default function RestaurantInfo() {
               <TagDiv>#맛있음</TagDiv>
             </WaitingAndStarDiv>
           </RestaurantMainInfoDiv>
-          <InfoHome></InfoHome>
+          <InfoNavDiv>
+            <InfoNav color="#FFBA35">홈</InfoNav>
+            <InfoNav>메뉴</InfoNav>
+            <InfoNav>리뷰</InfoNav>
+            <InfoNav>실시간 채팅</InfoNav>
+          </InfoNavDiv>
+          {/* <InfoHome></InfoHome> */}
+          <InfoMenu></InfoMenu>
         </Div>
       </WrapperDiv>
     </BodyDiv>
