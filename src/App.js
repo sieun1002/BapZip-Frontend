@@ -29,7 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login1 />} />
           <Route path="/Login2" element={<Login2 />} />
-          <Route path="/SineUp" element={<SineUp />} />
+          <Route path="/users/auth/signup" element={<SineUp />} />
           <Route path="/SineUp/Select_School" element={<SelectSchool />} />
           <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
           <Route

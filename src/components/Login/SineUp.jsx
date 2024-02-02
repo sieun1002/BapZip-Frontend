@@ -5,6 +5,7 @@ import {
   Div,
 } from "../../styles/Login/LoginSelection.style";
 import { Link } from "react-router-dom";
+import { checkNicknameAvailability } from "../../api/loginApi";
 
 import {
   ArrowLeftImage,
@@ -43,12 +44,30 @@ export default function SineUp() {
   const [validSchoolEmail, setValidSchoolEmail] = useState(null);
   const [validSchoolMailCheck, setValidSchoolEmailCheck] = useState(null);
 
-  const handleNNCh = (e) => {
+  const handleNNCh = async (e) => {
     const nickName = e.target.value;
     setForm({ ...form, nickName });
+  };
+  // 닉네임 중복 확인 버튼 이벤트 핸들러
+  const handleCheckNickName = async () => {
+    const nickName = form.nickName;
 
     if (nickName.trim() === "") {
       setValidNickName(null);
+      return;
+    }
+
+    try {
+      const NNisAvailable = await checkNicknameAvailability(nickName);
+      if (NNisAvailable) {
+        setValidNickName(true);
+      } else {
+        setValidNickName(false);
+      }
+    } catch (error) {
+      //API 호출 오류 처리
+      console.error("닉네임 중복 확인 중 오류 발생", error);
+      // 에러 상태 UI 반영을 위한 코드 추가
     }
   };
 
@@ -125,7 +144,6 @@ export default function SineUp() {
             </SearchLink>
             <PDiv>회원가입</PDiv>
           </HeaderDiv>
-
           <Form margin="auto" padding="45px 0">
             <Label htmlFor="nickName">닉네임</Label>
             <InputDiv>
@@ -137,8 +155,16 @@ export default function SineUp() {
                 placeholder="닉네임을 입력해 주세요."
                 width="330px"
               />
-              <Button>중복 확인</Button>
+              <Button onClick={handleCheckNickName}>중복 확인</Button>
             </InputDiv>
+
+            {validNickName === false ? (
+              <CheckDivX>중복된 닉네임입니다.</CheckDivX>
+            ) : validNickName === true ? (
+              <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO>
+            ) : (
+              <CheckDivX></CheckDivX>
+            )}
 
             {/* <CheckDivX>중복된 닉네임입니다.</CheckDivX> */}
             {/* <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO> */}

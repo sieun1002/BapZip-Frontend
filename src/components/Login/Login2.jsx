@@ -125,7 +125,7 @@ export default function Login2() {
               </SearchList>
               <Div2></Div2>
               <SearchList>
-                <SearchLink to="/SineUp">회원가입</SearchLink>
+                <SearchLink to="/users/auth/signup">회원가입</SearchLink>
               </SearchList>
             </SearchDiv>
           </MainDiv>
