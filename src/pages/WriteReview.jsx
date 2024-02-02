@@ -8,13 +8,16 @@ import UploadImg from "../components/WriteReview/UploadImg";
 
 export default function WriteReview() {
   return (
-    <div className="container-writeReview">
-      <Header />
-      <SearchStore />
-      <StarRating />
-      <SelectBenefit />
-      <WriteTxt />
-      <UploadImg />
+    <div className='container-writeReview'>
+        <Header />
+        <SearchStore />
+        <StarRating />
+        <SelectBenefit />
+        <WriteTxt />
+        <UploadImg />
+        <div className='btn-writeReview'>
+          <button className='submitBtn-writeReview' type="submit">등록하기</button>
+        </div>
     </div>
   );
 }
