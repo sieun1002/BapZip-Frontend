@@ -15,6 +15,9 @@ export default function WriteReview() {
         <SelectBenefit />
         <WriteTxt />
         <UploadImg />
+        <div className='btn-writeReview'>
+          <button className='submitBtn-writeReview' type="submit">등록하기</button>
+        </div>
     </div>
   )
 }
