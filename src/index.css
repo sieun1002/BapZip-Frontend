@@ -551,6 +551,48 @@ p {
     background-color: #ffba35;
   }
 }
+.modalGetPoint10-WriteReview{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 480px;
+  height: 100%;
+  padding-bottom: 70px;
+  background-color: #191919B2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container-modalGetPoint10{
+  position: fixed;
+  top: 277px;
+  width: 318px;
+  height: 291px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .title-modalGetPoint10{
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  .confirmBtn-modalGetPoint10{
+    width: 285.64px;
+    height: 42px;
+    border-radius: 10px;
+    background-color: #FFBA35;
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+  }
+}
 /* --------------------------Arlim--------------------------- */
 .silsigan-image {
   img {
