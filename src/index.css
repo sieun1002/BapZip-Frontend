@@ -504,7 +504,7 @@ p {
 
 .txtupdate::before {
   content: "[이벤트] ";
-  color: black; /* 빨간색으로 변경 */
+  color: black;
 }
 .txtupdate3 {
   position: relative;
@@ -522,7 +522,7 @@ p {
 }
 .txtupdate3::before {
   content: "[공지] ";
-  color: black; /* 빨간색으로 변경 */
+  color: black;
 }
 
 .txtline {
@@ -541,3 +541,5 @@ p {
 .asd {
   height: 700px;
 }
+
+/* --------------------------Silsiganin--------------------------- */

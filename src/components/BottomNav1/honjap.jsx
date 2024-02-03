@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import background from "../../images/BottomNav1/background.svg";
 import human from "../../images/BottomNav1/human.svg";
@@ -46,14 +47,6 @@ const BackgroundImage = styled.img`
   width: 200px; /* 조정된 너비 */
   height: 199px; /* 조정된 높이 */
   z-index: 1;
-`;
-
-const ImageWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 `;
 
 const ZandiImage = styled.img`
@@ -166,14 +159,17 @@ const Honjap = () => {
     <Container>
       <A3 src={A1} alt="IN2" />
       <A4 src={A2} alt="IN2" />
+
       <Container1>
-        <BackgroundImage src={background} alt="배경" />
-        <ZandiImage src={zandi} alt="Zandi" />
-        <SchoolImage src={school} alt="School" />
-        <HumanImage src={human} alt="Human" />
-        <In src={IN} alt="IN" />
-        <In2 src={IN2} alt="IN2" />
-        <In3 src={IN3} alt="IN3" />
+        <Link to="/silsiganin">
+          <BackgroundImage src={background} alt="배경" />
+          <ZandiImage src={zandi} alt="Zandi" />
+          <SchoolImage src={school} alt="School" />
+          <HumanImage src={human} alt="Human" />
+          <In src={IN} alt="IN" />
+          <In2 src={IN2} alt="IN2" />
+          <In3 src={IN3} alt="IN3" />
+        </Link>
       </Container1>
       <Container2>
         <OutBackgroundImage src={Outbackground} alt="배경" />

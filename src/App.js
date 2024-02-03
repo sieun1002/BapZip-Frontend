@@ -16,6 +16,7 @@ import WriteReview from "./pages/WriteReview";
 
 import BottomNav1 from "./pages/BottomNav1";
 import Arlim from "./pages/Arlim";
+import Silsiganin from "./pages/silsiganin";
 
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
@@ -44,7 +45,8 @@ function App() {
           <Route path="/Review" element={<BottomNav2 />} />
           <Route path="/WriteReview" element={<WriteReview />} />
           <Route path="/Home" element={<BottomNav1 />} />
-          <Route path="/arlim" element={<Arlim />} />
+          <Route path="/Arlim" element={<Arlim />} />
+          <Route path="/Silsiganin" element={<Silsiganin />} />
         </Routes>
       </BrowserRouter>
     </div>
