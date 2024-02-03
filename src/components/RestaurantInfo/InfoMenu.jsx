@@ -6,7 +6,6 @@ import {
   Div,
 } from "../../styles/RestaurantInfo/RestaurantInfo.styled";
 import { BreakLine } from "../../styles/RestaurantInfo/InfoHome.styled";
-// import Hot from "../components/BottomNav1/hot";
 import Hot from "../BottomNav1/hot";
 
 import {
@@ -25,6 +24,11 @@ import {
   MenuList,
   MenuListImg,
 } from "../../styles/RestaurantInfo/InfoMenu.styled";
+
+import A1 from "../../images/BottomNav1/Group 476.svg";
+import A2 from "../../images/BottomNav1/Group 477.svg";
+import A3 from "../../images/BottomNav1/Group 478.svg";
+import A4 from "../../images/BottomNav1/Group 481.svg";
 
 import menuList from "../../images/RestaurantInfo/menuList.svg";
 
@@ -57,7 +61,7 @@ export default function InfoHome() {
     <BodyDiv>
       <WrapperDiv>
         <Div height="100%">
-          {/* <MenuPanDiv>
+          <MenuPanDiv>
             <MainP>메뉴판</MainP>
             <SliderContainer
               ref={sliderRef}
@@ -77,12 +81,12 @@ export default function InfoHome() {
                 <SlideImage src={A4} alt="Image 8" />
               </ImageSlider>
             </SliderContainer>
-          </MenuPanDiv> */}
+          </MenuPanDiv>
 
-          <MenuPanDiv>
+          {/* <MenuPanDiv>
             <MainP>메뉴판</MainP>
             <NotMenuDiv>등록된 메뉴판 사진이 없어요.</NotMenuDiv>
-          </MenuPanDiv>
+          </MenuPanDiv> */}
           <BreakLine></BreakLine>
           <MenuListDiv>
             <MainP marginTop="0px">대표 메뉴</MainP>

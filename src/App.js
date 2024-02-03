@@ -22,32 +22,32 @@ import RestaurantInfo from "./pages/RestaurantInfo";
 
 function App() {
   return (
-    // <div className="root-wrap">
-    //   <BrowserRouter>
-    //     <Routes>
-    //       <Route path="/" element={<Login1 />} />
-    //       <Route path="/Login2" element={<Login2 />} />
-    //       <Route path="/SineUp" element={<SineUp />} />
-    //       <Route path="/SineUp/Select_School" element={<SelectSchool />} />
-    //       <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
-    //       <Route
-    //         path="/SineUp/SineUp-Completion"
-    //         element={<SineUpCompletion />}
-    //       />
-    //       <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
-    //     </Routes>
-    //   </BrowserRouter>
-    // </div>
-    <div className="App">
+    <div className="root-wrap">
       <BrowserRouter>
         <Routes>
-          <Route path="/Review" element={<BottomNav2 />} />
-          <Route path="/WriteReview" element={<WriteReview />} />
-          <Route path="/Home" element={<BottomNav1 />} />
-          <Route path="/arlim" element={<Arlim />} />
+          <Route path="/" element={<Login1 />} />
+          <Route path="/Login2" element={<Login2 />} />
+          <Route path="/SineUp" element={<SineUp />} />
+          <Route path="/SineUp/Select_School" element={<SelectSchool />} />
+          <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
+          <Route
+            path="/SineUp/SineUp-Completion"
+            element={<SineUpCompletion />}
+          />
+          <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
         </Routes>
       </BrowserRouter>
     </div>
+    // <div className="App">
+    //   <BrowserRouter>
+    //     <Routes>
+    //       <Route path="/Review" element={<BottomNav2 />} />
+    //       <Route path="/WriteReview" element={<WriteReview />} />
+    //       <Route path="/Home" element={<BottomNav1 />} />
+    //       <Route path="/arlim" element={<Arlim />} />
+    //     </Routes>
+    //   </BrowserRouter>
+    // </div>
   );
 }
 
