@@ -25,6 +25,7 @@ import scrap from "../images/RestaurantInfo/scrap.svg";
 
 import InfoHome from "../components/RestaurantInfo/InfoHome";
 import InfoMenu from "../components/RestaurantInfo/InfoMenu";
+import InfoReview from "../components/RestaurantInfo/InfoReview";
 
 export default function RestaurantInfo() {
   return (
@@ -64,7 +65,8 @@ export default function RestaurantInfo() {
             <InfoNav>실시간 채팅</InfoNav>
           </InfoNavDiv>
           {/* <InfoHome></InfoHome> */}
-          <InfoMenu></InfoMenu>
+          {/* <InfoMenu></InfoMenu> */}
+          <InfoReview></InfoReview>
         </Div>
       </WrapperDiv>
     </BodyDiv>
