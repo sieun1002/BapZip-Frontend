@@ -16,6 +16,7 @@ import WriteReview from "./pages/WriteReview";
 
 import BottomNav1 from "./pages/BottomNav1";
 import Arlim from "./pages/Arlim";
+import Silsiganin from "./pages/silsiganin";
 
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
