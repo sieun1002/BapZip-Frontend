@@ -14,13 +14,19 @@ import {
   ImageSlider,
   SlideImage,
   MenuPanDiv,
-  MenuPanP,
+  MainP,
+  NotMenuDiv,
+  MenuListDiv,
+  SignatureAndFullDiv,
+  MenuListPDiv,
+  MenuListP1,
+  MenuListP2,
+  MenuListP3,
+  MenuList,
+  MenuListImg,
 } from "../../styles/RestaurantInfo/InfoMenu.styled";
 
-import A1 from "../../images/BottomNav1/Group 476.svg";
-import A2 from "../../images/BottomNav1/Group 477.svg";
-import A3 from "../../images/BottomNav1/Group 478.svg";
-import A4 from "../../images/BottomNav1/Group 481.svg";
+import menuList from "../../images/RestaurantInfo/menuList.svg";
 
 export default function InfoHome() {
   const [dragStart, setDragStart] = useState(0);
@@ -51,8 +57,8 @@ export default function InfoHome() {
     <BodyDiv>
       <WrapperDiv>
         <Div height="100%">
-          <MenuPanDiv>
-            <MenuPanP>메뉴판</MenuPanP>
+          {/* <MenuPanDiv>
+            <MainP>메뉴판</MainP>
             <SliderContainer
               ref={sliderRef}
               onMouseDown={handleMouseDown}
@@ -69,11 +75,74 @@ export default function InfoHome() {
                 <SlideImage src={A4} alt="Image 6" />
                 <SlideImage src={A4} alt="Image 7" />
                 <SlideImage src={A4} alt="Image 8" />
-                {/* Add more images as needed */}
               </ImageSlider>
             </SliderContainer>
+          </MenuPanDiv> */}
+
+          <MenuPanDiv>
+            <MainP>메뉴판</MainP>
+            <NotMenuDiv>등록된 메뉴판 사진이 없어요.</NotMenuDiv>
           </MenuPanDiv>
           <BreakLine></BreakLine>
+          <MenuListDiv>
+            <MainP marginTop="0px">대표 메뉴</MainP>
+            <SignatureAndFullDiv>
+              {/* 벡 반복문 사용 */}
+              <MenuList>
+                <MenuListPDiv>
+                  <MenuListP1>한끼 분식 세트</MenuListP1>
+                  <MenuListP2>
+                    떡볶이 + 순대 + 어묵꼬치 1개로 구성된 한끼 식사입니다~
+                  </MenuListP2>
+                  <MenuListP3>8,500원</MenuListP3>
+                </MenuListPDiv>
+                <MenuListImg src={menuList} alt="menuList" />
+              </MenuList>
+
+              <MenuList>
+                <MenuListPDiv>
+                  <MenuListP1>한끼 분식 세트</MenuListP1>
+                  <MenuListP2>
+                    떡볶이 + 순대 + 어묵꼬치 1개로 구성된 한끼 식사입니다~
+                  </MenuListP2>
+                  <MenuListP3>8,500원</MenuListP3>
+                </MenuListPDiv>
+              </MenuList>
+            </SignatureAndFullDiv>
+            <MainP>식사</MainP>
+            <SignatureAndFullDiv>
+              {/* 벡 반복문 사용 */}
+              <MenuList>
+                <MenuListPDiv>
+                  <MenuListP1>한끼 분식 세트</MenuListP1>
+                  <MenuListP2>
+                    떡볶이 + 순대 + 어묵꼬치 1개로 구성된 한끼 식사입니다~
+                  </MenuListP2>
+                  <MenuListP3>8,500원</MenuListP3>
+                </MenuListPDiv>
+              </MenuList>
+
+              <MenuList>
+                <MenuListPDiv>
+                  <MenuListP1>한끼 분식 세트</MenuListP1>
+                  <MenuListP2>
+                    떡볶이 + 순대 + 어묵꼬치 1개로 구성된 한끼 식사입니다~
+                  </MenuListP2>
+                  <MenuListP3>8,500원</MenuListP3>
+                </MenuListPDiv>
+              </MenuList>
+
+              <MenuList>
+                <MenuListPDiv>
+                  <MenuListP1>한끼 분식 세트</MenuListP1>
+                  <MenuListP2>
+                    떡볶이 + 순대 + 어묵꼬치 1개로 구성된 한끼 식사입니다~
+                  </MenuListP2>
+                  <MenuListP3>8,500원</MenuListP3>
+                </MenuListPDiv>
+              </MenuList>
+            </SignatureAndFullDiv>
+          </MenuListDiv>
         </Div>
       </WrapperDiv>
     </BodyDiv>
