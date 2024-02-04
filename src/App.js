@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login1 from "./pages/Login1";
 import Login2 from "./components/Login/Login2";
 import SineUp from "./components/Login/SineUp";
+import SineUp3 from "./components/Login/SineUp3";
 import SelectSchool from "./components/Login/SelectSchool";
 import SelectMajor from "./components/Login/SelectMajor";
 import SineUpCompletion from "./components/Login/SineUpCompletion";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<Login1 />} />
           <Route path="/Login2" element={<Login2 />} />
           <Route path="/users/auth/signup" element={<SineUp />} />
+          <Route path="/users/auth/.signup" element={<SineUp3 />} />
           <Route path="/SineUp/Select_School" element={<SelectSchool />} />
           <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
           <Route

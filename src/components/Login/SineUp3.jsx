@@ -22,6 +22,7 @@ import {
   CheckDivX,
   Button,
   InputDiv,
+  Input2,
 } from "../../styles/Login/SineUp.style";
 import arrowLeft from "../../images/Login/arrowLeft.svg";
 
@@ -117,12 +118,12 @@ export default function SineUp() {
           <Form margin="auto" padding="45px 0">
             <Label htmlFor="nickName">닉네임</Label>
             <InputDiv>
-              <Input
+              <Input2
                 type="text"
                 id="nickName"
-                value={form.nickName}
+                value="조시은."
                 onChange={handleChange}
-                placeholder="닉네임을 입력해 주세요."
+                placeholder="조시은."
                 width="330px"
               />
               <Button type="button" onClick={() => setValidNickName(true)}>
@@ -130,16 +131,17 @@ export default function SineUp() {
               </Button>
             </InputDiv>
 
-            {validNickName && <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO>}
+            {/* {validNickName && <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO>} */}
+            <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO>
 
             <Label htmlFor="id">아이디</Label>
             <InputDiv>
-              <Input
+              <Input2
                 type="text"
                 id="id"
-                value={form.id}
+                value="sieun"
                 onChange={handleChange}
-                placeholder="아이디를 입력해 주세요."
+                placeholder="sieun"
                 width="330px"
               />
               <Button type="button" onClick={() => setValidId(true)}>
@@ -147,30 +149,31 @@ export default function SineUp() {
               </Button>
             </InputDiv>
 
-            {validId && <CheckDivO>사용 가능한 아이디입니다.</CheckDivO>}
+            {/* {validId && <CheckDivO>사용 가능한 아이디입니다.</CheckDivO>} */}
+            <CheckDivO>사용 가능한 아이디입니다.</CheckDivO>
 
             <Label htmlFor="password">비밀번호</Label>
             <InputDiv>
-              <Input
+              <Input2
                 type="password"
                 id="password"
-                value={form.password}
+                value="@Sophie870"
                 onChange={handlePWCh}
                 placeholder="비밀번호를 입력해 주세요."
               />
             </InputDiv>
 
             <InputDiv>
-              <Input
+              <Input2
                 type="password"
                 id="passwordCheck"
-                value={form.passwordCheck}
+                value="@Sophie870"
                 onChange={handlePWChCh}
                 placeholder="비밀번호 확인."
               />
             </InputDiv>
 
-            {validPassword === false ? (
+            {/* {validPassword === false ? (
               <CheckDivX>
                 비밀번호를 영문, 숫자, 특수문자 포함 8~12자리로 설정해주세요.
               </CheckDivX>
@@ -178,16 +181,17 @@ export default function SineUp() {
               <CheckDivO>사용 가능한 비밀번호입니다.</CheckDivO>
             ) : (
               <CheckDivX></CheckDivX>
-            )}
+            )} */}
+            <CheckDivO>사용 가능한 비밀번호입니다.</CheckDivO>
 
             <Label htmlFor="schoolAndMajor">학교 및 전공</Label>
             <InputDiv>
-              <Input
+              <Input2
                 type="text"
                 id="schoolAndMajor"
-                value={form.schoolAndMajor}
+                value="덕성여자대학교 - 사이버보안전공"
                 onChange={handleChange}
-                placeholder="학교와 전공을 입력해 주세요."
+                placeholder="덕성여자대학교 - 사이버보안전공"
                 width="330px"
               />
               <Link to="/SineUp/Select_School">
@@ -233,19 +237,49 @@ export default function SineUp() {
             )}
           </Form>
 
-          <Link
-            to="/SineUp/SineUp-Completion"
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            <Submit
-              type="submit"
-              value="회원 가입"
-              backgroundColor="#EDEDED"
-              marginBottom="30px"
-            />
-          </Link>
+          {validSchoolEmail === false ? (
+            <Link
+              to="/SineUp/SineUp-Completion"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              <Submit
+                type="submit"
+                value="회원 가입"
+                backgroundColor="#EDEDED"
+                marginBottom="30px"
+              />
+            </Link>
+          ) : validSchoolEmail === true ? (
+            <Link
+              to="/SineUp/SineUp-Completion"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              <Submit
+                type="submit"
+                value="회원 가입"
+                backgroundColor="#FFBA35"
+                marginBottom="30px"
+              />
+            </Link>
+          ) : (
+            <Link
+              to="/SineUp/SineUp-Completion"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              <Submit
+                type="submit"
+                value="회원 가입"
+                backgroundColor="#EDEDED"
+                marginBottom="30px"
+              />
+            </Link>
+          )}
         </Div>
       </WrapperDiv>
     </BodyDiv>
