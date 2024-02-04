@@ -66,6 +66,7 @@ const SearchBar = () => {
 
   return (
     <SearchContainer>
+      <SearchImage src={Searchimage} alt="Search" />
       <SearchBox
         type="text"
         placeholder=""
@@ -76,7 +77,6 @@ const SearchBar = () => {
       {showText && (
         <PlaceholderText>교내에서 내가 가고싶은 식당은?</PlaceholderText>
       )}
-      <SearchImage src={Searchimage} alt="Search" />
     </SearchContainer>
   );
 };
