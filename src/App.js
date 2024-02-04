@@ -8,14 +8,16 @@ import SelectSchool from "./components/Login/SelectSchool";
 import SelectMajor from "./components/Login/SelectMajor";
 import SineUpCompletion from "./components/Login/SineUpCompletion";
 
+// BottomNav1---------------------------------------------------------------
+import BottomNav1 from "./pages/BottomNav1";
+import Arlim from "./pages/Arlim";
+
 // BottomNav2---------------------------------------------------------------
 import BottomNav2 from "./pages/BottomNav2";
 import WriteReview from "./pages/WriteReview";
 
-// BottomNav---------------------------------------------------------------
-
-import BottomNav1 from "./pages/BottomNav1";
-import Arlim from "./pages/Arlim";
+// BottomNav4---------------------------------------------------------------
+import BottomNav4 from "./pages/BottomNav4";
 
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
@@ -45,6 +47,7 @@ function App() {
           <Route path="/WriteReview" element={<WriteReview />} />
           <Route path="/Home" element={<BottomNav1 />} />
           <Route path="/arlim" element={<Arlim />} />
+          <Route path="/MyPage" element={<BottomNav4 />}/>
         </Routes>
       </BrowserRouter>
     </div>

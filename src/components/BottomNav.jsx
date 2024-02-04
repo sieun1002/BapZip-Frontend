@@ -37,7 +37,7 @@ export default function BottomNav(props) {
         </Link>
       </div>
       <div className="btnMyPage">
-        <Link to="/">
+        <Link to="/MyPage">
           <img
             src={props.menu === "MyPage" ? srcBtnMypageOn : srcBtnMypageOff}
             alt="btn"
