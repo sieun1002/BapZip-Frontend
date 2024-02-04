@@ -26,8 +26,28 @@ import scrap from "../images/RestaurantInfo/scrap.svg";
 import InfoHome from "../components/RestaurantInfo/InfoHome";
 import InfoMenu from "../components/RestaurantInfo/InfoMenu";
 import InfoReview from "../components/RestaurantInfo/InfoReview";
+import InfoChat from "../components/RestaurantInfo/InfoChat";
 
 export default function RestaurantInfo() {
+  // 'home', 'menu', 'review', 'chat' 중 하나를 현재 상태로 관리합니다.
+  const [currentTab, setCurrentTab] = useState("home");
+
+  // 현재 선택된 탭에 따라 보여질 컴포넌트를 결정하는 함수
+  const renderTabComponent = () => {
+    switch (currentTab) {
+      case "home":
+        return <InfoHome />;
+      case "menu":
+        return <InfoMenu />;
+      case "review":
+        return <InfoReview />;
+      case "chat":
+        return <InfoChat />;
+      default:
+        return <InfoHome />;
+    }
+  };
+
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -59,14 +79,32 @@ export default function RestaurantInfo() {
             </WaitingAndStarDiv>
           </RestaurantMainInfoDiv>
           <InfoNavDiv>
-            <InfoNav color="#FFBA35">홈</InfoNav>
-            <InfoNav>메뉴</InfoNav>
-            <InfoNav>리뷰</InfoNav>
-            <InfoNav>실시간 채팅</InfoNav>
+            <InfoNav
+              color={currentTab === "home" ? "#FFBA35" : undefined}
+              onClick={() => setCurrentTab("home")}
+            >
+              홈
+            </InfoNav>
+            <InfoNav
+              color={currentTab === "menu" ? "#FFBA35" : undefined}
+              onClick={() => setCurrentTab("menu")}
+            >
+              메뉴
+            </InfoNav>
+            <InfoNav
+              color={currentTab === "review" ? "#FFBA35" : undefined}
+              onClick={() => setCurrentTab("review")}
+            >
+              리뷰
+            </InfoNav>
+            <InfoNav
+              color={currentTab === "chat" ? "#FFBA35" : undefined}
+              onClick={() => setCurrentTab("chat")}
+            >
+              실시간 채팅
+            </InfoNav>
           </InfoNavDiv>
-          {/* <InfoHome></InfoHome> */}
-          {/* <InfoMenu></InfoMenu> */}
-          <InfoReview></InfoReview>
+          {renderTabComponent()}
         </Div>
       </WrapperDiv>
     </BodyDiv>
