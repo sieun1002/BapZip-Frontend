@@ -74,7 +74,7 @@ export default function SelectMajor() {
           /> */}
 
           <Link
-            to="/SineUp"
+            to="/users/auth/signup"
             style={{
               textDecoration: "none",
               marginBottom: "30px",

@@ -42,84 +42,97 @@ export default function SineUp() {
   const [validPasswordCheck, setValidPasswordCheck] = useState(null);
   const [validSchoolAndMajor, setValidSchoolAndMajor] = useState(null);
   const [validSchoolEmail, setValidSchoolEmail] = useState(null);
-  const [validSchoolEmailCheck, setValidSchoolEmailCheck] = useState(null);
+  const [validSchoolMailCheck, setValidSchoolEmailCheck] = useState(null);
 
-  const handleNNCh = (e) => {
+  const handleNNCh = async (e) => {
     const nickName = e.target.value;
     setForm({ ...form, nickName });
+  };
+  // 닉네임 중복 확인 버튼 이벤트 핸들러
+  const handleCheckNickName = async () => {
+    const nickName = form.nickName;
+
+    if (nickName.trim() === "") {
+      setValidNickName(null);
+      return;
+    }
+
+    try {
+      const NNisAvailable = await checkNicknameAvailability(nickName);
+      if (NNisAvailable) {
+        setValidNickName(true);
+      } else {
+        setValidNickName(false);
+      }
+    } catch (error) {
+      //API 호출 오류 처리
+      console.error("닉네임 중복 확인 중 오류 발생", error);
+      // 에러 상태 UI 반영을 위한 코드 추가
+    }
   };
 
   const handleIdCh = (e) => {
     const id = e.target.value;
     setForm({ ...form, id });
+
+    if (id.trim() === "") {
+      setValidId(null);
+    }
   };
 
   const handlePWCh = (e) => {
     const password = e.target.value;
     setForm({ ...form, password });
-  };
 
-  const handlePWChCh = (e) => {
-    const passwordCheck = e.target.value;
-    setForm({ ...form, passwordCheck });
-  };
-
-  const handleSchM = (e) => {
-    const schoolAndMajor = e.target.value;
-    setForm({ ...form, schoolAndMajor });
-  };
-
-  const handleSchEM = (e) => {
-    const schoolEmail = e.target.value;
-    setForm({ ...form, schoolEmail });
-  };
-
-  const handleSchEMCh = (e) => {
-    const schoolEmailCheck = e.target.value;
-    setForm({ ...form, schoolEmailCheck });
-  };
-
-  // 닉네임 중복 확인 함수
-  const handleCheckNickName = async () => {
-    // API 호출 로직으로 닉네임 중복 확인
-    // 여기서는 예시로 항상 true로 설정
-    setValidNickName(true);
-  };
-
-  // 아이디 중복 확인 함수
-  const handleCheckId = async () => {
-    // API 호출 로직으로 아이디 중복 확인
-    // 여기서는 예시로 항상 true로 설정
-    setValidId(true);
-  };
-
-  // 비밀번호 유효성 검사
-  const validatePassword = () => {
-    if (form.password.trim() === "") {
+    if (password.trim() === "") {
       setValidPassword(null);
     } else {
       const isValidPassword =
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/.test(
-          form.password
+          password
         );
       setValidPassword(isValidPassword);
     }
   };
 
-  // 비밀번호 확인 검사
-  const validatePasswordCheck = () => {
-    if (form.passwordCheck.trim() === "" || form.password.trim() === "") {
+  const handlePWChCh = (e) => {
+    const passwordCheck = e.target.value;
+    setForm({ ...form, passwordCheck });
+
+    if (passwordCheck.trim() === "") {
       setValidPasswordCheck(null);
     } else {
-      const isValidPasswordCheck = form.passwordCheck === form.password;
+      const isValidPasswordCheck = passwordCheck === form.password;
       setValidPasswordCheck(isValidPasswordCheck);
     }
   };
 
-  // 학교 이메일 유효성 검사 (이 예제에서는 단순화를 위해 구현하지 않음)
-  // const validateSchoolEmail = () => {
-  //   // 학교 이메일 유효성 검사 로직
-  // };
+  const handleSchM = (e) => {
+    const schoolAndMajor = e.target.value;
+    setForm({ ...form, schoolAndMajor });
+
+    if (schoolAndMajor.trim() === "") {
+      setValidSchoolAndMajor(null);
+    }
+  };
+
+  const handleSchEM = (e) => {
+    const schoolEmail = e.target.value;
+    setForm({ ...form, schoolEmail });
+
+    if (schoolEmail.trim() === "") {
+      setValidSchoolEmail(null);
+    }
+  };
+
+  const handleSchEMCh = (e) => {
+    const schoolEmailCheck = e.target.value;
+    setForm({ ...form, schoolEmailCheck });
+
+    if (schoolEmailCheck.trim() === "") {
+      setValidSchoolEmailCheck(null);
+    }
+  };
 
   return (
     <BodyDiv>
@@ -132,7 +145,6 @@ export default function SineUp() {
             <PDiv>회원가입</PDiv>
           </HeaderDiv>
           <Form margin="auto" padding="45px 0">
-            {/* 닉네임 입력란 */}
             <Label htmlFor="nickName">닉네임</Label>
             <InputDiv>
               <Input
@@ -145,9 +157,19 @@ export default function SineUp() {
               />
               <Button onClick={handleCheckNickName}>중복 확인</Button>
             </InputDiv>
-            {validNickName && <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO>}
 
-            {/* 아이디 입력란 */}
+            {validNickName === false ? (
+              <CheckDivX>중복된 닉네임입니다.</CheckDivX>
+            ) : validNickName === true ? (
+              <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO>
+            ) : (
+              <CheckDivX></CheckDivX>
+            )}
+
+            {/* <CheckDivX>중복된 닉네임입니다.</CheckDivX> */}
+            {/* <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO> */}
+            {/* <CheckDivX></CheckDivX> */}
+
             <Label htmlFor="id">아이디</Label>
             <InputDiv>
               <Input
@@ -158,11 +180,13 @@ export default function SineUp() {
                 placeholder="아이디를 입력해 주세요."
                 width="330px"
               />
-              <Button onClick={handleCheckId}>중복 확인</Button>
+              <Button>중복 확인</Button>
             </InputDiv>
-            {validId && <CheckDivO>사용 가능한 아이디입니다.</CheckDivO>}
 
-            {/* 비밀번호 입력란 */}
+            {/* <CheckDivX>중복된 아이디입니다.</CheckDivX> */}
+            {/* <CheckDivO>사용 가능한 아이디입니다.</CheckDivO> */}
+            <CheckDivX></CheckDivX>
+
             <Label htmlFor="password">비밀번호</Label>
             <InputDiv>
               <Input
@@ -171,16 +195,9 @@ export default function SineUp() {
                 value={form.password}
                 onChange={handlePWCh}
                 placeholder="비밀번호를 입력해 주세요."
-                onBlur={validatePassword} // 비밀번호 유효성 검사
               />
             </InputDiv>
-            {validPassword === false && (
-              <CheckDivX>
-                비밀번호는 영문, 숫자, 특수문자 포함 8~12자리로 설정해주세요.
-              </CheckDivX>
-            )}
 
-            {/* 비밀번호 확인 입력란 */}
             <InputDiv>
               <Input
                 type="password"
@@ -188,14 +205,19 @@ export default function SineUp() {
                 value={form.passwordCheck}
                 onChange={handlePWChCh}
                 placeholder="비밀번호 확인."
-                onBlur={validatePasswordCheck} // 비밀번호 확인 검사
               />
             </InputDiv>
-            {validPasswordCheck === false && (
-              <CheckDivX>비밀번호가 일치하지 않습니다.</CheckDivX>
+
+            {validPassword === false ? (
+              <CheckDivX>
+                비밀번호를 영문, 숫자, 특수문자 포함 8~12자리로 설정해주세요.
+              </CheckDivX>
+            ) : validPassword === true ? (
+              <CheckDivO>사용 가능한 비밀번호입니다.</CheckDivO>
+            ) : (
+              <CheckDivX></CheckDivX>
             )}
 
-            {/* 학교 및 전공 입력란 */}
             <Label htmlFor="schoolAndMajor">학교 및 전공</Label>
             <InputDiv>
               <Input
@@ -210,8 +232,8 @@ export default function SineUp() {
                 <Button>입력하기</Button>
               </Link>
             </InputDiv>
+            <CheckDivX></CheckDivX>
 
-            {/* 학교 이메일 입력란 */}
             <Label htmlFor="schoolEmail">본인 인증</Label>
             <InputDiv>
               <Input
@@ -222,6 +244,7 @@ export default function SineUp() {
                 placeholder="학교 이메일을 입력해 주세요."
                 width="330px"
               />
+
               <Button>인증 요청</Button>
             </InputDiv>
 
@@ -234,6 +257,10 @@ export default function SineUp() {
                 placeholder="인증번호 입력"
               />
             </InputDiv>
+
+            {/* <CheckDivX>인증번호가 올바르지 않습니다.</CheckDivX> */}
+            {/* <CheckDivO>모두 인증 완료되었습니다.</CheckDivO> */}
+            <CheckDivX></CheckDivX>
           </Form>
 
           <Link
