@@ -38,9 +38,11 @@ export const ImageSlider = styled.div`
 
 export const SlideImage = styled.img`
   width: 115px;
-  /* height: 115px; */
+  height: 115px;
   height: auto;
   margin: 0 5px;
+
+  border-radius: 10px;
 `;
 
 export const NotMenuDiv = styled.div`

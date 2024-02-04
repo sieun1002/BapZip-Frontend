@@ -70,14 +70,14 @@ export default function InfoHome() {
               onMouseLeave={handleMouseUp}
             >
               <ImageSlider style={{ transform: `translateX(${translate}px)` }}>
-                <SlideImage src={A1} alt="Image 1" />
-                <SlideImage src={A2} alt="Image 2" />
-                <SlideImage src={A3} alt="Image 3" />
-                <SlideImage src={A4} alt="Image 4" />
-                <SlideImage src={A4} alt="Image 5" />
-                <SlideImage src={A4} alt="Image 6" />
-                <SlideImage src={A4} alt="Image 7" />
-                <SlideImage src={A4} alt="Image 8" />
+                <SlideImage src={menuList} alt="Image 1" />
+                <SlideImage src={menuList} alt="Image 2" />
+                <SlideImage src={menuList} alt="Image 3" />
+                <SlideImage src={menuList} alt="Image 4" />
+                <SlideImage src={menuList} alt="Image 5" />
+                <SlideImage src={menuList} alt="Image 6" />
+                <SlideImage src={menuList} alt="Image 7" />
+                <SlideImage src={menuList} alt="Image 8" />
               </ImageSlider>
             </SliderContainer>
           </MenuPanDiv>
