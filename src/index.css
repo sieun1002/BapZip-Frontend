@@ -824,3 +824,40 @@ p {
     font-weight: 500;
   }
 }
+/* Setting */
+.setting-BottomNav4{
+  min-height: 100vh;
+}
+.container-Setting{
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 4px solid #f6f6f6;
+  .title-Setting{
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    margin-left: 40px;
+  }
+}
+.content-Setting{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 40px;
+  margin-right: 40px;
+  .text-Setting{
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+.container-Notice{
+  margin-top: 20px;
+  padding-bottom: 20px;
+  .title-Setting{
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    margin-left: 40px;
+  }  
+}

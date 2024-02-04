@@ -22,6 +22,9 @@ import BottomNav4 from "./pages/BottomNav4";
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
 
+// Setting---------------------------------------------------------------
+import Setting from "./pages/Setting";
+
 function App() {
   return (
     // <div className="root-wrap">
@@ -48,6 +51,7 @@ function App() {
           <Route path="/Home" element={<BottomNav1 />} />
           <Route path="/arlim" element={<Arlim />} />
           <Route path="/MyPage" element={<BottomNav4 />}/>
+          <Route path="/Setting" element={<Setting />}/>
         </Routes>
       </BrowserRouter>
     </div>
