@@ -23,6 +23,8 @@ import {
   TodayNoticeContentDiv,
 } from "../../styles/RestaurantInfo/InfoHome.styled";
 
+import InfoChat from "./InfoChat";
+
 import address from "../../images/RestaurantInfo/address.svg";
 
 export default function InfoHome() {
@@ -87,6 +89,7 @@ export default function InfoHome() {
             </TodayNoticeContentDiv>
           </TodayNoticeDiv>
           <BreakLine></BreakLine>
+          <InfoChat></InfoChat>
         </Div>
       </WrapperDiv>
     </BodyDiv>
