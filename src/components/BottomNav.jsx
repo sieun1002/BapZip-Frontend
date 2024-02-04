@@ -40,7 +40,7 @@ export default function BottomNav(props) {
         </Link>
       </div>
       <div className="btnMyPage" style={{ position: "relative", zIndex: 2 }}>
-        <Link to="/">
+        <Link to="/MyPage">
           <img
             src={props.menu === "MyPage" ? srcBtnMypageOn : srcBtnMypageOff}
             alt="btn"
