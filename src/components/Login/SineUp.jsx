@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   BodyDiv,
   WrapperDiv,
@@ -36,45 +36,48 @@ export default function SineUp() {
     schoolEmailCheck: "",
   });
 
-  const [validNickName, setValidNickName] = useState(false);
-  const [validId, setValidId] = useState(false);
+  const [validNickName, setValidNickName] = useState(null);
+  const [validId, setValidId] = useState(null);
   const [validPassword, setValidPassword] = useState(null);
-  const [validPasswordCheck, setValidPasswordCheck] = useState(false);
-  const [validSchoolAndMajor, setValidSchoolAndMajor] = useState(true); // 검증하지 않음, 예제에서는 true로 설정
-  const [validSchoolEmail, setValidSchoolEmail] = useState(false);
-  const [validSchoolEmailCheck, setValidSchoolEmailCheck] = useState(false);
-  const [submitBtnColor, setSubmitBtnColor] = useState("#EDEDED");
+  const [validPasswordCheck, setValidPasswordCheck] = useState(null);
+  const [validSchoolAndMajor, setValidSchoolAndMajor] = useState(null);
+  const [validSchoolEmail, setValidSchoolEmail] = useState(null);
+  const [validSchoolMailCheck, setValidSchoolEmailCheck] = useState(null);
 
-  useEffect(() => {
-    if (
-      validNickName &&
-      validId &&
-      validPassword &&
-      validPasswordCheck &&
-      validSchoolAndMajor &&
-      validSchoolEmail &&
-      validSchoolEmailCheck
-    ) {
-      setSubmitBtnColor("#FFBA35");
-    } else {
-      setSubmitBtnColor("#EDEDED");
+  const handleNNCh = async (e) => {
+    const nickName = e.target.value;
+    setForm({ ...form, nickName });
+  };
+  // 닉네임 중복 확인 버튼 이벤트 핸들러
+  const handleCheckNickName = async () => {
+    const nickName = form.nickName;
+
+    if (nickName.trim() === "") {
+      setValidNickName(null);
+      return;
     }
-  }, [
-    validNickName,
-    validId,
-    validPassword,
-    validPasswordCheck,
-    validSchoolAndMajor,
-    validSchoolEmail,
-    validSchoolEmailCheck,
-  ]);
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setForm((prevForm) => ({
-      ...prevForm,
-      [id]: value,
-    }));
+    try {
+      const NNisAvailable = await checkNicknameAvailability(nickName);
+      if (NNisAvailable) {
+        setValidNickName(true);
+      } else {
+        setValidNickName(false);
+      }
+    } catch (error) {
+      //API 호출 오류 처리
+      console.error("닉네임 중복 확인 중 오류 발생", error);
+      // 에러 상태 UI 반영을 위한 코드 추가
+    }
+  };
+
+  const handleIdCh = (e) => {
+    const id = e.target.value;
+    setForm({ ...form, id });
+
+    if (id.trim() === "") {
+      setValidId(null);
+    }
   };
 
   const handlePWCh = (e) => {
@@ -104,6 +107,33 @@ export default function SineUp() {
     }
   };
 
+  const handleSchM = (e) => {
+    const schoolAndMajor = e.target.value;
+    setForm({ ...form, schoolAndMajor });
+
+    if (schoolAndMajor.trim() === "") {
+      setValidSchoolAndMajor(null);
+    }
+  };
+
+  const handleSchEM = (e) => {
+    const schoolEmail = e.target.value;
+    setForm({ ...form, schoolEmail });
+
+    if (schoolEmail.trim() === "") {
+      setValidSchoolEmail(null);
+    }
+  };
+
+  const handleSchEMCh = (e) => {
+    const schoolEmailCheck = e.target.value;
+    setForm({ ...form, schoolEmailCheck });
+
+    if (schoolEmailCheck.trim() === "") {
+      setValidSchoolEmailCheck(null);
+    }
+  };
+
   return (
     <BodyDiv>
       <WrapperDiv justifyContent="flex-start">
@@ -121,16 +151,24 @@ export default function SineUp() {
                 type="text"
                 id="nickName"
                 value={form.nickName}
-                onChange={handleChange}
+                onChange={handleNNCh}
                 placeholder="닉네임을 입력해 주세요."
                 width="330px"
               />
-              <Button type="button" onClick={() => setValidNickName(true)}>
-                중복 확인
-              </Button>
+              <Button onClick={handleCheckNickName}>중복 확인</Button>
             </InputDiv>
 
-            {validNickName && <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO>}
+            {validNickName === false ? (
+              <CheckDivX>중복된 닉네임입니다.</CheckDivX>
+            ) : validNickName === true ? (
+              <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO>
+            ) : (
+              <CheckDivX></CheckDivX>
+            )}
+
+            {/* <CheckDivX>중복된 닉네임입니다.</CheckDivX> */}
+            {/* <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO> */}
+            {/* <CheckDivX></CheckDivX> */}
 
             <Label htmlFor="id">아이디</Label>
             <InputDiv>
@@ -138,16 +176,16 @@ export default function SineUp() {
                 type="text"
                 id="id"
                 value={form.id}
-                onChange={handleChange}
+                onChange={handleIdCh}
                 placeholder="아이디를 입력해 주세요."
                 width="330px"
               />
-              <Button type="button" onClick={() => setValidId(true)}>
-                중복 확인
-              </Button>
+              <Button>중복 확인</Button>
             </InputDiv>
 
-            {validId && <CheckDivO>사용 가능한 아이디입니다.</CheckDivO>}
+            {/* <CheckDivX>중복된 아이디입니다.</CheckDivX> */}
+            {/* <CheckDivO>사용 가능한 아이디입니다.</CheckDivO> */}
+            <CheckDivX></CheckDivX>
 
             <Label htmlFor="password">비밀번호</Label>
             <InputDiv>
@@ -186,7 +224,7 @@ export default function SineUp() {
                 type="text"
                 id="schoolAndMajor"
                 value={form.schoolAndMajor}
-                onChange={handleChange}
+                onChange={handleSchM}
                 placeholder="학교와 전공을 입력해 주세요."
                 width="330px"
               />
@@ -202,20 +240,12 @@ export default function SineUp() {
                 type="email"
                 id="schoolEmail"
                 value={form.schoolEmail}
-                onChange={handleChange}
+                onChange={handleSchEM}
                 placeholder="학교 이메일을 입력해 주세요."
                 width="330px"
               />
 
-              <Button
-                type="button"
-                onClick={() => {
-                  setValidSchoolEmail(true);
-                  setValidSchoolEmailCheck(true);
-                }}
-              >
-                인증 요청
-              </Button>
+              <Button>인증 요청</Button>
             </InputDiv>
 
             <InputDiv>
@@ -223,14 +253,14 @@ export default function SineUp() {
                 type="text"
                 id="schoolEmailCheck"
                 value={form.schoolEmailCheck}
-                onChange={handleChange}
+                onChange={handleSchEMCh}
                 placeholder="인증번호 입력"
               />
             </InputDiv>
 
-            {validSchoolEmail && validSchoolEmailCheck && (
-              <CheckDivO>이메일 인증이 완료되었습니다.</CheckDivO>
-            )}
+            {/* <CheckDivX>인증번호가 올바르지 않습니다.</CheckDivX> */}
+            {/* <CheckDivO>모두 인증 완료되었습니다.</CheckDivO> */}
+            <CheckDivX></CheckDivX>
           </Form>
 
           <Link
