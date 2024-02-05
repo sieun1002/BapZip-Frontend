@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SignUpProvider } from "./context/SignUpContext";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 // Login---------------------------------------------------------------
@@ -27,21 +28,23 @@ import Review from "./components/BottomNav1/reviewimage";
 function App() {
   return (
     <Provider store={store}>
-      <div className="root-wrap">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Login1 />} />
-            <Route path="/users/auth/sigin" element={<Login2 />} />
-            <Route path="/users/auth/signup" element={<SineUp />} />
-            <Route path="/SineUp/Select_School" element={<SelectSchool />} />
-            <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
-            <Route
-              path="/SineUp/SineUp-Completion"
-              element={<SineUpCompletion />}
-            />
-          </Routes>
-        </BrowserRouter>
-      </div>
+      <SignUpProvider>
+        <div className="root-wrap">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login1 />} />
+              <Route path="/users/auth/sigin" element={<Login2 />} />
+              <Route path="/users/auth/signup" element={<SineUp />} />
+              <Route path="/SineUp/Select_School" element={<SelectSchool />} />
+              <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
+              <Route
+                path="/SineUp/SineUp-Completion"
+                element={<SineUpCompletion />}
+              />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </SignUpProvider>
     </Provider>
 
     // <div className="App">

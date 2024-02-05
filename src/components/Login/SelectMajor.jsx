@@ -1,4 +1,6 @@
-import React from "react";
+import { React, useState } from "react";
+import { useSignUp } from "../../context/SignUpContext";
+import axios from "axios";
 import {
   BodyDiv,
   WrapperDiv,
@@ -29,6 +31,47 @@ import search from "../../images/Login/search.svg";
 import yellowCircle from "../../images/Login/yellowCircle.svg";
 
 export default function SelectMajor() {
+  const { userInfo, setUserInfo } = useSignUp();
+  const [majorCheck, setMajorCheck] = useState(false);
+
+  const schoolId = userInfo.school_id;
+
+  const [form, setForm] = useState({
+    major: "",
+  });
+
+  const handleMajorApi = async () => {
+    try {
+      console.log(schoolId);
+      //API 요청 URL
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/major?schoolId=${schoolId}&majorName=${form.major}`;
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.get(url);
+
+      //잘 됐는지 확인
+      console.log(response.data.result[0].name);
+      console.log(response.data.result[0].id);
+
+      // 전공 이름 저장
+      const major = response.data.result[0].name;
+      setForm({ ...form, major });
+
+      //전공 아이디 저장
+      const major_id = response.data.result[0].id;
+
+      setUserInfo({ ...userInfo, major: major });
+      setUserInfo({ ...userInfo, major_id: major_id });
+      setMajorCheck(true);
+    } catch (error) {
+      console.error(
+        "major check error",
+        error.response ? error.response.data : error
+      );
+      //에러 상황에 대한 처리 로직 추가
+    }
+  };
+
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -51,8 +94,17 @@ export default function SelectMajor() {
           </MainPDiv>
 
           <SearchBoxDiv>
-            <SearchBox placeholder="전공명 검색" name="school_name" />
-            <SearchImag src={search} alt="search" />
+            <form>
+              <SearchBox
+                placeholder="전공명 검색"
+                name="major"
+                id="major"
+                value={form.major}
+                onChange={(e) => setForm({ ...form, major: e.target.value })}
+              />
+            </form>
+
+            <SearchImag onClick={handleMajorApi} src={search} alt="search" />
           </SearchBoxDiv>
 
           <ExPDiv>
@@ -66,23 +118,25 @@ export default function SelectMajor() {
             <CircleImage src={yellowCircle} />
           </CircleImgDiv>
 
-          {/* <Submit
-            type="submit"
-            value="입력하기"
-            backgroundColor="#EDEDED"
-            marginBottom="30px"
-          /> */}
-
-          <Link
-            to="/users/auth/signup"
-            style={{
-              textDecoration: "none",
-              marginBottom: "30px",
-              cursor: "default",
-            }}
-          >
-            <Submit type="submit" value="다음" />
-          </Link>
+          {majorCheck === false ? (
+            <Submit
+              type="submit"
+              value="입력하기"
+              backgroundColor="#EDEDED"
+              marginBottom="30px"
+            />
+          ) : (
+            <Link
+              to="/users/auth/signup"
+              style={{
+                textDecoration: "none",
+                marginBottom: "30px",
+                cursor: "default",
+              }}
+            >
+              <Submit type="submit" value="다음" />
+            </Link>
+          )}
         </Div>
       </WrapperDiv>
     </BodyDiv>
