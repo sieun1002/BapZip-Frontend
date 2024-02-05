@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../../features/user/userSlice";
 import axios from "axios";
 import {
   BodyDiv,
@@ -29,6 +31,8 @@ import show from "../../images/Login/show.svg";
 import secret from "../../images/Login/secret.svg";
 
 export default function Login2() {
+  const dispatch = useDispatch();
+
   const [Circle, setCircle] = useState(false);
   const [form, setForm] = useState({
     id: "",
@@ -98,6 +102,9 @@ export default function Login2() {
 
       // 로그인 성공 처리
       console.log("Login successful", response.data.result.token);
+      const userId = form.id;
+      const token = response.data.result.token;
+      dispatch(setCredentials({ userId, token }));
       // 여기에 로그인 성공 후 처리 로직을 추가하세요. 예: 토큰을 저장하고, 사용자를 홈페이지로 리디렉션 등
     } catch (error) {
       // 로그인 실패 또는 에러 처리
@@ -153,7 +160,7 @@ export default function Login2() {
                 <CircleImage src={Circle ? checkCircle : emptyCircle} />
                 자동 로그인
               </AutomaticLoginDiv>
-              <Submit onSubmit={handleSubmit} type="submit" value="로그인" />
+              <Submit type="submit" value="로그인" />
             </Form>
 
             <SearchDiv>
