@@ -34,13 +34,13 @@ export default function SineUp() {
   const { userInfo, setUserInfo } = useSignUp();
 
   const [form, setForm] = useState({
-    nickName: "",
-    id: "",
-    password: "",
-    passwordCheck: "",
-    schoolAndMajor: "",
-    schoolEmail: "",
-    schoolEmailCheck: "",
+    nickName: userInfo.nickName,
+    id: userInfo.id,
+    password: userInfo.password,
+    passwordCheck: userInfo.passwordCheck,
+    schoolAndMajor: userInfo.school,
+    schoolEmail: userInfo.schoolEmail,
+    schoolEmailCheck: userInfo.schoolEmailCheck,
   });
 
   const [validNickName, setValidNickName] = useState(null);
