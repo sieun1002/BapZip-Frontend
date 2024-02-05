@@ -41,7 +41,7 @@ export default function InfoChat() {
               </TodayDiv>
               <NotChatDiv>
                 아직 오늘의 채팅이 시작되지 않았어요. <br /> 채팅을
-                시작해보세요!"
+                시작해보세요!
               </NotChatDiv>
             </TodayChatDiv>
             <ChatInputDiv>

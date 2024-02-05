@@ -129,7 +129,7 @@ export const InfoNav = styled.div`
   height: 50px;
 
   border-bottom: solid 2px;
-  border-bottom-color: ${(props) => props.color || "dbdbdb"};
+  border-bottom-color: ${(props) => props.color || "#DBDBDB"};
 
   font-size: 16px;
   font-weight: 500;
