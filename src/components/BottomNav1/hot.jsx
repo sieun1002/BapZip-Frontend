@@ -7,66 +7,78 @@ import A4 from "../../images/BottomNav1/Group 481.svg";
 import review1 from "../../images/BottomNav1/review.svg";
 
 const SliderContainer = styled.div`
-  max-width: 420px; /* 변경: 너비 100%로 설정 */
+  max-width: 420px;
   max-height: 216px;
   overflow: hidden;
-  margin: 0 auto; /* 변경: 중앙 정렬 및 상대적인 margin 값으로 변경 */
+  margin: 0 auto;
   margin-top: 350px;
+  cursor: grab; /* 추가: 커서를 grab으로 변경하여 드래그 가능하게 만듦 */
 `;
 
 const ImageSlider = styled.div`
   display: flex;
-  max-width: 300px; /* Set your desired maximum width */
-  margin: 0 auto; /* Center the slider */
+  max-width: 300px;
+  margin: 0 auto;
   transition: transform 0.3s ease;
+  & > * {
+    margin-right: 15px;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 const SlideImage = styled.img`
-  max-width: 100%; /* 변경: 이미지 너비 100%로 설정 */
-  height: auto; /* 변경: 이미지 높이 자동 조정 */
+  max-width: 100%;
+  height: auto;
 `;
 
 const ReviewImage = styled.img`
   position: relative;
-  width: 200px; /* 조정된 너비 */
+  width: 200px;
   height: 199px;
 `;
 
 const ImageSliderComponent = () => {
-  const [dragStart, setDragStart] = useState(0);
+  const [dragStartX, setDragStartX] = useState(0);
   const [dragging, setDragging] = useState(false);
-  const [translate, setTranslate] = useState(0);
+  const [sliderTransform, setSliderTransform] = useState(0);
 
   const sliderRef = useRef(null);
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown = (event) => {
+    setDragStartX(event.clientX);
     setDragging(true);
-    setDragStart(e.clientX - sliderRef.current.getBoundingClientRect().left);
   };
 
-  const handleMouseMove = (e) => {
-    if (dragging) {
-      const clientX =
-        e.clientX - sliderRef.current.getBoundingClientRect().left;
-      const delta = clientX - dragStart;
-      setTranslate((prevTranslate) => prevTranslate + delta);
-      setDragStart(clientX);
-    }
+  const handleMouseMove = (event) => {
+    if (!dragging) return;
+
+    const dragDistance = event.clientX - dragStartX;
+    setSliderTransform(dragDistance);
   };
 
   const handleMouseUp = () => {
     setDragging(false);
+    setDragStartX(0);
+
+    // 추가: 슬라이더 위치 업데이트
+    if (sliderRef.current) {
+      sliderRef.current.style.transform = `translateX(${sliderTransform}px)`;
+    }
   };
 
   return (
     <SliderContainer
-      ref={sliderRef}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
     >
-      <ImageSlider style={{ transform: `translateX(${translate}px)` }}>
+      <ImageSlider
+        ref={sliderRef}
+        style={{ transform: `translateX(${sliderTransform}px)` }}
+      >
         <SlideImage src={A1} alt="Image 1" />
         <SlideImage src={A2} alt="Image 2" />
         <SlideImage src={A3} alt="Image 3" />
@@ -75,7 +87,6 @@ const ImageSliderComponent = () => {
         <SlideImage src={A4} alt="Image 6" />
         <SlideImage src={A4} alt="Image 7" />
         <SlideImage src={A4} alt="Image 8" />
-        {/* Add more images as needed */}
       </ImageSlider>
       <ReviewImage src={review1} alt="Image 8" />
     </SliderContainer>

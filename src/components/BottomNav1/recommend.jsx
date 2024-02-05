@@ -32,7 +32,7 @@ const Recommend = () => {
   }, []);
 
   return (
-    <div>
+    <div className="recommend-container">
       <p className="title-timeline2">추천식당</p>
       <div className="menuBtnSection-timeline2">
         <button
