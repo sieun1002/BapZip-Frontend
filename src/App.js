@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SignUpProvider } from "./context/SignUpContext";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 // Login---------------------------------------------------------------
 import Login1 from "./pages/Login1";
 import Login2 from "./components/Login/Login2";
@@ -28,22 +31,25 @@ import Setting from "./pages/Setting";
 
 function App() {
   return (
-    // <div className="root-wrap">
-    //   <BrowserRouter>
-    //     <Routes>
-    //       <Route path="/" element={<Login1 />} />
-    //       <Route path="/Login2" element={<Login2 />} />
-    //       <Route path="/SineUp" element={<SineUp />} />
-    //       <Route path="/SineUp/Select_School" element={<SelectSchool />} />
-    //       <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
-    //       <Route
-    //         path="/SineUp/SineUp-Completion"
-    //         element={<SineUpCompletion />}
-    //       />
-    //       <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
-    //     </Routes>
-    //   </BrowserRouter>
-    // </div>
+    //   <Provider store={store}>
+    //     <SignUpProvider>
+    //     <div className="root-wrap">
+    //       <BrowserRouter>
+    //         <Routes>
+    //           <Route path="/" element={<Login1 />} />
+    //           <Route path="/users/auth/sigin" element={<Login2 />} />
+    //           <Route path="/users/auth/signup" element={<SineUp />} />
+    //           <Route path="/SineUp/Select_School" element={<SelectSchool />} />
+    //           <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
+    //           <Route
+    //             path="/SineUp/SineUp-Completion"
+    //             element={<SineUpCompletion />}
+    //           />
+    //         </Routes>
+    //       </BrowserRouter>
+    //     </div>
+    //   </SignUpProvider>
+    // </Provider>
     <div className="App">
       <BrowserRouter>
         <Routes>
@@ -51,8 +57,8 @@ function App() {
           <Route path="/WriteReview" element={<WriteReview />} />
           <Route path="/Home" element={<BottomNav1 />} />
           <Route path="/arlim" element={<Arlim />} />
-          <Route path="/MyPage" element={<BottomNav4 />}/>
-          <Route path="/Setting" element={<Setting />}/>
+          <Route path="/MyPage" element={<BottomNav4 />} />
+          <Route path="/Setting" element={<Setting />} />
         </Routes>
       </BrowserRouter>
     </div>

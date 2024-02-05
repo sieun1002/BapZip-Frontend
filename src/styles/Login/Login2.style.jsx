@@ -72,7 +72,7 @@ export const EyesImage = styled.img`
   height: 25px;
   position: absolute;
   right: 35px;
-  bottom: 13px;
+  bottom: 158px;
 `;
 
 export const AutomaticLoginDiv = styled.div`

@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../../features/user/userSlice";
+import { useSignUp } from "../../context/SignUpContext";
+import axios from "axios";
 import {
   BodyDiv,
   WrapperDiv,
@@ -25,14 +29,18 @@ import {
 import arrowLeft from "../../images/Login/arrowLeft.svg";
 
 export default function SineUp() {
+  const dispatch = useDispatch();
+
+  const { userInfo, setUserInfo } = useSignUp();
+
   const [form, setForm] = useState({
-    nickName: "",
-    id: "",
-    password: "",
-    passwordCheck: "",
-    schoolAndMajor: "",
-    schoolEmail: "",
-    schoolEmailCheck: "",
+    nickName: userInfo.nickName,
+    id: userInfo.id,
+    password: userInfo.password,
+    passwordCheck: userInfo.passwordCheck,
+    schoolAndMajor: userInfo.school,
+    schoolEmail: userInfo.schoolEmail,
+    schoolEmailCheck: userInfo.schoolEmailCheck,
   });
 
   const [validNickName, setValidNickName] = useState(null);
@@ -46,9 +54,31 @@ export default function SineUp() {
   const handleNNCh = (e) => {
     const nickName = e.target.value;
     setForm({ ...form, nickName });
+    setUserInfo({ ...userInfo, nickName: e.target.value });
+  };
 
-    if (nickName.trim() === "") {
-      setValidNickName(null);
+  //닉네임 중복 확인 함수
+  const handeleNickNameAPI = async () => {
+    try {
+      // 닉네임 입력 값 가져오기
+      //API 요청 URL
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/checkNickname?nickname=${form.nickName}`;
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.get(url);
+
+      //잘 됐는지 확인
+      console.log(response.data.result.available);
+
+      //응답으로 받은 닉네임 사용 가능 여부에 따라 상태 업데이트
+      const available = response.data.result.available;
+      setValidNickName(available);
+    } catch (error) {
+      console.error(
+        "NickName check error",
+        error.response ? error.response.data : error
+      );
+      //에러 상황에 대한 처리 로직 추가
     }
   };
 
@@ -58,6 +88,33 @@ export default function SineUp() {
 
     if (id.trim() === "") {
       setValidId(null);
+    }
+
+    setUserInfo({ ...userInfo, id: e.target.value });
+  };
+
+  //아이디 중복 확인 함수
+  const handeleIdAPI = async () => {
+    try {
+      // 아이디 입력 값 가져오기
+      //API 요청 URL
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/checkUserid?userid=${form.id}`;
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.get(url);
+
+      //잘 됐는지 확인
+      console.log(response.data.result.available);
+
+      //응답으로 받은 아이디사용 가능 여부에 따라 상태 업데이트
+      const available = response.data.result.available;
+      setValidId(available);
+    } catch (error) {
+      console.error(
+        "ID check error",
+        error.response ? error.response.data : error
+      );
+      //에러 상황에 대한 처리 로직 추가
     }
   };
 
@@ -74,6 +131,8 @@ export default function SineUp() {
         );
       setValidPassword(isValidPassword);
     }
+
+    setUserInfo({ ...userInfo, password: e.target.value });
   };
 
   const handlePWChCh = (e) => {
@@ -86,6 +145,8 @@ export default function SineUp() {
       const isValidPasswordCheck = passwordCheck === form.password;
       setValidPasswordCheck(isValidPasswordCheck);
     }
+
+    setUserInfo({ ...userInfo, passwordCheck: e.target.value });
   };
 
   const handleSchM = (e) => {
@@ -104,6 +165,8 @@ export default function SineUp() {
     if (schoolEmail.trim() === "") {
       setValidSchoolEmail(null);
     }
+
+    setUserInfo({ ...userInfo, schoolEmail: e.target.value });
   };
 
   const handleSchEMCh = (e) => {
@@ -113,6 +176,8 @@ export default function SineUp() {
     if (schoolEmailCheck.trim() === "") {
       setValidSchoolEmailCheck(null);
     }
+
+    setUserInfo({ ...userInfo, schoolEmailCheck: e.target.value });
   };
 
   return (
@@ -120,12 +185,11 @@ export default function SineUp() {
       <WrapperDiv justifyContent="flex-start">
         <Div height="100%">
           <HeaderDiv>
-            <SearchLink to="/Login2">
+            <SearchLink to="/users/auth/sigin">
               <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
             </SearchLink>
             <PDiv>회원가입</PDiv>
           </HeaderDiv>
-
           <Form margin="auto" padding="45px 0">
             <Label htmlFor="nickName">닉네임</Label>
             <InputDiv>
@@ -137,12 +201,18 @@ export default function SineUp() {
                 placeholder="닉네임을 입력해 주세요."
                 width="330px"
               />
-              <Button>중복 확인</Button>
+              <Button type="button" onClick={handeleNickNameAPI}>
+                중복 확인
+              </Button>
             </InputDiv>
 
-            {/* <CheckDivX>중복된 닉네임입니다.</CheckDivX> */}
-            {/* <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO> */}
-            <CheckDivX></CheckDivX>
+            {validNickName === false ? (
+              <CheckDivX>중복된 닉네임입니다.</CheckDivX>
+            ) : validNickName === true ? (
+              <CheckDivO>사용 가능한 닉네임입니다.</CheckDivO>
+            ) : (
+              <CheckDivX></CheckDivX>
+            )}
 
             <Label htmlFor="id">아이디</Label>
             <InputDiv>
@@ -154,12 +224,18 @@ export default function SineUp() {
                 placeholder="아이디를 입력해 주세요."
                 width="330px"
               />
-              <Button>중복 확인</Button>
+              <Button type="button" onClick={handeleIdAPI}>
+                중복 확인
+              </Button>
             </InputDiv>
 
-            {/* <CheckDivX>중복된 아이디입니다.</CheckDivX> */}
-            {/* <CheckDivO>사용 가능한 아이디입니다.</CheckDivO> */}
-            <CheckDivX></CheckDivX>
+            {validId === false ? (
+              <CheckDivX>중복된 아이디입니다.</CheckDivX>
+            ) : validId === true ? (
+              <CheckDivO>사용 가능한 아이디입니다.</CheckDivO>
+            ) : (
+              <CheckDivX></CheckDivX>
+            )}
 
             <Label htmlFor="password">비밀번호</Label>
             <InputDiv>
