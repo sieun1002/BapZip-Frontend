@@ -31,7 +31,7 @@ import search from "../../images/Login/search.svg";
 import yellowCircle from "../../images/Login/yellowCircle.svg";
 
 export default function SelectMajor() {
-  const { userInfo, setUserInfo } = useSignUp();
+  const { userInfo, setUserInfo, validations, setValidations } = useSignUp();
   const [majorCheck, setMajorCheck] = useState(false);
 
   const schoolId = userInfo.school_id;
@@ -66,6 +66,7 @@ export default function SelectMajor() {
         major_id: major_id,
       }));
       setMajorCheck(true);
+      setValidations({ ...validations, isSchoolAndMajor: true });
 
       console.log("test2");
       console.log(userInfo);

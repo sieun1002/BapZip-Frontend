@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setCredentials } from "../../features/user/userSlice";
+// 상태 관리
 import { useSignUp } from "../../context/SignUpContext";
 import axios from "axios";
 import {
@@ -29,10 +28,10 @@ import {
 import arrowLeft from "../../images/Login/arrowLeft.svg";
 
 export default function SineUp() {
-  const dispatch = useDispatch();
+  //상태 관리
+  const { userInfo, setUserInfo, validations, setValidations } = useSignUp();
 
-  const { userInfo, setUserInfo } = useSignUp();
-
+  // form  관리
   const [form, setForm] = useState({
     nickName: userInfo.nickName,
     id: userInfo.id,
@@ -43,14 +42,21 @@ export default function SineUp() {
     schoolEmailCheck: userInfo.schoolEmailCheck,
   });
 
-  const [validNickName, setValidNickName] = useState(null);
-  const [validId, setValidId] = useState(null);
-  const [validPassword, setValidPassword] = useState(null);
+  //각 input의 valid 관련 (입력 값 확인)
+  const [validNickName, setValidNickName] = useState(
+    validations.isNickNameValid
+  );
+  const [validId, setValidId] = useState(validations.isIdValid);
+  const [validPassword, setValidPassword] = useState(
+    validations.isPasswordValid
+  );
   const [validPasswordCheck, setValidPasswordCheck] = useState(null);
-  const [validSchoolAndMajor, setValidSchoolAndMajor] = useState(null);
+
+  const validSchoolAndMajor = validations.isSchoolAndMajor;
   const [validSchoolEmail, setValidSchoolEmail] = useState(null);
   const [validSchoolMailCheck, setValidSchoolEmailCheck] = useState(null);
 
+  //닉네임 입력
   const handleNNCh = (e) => {
     const nickName = e.target.value;
     setForm({ ...form, nickName });
@@ -73,6 +79,7 @@ export default function SineUp() {
       //응답으로 받은 닉네임 사용 가능 여부에 따라 상태 업데이트
       const available = response.data.result.available;
       setValidNickName(available);
+      setValidations({ ...validations, isNickNameValid: available });
     } catch (error) {
       console.error(
         "NickName check error",
@@ -82,6 +89,7 @@ export default function SineUp() {
     }
   };
 
+  //아이디 입력
   const handleIdCh = (e) => {
     const id = e.target.value;
     setForm({ ...form, id });
@@ -109,6 +117,7 @@ export default function SineUp() {
       //응답으로 받은 아이디사용 가능 여부에 따라 상태 업데이트
       const available = response.data.result.available;
       setValidId(available);
+      setValidations({ ...validations, isIdValid: available });
     } catch (error) {
       console.error(
         "ID check error",
@@ -118,6 +127,7 @@ export default function SineUp() {
     }
   };
 
+  //비번 입력
   const handlePWCh = (e) => {
     const password = e.target.value;
     setForm({ ...form, password });
@@ -125,16 +135,21 @@ export default function SineUp() {
     if (password.trim() === "") {
       setValidPassword(null);
     } else {
+      //비번 유효성 체크
       const isValidPassword =
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/.test(
           password
         );
       setValidPassword(isValidPassword);
+      //validations 상태 업데이트
+      setValidations({ ...validations, isPasswordValid: isValidPassword });
     }
 
+    //userInfo 상태 업데이트
     setUserInfo({ ...userInfo, password: e.target.value });
   };
 
+  //비번 체크 입력
   const handlePWChCh = (e) => {
     const passwordCheck = e.target.value;
     setForm({ ...form, passwordCheck });
@@ -146,18 +161,11 @@ export default function SineUp() {
       setValidPasswordCheck(isValidPasswordCheck);
     }
 
+    //userInfo passwordChaeck 업데이트
     setUserInfo({ ...userInfo, passwordCheck: e.target.value });
   };
 
-  const handleSchM = (e) => {
-    const schoolAndMajor = e.target.value;
-    setForm({ ...form, schoolAndMajor });
-
-    if (schoolAndMajor.trim() === "") {
-      setValidSchoolAndMajor(null);
-    }
-  };
-
+  //학교 이메일 입력
   const handleSchEM = (e) => {
     const schoolEmail = e.target.value;
     setForm({ ...form, schoolEmail });
@@ -166,9 +174,11 @@ export default function SineUp() {
       setValidSchoolEmail(null);
     }
 
+    //userInfo schoolEmail 업데이트
     setUserInfo({ ...userInfo, schoolEmail: e.target.value });
   };
 
+  // 인증번호 입력
   const handleSchEMCh = (e) => {
     const schoolEmailCheck = e.target.value;
     setForm({ ...form, schoolEmailCheck });
@@ -177,6 +187,7 @@ export default function SineUp() {
       setValidSchoolEmailCheck(null);
     }
 
+    //userInfo schoolEmailCheck 업데이트
     setUserInfo({ ...userInfo, schoolEmailCheck: e.target.value });
   };
 
@@ -201,9 +212,20 @@ export default function SineUp() {
                 placeholder="닉네임을 입력해 주세요."
                 width="330px"
               />
-              <Button type="button" onClick={handeleNickNameAPI}>
-                중복 확인
-              </Button>
+              {validNickName === true ? (
+                <Button
+                  type="button"
+                  onClick={handeleNickNameAPI}
+                  bgColor="#ffba35"
+                  color="#FFFFFF"
+                >
+                  확인 완료
+                </Button>
+              ) : (
+                <Button type="button" onClick={handeleNickNameAPI}>
+                  중복 확인
+                </Button>
+              )}
             </InputDiv>
 
             {validNickName === false ? (
@@ -224,9 +246,20 @@ export default function SineUp() {
                 placeholder="아이디를 입력해 주세요."
                 width="330px"
               />
-              <Button type="button" onClick={handeleIdAPI}>
-                중복 확인
-              </Button>
+              {validId === true ? (
+                <Button
+                  type="button"
+                  onClick={handeleIdAPI}
+                  bgColor="#ffba35"
+                  color="#FFFFFF"
+                >
+                  확인 완료
+                </Button>
+              ) : (
+                <Button type="button" onClick={handeleIdAPI}>
+                  중복 확인
+                </Button>
+              )}
             </InputDiv>
 
             {validId === false ? (
@@ -276,13 +309,24 @@ export default function SineUp() {
                 id="schoolAndMajor"
                 // value={form.schoolAndMajor}
                 value={form.schoolAndMajor}
-                onChange={handleSchM}
                 placeholder="학교와 전공을 입력해 주세요."
                 width="330px"
               />
-              <Link to="/SineUp/Select_School">
-                <Button>입력하기</Button>
-              </Link>
+
+              {validSchoolAndMajor === true ? (
+                <Button
+                  type="button"
+                  onClick={handeleNickNameAPI}
+                  bgColor="#ffba35"
+                  color="#FFFFFF"
+                >
+                  입력 완료
+                </Button>
+              ) : (
+                <Link to="/SineUp/Select_School">
+                  <Button>입력하기</Button>
+                </Link>
+              )}
             </InputDiv>
             <CheckDivX></CheckDivX>
 
@@ -307,7 +351,9 @@ export default function SineUp() {
                 value={form.schoolEmailCheck}
                 onChange={handleSchEMCh}
                 placeholder="인증번호 입력"
+                width="330px"
               />
+              <Button>인증 확인</Button>
             </InputDiv>
 
             {/* <CheckDivX>인증번호가 올바르지 않습니다.</CheckDivX> */}
