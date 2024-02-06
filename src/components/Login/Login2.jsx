@@ -22,6 +22,8 @@ import {
   SearchLink,
   Div2,
   PDiv,
+  FailedLoginDiv,
+  FailedLoginP,
 } from "../../styles/Login/Login2.style";
 
 import arrowLeft from "../../images/Login/arrowLeft.svg";
@@ -32,6 +34,8 @@ import secret from "../../images/Login/secret.svg";
 
 export default function Login2() {
   const dispatch = useDispatch();
+
+  const [validLogin, setValidLogin] = useState(null);
 
   const [Circle, setCircle] = useState(false);
   const [form, setForm] = useState({
@@ -106,12 +110,14 @@ export default function Login2() {
       const token = response.data.result.token;
       dispatch(setCredentials({ userId, token }));
       // 여기에 로그인 성공 후 처리 로직을 추가하세요. 예: 토큰을 저장하고, 사용자를 홈페이지로 리디렉션 등
+      setValidLogin(true);
     } catch (error) {
       // 로그인 실패 또는 에러 처리
       console.error(
         "Login error",
         error.response ? error.response.data : error
       );
+      setValidLogin(false);
       // 에러 상황에 대한 처리 로직을 추가하세요. 예: 사용자에게 에러 메시지 표시
     }
   };
@@ -155,6 +161,22 @@ export default function Login2() {
                 src={Eyes ? secret : show}
                 alt="show"
               />
+
+              {validLogin === false ? (
+                <FailedLoginDiv>
+                  <FailedLoginP>
+                    아이디 또는 비밀번호를 잘못 입력했습니다.
+                  </FailedLoginP>
+                  <FailedLoginP>입력하신 내용을 다시 확인해주세요</FailedLoginP>
+                </FailedLoginDiv>
+              ) : null}
+              {/* 
+              <FailedLoginDiv>
+                <FailedLoginP>
+                  아이디 또는 비밀번호를 잘못 입력했습니다.
+                </FailedLoginP>
+                <FailedLoginP>입력하신 내용을 다시 확인해주세요</FailedLoginP>
+              </FailedLoginDiv> */}
 
               <AutomaticLoginDiv onClick={CircleFunc}>
                 <CircleImage src={Circle ? checkCircle : emptyCircle} />

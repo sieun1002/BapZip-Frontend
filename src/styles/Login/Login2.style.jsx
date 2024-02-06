@@ -72,7 +72,21 @@ export const EyesImage = styled.img`
   height: 25px;
   position: absolute;
   right: 35px;
-  bottom: 158px;
+  top: 110px;
+`;
+
+export const FailedLoginDiv = styled.div`
+  width: 420px;
+  height: 40px;
+  /* background-color: beige; */
+  margin: 10px 0 10px 7px;
+`;
+export const FailedLoginP = styled.p`
+  color: #e32525;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.07px;
+  margin: 0;
 `;
 
 export const AutomaticLoginDiv = styled.div`
