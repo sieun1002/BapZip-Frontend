@@ -38,7 +38,7 @@ export default function SineUp() {
     id: userInfo.id,
     password: userInfo.password,
     passwordCheck: userInfo.passwordCheck,
-    schoolAndMajor: userInfo.school,
+    schoolAndMajor: `${userInfo.school || ""} ${userInfo.major || ""}`.trim(),
     schoolEmail: userInfo.schoolEmail,
     schoolEmailCheck: userInfo.schoolEmailCheck,
   });
@@ -269,10 +269,12 @@ export default function SineUp() {
             )}
 
             <Label htmlFor="schoolAndMajor">학교 및 전공</Label>
+            {console.log(userInfo.school)}
             <InputDiv>
               <Input
                 type="text"
                 id="schoolAndMajor"
+                // value={form.schoolAndMajor}
                 value={form.schoolAndMajor}
                 onChange={handleSchM}
                 placeholder="학교와 전공을 입력해 주세요."

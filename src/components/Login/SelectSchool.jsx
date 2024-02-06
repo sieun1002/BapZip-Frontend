@@ -52,15 +52,24 @@ export default function SelectSchool() {
 
       // 학교 이름 저장
       const school = response.data.result[0].name;
+      // console.log("타입 확인");
+      // console.log(typeof response.data.result[0].name);
       setForm({ ...form, school });
 
       //학교 아이디 저장
       // const school_id = response.data.result[0].id;
       const school_id = response.data.result[1].id;
 
-      setUserInfo({ ...userInfo, school: school });
-      setUserInfo({ ...userInfo, school_id: school_id });
+      setUserInfo((userInfo) => ({
+        ...userInfo,
+        school: school,
+        school_id: school_id,
+      }));
+
       setSchoolCheck(true);
+
+      console.log("test");
+      console.log(userInfo);
     } catch (error) {
       console.error(
         "school check error",
@@ -74,7 +83,7 @@ export default function SelectSchool() {
       <WrapperDiv>
         <Div>
           <HeaderDiv justifyContent="flex-end">
-            <Link to="/SineUp">
+            <Link to="/users/auth/signup">
               <XImage src={X} alt="X" />
             </Link>
           </HeaderDiv>

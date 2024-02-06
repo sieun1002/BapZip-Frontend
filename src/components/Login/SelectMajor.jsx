@@ -60,9 +60,15 @@ export default function SelectMajor() {
       //전공 아이디 저장
       const major_id = response.data.result[0].id;
 
-      setUserInfo({ ...userInfo, major: major });
-      setUserInfo({ ...userInfo, major_id: major_id });
+      setUserInfo((userInfo) => ({
+        ...userInfo,
+        major: major,
+        major_id: major_id,
+      }));
       setMajorCheck(true);
+
+      console.log("test2");
+      console.log(userInfo);
     } catch (error) {
       console.error(
         "major check error",
@@ -81,7 +87,7 @@ export default function SelectMajor() {
               <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
             </Link>
 
-            <Link to="/SineUp">
+            <Link to="/users/auth/signup">
               <XImage src={X} alt="X" />
             </Link>
           </HeaderDiv>
