@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   BodyDiv,
   WrapperDiv,
@@ -16,6 +16,8 @@ import {
   ScrapImage,
   InfoNavDiv,
   InfoNav,
+  CongestionDiv,
+  CongestionButton,
 } from "../styles/RestaurantInfo/RestaurantInfo.styled";
 import restaurant from "../images/RestaurantInfo/restaurant.svg";
 import clock from "../images/RestaurantInfo/clock.svg";
@@ -27,6 +29,7 @@ import InfoHome from "../components/RestaurantInfo/InfoHome";
 import InfoMenu from "../components/RestaurantInfo/InfoMenu";
 import InfoReview from "../components/RestaurantInfo/InfoReview";
 import InfoChat from "../components/RestaurantInfo/InfoChat";
+import CongestionCheck from "../components/RestaurantInfo/CongestionCheck";
 
 export default function RestaurantInfo() {
   // 'home', 'menu', 'review', 'chat' 중 하나를 현재 상태로 관리합니다.
@@ -105,6 +108,14 @@ export default function RestaurantInfo() {
             </InfoNav>
           </InfoNavDiv>
           {renderTabComponent()}
+
+          <CongestionDiv>
+            <CongestionButton>
+              혼잡도 <br />
+              등록
+            </CongestionButton>
+          </CongestionDiv>
+          <CongestionCheck></CongestionCheck>
         </Div>
       </WrapperDiv>
     </BodyDiv>

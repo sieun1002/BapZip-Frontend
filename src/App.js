@@ -23,8 +23,8 @@ import SineUpCompletion from "./components/Login/SineUpCompletion";
 // // BottomNav4---------------------------------------------------------------
 // import BottomNav4 from "./pages/BottomNav4";
 
-// // RestaurantInfo---------------------------------------------------------------
-// import RestaurantInfo from "./pages/RestaurantInfo";
+// RestaurantInfo---------------------------------------------------------------
+import RestaurantInfo from "./pages/RestaurantInfo";
 
 // // Setting---------------------------------------------------------------
 // import Setting from "./pages/Setting";
@@ -45,6 +45,7 @@ function App() {
                 path="/users/auth/agreement"
                 element={<SineUpCompletion />}
               />
+              <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
             </Routes>
           </BrowserRouter>
         </div>
