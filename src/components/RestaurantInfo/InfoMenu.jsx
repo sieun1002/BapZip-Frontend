@@ -5,7 +5,6 @@ import {
   Div,
 } from "../../styles/RestaurantInfo/RestaurantInfo.styled";
 import { BreakLine } from "../../styles/RestaurantInfo/InfoHome.styled";
-// import Hot from "../components/BottomNav1/hot";
 import Hot from "../BottomNav1/hot";
 
 import {
@@ -24,6 +23,11 @@ import {
   MenuList,
   MenuListImg,
 } from "../../styles/RestaurantInfo/InfoMenu.styled";
+
+import A1 from "../../images/BottomNav1/Group 476.svg";
+import A2 from "../../images/BottomNav1/Group 477.svg";
+import A3 from "../../images/BottomNav1/Group 478.svg";
+import A4 from "../../images/BottomNav1/Group 481.svg";
 
 import menuList from "../../images/RestaurantInfo/menuList.svg";
 

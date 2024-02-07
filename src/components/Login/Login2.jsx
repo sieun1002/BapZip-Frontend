@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../../features/user/userSlice";
+import axios from "axios";
 import {
   BodyDiv,
   WrapperDiv,
@@ -19,6 +22,8 @@ import {
   SearchLink,
   Div2,
   PDiv,
+  FailedLoginDiv,
+  FailedLoginP,
 } from "../../styles/Login/Login2.style";
 
 import arrowLeft from "../../images/Login/arrowLeft.svg";
@@ -28,6 +33,10 @@ import show from "../../images/Login/show.svg";
 import secret from "../../images/Login/secret.svg";
 
 export default function Login2() {
+  const dispatch = useDispatch();
+
+  const [validLogin, setValidLogin] = useState(null);
+
   const [Circle, setCircle] = useState(false);
   const [form, setForm] = useState({
     id: "",
@@ -75,6 +84,51 @@ export default function Login2() {
     }
   };
 
+  // 로그인 함수
+  const handleLogin = async () => {
+    try {
+      // API 요청 URL
+      const url =
+        "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/signin";
+
+      // 요청 본문에 포함될 데이터
+      const data = {
+        userId: form.id,
+        password: form.password,
+      };
+
+      // axios.post 메소드를 사용하여 요청을 보냄
+      const response = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/json", // 명시적으로 Content-Type 헤더 설정
+        },
+      });
+
+      // 로그인 성공 처리
+      console.log("Login successful", response.data.result.token);
+      const userId = form.id;
+      const token = response.data.result.token;
+      dispatch(setCredentials({ userId, token }));
+      // 여기에 로그인 성공 후 처리 로직을 추가하세요. 예: 토큰을 저장하고, 사용자를 홈페이지로 리디렉션 등
+      setValidLogin(true);
+    } catch (error) {
+      // 로그인 실패 또는 에러 처리
+      console.error(
+        "Login error",
+        error.response ? error.response.data : error
+      );
+      setValidLogin(false);
+      // 에러 상황에 대한 처리 로직을 추가하세요. 예: 사용자에게 에러 메시지 표시
+    }
+  };
+
+  //폼 제출 핸들러 수정
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 폼 기본 제출 동작 방지
+    console.log("handleSubmit called"); // 디버깅 메시지
+    handleLogin();
+  };
+
   return (
     <BodyDiv>
       <WrapperDiv justifyContent="flex-start">
@@ -87,18 +141,18 @@ export default function Login2() {
           </HeaderDiv>
 
           <MainDiv>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Input
                 type="id"
                 id="id"
-                value={Form.id}
+                value={form.id}
                 onChange={handleIdChange}
                 placeholder="아이디"
               />
               <Input
                 type={Eyes ? "text" : "password"}
                 id="password"
-                value={Form.password}
+                value={form.password}
                 onChange={handlePasswordChange}
                 placeholder="비밀번호 (숫자, 영문 8~12자리)"
               />
@@ -107,13 +161,22 @@ export default function Login2() {
                 src={Eyes ? secret : show}
                 alt="show"
               />
-            </Form>
 
-            <AutomaticLoginDiv onClick={CircleFunc}>
-              <CircleImage src={Circle ? checkCircle : emptyCircle} />
-              자동 로그인
-            </AutomaticLoginDiv>
-            <Submit type="submit" value="로그인" />
+              {validLogin === false ? (
+                <FailedLoginDiv>
+                  <FailedLoginP>
+                    아이디 또는 비밀번호를 잘못 입력했습니다.
+                  </FailedLoginP>
+                  <FailedLoginP>입력하신 내용을 다시 확인해주세요</FailedLoginP>
+                </FailedLoginDiv>
+              ) : null}
+
+              <AutomaticLoginDiv onClick={CircleFunc}>
+                <CircleImage src={Circle ? checkCircle : emptyCircle} />
+                자동 로그인
+              </AutomaticLoginDiv>
+              <Submit type="submit" value="로그인" />
+            </Form>
 
             <SearchDiv>
               <SearchList>
@@ -125,7 +188,7 @@ export default function Login2() {
               </SearchList>
               <Div2></Div2>
               <SearchList>
-                <SearchLink to="/SineUp">회원가입</SearchLink>
+                <SearchLink to="/users/auth/signup">회원가입</SearchLink>
               </SearchList>
             </SearchDiv>
           </MainDiv>

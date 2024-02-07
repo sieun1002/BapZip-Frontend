@@ -31,11 +31,11 @@ export default function LoginSelection() {
           </FontDiv>
 
           <MainBoxDiv>
-            <StyledLink to="/Login2">
+            <StyledLink to="/users/auth/sigin">
               <PersonImage src={owner} alt="owner" />
               <Font3P>{"사장님으로\n로그인하기"}</Font3P>
             </StyledLink>
-            <StyledLink to="/Login2">
+            <StyledLink to="/users/auth/sigin">
               <PersonImage src={customer} alt="customer" />
               <Font3P>{"손님으로\n로그인하기"}</Font3P>
             </StyledLink>
