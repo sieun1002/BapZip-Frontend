@@ -11,9 +11,6 @@ import IN3 from "../../images/BottomNav1/IN3.svg";
 import Outbackground from "../../images/BottomNav1/Outbackground.svg";
 import Out from "../../images/BottomNav1/Out.svg";
 import Out2 from "../../images/BottomNav1/Out2.svg";
-import A1 from "../../images/BottomNav1/a1.svg";
-import A2 from "../../images/BottomNav1/a2.svg";
-import Hotplace from "../../images/BottomNav1/Hotplace.svg";
 
 const Container = styled.div`
   margin-top: 20px;
@@ -32,14 +29,14 @@ const Container1 = styled.div`
   text-align: center;
   padding: 20px;
   margin-left: -20px;
-  margin-top: 350px;
+  margin-top: 290px;
 `;
 
 const Container2 = styled.div`
   position: absolute;
   text-align: center;
   padding: 20px;
-  margin-top: 130px;
+  margin-top: 70px;
 `;
 
 const BackgroundImage = styled.img`
@@ -130,36 +127,38 @@ const Out4 = styled.img`
   margin-top: 200px;
 `;
 
-const A3 = styled.img`
+const StyledText = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
-  margin-right: 265px;
-  margin-top: 40px;
+  width: 224px;
+  height: 27px;
+  right: 200px;
+  top: 20px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  color: #191919;
 `;
 
-const A4 = styled.img`
+const StyledText2 = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
-  margin-right: 106px;
-  margin-top: 70px;
-`;
-
-const Hot = styled.img`
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-right: 160px;
-  margin-top: 340px;
+  width: 224px;
+  height: 27px;
+  right: 220px;
+  top: 300px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  color: #191919;
 `;
 
 const Honjap = () => {
   return (
     <Container>
-      <A3 src={A1} alt="IN2" />
-      <A4 src={A2} alt="IN2" />
-
+      <StyledText>우리학교 식당 둘러보기</StyledText>
       <Container1>
         <Link to="/silsiganin">
           <BackgroundImage src={background} alt="배경" />
@@ -172,13 +171,11 @@ const Honjap = () => {
         </Link>
       </Container1>
       <Container2>
-        <Link to="/silsiganout">
-          <OutBackgroundImage src={Outbackground} alt="배경" />
-          <Out3 src={Out} alt=">" />
-          <Out4 src={Out2} alt="교외식당" />
-        </Link>
+        <OutBackgroundImage src={Outbackground} alt="배경" />
+        <Out3 src={Out} alt=">" />
+        <Out4 src={Out2} alt="교외식당" />
       </Container2>
-      <Hot src={Hotplace} alt="교외식당" />
+      <StyledText2>실시간 웨이팅 랭킹</StyledText2>
     </Container>
   );
 };

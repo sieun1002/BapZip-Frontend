@@ -12,7 +12,7 @@ import SelectMajor from "./components/Login/SelectMajor";
 import SineUpCompletion from "./components/Login/SineUpCompletion";
 
 // // BottomNav2---------------------------------------------------------------
-// import BottomNav2 from "./pages/BottomNav2";
+// import BottomNav2 from "./pages/BottomNav2";git
 // import WriteReview from "./pages/WriteReview";
 
 // // BottomNav---------------------------------------------------------------
