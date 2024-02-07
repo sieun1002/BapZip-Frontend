@@ -80,9 +80,9 @@ export const Button = styled.button`
   height: 34px;
   border: solid 1px #ffba35;
   border-radius: 40px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.bgColor || "#ffffff"};
 
-  color: #ffba35;
+  color: ${(props) => props.color || "#ffba35"};
   font-size: 14px;
   font-weight: 600;
 `;

@@ -31,7 +31,7 @@ import search from "../../images/Login/search.svg";
 import yellowCircle from "../../images/Login/yellowCircle.svg";
 
 export default function SelectMajor() {
-  const { userInfo, setUserInfo } = useSignUp();
+  const { userInfo, setUserInfo, validations, setValidations } = useSignUp();
   const [majorCheck, setMajorCheck] = useState(false);
 
   const schoolId = userInfo.school_id;
@@ -42,16 +42,11 @@ export default function SelectMajor() {
 
   const handleMajorApi = async () => {
     try {
-      console.log(schoolId);
       //API 요청 URL
       const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/major?schoolId=${schoolId}&majorName=${form.major}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url);
-
-      //잘 됐는지 확인
-      console.log(response.data.result[0].name);
-      console.log(response.data.result[0].id);
 
       // 전공 이름 저장
       const major = response.data.result[0].name;
@@ -60,9 +55,13 @@ export default function SelectMajor() {
       //전공 아이디 저장
       const major_id = response.data.result[0].id;
 
-      setUserInfo({ ...userInfo, major: major });
-      setUserInfo({ ...userInfo, major_id: major_id });
+      setUserInfo((userInfo) => ({
+        ...userInfo,
+        major: major,
+        major_id: major_id,
+      }));
       setMajorCheck(true);
+      setValidations({ ...validations, isSchoolAndMajor: true });
     } catch (error) {
       console.error(
         "major check error",
@@ -81,7 +80,7 @@ export default function SelectMajor() {
               <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
             </Link>
 
-            <Link to="/SineUp">
+            <Link to="/users/auth/signup">
               <XImage src={X} alt="X" />
             </Link>
           </HeaderDiv>

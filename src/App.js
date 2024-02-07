@@ -42,7 +42,7 @@ function App() {
               <Route path="/SineUp/Select_School" element={<SelectSchool />} />
               <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
               <Route
-                path="/SineUp/SineUp-Completion"
+                path="/users/auth/agreement"
                 element={<SineUpCompletion />}
               />
             </Routes>

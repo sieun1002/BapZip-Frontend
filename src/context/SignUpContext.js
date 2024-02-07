@@ -13,17 +13,29 @@ export const SignUpProvider = ({ children }) => {
     id: "",
     password: "",
     passwordCheck: "",
-    school: "",
+    school: " ",
     school_id: 0,
-    major: "",
+    major: " ",
     major_id: 0,
     schoolEmail: "",
     schoolEmailCheck: "",
+    SignUpId: 0,
     //추가적으로 필요한 상태가 있다면 여기에 포함시킨다.
   });
 
+  const [validations, setValidations] = useState({
+    isNickNameValid: null,
+    isIdValid: null,
+    isPasswordValid: null,
+    isPasswordCheckValid: null,
+    isSchoolAndMajor: null,
+    isSchoolEmailValid: null,
+  });
+
   return (
-    <SignUpContext.Provider value={{ userInfo, setUserInfo }}>
+    <SignUpContext.Provider
+      value={{ userInfo, setUserInfo, validations, setValidations }}
+    >
       {children}
     </SignUpContext.Provider>
   );
