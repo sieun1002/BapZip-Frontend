@@ -51,7 +51,7 @@ export default function SelectSchool() {
 
       //학교 아이디 저장
       //나중에 id 순서 바꾸기
-      const school_id = response.data.result[1].id;
+      const school_id = response.data.result[0].id;
 
       setUserInfo((userInfo) => ({
         ...userInfo,
@@ -60,9 +60,6 @@ export default function SelectSchool() {
       }));
 
       setSchoolCheck(true);
-
-      console.log("school 확인");
-      console.log(userInfo);
     } catch (error) {
       console.error(
         "school check error",

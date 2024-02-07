@@ -395,12 +395,10 @@ export default function SineUp() {
             ) : null}
 
             <Label htmlFor="schoolAndMajor">학교 및 전공</Label>
-            {console.log(userInfo.school)}
             <InputDiv>
               <Input
                 type="text"
                 id="schoolAndMajor"
-                // value={form.schoolAndMajor}
                 value={form.schoolAndMajor}
                 placeholder="학교와 전공을 입력해 주세요."
                 width="330px"
@@ -488,7 +486,7 @@ export default function SineUp() {
           validSchoolAndMajor &&
           validSchoolMailCheck ? (
             <Link
-              to="/SineUp/SineUp-Completion"
+              to="/users/auth/agreement"
               style={{
                 textDecoration: "none",
               }}

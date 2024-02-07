@@ -62,9 +62,6 @@ export default function SelectMajor() {
       }));
       setMajorCheck(true);
       setValidations({ ...validations, isSchoolAndMajor: true });
-
-      console.log("major 확인");
-      console.log(userInfo);
     } catch (error) {
       console.error(
         "major check error",

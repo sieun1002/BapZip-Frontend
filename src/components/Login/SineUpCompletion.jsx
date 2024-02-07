@@ -1,4 +1,6 @@
 import { React, useState, useEffect } from "react";
+import { useSignUp } from "../../context/SignUpContext";
+import axios from "axios";
 import {
   BodyDiv,
   WrapperDiv,
@@ -28,6 +30,8 @@ import checkCircle from "../../images/Login/checkCircle.svg";
 import detail from "../../images/Login/detail.svg";
 
 export default function SineUpCompletion() {
+  const { userInfo, setUserInfo, validations, setValidations } = useSignUp();
+
   const [Circle1, setCircle1] = useState(false);
   const [Circle2, setCircle2] = useState(false);
   const [Circle3, setCircle3] = useState(false);
@@ -91,6 +95,43 @@ export default function SineUpCompletion() {
     setIsSubmitActive(Circle1 && Circle2);
   }, [Circle1, Circle2]);
 
+  //이용약관 API 연결
+  const handleAgreementApi = async () => {
+    try {
+      //API 요청 URL
+      const url =
+        "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/agreement";
+
+      //요청 본문에 포함될 데이터
+      const term1 = Circle1 ? "CHECKED" : "NOT_CHECKED";
+      const term2 = Circle2 ? "CHECKED" : "NOT_CHECKED";
+      const term3 = Circle3 ? "CHECKED" : "NOT_CHECKED";
+      const term4 = Circle4 ? "CHECKED" : "NOT_CHECKED";
+
+      const data = {
+        userId: userInfo.SignUpId,
+        term1: term1,
+        term2: term2,
+        term3: term3,
+        term4: term4,
+      };
+
+      //axios.post 메소드를 사용하여 요청을 보냄
+      const response = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/json", // 명시적으로 Content-Type 헤더 설정
+        },
+      });
+
+      //이용약관 성공 처리
+      console.log("agreement seccessful", response.data.message);
+    } catch (error) {
+      //로그인 실패 또는 에러 처리
+      console.error("agreement", error.response ? error.response.data : error);
+      // 에러 상황에 대한 처리 로직을 추가하세요. 예: 사용자에게 에러 메시지 표시
+    }
+  };
+
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -99,7 +140,7 @@ export default function SineUpCompletion() {
             <LogoImage src={logo} alt="logo" />
           </LogoDiv>
           <MainPDiv>
-            <MainP1>조시은님,</MainP1>
+            <MainP1>{userInfo.nickName}님,</MainP1>
             <MainP1>가입을 축하합니다.</MainP1>
             <MainP2 marginTop="20px">밥ZIP에 오신 걸 환영합니다.</MainP2>
             <MainP2>약관 동의 후 밥ZIP과 함께 편안한 식생활되세요!</MainP2>
@@ -158,7 +199,13 @@ export default function SineUpCompletion() {
                 textDecoration: "none",
               }}
             >
-              <Submit type="submit" value="시작하기" marginTop="80px" />
+              <Submit
+                onClick={handleAgreementApi}
+                // type="submit"
+                type="button"
+                value="시작하기"
+                marginTop="80px"
+              />
             </Link>
           ) : (
             <Submit
