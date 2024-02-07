@@ -17,7 +17,7 @@ export default function BottomNav(props) {
           <img
             src={props.menu === "Home" ? srcBtnHomeOn : srcBtnHomeOff}
             alt="btn"
-            style={{ zIndex: 2 }}
+            style={{ zIndex: 0 }}
           />
         </Link>
       </div>
@@ -26,16 +26,16 @@ export default function BottomNav(props) {
           <img
             src={props.menu === "Review" ? srcBtnReviewOn : srcBtnReviewOff}
             alt="btn"
-            style={{ zIndex: 2 }}
+            style={{ zIndex: 0 }}
           />
         </Link>
       </div>
       <div className="btnList" style={{ position: "relative", zIndex: 2 }}>
-        <Link to="/">
+        <Link to="/List">
           <img
             src={props.menu === "List" ? srcBtnListOn : srcBtnListOff}
             alt="btn"
-            style={{ zIndex: 2 }}
+            style={{ zIndex: 0 }}
           />
         </Link>
       </div>
@@ -44,7 +44,7 @@ export default function BottomNav(props) {
           <img
             src={props.menu === "MyPage" ? srcBtnMypageOn : srcBtnMypageOff}
             alt="btn"
-            style={{ zIndex: 2 }}
+            style={{ zIndex: 0 }}
           />
         </Link>
       </div>

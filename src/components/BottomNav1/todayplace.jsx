@@ -29,19 +29,19 @@ const MySwiperComponent = () => {
           className="swiper-slide"
           src={Hot1}
           alt="Hot2"
-          style={{ width: "440px", height: "200px", zIndex: 1 }}
+          style={{ width: "440px", height: "200px", zIndex: 2 }}
         />
         <img
           className="swiper-slide"
           src={Hot2}
           alt="Hot2"
-          style={{ width: "440px", height: "200px", zIndex: 1 }}
+          style={{ width: "440px", height: "200px", zIndex: 2 }}
         />
         <img
           className="swiper-slide"
           src={Hot3}
           alt="Hot2"
-          style={{ width: "440px", height: "200px", zIndex: 1 }}
+          style={{ width: "440px", height: "200px", zIndex: 2 }}
         />
       </div>
       <div className="swiper-button-next"></div>

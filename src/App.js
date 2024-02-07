@@ -17,6 +17,11 @@ import WriteReview from "./pages/WriteReview";
 import BottomNav1 from "./pages/BottomNav1";
 import Arlim from "./pages/Arlim";
 import Silsiganin from "./pages/silsiganin";
+import Silsiganout from "./pages/silsiganout";
+
+// BottomNav3---------------------------------------------------------------
+
+import BottomNav3 from "./pages/BottomNav3";
 
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
@@ -47,6 +52,8 @@ function App() {
           <Route path="/Home" element={<BottomNav1 />} />
           <Route path="/Arlim" element={<Arlim />} />
           <Route path="/Silsiganin" element={<Silsiganin />} />
+          <Route path="/Silsiganout" element={<Silsiganout />} />
+          <Route path="/List" element={<BottomNav3 />} />
         </Routes>
       </BrowserRouter>
     </div>
