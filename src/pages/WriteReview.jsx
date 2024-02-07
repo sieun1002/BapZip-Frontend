@@ -11,28 +11,37 @@ export default function WriteReview() {
   const [reviewDetail, setReview] = useState({
     'storeName' : '',
     'rating' : 0,
-    'hashtags' : ['','',''],
+    'hashtags' : [],
     'reviewText' : '',
     'imgScr' : ''
   });
+  const [storeId, setId] = useState(-1);
 
-  const [completeWrite, setComplete] = useState(true);
+  const [completeWrite, setComplete] = useState(false);
   const [modalState, setModal] = useState(false);
-  // useEffect(()=>{
-  //   if(checkComplete){
-  //     setComplete(true);
-  //   }
-  //   else{
-  //     setComplete(false);
-  //   }
-  // },[reviewDetail]);
+  useEffect(()=>{
+    if(checkComplete()){
+      setComplete(true);
+    }
+    else{
+      setComplete(false);
+    }
+    console.log(reviewDetail);
+  },[reviewDetail]);
 
   function checkComplete(){
-    if(reviewDetail.storeName && (reviewDetail.rating!==0) && reviewDetail.hashtags && reviewDetail.reviewText)
+    if((reviewDetail.rating!==0) &&
+     reviewDetail.hashtags.length!==0 && reviewDetail.reviewText.length >= 100)
     {
       return true;
     }
-    else{ return false; }
+    else{
+      return false; 
+    }
+  }
+
+  function setStoreId(input){
+    setId(input);
   }
 
   function setStore(input) {
@@ -47,10 +56,17 @@ export default function WriteReview() {
       'rating' : input
     });
   }
+  const hashtagAll = ["혼밥", "양많음", "빠름", "저렴함", "깨끗함", "단체석", "맛있음", "친절함", "넓음", "조용함"];
   function setBenefit(input) {
+    let hashtag = []; 
+    for(let i=0; i<input.length; i++){
+      if(input[i]){
+        hashtag.push(hashtagAll[i]);
+      }
+    }
     setReview({
       ...reviewDetail,
-      'hashtags' : input
+      'hashtags' : hashtag
     });
   }
   function setTxt(input) {
@@ -69,11 +85,11 @@ export default function WriteReview() {
   return (
     <div className='container-writeReview' style={{position:'relative'}}>
         <Header />
-        <SearchStore />
-        <StarRating />
-        <SelectBenefit />
-        <WriteTxt />
-        <UploadImg />
+        <SearchStore setStoreId={setStoreId}/>
+        <StarRating setRate={setRate}/>
+        <SelectBenefit setBenefit={setBenefit}/>
+        <WriteTxt setTxt={setTxt}/>
+        <UploadImg setImgScr={setImgScr}/>
         <ModalGetPoint10 viewModal={modalState}/>
         <div className='btn-writeReview'>
           <button className='submitBtn-writeReview' style={completeWrite? {backgroundColor:'#FFBA35'} : {backgroundColor:'#EDEDED'}}

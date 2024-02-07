@@ -365,7 +365,30 @@ p {
     color: #c0c0c0;
   }
 }
+.store-resultSearch{
+  width: 480px;
+  height: 73px;
+  p{
+    margin-left: 30px;
+  }
+  .name-resultSearch{
+    margin-bottom: 8px;
+    height: 22px;
+    padding-top: 12px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #191919;
+  }
+  .loc-resultSearch{
+    height: 16px;
+    margin-top: 0;
+    font-weight: 500;
+    font-size: 12px;
+    color: #767676;
+  }
+}
 .btn-SearchModal{
+  background-color: #FFFFFF;
   position: fixed;
   bottom: 0;
   width: 450px;
@@ -528,6 +551,8 @@ p {
     height: 132px;
     outline: none;
     border: none;
+    border-radius: 10px;
+    margin-right: 10px;
   }
 }
 /* SubmitBtn */
@@ -754,10 +779,14 @@ p {
     color: #767676;
   }
   .school-profile{
-    width: 100px;
+    text-align: right;
+    margin-right: 15px;
+    width: 150px;
   }
   .major-profile{
-    width: 100px;
+    text-align: left;
+    margin-left: 15px;
+    width: 150px;
   }
 }
 /* SelectBar */
@@ -824,6 +853,7 @@ p {
     font-weight: 500;
   }
 }
+/* --------------------------Setting--------------------------- */
 /* Setting */
 .setting-BottomNav4{
   min-height: 100vh;
@@ -860,4 +890,37 @@ p {
     text-align: left;
     margin-left: 40px;
   }  
+}
+/* --------------------------ManageReview--------------------------- */
+.manageReview-BottomNav4{
+  height: 100vh;
+}
+/* selectBar */
+.selectBar-ManageReview{
+  display: flex;
+  flex-direction: row;
+}
+.option-selectBar{
+  height: 50px;
+  width: 240px;
+  border-bottom: 2px solid;
+  .text-option{
+    font-weight: 500;
+    font-size: 16px;
+  }
+}
+/* myReview */
+.myReview-ManageReview{
+  margin-top: 20px;
+}
+.deleteBar-myReview{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
+  p{
+    font-weight: 500;
+    font-size: 12px;
+  }
 }

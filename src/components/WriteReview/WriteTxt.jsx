@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function WriteTxt() {
+export default function WriteTxt(props) {
     const [textValue, setTextValue] = useState("");
     const handleSetValue = (e) => {
       setTextValue(e.target.value);
     }
+    useEffect(()=>{
+        props.setTxt(textValue);
+    },[textValue]);
     return (
         <div className='writeTxt-WriteReview'>
             <div className='txt-writeTxt'>

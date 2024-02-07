@@ -24,6 +24,7 @@ import RestaurantInfo from "./pages/RestaurantInfo";
 
 // Setting---------------------------------------------------------------
 import Setting from "./pages/Setting";
+import ManageReview from "./pages/ManageReview";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path="/arlim" element={<Arlim />} />
           <Route path="/MyPage" element={<BottomNav4 />}/>
           <Route path="/Setting" element={<Setting />}/>
+          <Route path="/ManageReivew" element={<ManageReview />}/>
         </Routes>
       </BrowserRouter>
     </div>
