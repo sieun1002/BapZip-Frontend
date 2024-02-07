@@ -45,19 +45,12 @@ export default function SelectSchool() {
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url);
 
-      //잘 됐는지 확인
-      console.log(response.data.result[0].name);
-      // console.log(response.data.result[0].id);
-      console.log(response.data.result[1].id);
-
       // 학교 이름 저장
       const school = response.data.result[0].name;
-      // console.log("타입 확인");
-      // console.log(typeof response.data.result[0].name);
       setForm({ ...form, school });
 
       //학교 아이디 저장
-      // const school_id = response.data.result[0].id;
+      //나중에 id 순서 바꾸기
       const school_id = response.data.result[1].id;
 
       setUserInfo((userInfo) => ({
@@ -68,7 +61,7 @@ export default function SelectSchool() {
 
       setSchoolCheck(true);
 
-      console.log("test");
+      console.log("school 확인");
       console.log(userInfo);
     } catch (error) {
       console.error(

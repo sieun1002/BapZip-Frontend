@@ -42,16 +42,11 @@ export default function SelectMajor() {
 
   const handleMajorApi = async () => {
     try {
-      console.log(schoolId);
       //API 요청 URL
       const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/major?schoolId=${schoolId}&majorName=${form.major}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url);
-
-      //잘 됐는지 확인
-      console.log(response.data.result[0].name);
-      console.log(response.data.result[0].id);
 
       // 전공 이름 저장
       const major = response.data.result[0].name;
@@ -68,7 +63,7 @@ export default function SelectMajor() {
       setMajorCheck(true);
       setValidations({ ...validations, isSchoolAndMajor: true });
 
-      console.log("test2");
+      console.log("major 확인");
       console.log(userInfo);
     } catch (error) {
       console.error(

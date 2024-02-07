@@ -19,6 +19,7 @@ export const SignUpProvider = ({ children }) => {
     major_id: 0,
     schoolEmail: "",
     schoolEmailCheck: "",
+    SignUpId: 0,
     //추가적으로 필요한 상태가 있다면 여기에 포함시킨다.
   });
 
@@ -26,6 +27,7 @@ export const SignUpProvider = ({ children }) => {
     isNickNameValid: null,
     isIdValid: null,
     isPasswordValid: null,
+    isPasswordCheckValid: null,
     isSchoolAndMajor: null,
     isSchoolEmailValid: null,
   });

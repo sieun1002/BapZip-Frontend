@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 // 상태 관리
 import { useSignUp } from "../../context/SignUpContext";
+//리덕스
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import {
   BodyDiv,
@@ -28,6 +30,8 @@ import {
 import arrowLeft from "../../images/Login/arrowLeft.svg";
 
 export default function SineUp() {
+  //리덕스
+  const dispatch = useDispatch();
   //상태 관리
   const { userInfo, setUserInfo, validations, setValidations } = useSignUp();
 
@@ -50,11 +54,16 @@ export default function SineUp() {
   const [validPassword, setValidPassword] = useState(
     validations.isPasswordValid
   );
-  const [validPasswordCheck, setValidPasswordCheck] = useState(null);
+  const [validPasswordCheck, setValidPasswordCheck] = useState(
+    validations.isPasswordCheckValid
+  );
 
   const validSchoolAndMajor = validations.isSchoolAndMajor;
   const [validSchoolEmail, setValidSchoolEmail] = useState(null);
   const [validSchoolMailCheck, setValidSchoolEmailCheck] = useState(null);
+
+  //인증번호 상태 관리..
+  const [authenticationsNum, setAuthenticationNum] = useState(null);
 
   //닉네임 입력
   const handleNNCh = (e) => {
@@ -130,7 +139,8 @@ export default function SineUp() {
   //비번 입력
   const handlePWCh = (e) => {
     const password = e.target.value;
-    setForm({ ...form, password });
+    setForm((prevForm) => ({ ...prevForm, password }));
+    setUserInfo({ ...userInfo, password: password });
 
     if (password.trim() === "") {
       setValidPassword(null);
@@ -144,21 +154,28 @@ export default function SineUp() {
       //validations 상태 업데이트
       setValidations({ ...validations, isPasswordValid: isValidPassword });
     }
-
-    //userInfo 상태 업데이트
-    setUserInfo({ ...userInfo, password: e.target.value });
   };
 
   //비번 체크 입력
   const handlePWChCh = (e) => {
     const passwordCheck = e.target.value;
-    setForm({ ...form, passwordCheck });
+    setForm((prevForm) => ({ ...prevForm, passwordCheck }));
+    setUserInfo({ ...userInfo, passwordCheck: passwordCheck });
 
     if (passwordCheck.trim() === "") {
       setValidPasswordCheck(null);
+    } else if (passwordCheck === userInfo.password) {
+      setValidPassword(null);
+      setValidPasswordCheck(true);
+      setValidations({ ...validations, isPasswordValid: null });
+      setValidations({ ...validations, isPasswordCheckValid: true });
+      console.log(validations);
     } else {
-      const isValidPasswordCheck = passwordCheck === form.password;
-      setValidPasswordCheck(isValidPasswordCheck);
+      setValidPassword(null);
+      setValidPasswordCheck(false);
+      setValidations({ ...validations, isPasswordValid: null });
+      setValidations({ ...validations, isPasswordCheckValid: false });
+      console.log(validations);
     }
 
     //userInfo passwordChaeck 업데이트
@@ -178,6 +195,28 @@ export default function SineUp() {
     setUserInfo({ ...userInfo, schoolEmail: e.target.value });
   };
 
+  const handleSchoolEmailApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/mail?mail=${form.schoolEmail}`;
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.get(url);
+
+      //잘 됐는지 확인
+      console.log("이메일 통신 잘 됐는지 확인");
+      console.log(response.data.message);
+
+      //이메일 인증번호 저장
+      setAuthenticationNum(response.data.result.number);
+    } catch (error) {
+      console.error(
+        "emailCheck error",
+        error.response ? error.response.data : error
+      );
+      //에러 상황에 대한 처리 로직 추가
+    }
+  };
   // 인증번호 입력
   const handleSchEMCh = (e) => {
     const schoolEmailCheck = e.target.value;
@@ -189,6 +228,52 @@ export default function SineUp() {
 
     //userInfo schoolEmailCheck 업데이트
     setUserInfo({ ...userInfo, schoolEmailCheck: e.target.value });
+  };
+
+  const handleSchEmChButton = () => {
+    const userAuthentications_num = form.schoolEmailCheck;
+    if (userAuthentications_num == authenticationsNum) {
+      setValidSchoolEmailCheck(true);
+      console.log("인증번호 true");
+    } else {
+      setValidSchoolEmailCheck(false);
+      console.log("인증번호 false");
+    }
+  };
+
+  //회원가입 API
+  const handleSignUpApi = async () => {
+    try {
+      //API 요청 URL
+      const url =
+        "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/signup";
+
+      //요청 본문에 포함될 데이터
+      const data = {
+        userId: userInfo.id,
+        password: userInfo.password,
+        nickname: userInfo.nickName,
+        school: userInfo.school_id,
+        major: userInfo.major_id,
+        email: userInfo.schoolEmail,
+      };
+
+      //axios.post 메소드를 사용하여 요청을 보냄
+      const response = await axios.post(url, data, {
+        headers: {
+          "Content-Type": "application/json", // 명시적으로 Content-Type 헤더 설정
+        },
+      });
+
+      //회원가입 성공 처리
+      console.log("SignUp successful", response.data.message);
+      const SignUpId = response.data.result.id;
+      setUserInfo({ ...userInfo, SignUpId: SignUpId });
+    } catch (error) {
+      //회원가입 실패 또는 에러 처리
+      console.error("Sign error", error.response ? error.response.data : error);
+      //에러 상황에 대한 처리 로직 추가.
+    }
   };
 
   return (
@@ -297,9 +382,17 @@ export default function SineUp() {
               </CheckDivX>
             ) : validPassword === true ? (
               <CheckDivO>사용 가능한 비밀번호입니다.</CheckDivO>
-            ) : (
+            ) : null}
+
+            {validPassword === null && validPasswordCheck === null ? (
               <CheckDivX></CheckDivX>
-            )}
+            ) : null}
+
+            {validPasswordCheck === false ? (
+              <CheckDivX>비밀번호가 일치하지 않습니다.</CheckDivX>
+            ) : validPasswordCheck === true ? (
+              <CheckDivO>비밀번호가 일치합니다.</CheckDivO>
+            ) : null}
 
             <Label htmlFor="schoolAndMajor">학교 및 전공</Label>
             {console.log(userInfo.school)}
@@ -341,7 +434,20 @@ export default function SineUp() {
                 width="330px"
               />
 
-              <Button>인증 요청</Button>
+              {validSchoolMailCheck === true ? (
+                <Button
+                  type="button"
+                  onClick={handeleNickNameAPI}
+                  bgColor="#ffba35"
+                  color="#FFFFFF"
+                >
+                  인증 완료
+                </Button>
+              ) : (
+                <Button type="button" onClick={handleSchoolEmailApi}>
+                  인증 요청
+                </Button>
+              )}
             </InputDiv>
 
             <InputDiv>
@@ -353,27 +459,56 @@ export default function SineUp() {
                 placeholder="인증번호 입력"
                 width="330px"
               />
-              <Button>인증 확인</Button>
+
+              {validSchoolMailCheck === true ? (
+                <Button type="button" bgColor="#ffba35" color="#FFFFFF">
+                  인증 확인
+                </Button>
+              ) : (
+                <Button type="button" onClick={handleSchEmChButton}>
+                  인증 확인
+                </Button>
+              )}
             </InputDiv>
 
-            {/* <CheckDivX>인증번호가 올바르지 않습니다.</CheckDivX> */}
-            {/* <CheckDivO>모두 인증 완료되었습니다.</CheckDivO> */}
+            {validSchoolMailCheck === false ? (
+              <CheckDivX>인증번호가 올바르지 않습니다.</CheckDivX>
+            ) : validSchoolMailCheck === true ? (
+              <CheckDivO>모두 인증 완료되었습니다.</CheckDivO>
+            ) : (
+              <CheckDivX></CheckDivX>
+            )}
             <CheckDivX></CheckDivX>
           </Form>
 
-          <Link
-            to="/SineUp/SineUp-Completion"
-            style={{
-              textDecoration: "none",
-            }}
-          >
+          {validNickName &&
+          validId &&
+          validPassword &&
+          validPasswordCheck &&
+          validSchoolAndMajor &&
+          validSchoolMailCheck ? (
+            <Link
+              to="/SineUp/SineUp-Completion"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              <Submit
+                onClick={handleSignUpApi}
+                type="submit"
+                value="회원 가입"
+                backgroundColor="#ffba35"
+                marginBottom="30px"
+              />
+            </Link>
+          ) : (
             <Submit
               type="submit"
               value="회원 가입"
               backgroundColor="#EDEDED"
               marginBottom="30px"
             />
-          </Link>
+          )}
         </Div>
       </WrapperDiv>
     </BodyDiv>
