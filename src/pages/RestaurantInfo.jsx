@@ -46,10 +46,12 @@ export default function RestaurantInfo() {
     const basicRestaurantInfoApi = async () => {
       try {
         // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/info`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/5/info`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/11/info`;
 
         const response = await api.get(url);
         setRestaurantInfo(response.data.result);
+        console.log(response.data.result);
+        console.log(response.data.result.images[0]);
       } catch (error) {
         console.error("가게 정보 가져오기 실패", error);
       }
@@ -85,32 +87,38 @@ export default function RestaurantInfo() {
     <BodyDiv>
       <WrapperDiv>
         <Div>
-          <RestaurantImage src={restaurant} alt="restaurant" />
+          {/* <RestaurantImage src={restaurant} alt="restaurant" /> */}
+          <RestaurantImage src={restaurantInfo.images[0]} alt="restaurant" />
+
           <RestaurantMainInfoDiv>
             <ScrapImage src={scrap} alt="scrap" />
-            <RestaurantNameP>{restaurantInfo.name}</RestaurantNameP>
+            <RestaurantNameP>
+              {restaurantInfo.name} - {restaurantInfo.category}
+            </RestaurantNameP>
 
-            {/*벡 정보 가져와야 함*/}
-            {/* <RestaurantCatagoryP>학식당 · 교내</RestaurantCatagoryP> */}
             <RestaurantCatagoryP>{restaurantInfo.inOrOut}</RestaurantCatagoryP>
 
             <WaitingAndStarDiv>
               <ClockImage src={clock} alt="clock" />
               <WaitingStarP>웨이팅 예산 시간: </WaitingStarP>
-              {/*벡 정보 가져와야 함*/}
-              <WaitingStarP color="#E32525">70분</WaitingStarP>
+              {restaurantInfo.waitTime === null ? (
+                <WaitingStarP color="#E32525">0분</WaitingStarP>
+              ) : (
+                <WaitingStarP color="#E32525">
+                  {restaurantInfo.waitTime}분
+                </WaitingStarP>
+              )}
             </WaitingAndStarDiv>
             <WaitingAndStarDiv>
               <StarImage src={star} alt="star" />
-              {/*벡 정보 가져와야 함*/}
-              <WaitingStarP>4.8 / 5</WaitingStarP>
+              <WaitingStarP>{restaurantInfo.score} / 5</WaitingStarP>
             </WaitingAndStarDiv>
             <WaitingAndStarDiv>
               <GoodImage src={good} alt="good" />
-              {/*벡 정보 가져와야 함. 반복문 써야할 듯*/}
-              <TagDiv>#혼밥</TagDiv>
-              <TagDiv>#빠름</TagDiv>
-              <TagDiv>#맛있음</TagDiv>
+              {restaurantInfo.hashtag &&
+                restaurantInfo.hashtag.map((tag, index) => (
+                  <TagDiv key={index}>#{tag}</TagDiv>
+                ))}
             </WaitingAndStarDiv>
           </RestaurantMainInfoDiv>
           <InfoNavDiv>
