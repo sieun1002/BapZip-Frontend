@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BodyDiv,
   WrapperDiv,
@@ -17,7 +17,21 @@ import {
 } from "../../styles/RestaurantInfo/CongestionCheck.styled";
 import X from "../../images/Login/X.svg";
 
-export default function CongestionCheck() {
+export default function CongestionCheck({
+  setCongestionCheck,
+  setCongestionCheck2,
+  setCongestionCheck3,
+}) {
+  const handleCongestionCheck2 = () => {
+    setCongestionCheck(false);
+    setCongestionCheck2(true);
+  };
+
+  const handleCongestionCheck3 = () => {
+    setCongestionCheck(false);
+    setCongestionCheck3(true);
+  };
+
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -26,12 +40,26 @@ export default function CongestionCheck() {
             <CongestionCheckDiv>
               <CongestionMainPDiv>
                 <CongestionMainP1>혼잡도 체크</CongestionMainP1>
-                <XImg src={X} alt="X" />
+                <XImg
+                  src={X}
+                  alt="X"
+                  onClick={() => setCongestionCheck(false)}
+                />
               </CongestionMainPDiv>
               <CongestionP2>방문객과 비방문객 중 선택해주세요</CongestionP2>
               <CongestionButtonDiv>
-                <CongestionButton type="button">비방문객</CongestionButton>
-                <CongestionButton type="button">방문객</CongestionButton>
+                <CongestionButton
+                  type="button"
+                  onClick={handleCongestionCheck2}
+                >
+                  비방문객
+                </CongestionButton>
+                <CongestionButton
+                  type="button"
+                  onClick={handleCongestionCheck3}
+                >
+                  방문객
+                </CongestionButton>
               </CongestionButtonDiv>
             </CongestionCheckDiv>
           </CongestionCheckWrapper>

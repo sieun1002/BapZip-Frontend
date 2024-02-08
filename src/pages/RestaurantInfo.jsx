@@ -30,10 +30,22 @@ import InfoMenu from "../components/RestaurantInfo/InfoMenu";
 import InfoReview from "../components/RestaurantInfo/InfoReview";
 import InfoChat from "../components/RestaurantInfo/InfoChat";
 import CongestionCheck from "../components/RestaurantInfo/CongestionCheck";
+import CongestionCheck2 from "../components/RestaurantInfo/CongestionCheck2";
+import CongestionCheck3 from "../components/RestaurantInfo/CongestionCheck3";
 
 export default function RestaurantInfo() {
   // 'home', 'menu', 'review', 'chat' 중 하나를 현재 상태로 관리합니다.
   const [currentTab, setCurrentTab] = useState("home");
+
+  //CongestionCheck 상태 관리
+  const [congestionCheck, setCongestionCheck] = useState(false);
+  const [congestionCheck2, setCongestionCheck2] = useState(false);
+  const [congestionCheck3, setCongestionCheck3] = useState(false);
+
+  const handleCongestionCheck2 = () => {
+    setCongestionCheck(false);
+    setCongestionCheck2(true);
+  };
 
   // 현재 선택된 탭에 따라 보여질 컴포넌트를 결정하는 함수
   const renderTabComponent = () => {
@@ -110,12 +122,37 @@ export default function RestaurantInfo() {
           {renderTabComponent()}
 
           <CongestionDiv>
-            <CongestionButton>
+            <CongestionButton
+              type="button"
+              onClick={() => setCongestionCheck(true)}
+            >
               혼잡도 <br />
               등록
             </CongestionButton>
           </CongestionDiv>
-          <CongestionCheck></CongestionCheck>
+          {congestionCheck && true ? (
+            <CongestionCheck
+              setCongestionCheck={setCongestionCheck}
+              setCongestionCheck2={setCongestionCheck2}
+              setCongestionCheck3={setCongestionCheck3}
+            />
+          ) : null}
+
+          {congestionCheck2 && true ? (
+            <CongestionCheck2
+              setCongestionCheck={setCongestionCheck}
+              setCongestionCheck2={setCongestionCheck2}
+              setCongestionCheck3={setCongestionCheck3}
+            />
+          ) : null}
+
+          {congestionCheck3 && true ? (
+            <CongestionCheck3
+              setCongestionCheck={setCongestionCheck}
+              setCongestionCheck2={setCongestionCheck2}
+              setCongestionCheck3={setCongestionCheck3}
+            />
+          ) : null}
         </Div>
       </WrapperDiv>
     </BodyDiv>

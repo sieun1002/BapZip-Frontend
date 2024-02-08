@@ -14,7 +14,7 @@ export const CongestionCheckWrapper = styled.div`
 
 export const CongestionCheckDiv = styled.div`
   width: 480px;
-  height: 187px;
+  height: ${(props) => props.height || "187px"};
   border-radius: 20px 20px 0 0;
 
   position: fixed;
@@ -36,11 +36,18 @@ export const CongestionMainPDiv = styled.div`
   margin: 20px 0 25px 20px;
 `;
 
+export const CongestionMainPDiv2 = styled.div`
+  width: auto;
+  height: 25px;
+  display: flex;
+`;
+
 export const CongestionMainP1 = styled.p`
   font-size: 18px;
   font-weight: 600;
   color: ${(props) => props.color || "#191919"};
   margin: 0;
+  margin-right: 6px;
 `;
 
 export const CongestionP2 = styled.p`
@@ -62,15 +69,19 @@ export const CongestionButton = styled.button`
   height: 31px;
   border: solid 1px #dbdbdb;
   border-radius: 40px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.backgroundColor || "#ffffff"};
+  color: ${(props) => props.color || "#767676"};
 
   font-size: 14px;
   font-weight: 500;
-  color: #767676;
 
   margin-right: 15px;
 
   cursor: pointer;
+  &:hover {
+    background-color: #ffba35;
+    color: #ffffff;
+  }
 `;
 
 export const XImg = styled.img`
