@@ -155,12 +155,12 @@ const StyledText2 = styled.div`
   color: #191919;
 `;
 
-const Honjap = () => {
+const AroundSchool = () => {
   return (
     <Container>
       <StyledText>우리학교 식당 둘러보기</StyledText>
       <Container1>
-        <Link to="/silsiganin">
+        <Link to="/ListIn">
           <BackgroundImage src={background} alt="배경" />
           <ZandiImage src={zandi} alt="Zandi" />
           <SchoolImage src={school} alt="School" />
@@ -171,13 +171,15 @@ const Honjap = () => {
         </Link>
       </Container1>
       <Container2>
-        <OutBackgroundImage src={Outbackground} alt="배경" />
-        <Out3 src={Out} alt=">" />
-        <Out4 src={Out2} alt="교외식당" />
+        <Link to="/ListOut">
+          <OutBackgroundImage src={Outbackground} alt="배경" />
+          <Out3 src={Out} alt=">" />
+          <Out4 src={Out2} alt="교외식당" />
+        </Link>
       </Container2>
       <StyledText2>실시간 웨이팅 랭킹</StyledText2>
     </Container>
   );
 };
 
-export default Honjap;
+export default AroundSchool;

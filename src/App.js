@@ -22,6 +22,8 @@ import Silsiganout from "./pages/silsiganout";
 // BottomNav3---------------------------------------------------------------
 
 import BottomNav3 from "./pages/BottomNav3";
+import ListIn from "./pages/ListIn";
+import ListOut from "./pages/ListOut";
 
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
@@ -54,6 +56,8 @@ function App() {
           <Route path="/Silsiganin" element={<Silsiganin />} />
           <Route path="/Silsiganout" element={<Silsiganout />} />
           <Route path="/List" element={<BottomNav3 />} />
+          <Route path="/ListIn" element={<ListIn />} />
+          <Route path="/ListOut" element={<ListOut />} />
         </Routes>
       </BrowserRouter>
     </div>
