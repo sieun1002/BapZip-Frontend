@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import api from "../api/LoginTokenApi";
+import { useParams } from "react-router-dom";
 import {
   BodyDiv,
   WrapperDiv,
@@ -34,6 +36,27 @@ import CongestionCheck2 from "../components/RestaurantInfo/CongestionCheck2";
 import CongestionCheck3 from "../components/RestaurantInfo/CongestionCheck3";
 
 export default function RestaurantInfo() {
+  //가게 기본 정보 api 연결
+  const [restaurantInfo, setRestaurantInfo] = useState({});
+  //URL에서 storeId 추출
+  // const {storeId} = useParams();
+  const { storeId } = 5;
+
+  useEffect(() => {
+    const basicRestaurantInfoApi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/info`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/5/info`;
+
+        const response = await api.get(url);
+        setRestaurantInfo(response.data.result);
+      } catch (error) {
+        console.error("가게 정보 가져오기 실패", error);
+      }
+    };
+    basicRestaurantInfoApi();
+  }, [storeId]);
+
   // 'home', 'menu', 'review', 'chat' 중 하나를 현재 상태로 관리합니다.
   const [currentTab, setCurrentTab] = useState("home");
 
@@ -41,11 +64,6 @@ export default function RestaurantInfo() {
   const [congestionCheck, setCongestionCheck] = useState(false);
   const [congestionCheck2, setCongestionCheck2] = useState(false);
   const [congestionCheck3, setCongestionCheck3] = useState(false);
-
-  const handleCongestionCheck2 = () => {
-    setCongestionCheck(false);
-    setCongestionCheck2(true);
-  };
 
   // 현재 선택된 탭에 따라 보여질 컴포넌트를 결정하는 함수
   const renderTabComponent = () => {
@@ -70,10 +88,12 @@ export default function RestaurantInfo() {
           <RestaurantImage src={restaurant} alt="restaurant" />
           <RestaurantMainInfoDiv>
             <ScrapImage src={scrap} alt="scrap" />
+            <RestaurantNameP>{restaurantInfo.name}</RestaurantNameP>
+
             {/*벡 정보 가져와야 함*/}
-            <RestaurantNameP>학식당 - 분식</RestaurantNameP>
-            {/*벡 정보 가져와야 함*/}
-            <RestaurantCatagoryP>학식당 · 교내</RestaurantCatagoryP>
+            {/* <RestaurantCatagoryP>학식당 · 교내</RestaurantCatagoryP> */}
+            <RestaurantCatagoryP>{restaurantInfo.inOrOut}</RestaurantCatagoryP>
+
             <WaitingAndStarDiv>
               <ClockImage src={clock} alt="clock" />
               <WaitingStarP>웨이팅 예산 시간: </WaitingStarP>
