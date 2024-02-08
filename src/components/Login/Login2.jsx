@@ -109,6 +109,7 @@ export default function Login2() {
       const userId = form.id;
       const token = response.data.result.token;
       dispatch(setCredentials({ userId, token }));
+      localStorage.setItem("token", token);
       // 여기에 로그인 성공 후 처리 로직을 추가하세요. 예: 토큰을 저장하고, 사용자를 홈페이지로 리디렉션 등
       setValidLogin(true);
     } catch (error) {
