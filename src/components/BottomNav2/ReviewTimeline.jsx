@@ -27,41 +27,22 @@ export default function ReviewTimeline() {
   // const { userInfo } = useSignUp();
   const schoolId = 7;
   const [reviewData, setData] = useState({});
-  // function getReview() {
-  //   const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/timeline?schoolId=${schoolId}&categoryName=ALL`;
-  //   axios
-  //     .get(urlget)
-  //     .then(function (response) {
-  //       setData(response.data.result);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error.message);
-  //     });
-  // }
-  // if (!reviewData[0]) {
-  //   getReview();
-  // } else {
-  //   console.log(reviewData);
-  // }
-
-  useEffect(() => {
-    const getReview = async () => {
-      try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/timeline?schoolId=${schoolId}&categoryName=ALL`;
-
-        const response = await api.get(url);
+  function getReview() {
+    const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/timeline?schoolId=${schoolId}&categoryName=ALL`;
+    api
+      .get(urlget)
+      .then(function (response) {
         setData(response.data.result);
-        console.log(response.data.result);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    if (!reviewData[0]) {
-      getReview();
-    } else {
-      console.log(reviewData);
-    }
-  }, []);
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      });
+  }
+  if (!reviewData[0]) {
+    getReview();
+  } else {
+    console.log(reviewData);
+  }
 
   return (
     <div className="container-timeline">
