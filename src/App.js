@@ -29,8 +29,6 @@ import RestaurantInfo from "./pages/RestaurantInfo";
 // // Setting---------------------------------------------------------------
 // import Setting from "./pages/Setting";
 
-import ChatTest from "./components/RestaurantInfo/ChatTest";
-
 function App() {
   return (
     <Provider store={store}>
@@ -49,7 +47,6 @@ function App() {
                 element={<SineUpCompletion />}
               />
               <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
-              <Route path="/ChatTest" element={<ChatTest />} />
             </Routes>
           </BrowserRouter>
         </div>

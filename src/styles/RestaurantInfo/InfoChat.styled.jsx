@@ -126,7 +126,7 @@ export const ActiveChatDiv = styled.div`
   display: flex;
   /* background-color: beige; */
 
-  margin: 10px 0;
+  margin: 25px 0;
 `;
 
 export const ActiveChatDivMe = styled.div`
@@ -135,7 +135,7 @@ export const ActiveChatDivMe = styled.div`
   display: flex;
   /* background-color: beige; */
 
-  margin: 10px 0;
+  margin: 25px 0;
 
   //나
   flex-direction: row-reverse;
