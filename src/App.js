@@ -51,7 +51,7 @@ function App() {
           </BrowserRouter>
         </div>
       </SignUpProvider>
-      <div className="App">
+      <div className="root-wrap">
         <BrowserRouter>
           <Routes>
             <Route path="/Review" element={<BottomNav2 />} />

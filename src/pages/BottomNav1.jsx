@@ -10,15 +10,17 @@ import BottomNav from "../components/BottomNav";
 
 export default function BottomNav1() {
   return (
-    <div className="container-BottomNav2">
-      <Searchbar />
-      <Silsi />
-      <Honjap />
-      <Hot />
-      <Review />
-      <Todayplace />
-      <Recommend />
-      <BottomNav menu="Home" />
+    <div className="App">
+      <div className="container-BottomNav2">
+        <Searchbar />
+        <Silsi />
+        <Honjap />
+        <Hot />
+        <Review />
+        <Todayplace />
+        <Recommend />
+        <BottomNav menu="Home" />
+      </div>
     </div>
   );
 }

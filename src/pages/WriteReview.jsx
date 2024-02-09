@@ -114,18 +114,20 @@ export default function WriteReview() {
     getToken();
   }
   return (
-    <div className='container-writeReview' style={{position:'relative'}}>
-        <Header />
-        <SearchStore setStore={setStore}/>
-        <StarRating setRate={setRate}/>
-        <SelectBenefit setBenefit={setBenefit}/>
-        <WriteTxt setTxt={setTxt}/>
-        <UploadImg setImgScr={setImgScr}/>
-        <ModalGetPoint10 viewModal={modalState}/>
-        <div className='btn-writeReview'>
-          <button className='submitBtn-writeReview' style={completeWrite? {backgroundColor:'#FFBA35'} : {backgroundColor:'#EDEDED'}}
-          disabled={!completeWrite} onClick={()=>{clickBtn()}} type="submit">등록하기</button>
-        </div>
+    <div className="App">
+      <div className='container-writeReview' style={{position:'relative'}}>
+          <Header />
+          <SearchStore setStore={setStore}/>
+          <StarRating setRate={setRate}/>
+          <SelectBenefit setBenefit={setBenefit}/>
+          <WriteTxt setTxt={setTxt}/>
+          <UploadImg setImgScr={setImgScr}/>
+          <ModalGetPoint10 viewModal={modalState}/>
+          <div className='btn-writeReview'>
+            <button className='submitBtn-writeReview' style={completeWrite? {backgroundColor:'#FFBA35'} : {backgroundColor:'#EDEDED'}}
+            disabled={!completeWrite} onClick={()=>{clickBtn()}} type="submit">등록하기</button>
+          </div>
+      </div>      
     </div>
   );
 }

@@ -10,14 +10,16 @@ import Restaurant5 from "../components/silsiganin/Restaurant5";
 
 export default function Silsiganin() {
   return (
-    <div>
-      <Header />
-      <Searchbar />
-      <Restaurant />
-      <Restaurant2 />
-      <Restaurant3 />
-      <Restaurant4 />
-      <Restaurant5 />
+    <div className="App">
+      <div>
+        <Header />
+        <Searchbar />
+        <Restaurant />
+        <Restaurant2 />
+        <Restaurant3 />
+        <Restaurant4 />
+        <Restaurant5 />
+      </div>
     </div>
   );
 }
