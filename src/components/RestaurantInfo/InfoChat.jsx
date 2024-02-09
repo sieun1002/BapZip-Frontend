@@ -45,7 +45,7 @@ export default function InfoChat() {
 
   const socketRef = useRef(null); // useRef를 사용하여 WebSocket 인스턴스 참조 저장
 
-  const userId = 2;
+  const userId = "string";
   const storeId = 2;
 
   const today = new Date().toISOString().split("T")[0];
@@ -69,6 +69,7 @@ export default function InfoChat() {
       const initialData = {
         storeId,
         userId,
+        // token,
         message: "INIT",
         chatMessageType: "ENTER",
       };
@@ -121,6 +122,7 @@ export default function InfoChat() {
       const chatMessageRequest = {
         storeId,
         userId,
+        // token,
         message,
         chatMessageType: "CHAT",
       };
@@ -153,6 +155,7 @@ export default function InfoChat() {
               ) : (
                 messages.map((msg, index) =>
                   msg.userId === userId ? (
+                    // msg.token === token ? (
                     <ActiveChatDivMe key={index}>
                       <ProfileImgMe src={profile} />
                       <ActiveChatPDivMe>
