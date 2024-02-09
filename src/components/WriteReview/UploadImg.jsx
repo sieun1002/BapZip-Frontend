@@ -4,6 +4,7 @@ import scrUploadBtn from '../../images/WriteReview/uploadBtn.png'
 
 export default function UploadImg(props) {
     const [imgFile, setImgFile] = useState("");
+    const [imgSrc, setScr] = useState("");
     const imgRef = useRef();
 
     const handleButtonClick = (e) => {
@@ -16,7 +17,7 @@ export default function UploadImg(props) {
         reader.readAsDataURL(file);
         reader.onloadend = () => {
             setImgFile(file);
-            console.log(imgRef.current.files);
+            setScr(reader.result);
            };
     }
     useEffect(()=>{
@@ -38,7 +39,7 @@ export default function UploadImg(props) {
             ref={imgRef}
             />
             {imgFile.length!==0?
-            <button className='uploadBtn-uploadImg' style={{backgroundImage: `url(${imgFile})`, backgroundSize: "cover", backgroundPosition: "center"}}/>
+            <button className='uploadBtn-uploadImg' style={{backgroundImage: `url(${imgSrc})`, backgroundSize: "cover", backgroundPosition: "center"}}/>
             :""}
         </div>
     </div>
