@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSignUp } from "../../context/SignUpContext";
 import axios from "axios";
 import {
   BodyDiv,
@@ -40,17 +39,13 @@ import submitiamge from "../../images/RestaurantInfo/submitImg.svg";
 import profile from "../../images/RestaurantInfo/profile.svg";
 
 export default function InfoChat() {
-  const { userInfo } = useSignUp();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [lastUpdate, setLastUpdate] = useState("0분전");
 
   const socketRef = useRef(null); // useRef를 사용하여 WebSocket 인스턴스 참조 저장
 
-  console.log(userInfo);
-  // const userId = "string";
   const userId = localStorage.getItem("userId");
-  console.log("유저 아이디", userId);
   const storeId = 2;
 
   const today = new Date().toISOString().split("T")[0];
@@ -109,9 +104,15 @@ export default function InfoChat() {
       .then((response) => {
         const data = response.data;
         if (data.isSuccess && data.result) {
-          const today = new Date().toISOString().split("T")[0];
+          // 클라이언트의 현재 날짜를 YYYY-MM-DD 형식으로 가져옵니다.
+          const clientToday = new Date().toLocaleDateString("fr-CA");
+
           const todayMessages = data.result.filter((message) => {
-            return message.timestamp.split("T")[0] === today;
+            // 서버에서 받은 타임스탬프를 로컬 타임존의 날짜로 변환합니다.
+            const messageDate = new Date(message.timestamp).toLocaleDateString(
+              "fr-CA"
+            );
+            return messageDate === clientToday;
           });
           setMessages(todayMessages);
         }
