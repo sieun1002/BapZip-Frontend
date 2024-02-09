@@ -10,15 +10,18 @@ import scrWriteBtn from "../images/BottomNav2/writeBtn.png";
 
 export default function BottomNav2() {
   return (
-    <div className="container-BottomNav2">
-      <Header />
-      <ReviewRanking />
-      <Ad />
-      <ReviewTimeline />
-      <BottomNav menu="Review" />
-      <Link to="/WriteReview">
-        <img className="WriteBtn-BottomNav2" src={scrWriteBtn} alt="작성버튼" />
-      </Link>
+    <div className="App">
+      <div className="container-BottomNav2">
+        <Header />
+        <ReviewRanking />
+        <Ad />
+        <ReviewTimeline />
+        <BottomNav menu="Review" />
+        <Link to="/WriteReview">
+          <img className="WriteBtn-BottomNav2" src={scrWriteBtn} alt="작성버튼" />
+        </Link>
+      </div>      
     </div>
+
   );
 }

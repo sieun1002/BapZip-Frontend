@@ -7,12 +7,14 @@ import Notice from '../components/Setting/Notice'
 
 export default function Setting() {
   return (
-    <div className='setting-BottomNav4'>
-        <Header />
-        <UserInfo />
-        <SetAlert />
-        <SetPoint />
-        <Notice />
+    <div className='App'>
+      <div className='setting-BottomNav4'>
+          <Header />
+          <UserInfo />
+          <SetAlert />
+          <SetPoint />
+          <Notice />
+      </div>
     </div>
   )
 }

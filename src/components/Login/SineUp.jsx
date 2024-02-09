@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 // 상태 관리
 import { useSignUp } from "../../context/SignUpContext";
-//리덕스
-import { useDispatch } from "react-redux";
 import axios from "axios";
 import {
   BodyDiv,
@@ -31,7 +29,6 @@ import arrowLeft from "../../images/Login/arrowLeft.svg";
 
 export default function SineUp() {
   //리덕스
-  const dispatch = useDispatch();
   //상태 관리
   const { userInfo, setUserInfo, validations, setValidations } = useSignUp();
 

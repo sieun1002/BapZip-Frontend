@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../../features/user/userSlice";
+import { useSignUp } from "../../context/SignUpContext";
 import axios from "axios";
 import {
   BodyDiv,
@@ -34,6 +35,7 @@ import secret from "../../images/Login/secret.svg";
 
 export default function Login2() {
   const dispatch = useDispatch();
+  const { userInfo, setUserInfo } = useSignUp();
 
   const [validLogin, setValidLogin] = useState(null);
 
@@ -110,8 +112,17 @@ export default function Login2() {
       const token = response.data.result.token;
       dispatch(setCredentials({ userId, token }));
       localStorage.setItem("token", token);
-      // 여기에 로그인 성공 후 처리 로직을 추가하세요. 예: 토큰을 저장하고, 사용자를 홈페이지로 리디렉션 등
+
       setValidLogin(true);
+
+      setUserInfo((prevUserInfo) => ({
+        ...prevUserInfo,
+        school_id: response.data.result.school_id,
+        user_id: response.data.result.id,
+        id: form.id,
+      }));
+      console.log(response.data.result);
+      console.log(userInfo);
     } catch (error) {
       // 로그인 실패 또는 에러 처리
       console.error(

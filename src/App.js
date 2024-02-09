@@ -11,23 +11,24 @@ import SelectSchool from "./components/Login/SelectSchool";
 import SelectMajor from "./components/Login/SelectMajor";
 import SineUpCompletion from "./components/Login/SineUpCompletion";
 
-// // BottomNav2---------------------------------------------------------------
-// import BottomNav2 from "./pages/BottomNav2";
-// import WriteReview from "./pages/WriteReview";
+// BottomNav2---------------------------------------------------------------
+import BottomNav2 from "./pages/BottomNav2";
+import WriteReview from "./pages/WriteReview";
 
-// // BottomNav---------------------------------------------------------------
+// BottomNav---------------------------------------------------------------
 
-// import BottomNav1 from "./pages/BottomNav1";
-// import Arlim from "./pages/Arlim";
-// import Silsiganin from "./pages/silsiganin";
-// // BottomNav4---------------------------------------------------------------
-// import BottomNav4 from "./pages/BottomNav4";
+import BottomNav1 from "./pages/BottomNav1";
+import Arlim from "./pages/Arlim";
+import Silsiganin from "./pages/silsiganin";
+// BottomNav4---------------------------------------------------------------
+import BottomNav4 from "./pages/BottomNav4";
 
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
 
-// // Setting---------------------------------------------------------------
-// import Setting from "./pages/Setting";
+// Setting---------------------------------------------------------------
+import Setting from "./pages/Setting";
+import ManageReview from "./pages/ManageReview";
 
 function App() {
   return (
@@ -47,23 +48,19 @@ function App() {
                 element={<SineUpCompletion />}
               />
               <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
+
+              <Route path="/Review" element={<BottomNav2 />} />
+              <Route path="/WriteReview" element={<WriteReview />} />
+              <Route path="/Home" element={<BottomNav1 />} />
+              <Route path="/arlim" element={<Arlim />} />
+              <Route path="/MyPage" element={<BottomNav4 />} />
+              <Route path="/Setting" element={<Setting />} />
+              <Route path="/ManageReivew" element={<ManageReview />} />
             </Routes>
           </BrowserRouter>
         </div>
       </SignUpProvider>
     </Provider>
-    // <div className="App">
-    //   <BrowserRouter>
-    //     <Routes>
-    //       <Route path="/Review" element={<BottomNav2 />} />
-    //       <Route path="/WriteReview" element={<WriteReview />} />
-    //       <Route path="/Home" element={<BottomNav1 />} />
-    //       <Route path="/arlim" element={<Arlim />} />
-    //       <Route path="/MyPage" element={<BottomNav4 />} />
-    //       <Route path="/Setting" element={<Setting />} />
-    //     </Routes>
-    //   </BrowserRouter>
-    // </div>
   );
 }
 

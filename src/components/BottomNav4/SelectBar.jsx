@@ -8,7 +8,7 @@ import scrCouponBtn from '../../images/BottomNav4/viewCouponBtn.png'
 export default function SelectBar() {
   return (
     <div className='selectBar-BottomNav4'>
-        <Link to="/" className='manageReview-selectBar' style={{ textDecoration: "none"}}>
+        <Link to="/ManageReivew" className='manageReview-selectBar' style={{ textDecoration: "none"}}>
             <img src={scrReviewBtn} alt="이미지" className='image-selectBar'/>
             <p className='text-selectBar'>리뷰 관리</p>
         </Link>
