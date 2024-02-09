@@ -27,18 +27,19 @@ export default function Profile() {
     }
   }
   function getProfile(){
-    if(stateAxios){
-      axios.get(urlgetPF)
-      .then(function(response){
-        setData(response.data.result);
-      })
-      .catch(function(error){
-        console.log(error.message);
-      })
-    }
+    axios.get(urlgetPF)
+    .then(function(response){
+      setData(response.data.result);
+    })
+    .catch(function(error){
+      console.log(error.message);
+    })
   }
   
   getToken();
+  // if(!userData.name){
+  //   getProfile();
+  // }
   const name = userData.nickname;
   const school = userData.schoolName;
   const major = userData.major;

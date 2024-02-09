@@ -32,39 +32,52 @@ import ManageReview from "./pages/ManageReview";
 
 function App() {
   return (
-    // <Provider store={store}>
-    //   <SignUpProvider>
-    //     <div className="root-wrap">
-    //       <BrowserRouter>
-    //         <Routes>
-    //           <Route path="/" element={<Login1 />} />
-    //           <Route path="/users/auth/sigin" element={<Login2 />} />
-    //           <Route path="/users/auth/signup" element={<SineUp />} />
-    //           <Route path="/SineUp/Select_School" element={<SelectSchool />} />
-    //           <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
-    //           <Route
-    //             path="/users/auth/agreement"
-    //             element={<SineUpCompletion />}
-    //           />
-    //           <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
-    //         </Routes>
-    //       </BrowserRouter>
-    //     </div>
-    //   </SignUpProvider>
-    // </Provider>
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/Review" element={<BottomNav2 />} />
-          <Route path="/WriteReview" element={<WriteReview />} />
-          <Route path="/Home" element={<BottomNav1 />} />
-          <Route path="/arlim" element={<Arlim />} />
-          <Route path="/MyPage" element={<BottomNav4 />}/>
-          <Route path="/Setting" element={<Setting />}/>
-          <Route path="/ManageReivew" element={<ManageReview />}/>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Provider store={store}>
+      <SignUpProvider>
+        <div className="root-wrap">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login1 />} />
+              <Route path="/users/auth/sigin" element={<Login2 />} />
+              <Route path="/users/auth/signup" element={<SineUp />} />
+              <Route path="/SineUp/Select_School" element={<SelectSchool />} />
+              <Route path="/SineUp/Select_Major" element={<SelectMajor />} />
+              <Route
+                path="/users/auth/agreement"
+                element={<SineUpCompletion />}
+              />
+              <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </SignUpProvider>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/Review" element={<BottomNav2 />} />
+            <Route path="/WriteReview" element={<WriteReview />} />
+            <Route path="/Home" element={<BottomNav1 />} />
+            <Route path="/arlim" element={<Arlim />} />
+            <Route path="/MyPage" element={<BottomNav4 />}/>
+            <Route path="/Setting" element={<Setting />}/>
+            <Route path="/ManageReivew" element={<ManageReview />}/>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </Provider>
+    // <div className="App">
+    //   <BrowserRouter>
+    //     <Routes>
+    //       <Route path="/Review" element={<BottomNav2 />} />
+    //       <Route path="/WriteReview" element={<WriteReview />} />
+    //       <Route path="/Home" element={<BottomNav1 />} />
+    //       <Route path="/arlim" element={<Arlim />} />
+    //       <Route path="/MyPage" element={<BottomNav4 />}/>
+    //       <Route path="/Setting" element={<Setting />}/>
+    //       <Route path="/ManageReivew" element={<ManageReview />}/>
+    //     </Routes>
+    //   </BrowserRouter>
+    // </div>
   );
 }
 
