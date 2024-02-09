@@ -111,7 +111,7 @@ export default function Login2() {
       dispatch(setCredentials({ userId, token }));
       localStorage.setItem("token", token);
 
-      localStorage.setItem("userId", response.data.result.id);
+      localStorage.setItem("userId", form.id);
       localStorage.setItem("schoolId", response.data.result.schoolId);
 
       setValidLogin(true);
