@@ -49,8 +49,8 @@ export default function InfoChat() {
 
   console.log(userInfo);
   // const userId = "string";
-  const userId = userInfo.id;
-  console.log(userId);
+  const userId = localStorage.getItem("userId");
+  console.log("유저 아이디", userId);
   const storeId = 2;
 
   const today = new Date().toISOString().split("T")[0];
