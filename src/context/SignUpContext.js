@@ -20,6 +20,7 @@ export const SignUpProvider = ({ children }) => {
     schoolEmail: "",
     schoolEmailCheck: "",
     SignUpId: 0,
+    user_id: 0,
     //추가적으로 필요한 상태가 있다면 여기에 포함시킨다.
   });
 
