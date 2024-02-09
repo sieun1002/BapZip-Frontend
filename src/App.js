@@ -65,19 +65,6 @@ function App() {
         </BrowserRouter>
       </div>
     </Provider>
-    // <div className="App">
-    //   <BrowserRouter>
-    //     <Routes>
-    //       <Route path="/Review" element={<BottomNav2 />} />
-    //       <Route path="/WriteReview" element={<WriteReview />} />
-    //       <Route path="/Home" element={<BottomNav1 />} />
-    //       <Route path="/arlim" element={<Arlim />} />
-    //       <Route path="/MyPage" element={<BottomNav4 />}/>
-    //       <Route path="/Setting" element={<Setting />}/>
-    //       <Route path="/ManageReivew" element={<ManageReview />}/>
-    //     </Routes>
-    //   </BrowserRouter>
-    // </div>
   );
 }
 
