@@ -101,7 +101,7 @@ export default function WriteReview() {
     formData.append("rating",reviewDetail.rating);
     formData.append("hashtags",reviewDetail.hashtags);
     formData.append("reviewText",reviewDetail.reviewText);
-    formData.append("images",reviewDetail.imgScr);
+    formData.append("images1",reviewDetail.imgScr);
 
     axios({
       method:'post',
