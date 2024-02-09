@@ -119,6 +119,7 @@ export default function Login2() {
         ...prevUserInfo,
         school_id: response.data.result.school_id,
         user_id: response.data.result.id,
+        id: form.id,
       }));
       console.log(response.data.result);
       console.log(userInfo);
