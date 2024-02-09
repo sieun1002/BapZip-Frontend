@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import srcEmptyStar from '../../images/WriteReview/emptyStarBtn.png'
 import srcFullStar from '../../images/WriteReview/fullStarBtn.png'
 
-export default function StarRating() {
+export default function StarRating(props) {
   const [stars, setStar] = useState([false,false,false,false,false]);
   const [index_s, setIndex] = useState(0);
 
@@ -14,6 +14,9 @@ export default function StarRating() {
     }
     setStar(stars_f);
   }
+  useEffect(()=>{
+    props.setRate(index_s);
+  },[index_s])
   return (
     <div className='starRating-WriteReview'>
         <div className='txt-starRating'>

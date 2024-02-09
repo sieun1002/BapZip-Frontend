@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function SelectGood() {
+export default function SelectGood(props) {
   const [stateBtn, setBtn] = useState([false, false, false, false, false, false, false, false, false, false]);
-  
+
   function clickBtn(index){
     const stateBtn_f = Array.from(stateBtn);
     stateBtn_f[index] = !(stateBtn[index]);
@@ -16,7 +16,9 @@ export default function SelectGood() {
       setBtn(stateBtn_f);
     }
   }
-
+  useEffect(()=>{
+    props.setBenefit(stateBtn);
+  },[stateBtn]);
   return (
     <div className='selectBenefit-WriteReview'>
         <div className='txt-selectBenefit'>
