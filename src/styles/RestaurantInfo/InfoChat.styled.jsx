@@ -118,6 +118,8 @@ export const SubmitButton = styled.button`
 export const SubmitImg = styled.img`
   width: 33px;
   height: 33px;
+
+  cursor: pointer;
 `;
 
 export const ActiveChatDiv = styled.div`
