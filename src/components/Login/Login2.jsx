@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../../features/user/userSlice";
-import { useSignUp } from "../../context/SignUpContext";
 import axios from "axios";
 import {
   BodyDiv,
@@ -35,7 +34,6 @@ import secret from "../../images/Login/secret.svg";
 
 export default function Login2() {
   const dispatch = useDispatch();
-  const { userInfo, setUserInfo } = useSignUp();
 
   const [validLogin, setValidLogin] = useState(null);
 
@@ -113,16 +111,10 @@ export default function Login2() {
       dispatch(setCredentials({ userId, token }));
       localStorage.setItem("token", token);
 
-      setValidLogin(true);
+      localStorage.setItem("userId", response.data.result.id);
+      localStorage.setItem("schoolId", response.data.result.schoolId);
 
-      setUserInfo((prevUserInfo) => ({
-        ...prevUserInfo,
-        school_id: response.data.result.school_id,
-        user_id: response.data.result.id,
-        id: form.id,
-      }));
-      console.log(response.data.result);
-      console.log(userInfo);
+      setValidLogin(true);
     } catch (error) {
       // 로그인 실패 또는 에러 처리
       console.error(
