@@ -29,11 +29,14 @@ import RestaurantInfo from "./pages/RestaurantInfo";
 // // Setting---------------------------------------------------------------
 // import Setting from "./pages/Setting";
 
+import ChatTest from "./components/RestaurantInfo/ChatTest";
+
 function App() {
   return (
     <Provider store={store}>
       <SignUpProvider>
         <div className="root-wrap">
+          {/* <div className="App"> */}
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Login1 />} />
@@ -46,6 +49,7 @@ function App() {
                 element={<SineUpCompletion />}
               />
               <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
+              <Route path="/ChatTest" element={<ChatTest />} />
             </Routes>
           </BrowserRouter>
         </div>

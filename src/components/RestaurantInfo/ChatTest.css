@@ -1,0 +1,16 @@
+/* ChatTest.css에 추가 */
+.message-mine {
+  text-align: right;
+  background-color: lightblue; /* 내 메시지 배경색 */
+  margin-left: auto;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.message-others {
+  text-align: left;
+  background-color: lightgrey; /* 다른 사람 메시지 배경색 */
+  margin-right: auto;
+  padding: 5px;
+  border-radius: 10px;
+}

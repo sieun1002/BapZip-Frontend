@@ -119,3 +119,124 @@ export const SubmitImg = styled.img`
   width: 33px;
   height: 33px;
 `;
+
+export const ActiveChatDiv = styled.div`
+  width: auto;
+  height: auto;
+  display: flex;
+  /* background-color: beige; */
+
+  margin: 10px 0;
+`;
+
+export const ActiveChatDivMe = styled.div`
+  width: auto;
+  height: auto;
+  display: flex;
+  /* background-color: beige; */
+
+  margin: 10px 0;
+
+  //나
+  flex-direction: row-reverse;
+`;
+export const ProfileImg = styled.img`
+  width: 54px;
+  height: 54px;
+
+  margin-right: 10px;
+`;
+
+export const ProfileImgMe = styled.img`
+  width: 54px;
+  height: 54px;
+
+  margin-left: 10px;
+`;
+
+export const ActiveChatPDiv = styled.div`
+  width: auto;
+  height: auto;
+
+  /* background-color: aquamarine; */
+`;
+
+export const ActiveChatPDivMe = styled.div`
+  width: auto;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  /* background-color: aquamarine; */
+`;
+
+export const ProfileNickName = styled.p`
+  font-size: 14px;
+  font-weight: 600;
+  color: #191919;
+
+  margin: 3px 0 5px 0;
+`;
+
+export const ChatAndTime = styled.div`
+  width: auto;
+  height: auto;
+  /* background-color: #a52a2a48; */
+
+  display: flex;
+  align-items: flex-end;
+
+  margin: 0;
+`;
+
+export const ChatAndTimeMe = styled.div`
+  width: auto;
+  height: auto;
+  /* background-color: #a52a2a48; */
+
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row-reverse;
+
+  margin: 0;
+`;
+
+export const ChatContent = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  color: #191919;
+
+  /* background-color: blueviolet; */
+
+  margin: 0;
+  margin-right: 10px;
+`;
+
+export const ChatContentMe = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  color: #191919;
+
+  /* background-color: blueviolet; */
+
+  margin: 0;
+`;
+
+export const Time = styled.p`
+  font-size: 10px;
+  font-weight: 500;
+  color: #767676;
+
+  margin: 0;
+`;
+
+export const TimeMe = styled.p`
+  font-size: 10px;
+  font-weight: 500;
+  color: #767676;
+
+  margin: 0;
+  margin-right: 10px;
+`;

@@ -21,7 +21,6 @@ import {
   CongestionDiv,
   CongestionButton,
 } from "../styles/RestaurantInfo/RestaurantInfo.styled";
-import restaurant from "../images/RestaurantInfo/restaurant.svg";
 import clock from "../images/RestaurantInfo/clock.svg";
 import star from "../images/RestaurantInfo/star.svg";
 import good from "../images/RestaurantInfo/good.svg";
@@ -46,12 +45,11 @@ export default function RestaurantInfo() {
     const basicRestaurantInfoApi = async () => {
       try {
         // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/info`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/11/info`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/5/info`;
 
         const response = await api.get(url);
         setRestaurantInfo(response.data.result);
-        console.log(response.data.result);
-        console.log(response.data.result.images[0]);
+        // console.log(response.data.result);
       } catch (error) {
         console.error("가게 정보 가져오기 실패", error);
       }
@@ -88,7 +86,7 @@ export default function RestaurantInfo() {
       <WrapperDiv>
         <Div>
           {/* <RestaurantImage src={restaurant} alt="restaurant" /> */}
-          <RestaurantImage src={restaurantInfo.images[0]} alt="restaurant" />
+          <RestaurantImage src={restaurantInfo.images?.[0]} alt="restaurant" />
 
           <RestaurantMainInfoDiv>
             <ScrapImage src={scrap} alt="scrap" />
