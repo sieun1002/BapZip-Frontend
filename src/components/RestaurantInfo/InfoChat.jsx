@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useSignUp } from "../../context/SignUpContext";
 import axios from "axios";
 import {
   BodyDiv,
@@ -39,13 +40,17 @@ import submitiamge from "../../images/RestaurantInfo/submitImg.svg";
 import profile from "../../images/RestaurantInfo/profile.svg";
 
 export default function InfoChat() {
+  const { userInfo } = useSignUp();
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [lastUpdate, setLastUpdate] = useState("0분전");
 
   const socketRef = useRef(null); // useRef를 사용하여 WebSocket 인스턴스 참조 저장
 
-  const userId = "string";
+  console.log(userInfo);
+  // const userId = "string";
+  const userId = userInfo.id;
+  console.log(userId);
   const storeId = 2;
 
   const today = new Date().toISOString().split("T")[0];
