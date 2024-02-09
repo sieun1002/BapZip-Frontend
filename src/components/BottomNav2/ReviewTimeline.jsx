@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
+import axios from 'axios'
 import Reviews from './Reviews';
-import { reviews } from '../../reviewdummy';
+import { useSignUp } from "../../context/SignUpContext";
+import api from "../../api/LoginTokenApi";
 
 export default function ReviewTimeline() {
   const [clicked, setclick] = useState([true,false,false,false,false,false]);
@@ -11,7 +13,26 @@ export default function ReviewTimeline() {
     bools[index]=true;
     setclick(bools);
   }
-  
+  // api연결
+  // const { userInfo } = useSignUp();
+  const schoolId = 7;
+  const [reviewData,setData] = useState({});
+    function getReview(){
+      const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/timeline?schoolId=${schoolId}&categoryName=ALL`;
+      axios.get(urlget)
+      .then(function(response){
+          setData(response.data.result);
+      })
+      .catch(function(error){
+          console.log(error.message);
+      })
+    };
+    if(!reviewData[0]){
+      getReview();
+    }
+    else{
+      console.log(reviewData);
+    }
   return (
     <div className='container-timeline'>
         <p className='title-timeline'>리뷰 타임라인</p>
@@ -23,7 +44,8 @@ export default function ReviewTimeline() {
           <button onClick={()=>clickBtn(4)} className={clicked[4]?'btnActive-timeline':'btn-timeline'}>양식</button>
           <button onClick={()=>clickBtn(5)} className={clicked[5]?'btnActive-timeline':'btn-timeline'}>카페</button>
         </div>
-        <Reviews {...reviews}/>
+        {reviewData[0]?<Reviews reviews={reviewData}/>:""}
+        
     </div>
   )
 }
