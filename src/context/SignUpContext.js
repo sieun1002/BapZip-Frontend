@@ -35,7 +35,12 @@ export const SignUpProvider = ({ children }) => {
 
   return (
     <SignUpContext.Provider
-      value={{ userInfo, setUserInfo, validations, setValidations }}
+      value={{
+        userInfo,
+        setUserInfo,
+        validations,
+        setValidations,
+      }}
     >
       {children}
     </SignUpContext.Provider>
