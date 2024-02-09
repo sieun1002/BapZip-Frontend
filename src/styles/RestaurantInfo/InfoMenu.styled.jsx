@@ -72,17 +72,16 @@ export const SignatureAndFullDiv = styled.div`
 
 export const MenuList = styled.div`
   width: 420px;
-  height: 129px;
+  min-height: 129px;
   border-radius: 10px;
   background-color: #f6f6f6;
-  margin: 15px 0;
+  margin: 25px 0;
   display: flex;
 `;
 
 export const MenuListPDiv = styled.div`
   width: 297px;
-  height: 129px;
-
+  min-height: 129px;
   padding: 15px 15px;
   box-sizing: border-box;
 `;
@@ -115,4 +114,6 @@ export const MenuListP3 = styled.p`
 export const MenuListImg = styled.img`
   width: 129px;
   height: 129px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 `;

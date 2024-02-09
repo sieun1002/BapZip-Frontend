@@ -75,6 +75,7 @@ export const BreakLine = styled.div`
   height: 4px;
   background-color: #f6f6f6;
   margin: 40px 0;
+  margin-bottom: ${(props) => props.marginBottom};
 `;
 
 export const TodayNoticeDiv = styled.div`

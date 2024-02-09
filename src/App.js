@@ -30,8 +30,6 @@ import RestaurantInfo from "./pages/RestaurantInfo";
 import Setting from "./pages/Setting";
 import ManageReview from "./pages/ManageReview";
 
-import ChatTest from "./components/RestaurantInfo/ChatTest";
-
 function App() {
   return (
     <Provider store={store}>
@@ -58,8 +56,6 @@ function App() {
               <Route path="/MyPage" element={<BottomNav4 />} />
               <Route path="/Setting" element={<Setting />} />
               <Route path="/ManageReivew" element={<ManageReview />} />
-
-              <Route path="/ChatTest" element={<ChatTest />} />
             </Routes>
           </BrowserRouter>
         </div>

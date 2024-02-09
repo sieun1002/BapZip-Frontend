@@ -130,7 +130,6 @@ export default function InfoHome() {
               <TodayNoticeTitleP>오늘의 공지</TodayNoticeTitleP>
               <TodayNoticeFullView>전체 보기</TodayNoticeFullView>
             </TodayNoticeTitileDiv>
-            {/*벡 정보 가져와야 함. 반복문 써야할 듯*/}
             {notice.notice === null ? (
               <TodayNoticeContentDiv>
                 등록된 공지가 없습니다.
