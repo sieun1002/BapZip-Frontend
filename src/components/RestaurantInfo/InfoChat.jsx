@@ -48,7 +48,8 @@ export default function InfoChat() {
   const userId = localStorage.getItem("userId");
   const storeId = 2;
 
-  const today = new Date().toISOString().split("T")[0];
+  // const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toLocaleDateString("fr-CA");
 
   // 웹소켓 연결을 설정하는 코드
   const socket = new WebSocket(
