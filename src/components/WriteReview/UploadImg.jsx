@@ -15,7 +15,8 @@ export default function UploadImg(props) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
-            setImgFile(reader.result);
+            setImgFile(file);
+            console.log(imgRef.current.files);
            };
     }
     useEffect(()=>{
