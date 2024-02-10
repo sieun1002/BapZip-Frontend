@@ -33,6 +33,8 @@ export const Div = styled.div`
   ${flexCenter()}
   flex-direction: column;
   justify-content: flex-start;
+
+  position: relative;
 `;
 
 export const RestaurantImage = styled.img`
@@ -114,6 +116,8 @@ export const ScrapImage = styled.img`
   position: absolute;
   top: 15px;
   right: 0px;
+
+  cursor: pointer;
 `;
 
 export const InfoNavDiv = styled.div`
@@ -129,11 +133,39 @@ export const InfoNav = styled.div`
   height: 50px;
 
   border-bottom: solid 2px;
-  border-bottom-color: ${(props) => props.color || "dbdbdb"};
+  border-bottom-color: ${(props) => props.color || "#DBDBDB"};
 
   font-size: 16px;
   font-weight: 500;
   color: ${(props) => props.color || "#767676"};
 
   ${flexCenter()}; /* background-color: #c4ffcc32; */
+`;
+
+export const CongestionDiv = styled.div`
+  width: 420px;
+  height: 2px;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const CongestionButton = styled.button`
+  width: 70px;
+  height: 70px;
+  background-color: #ffba35;
+  ${flexCenter()}
+
+  border-radius: 50%;
+  border: 0px;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16.34px;
+  color: #ffffff;
+  position: fixed;
+  bottom: 70px;
+
+  box-shadow: 0 0 4px 0 #00000040;
+
+  cursor: pointer;
 `;

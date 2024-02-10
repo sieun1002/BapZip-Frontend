@@ -1,4 +1,6 @@
-import React from "react";
+import { React, useState } from "react";
+import { useSignUp } from "../../context/SignUpContext";
+import axios from "axios";
 import {
   BodyDiv,
   WrapperDiv,
@@ -28,12 +30,50 @@ import yellowCircle from "../../images/Login/yellowCircle.svg";
 import grayCircle from "../../images/Login/grayCircle.svg";
 
 export default function SelectSchool() {
+  const [schoolCheck, setSchoolCheck] = useState(false);
+  const { userInfo, setUserInfo } = useSignUp();
+
+  const [form, setForm] = useState({
+    school: "",
+  });
+
+  const handleSchoolApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/search?schoolName=${form.school}`;
+
+      //axios.get 메소드를 사용하여 요청을 보냄
+      const response = await axios.get(url);
+
+      // 학교 이름 저장
+      const school = response.data.result[0].name;
+      setForm({ ...form, school });
+
+      //학교 아이디 저장
+      //나중에 id 순서 바꾸기
+      const school_id = response.data.result[0].id;
+
+      setUserInfo((userInfo) => ({
+        ...userInfo,
+        school: school,
+        school_id: school_id,
+      }));
+
+      setSchoolCheck(true);
+    } catch (error) {
+      console.error(
+        "school check error",
+        error.response ? error.response.data : error
+      );
+      //에러 상황에 대한 처리 로직 추가
+    }
+  };
   return (
     <BodyDiv>
       <WrapperDiv>
         <Div>
           <HeaderDiv justifyContent="flex-end">
-            <Link to="/SineUp">
+            <Link to="/users/auth/signup">
               <XImage src={X} alt="X" />
             </Link>
           </HeaderDiv>
@@ -46,8 +86,17 @@ export default function SelectSchool() {
           </MainPDiv>
 
           <SearchBoxDiv>
-            <SearchBox placeholder="학교명 검색" name="school_name" />
-            <SearchImag src={search} alt="search" />
+            <form>
+              <SearchBox
+                id="school"
+                placeholder="학교명 검색"
+                name="school"
+                value={form.school}
+                onChange={(e) => setForm({ ...form, school: e.target.value })}
+              />
+            </form>
+
+            <SearchImag onClick={handleSchoolApi} src={search} alt="search" />
           </SearchBoxDiv>
 
           <ExPDiv>
@@ -61,23 +110,25 @@ export default function SelectSchool() {
             <CircleImage src={grayCircle} />
           </CircleImgDiv>
 
-          {/* <Submit
-            type="submit"
-            value="입력하기"
-            backgroundColor="#EDEDED"
-            marginBottom="30px"
-          /> */}
-
-          <Link
-            to="/SineUp/Select_major"
-            style={{
-              textDecoration: "none",
-              marginBottom: "30px",
-              cursor: "default",
-            }}
-          >
-            <Submit type="submit" value="다음" />
-          </Link>
+          {schoolCheck === false ? (
+            <Submit
+              type="submit"
+              value="입력하기"
+              backgroundColor="#EDEDED"
+              marginBottom="30px"
+            />
+          ) : (
+            <Link
+              to="/SineUp/Select_major"
+              style={{
+                textDecoration: "none",
+                marginBottom: "30px",
+                cursor: "default",
+              }}
+            >
+              <Submit type="submit" value="다음" />
+            </Link>
+          )}
         </Div>
       </WrapperDiv>
     </BodyDiv>

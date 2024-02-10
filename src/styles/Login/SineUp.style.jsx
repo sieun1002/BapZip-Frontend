@@ -80,9 +80,24 @@ export const Button = styled.button`
   height: 34px;
   border: solid 1px #ffba35;
   border-radius: 40px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.bgColor || "#ffffff"};
 
-  color: #ffba35;
+  color: ${(props) => props.color || "#ffba35"};
   font-size: 14px;
   font-weight: 600;
+`;
+
+export const Input2 = styled.input`
+  width: ${(props) => props.width || "420px"};
+  height: 55px;
+  /* background-color: "#eab9b5"; */
+  border: solid 0px;
+  border-bottom: solid 1px #c0c0c0;
+  ${flexCenter()}
+  justify-content:"start";
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: black;
 `;
