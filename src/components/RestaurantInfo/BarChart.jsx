@@ -56,11 +56,11 @@ const BarChart = ({ data }) => {
         <BarContainer key={index}>
           <BarLabel>{`${item.label}점`}</BarLabel>
           <BarDiv>
-            <Bar value={(item.value / maxValue) * 100} index={index}>
+            <Bar value={(item.value / (maxValue * 2)) * 100} index={index}>
               {/* {item.value} */}
             </Bar>
           </BarDiv>
-          <BarValue>{item.value}</BarValue>
+          <BarValue>{item.value / 2}</BarValue>
         </BarContainer>
       ))}
     </BarChartContainer>

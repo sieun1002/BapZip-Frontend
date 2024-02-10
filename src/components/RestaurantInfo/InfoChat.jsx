@@ -50,11 +50,6 @@ export default function InfoChat() {
 
   const today = new Date().toLocaleDateString("fr-CA");
 
-  // 웹소켓 연결을 설정하는 코드
-  const socket = new WebSocket(
-    "ws://Babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/chat"
-  );
-
   useEffect(() => {
     // WebSocket 연결
     socketRef.current = new WebSocket(

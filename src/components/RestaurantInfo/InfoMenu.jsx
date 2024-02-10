@@ -25,13 +25,6 @@ import {
   MenuListImg,
 } from "../../styles/RestaurantInfo/InfoMenu.styled";
 
-import A1 from "../../images/BottomNav1/Group 476.svg";
-import A2 from "../../images/BottomNav1/Group 477.svg";
-import A3 from "../../images/BottomNav1/Group 478.svg";
-import A4 from "../../images/BottomNav1/Group 481.svg";
-
-import menuList from "../../images/RestaurantInfo/menuList.svg";
-
 export default function InfoHome() {
   const [dragStart, setDragStart] = useState(0);
   const [dragging, setDragging] = useState(false);

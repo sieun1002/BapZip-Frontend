@@ -45,7 +45,7 @@ export default function RestaurantInfo() {
     const basicRestaurantInfoApi = async () => {
       try {
         // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/info`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/5/info`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/7/info`;
 
         const response = await api.get(url);
         setRestaurantInfo(response.data.result);
