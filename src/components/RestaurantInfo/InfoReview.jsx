@@ -40,8 +40,8 @@ import bigStar from "../../images/RestaurantInfo/bigStar.svg";
 import smallStarImg from "../../images/RestaurantInfo/smallStar.svg";
 import smallEmptyStar from "../../images/RestaurantInfo/smallEmptyStar.svg";
 import reviewWrite from "../../images/RestaurantInfo/reviewWrite.svg";
-import emptyHeart from "../../images/RestaurantInfo/emptyHeart.svg";
-import heart from "../../images/RestaurantInfo/heart.svg";
+import emptyHeartImg from "../../images/RestaurantInfo/emptyHeart.svg";
+import heartImg from "../../images/RestaurantInfo/heart.svg";
 
 import Review from "../BottomNav2/Review";
 
@@ -115,6 +115,36 @@ export default function InfoReview() {
     return <StarP1>{average}</StarP1>;
   };
 
+  const [heart, setHeart] = useState(false);
+
+  const addHeartApi = async (reviewId) => {
+    try {
+      // API 요청 URL
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/zip/${reviewId}`;
+
+      // 요청 본문에 포함될 데이터
+      const data = {
+        userId: localStorage.getItem("userId"),
+      };
+
+      // axios.post 메소드를 사용하여 요청을 보냄
+      const response = await api.post(url, data);
+
+      // 로그인 성공 처리
+      console.log("addHeart successful", response.data.result.message);
+
+      setHeart(true);
+    } catch (error) {
+      // 로그인 실패 또는 에러 처리
+      console.error(
+        "addHeart error",
+        error.response ? error.response.data : error
+      );
+      setHeart(false);
+      // 에러 상황에 대한 처리 로직을 추가하세요. 예: 사용자에게 에러 메시지 표시
+    }
+  };
+
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -122,7 +152,6 @@ export default function InfoReview() {
           <FullRateDiv>
             <StarDiv>
               <StarImg src={bigStar} alt="bigStar" />
-              {/* <StarP1>4.8</StarP1> */}
               {averageStar()}
               <StarP2>({storeReview.length})</StarP2>
             </StarDiv>
@@ -144,7 +173,12 @@ export default function InfoReview() {
                 <ReviewProfileDiv>
                   <ReviewProfileImg src={Review.userImage} alt="userImage" />
                   <ReviewProfileName>{Review.nickname}</ReviewProfileName>
-                  <HeartImg src={heart} />
+
+                  {heart === true ? (
+                    <HeartImg src={heartImg} alt="heart" />
+                  ) : (
+                    <HeartImg src={emptyHeartImg} alt="heart" />
+                  )}
                 </ReviewProfileDiv>
                 <ReviewStarDiv>
                   {starRendering(Review.rating)}
