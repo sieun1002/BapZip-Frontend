@@ -43,8 +43,6 @@ import reviewWrite from "../../images/RestaurantInfo/reviewWrite.svg";
 import emptyHeartImg from "../../images/RestaurantInfo/emptyHeart.svg";
 import heartImg from "../../images/RestaurantInfo/heart.svg";
 
-import Review from "../BottomNav2/Review";
-
 export default function InfoReview() {
   const initialData = [
     { label: 5, value: 0 },

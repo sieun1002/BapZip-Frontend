@@ -24,8 +24,8 @@ import {
 import clock from "../images/RestaurantInfo/clock.svg";
 import star from "../images/RestaurantInfo/star.svg";
 import good from "../images/RestaurantInfo/good.svg";
-import nonScrap from "../images/RestaurantInfo/noneScrap.svg";
-import Scrap from "../images/RestaurantInfo/Scrap.svg";
+import nonScrapImg from "../images/RestaurantInfo/noneScrap.svg";
+import ScrapImg from "../images/RestaurantInfo/scrap1.svg";
 
 import InfoHome from "../components/RestaurantInfo/InfoHome";
 import InfoMenu from "../components/RestaurantInfo/InfoMenu";
@@ -124,15 +124,15 @@ export default function RestaurantInfo() {
           <RestaurantMainInfoDiv>
             {scrap === true ? (
               <ScrapImage
-                src={Scrap}
-                alt="scrap"
+                src={ScrapImg}
+                alt="scrapImg"
                 onClick={() => {
                   deleteStoreScrapApi();
                 }}
               />
             ) : (
               <ScrapImage
-                src={nonScrap}
+                src={nonScrapImg}
                 alt="nonScrap"
                 onClick={() => {
                   addStoreScrapApi();
