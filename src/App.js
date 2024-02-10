@@ -24,6 +24,7 @@ import Silsiganout from "./pages/silsiganout";
 import BottomNav3 from "./pages/BottomNav3";
 import ListIn from "./pages/ListIn";
 import ListOut from "./pages/ListOut";
+import SilsiganRanking from "./pages/SilsiganRanking";
 
 // RestaurantInfo---------------------------------------------------------------
 import RestaurantInfo from "./pages/RestaurantInfo";
@@ -58,6 +59,7 @@ function App() {
           <Route path="/List" element={<BottomNav3 />} />
           <Route path="/ListIn" element={<ListIn />} />
           <Route path="/ListOut" element={<ListOut />} />
+          <Route path="/SilsiganRanking" element={<SilsiganRanking />} />
         </Routes>
       </BrowserRouter>
     </div>

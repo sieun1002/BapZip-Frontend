@@ -155,6 +155,23 @@ const StyledText2 = styled.div`
   color: #191919;
 `;
 
+const StyledText3 = styled.div`
+  position: absolute;
+  width: 79px;
+  height: 16px;
+  right: 3px;
+  top: 305px;
+
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: right;
+
+  color: #767676;
+`;
+
 const AroundSchool = () => {
   return (
     <Container>
@@ -178,6 +195,9 @@ const AroundSchool = () => {
         </Link>
       </Container2>
       <StyledText2>실시간 웨이팅 랭킹</StyledText2>
+      <Link to="/SilsiganRanking">
+        <StyledText3>더보기</StyledText3>
+      </Link>
     </Container>
   );
 };

@@ -147,6 +147,29 @@ const ModalPoint = styled.text`
 `;
 
 const Searchbar = () => {
+  const [MypageModal, setMypageModal] = useState({});
+
+  //URL에서 storeId 추출
+  // const {storeId} = useParams();
+  const { storeId } = 5;
+
+  useEffect(() => {
+    const MypageModalapi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/myPage/info`;
+
+        const response = await api.get(url);
+        setMypageModal(response.data.result);
+        console.log(MypageModal);
+      } catch (error) {
+        console.error("가게 세부 정보 가져오기 실패", error);
+      }
+    };
+
+    MypageModalapi();
+  }, []);
+
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [isModalVisible, setModalVisibility] = useState(false);
