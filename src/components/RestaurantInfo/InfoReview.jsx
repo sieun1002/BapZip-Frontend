@@ -117,6 +117,7 @@ export default function InfoReview() {
 
   const [heart, setHeart] = useState(false);
 
+  //리뷰 좋아요 api
   const addHeartApi = async (reviewId) => {
     try {
       // API 요청 URL
@@ -130,17 +131,46 @@ export default function InfoReview() {
       // axios.post 메소드를 사용하여 요청을 보냄
       const response = await api.post(url, data);
 
-      // 로그인 성공 처리
+      // 리뷰 좋아요 성공 처리
       console.log("addHeart successful", response.data.result.message);
 
       setHeart(true);
     } catch (error) {
-      // 로그인 실패 또는 에러 처리
+      // 리뷰 좋아요 실패또는 에러 처리
       console.error(
         "addHeart error",
         error.response ? error.response.data : error
       );
       setHeart(false);
+      // 에러 상황에 대한 처리 로직을 추가하세요. 예: 사용자에게 에러 메시지 표시
+    }
+  };
+
+  //리뷰 삭제 api
+  const deleteHeartApi = async (reviewId) => {
+    try {
+      // API 요청 URL
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/deleteZip/${reviewId}`;
+
+      // 요청 본문에 포함될 데이터
+      const data = {
+        userId: localStorage.getItem("userId"),
+      };
+
+      // axios.post 메소드를 사용하여 요청을 보냄
+      const response = await api.delete(url, data);
+
+      // 리뷰 좋아요 삭제 성공 처리
+      console.log("deleteHeart successful", response.data.result.message);
+
+      setHeart(false);
+    } catch (error) {
+      // 리뷰 좋아요 삭제 실패 또는 에러 처리
+      console.error(
+        "addHeart error",
+        error.response ? error.response.data : error
+      );
+      setHeart(true);
       // 에러 상황에 대한 처리 로직을 추가하세요. 예: 사용자에게 에러 메시지 표시
     }
   };
