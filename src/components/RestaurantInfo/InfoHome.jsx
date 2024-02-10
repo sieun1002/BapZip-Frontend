@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import api from "../../api/LoginTokenApi";
+import { CopyToClipboard } from "react-copy-to-clipboard/src";
+import { useParams } from "react-router-dom";
 import {
   BodyDiv,
   WrapperDiv,
   Div,
-  InfoNavDiv,
-  InfoNav,
 } from "../../styles/RestaurantInfo/RestaurantInfo.styled";
 import {
   InfoDiv,
@@ -21,6 +21,7 @@ import {
   TodayNoticeTitleP,
   TodayNoticeFullView,
   TodayNoticeContentDiv,
+  InfoContentP2Div,
 } from "../../styles/RestaurantInfo/InfoHome.styled";
 
 import InfoChat from "./InfoChat";
@@ -28,6 +29,44 @@ import InfoChat from "./InfoChat";
 import address from "../../images/RestaurantInfo/address.svg";
 
 export default function InfoHome() {
+  //가게 기본 정보 api 연결
+  const [detailRestaurantInfo, setDetailRestaurantInfo] = useState({});
+  const [notice, setNotice] = useState({});
+
+  //URL에서 storeId 추출
+  // const {storeId} = useParams();
+  const { storeId } = 5;
+
+  useEffect(() => {
+    const detailRestaurantInfoApi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/11/detailinfo/`;
+
+        const response = await api.get(url);
+        setDetailRestaurantInfo(response.data.result);
+        console.log(response.data.result);
+      } catch (error) {
+        console.error("가게 세부 정보 가져오기 실패", error);
+      }
+    };
+
+    const noticeApi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/5/notice`;
+
+        const response = await api.get(url);
+        setNotice(response.data.result);
+        console.log(response.data.result);
+      } catch (error) {
+        console.log("오늘의 공지 가져오기 실패", error);
+      }
+    };
+    detailRestaurantInfoApi();
+    noticeApi();
+  }, [storeId]);
+
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -44,36 +83,44 @@ export default function InfoHome() {
 
             <InfoPdiv>
               <InfoTitleP>평균 웨이팅</InfoTitleP>
+
               <InfoContentDiv>
-                <InfoContentP>30분 이내</InfoContentP>
+                <InfoContentP>
+                  {detailRestaurantInfo.waitingAverage} 이내
+                </InfoContentP>
               </InfoContentDiv>
             </InfoPdiv>
             <InfoPdiv>
               <InfoTitleP>영업시간</InfoTitleP>
               <InfoContentDiv>
-                <InfoContentP>월 ~ 금 09:00 ~ 18:00</InfoContentP>
-                <InfoContentP>12:00 ~ 13:00 브레이크 타임</InfoContentP>
+                <InfoContentP>
+                  {detailRestaurantInfo.businessHours}
+                </InfoContentP>
               </InfoContentDiv>
             </InfoPdiv>
             <InfoPdiv>
               <InfoTitleP>정기 휴무</InfoTitleP>
               <InfoContentDiv>
-                <InfoContentP>토일 휴무</InfoContentP>
-                <InfoContentP>공휴일 휴무</InfoContentP>
+                <InfoContentP>{detailRestaurantInfo.closedDay}</InfoContentP>
               </InfoContentDiv>
             </InfoPdiv>
             <InfoPdiv>
               <InfoTitleP>위치</InfoTitleP>
+
               <InfoContentDiv>
-                <InfoContentP>
-                  서울특별시 00구 00동 00빌딩 00동 00호
-                </InfoContentP>
-                {/*벡 정보 가져와야 함. 반복문 써야할 듯*/}
+                <InfoContentP>{detailRestaurantInfo.position}</InfoContentP>
                 {/*누르면 복사되는 기능 추가*/}
-                <InfoContentP>
+                <InfoContentP2Div>
                   <AddressImage src={address} alt="address" />
-                  주소 복사
-                </InfoContentP>
+                  <CopyToClipboard
+                    text={detailRestaurantInfo.position}
+                    onCopy={() => alert("클립보드에 복사되었습니다.")}
+                  >
+                    <InfoContentP textDecoration="underline" cursor="pointer">
+                      주소 복사
+                    </InfoContentP>
+                  </CopyToClipboard>
+                </InfoContentP2Div>
               </InfoContentDiv>
             </InfoPdiv>
           </InfoDiv>
@@ -83,10 +130,13 @@ export default function InfoHome() {
               <TodayNoticeTitleP>오늘의 공지</TodayNoticeTitleP>
               <TodayNoticeFullView>전체 보기</TodayNoticeFullView>
             </TodayNoticeTitileDiv>
-            {/*벡 정보 가져와야 함. 반복문 써야할 듯*/}
-            <TodayNoticeContentDiv>
-              오늘 영업 1시간 일찍 마감합니다!
-            </TodayNoticeContentDiv>
+            {notice.notice === null ? (
+              <TodayNoticeContentDiv>
+                등록된 공지가 없습니다.
+              </TodayNoticeContentDiv>
+            ) : (
+              <TodayNoticeContentDiv>{notice.notice}</TodayNoticeContentDiv>
+            )}
           </TodayNoticeDiv>
           <BreakLine></BreakLine>
           <InfoChat></InfoChat>

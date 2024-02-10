@@ -7,12 +7,15 @@ import MyZipStore from '../components/BottomNav4/MyZipStore'
 
 export default function BottomNav4() {
   return (
-    <div className="container-BottomNav4">
-        <Header />
-        <Profile />
-        <SelectBar />
-        <MyZipStore />
-        <BottomNav menu="MyPage" />
+    <div className='App'>
+      <div className="container-BottomNav4">
+          <Header />
+          <Profile />
+          <SelectBar />
+          <MyZipStore />
+          <BottomNav menu="MyPage" />
+      </div>
     </div>
+
   )
 }

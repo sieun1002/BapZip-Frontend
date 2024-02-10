@@ -57,6 +57,7 @@ export const MainTitleDiv = styled.div`
   width: 420px;
   height: 30px;
   /* background-color: beige; */
+  position: relative;
   display: flex;
 `;
 
@@ -94,11 +95,14 @@ export const ReviewDiv = styled.div`
 `;
 
 export const ReviewProfileDiv = styled.div`
-  width: 200px;
+  /* width: 200px; */
+  width: 390px;
   height: 30px;
   /* background-color: #892be238; */
   display: flex;
   align-items: center;
+
+  position: relative;
 `;
 
 export const ReviewProfileNotImg = styled.div`
@@ -170,4 +174,23 @@ export const ReviewDate = styled.p`
   font-weight: 500;
   color: #767676;
   margin: 0;
+`;
+
+export const ReviewWriteImg = styled.img`
+  width: 31px;
+  height: 31px;
+
+  position: absolute;
+  right: 0;
+`;
+
+export const HeartImg = styled.img`
+  width: 37px;
+  height: 37px;
+
+  position: absolute;
+  right: 5px;
+  top: 5px;
+
+  cursor: pointer;
 `;

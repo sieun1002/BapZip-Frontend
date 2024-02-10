@@ -49,9 +49,23 @@ export const InfoContentP = styled.p`
   font-size: 14px;
   font-weight: 500;
   margin: 0;
+
+  text-decoration: ${(props) => props.textDecoration};
+  cursor: ${(props) => props.cursor};
+
+  /* background-color: beige; */
+`;
+
+export const InfoContentP2Div = styled.div`
+  width: 80px;
+  height: 20px;
+  /* background-color: #2cafaf; */
+  display: flex;
+  align-items: center;
 `;
 
 export const AddressImage = styled.img`
+  /* margin-top: 5px; */
   width: 17px;
   height: 17px;
 `;
@@ -61,6 +75,7 @@ export const BreakLine = styled.div`
   height: 4px;
   background-color: #f6f6f6;
   margin: 40px 0;
+  margin-bottom: ${(props) => props.marginBottom};
 `;
 
 export const TodayNoticeDiv = styled.div`

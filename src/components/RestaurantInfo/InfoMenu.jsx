@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import api from "../../api/LoginTokenApi";
 import {
   BodyDiv,
   WrapperDiv,
@@ -24,18 +25,10 @@ import {
   MenuListImg,
 } from "../../styles/RestaurantInfo/InfoMenu.styled";
 
-import A1 from "../../images/BottomNav1/Group 476.svg";
-import A2 from "../../images/BottomNav1/Group 477.svg";
-import A3 from "../../images/BottomNav1/Group 478.svg";
-import A4 from "../../images/BottomNav1/Group 481.svg";
-
-import menuList from "../../images/RestaurantInfo/menuList.svg";
-
 export default function InfoHome() {
   const [dragStart, setDragStart] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [translate, setTranslate] = useState(0);
-
   const sliderRef = useRef(null);
 
   const handleMouseDown = (e) => {
@@ -56,95 +49,96 @@ export default function InfoHome() {
   const handleMouseUp = () => {
     setDragging(false);
   };
+
+  const [menuPan, setMenuPan] = useState([]);
+  const [signatureMenu, setSignatureMenu] = useState([]);
+
+  //URL에서 storeId 추출
+  // const {storeId} = useParams();
+  const { storeId } = 5;
+
+  useEffect(() => {
+    const manuPanApi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/printedMenu`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/5/printedMenu`;
+
+        const response = await api.get(url);
+        setMenuPan(response.data.result);
+        // console.log(response.data.result);
+        // console.log(menuPan);
+      } catch (error) {
+        console.error("메뉴판 가져오기 실패", error);
+      }
+    };
+
+    const signatureMenunApi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/menu`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/stores/11/menu`;
+
+        const response = await api.get(url);
+        setSignatureMenu(response.data.result);
+        // console.log(response.data.result);
+        console.log(signatureMenu);
+      } catch (error) {
+        console.error("메뉴판 가져오기 실패", error);
+      }
+    };
+
+    manuPanApi();
+    signatureMenunApi();
+  }, [storeId]);
+
   return (
     <BodyDiv>
       <WrapperDiv>
         <Div height="100%">
           <MenuPanDiv>
             <MainP>메뉴판</MainP>
-            <SliderContainer
-              ref={sliderRef}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUp}
-              onMouseLeave={handleMouseUp}
-            >
-              <ImageSlider style={{ transform: `translateX(${translate}px)` }}>
-                <SlideImage src={menuList} alt="Image 1" />
-                <SlideImage src={menuList} alt="Image 2" />
-                <SlideImage src={menuList} alt="Image 3" />
-                <SlideImage src={menuList} alt="Image 4" />
-                <SlideImage src={menuList} alt="Image 5" />
-                <SlideImage src={menuList} alt="Image 6" />
-                <SlideImage src={menuList} alt="Image 7" />
-                <SlideImage src={menuList} alt="Image 8" />
-              </ImageSlider>
-            </SliderContainer>
+
+            {menuPan.length === 0 ? (
+              <NotMenuDiv>등록된 메뉴판 사진이 없어요.</NotMenuDiv>
+            ) : (
+              <SliderContainer
+                ref={sliderRef}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+              >
+                <ImageSlider
+                  style={{ transform: `translateX(${translate}px)` }}
+                >
+                  {menuPan.map((img, index) => (
+                    <SlideImage key={index} src={img.imageUrl} alt="Image 1" />
+                  ))}
+                </ImageSlider>
+              </SliderContainer>
+            )}
           </MenuPanDiv>
 
-          {/* <MenuPanDiv>
-            <MainP>메뉴판</MainP>
-            <NotMenuDiv>등록된 메뉴판 사진이 없어요.</NotMenuDiv>
-          </MenuPanDiv> */}
-          <BreakLine></BreakLine>
+          <BreakLine marginBottom="0"></BreakLine>
           <MenuListDiv>
-            <MainP marginTop="0px">대표 메뉴</MainP>
-            <SignatureAndFullDiv>
-              {/* 벡 반복문 사용 */}
-              <MenuList>
-                <MenuListPDiv>
-                  <MenuListP1>한끼 분식 세트</MenuListP1>
-                  <MenuListP2>
-                    떡볶이 + 순대 + 어묵꼬치 1개로 구성된 한끼 식사입니다~
-                  </MenuListP2>
-                  <MenuListP3>8,500원</MenuListP3>
-                </MenuListPDiv>
-                <MenuListImg src={menuList} alt="menuList" />
-              </MenuList>
-
-              <MenuList>
-                <MenuListPDiv>
-                  <MenuListP1>한끼 분식 세트</MenuListP1>
-                  <MenuListP2>
-                    떡볶이 + 순대 + 어묵꼬치 1개로 구성된 한끼 식사입니다~
-                  </MenuListP2>
-                  <MenuListP3>8,500원</MenuListP3>
-                </MenuListPDiv>
-              </MenuList>
-            </SignatureAndFullDiv>
-            <MainP>식사</MainP>
-            <SignatureAndFullDiv>
-              {/* 벡 반복문 사용 */}
-              <MenuList>
-                <MenuListPDiv>
-                  <MenuListP1>한끼 분식 세트</MenuListP1>
-                  <MenuListP2>
-                    떡볶이 + 순대 + 어묵꼬치 1개로 구성된 한끼 식사입니다~
-                  </MenuListP2>
-                  <MenuListP3>8,500원</MenuListP3>
-                </MenuListPDiv>
-              </MenuList>
-
-              <MenuList>
-                <MenuListPDiv>
-                  <MenuListP1>한끼 분식 세트</MenuListP1>
-                  <MenuListP2>
-                    떡볶이 + 순대 + 어묵꼬치 1개로 구성된 한끼 식사입니다~
-                  </MenuListP2>
-                  <MenuListP3>8,500원</MenuListP3>
-                </MenuListPDiv>
-              </MenuList>
-
-              <MenuList>
-                <MenuListPDiv>
-                  <MenuListP1>한끼 분식 세트</MenuListP1>
-                  <MenuListP2>
-                    떡볶이 + 순대 + 어묵꼬치 1개로 구성된 한끼 식사입니다~
-                  </MenuListP2>
-                  <MenuListP3>8,500원</MenuListP3>
-                </MenuListPDiv>
-              </MenuList>
-            </SignatureAndFullDiv>
+            {signatureMenu.map((group, groupIndex) => (
+              <>
+                <MainP key={groupIndex}>{group[0].groupName}</MainP>
+                <SignatureAndFullDiv>
+                  {group.map((menuList, menuListIndex) => (
+                    <MenuList key={menuListIndex}>
+                      <MenuListPDiv>
+                        <MenuListP1>{menuList.menuName}</MenuListP1>
+                        <MenuListP2>{menuList.explanation}</MenuListP2>
+                        <MenuListP3>{menuList.price}원</MenuListP3>
+                      </MenuListPDiv>
+                      {menuList.imageURL !== null ? (
+                        <MenuListImg src={menuList.imageURL} alt="menuList" />
+                      ) : null}
+                    </MenuList>
+                  ))}
+                </SignatureAndFullDiv>
+              </>
+            ))}
           </MenuListDiv>
         </Div>
       </WrapperDiv>
