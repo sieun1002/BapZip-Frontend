@@ -24,7 +24,8 @@ import {
 import clock from "../images/RestaurantInfo/clock.svg";
 import star from "../images/RestaurantInfo/star.svg";
 import good from "../images/RestaurantInfo/good.svg";
-import scrap from "../images/RestaurantInfo/scrap.svg";
+import nonScrap from "../images/RestaurantInfo/noneScrap.svg";
+import Scrap from "../images/RestaurantInfo/Scrap.svg";
 
 import InfoHome from "../components/RestaurantInfo/InfoHome";
 import InfoMenu from "../components/RestaurantInfo/InfoMenu";
@@ -35,27 +36,59 @@ import CongestionCheck2 from "../components/RestaurantInfo/CongestionCheck2";
 import CongestionCheck3 from "../components/RestaurantInfo/CongestionCheck3";
 
 export default function RestaurantInfo() {
+  const [scrap, setScrap] = useState();
+
   //가게 기본 정보 api 연결
   const [restaurantInfo, setRestaurantInfo] = useState({});
   //URL에서 storeId 추출
   // const {storeId} = useParams();
-  const { storeId } = 5;
+  const storeId = 5;
 
   useEffect(() => {
     const basicRestaurantInfoApi = async () => {
       try {
-        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/info`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/7/info`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/info`;
 
         const response = await api.get(url);
         setRestaurantInfo(response.data.result);
-        // console.log(response.data.result);
+        setScrap(response.data.result.bookmark);
+        console.log(response.data.result);
       } catch (error) {
         console.error("가게 정보 가져오기 실패", error);
       }
     };
+
     basicRestaurantInfoApi();
   }, [storeId]);
+
+  //가게 zip 하기
+  const addStoreScrapApi = async () => {
+    try {
+      // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/info`;
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/zip?storeId=${storeId}`;
+
+      const response = await api.post(url);
+      // 리뷰 좋아요 성공 처리
+      console.log("addCtoreScrap successful", response.data.isSuccess);
+      setScrap(true);
+    } catch (error) {
+      console.error("가게 scrap 실패", error);
+    }
+  };
+
+  //가게 zip 해제 하기
+  const deleteStoreScrapApi = async () => {
+    try {
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/deleteZip?storeId=${storeId}`;
+
+      const response = await api.delete(url);
+      // 가게 스크랩 해제  성공 처리
+      console.log("deleteCtoreScrap successful", response.data.isSuccess);
+      setScrap(false);
+    } catch (error) {
+      console.error("가게 scrap 해제 실패", error);
+    }
+  };
 
   // 'home', 'menu', 'review', 'chat' 중 하나를 현재 상태로 관리합니다.
   const [currentTab, setCurrentTab] = useState("home");
@@ -89,7 +122,24 @@ export default function RestaurantInfo() {
           <RestaurantImage src={restaurantInfo.images?.[0]} alt="restaurant" />
 
           <RestaurantMainInfoDiv>
-            <ScrapImage src={scrap} alt="scrap" />
+            {scrap === true ? (
+              <ScrapImage
+                src={Scrap}
+                alt="scrap"
+                onClick={() => {
+                  deleteStoreScrapApi();
+                }}
+              />
+            ) : (
+              <ScrapImage
+                src={nonScrap}
+                alt="nonScrap"
+                onClick={() => {
+                  addStoreScrapApi();
+                }}
+              />
+            )}
+
             <RestaurantNameP>
               {restaurantInfo.name} - {restaurantInfo.category}
             </RestaurantNameP>

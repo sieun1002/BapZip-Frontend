@@ -116,6 +116,8 @@ export const ScrapImage = styled.img`
   position: absolute;
   top: 15px;
   right: 0px;
+
+  cursor: pointer;
 `;
 
 export const InfoNavDiv = styled.div`
