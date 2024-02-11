@@ -18,6 +18,24 @@ import {
 import arrowBottom from "../../images/Point/arrowBottom.svg";
 
 export default function PointSearch() {
+  const [PointLists, setPointLists] = useState([]);
+
+  useEffect(() => {
+    const PointListsApi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/point/myPoint`;
+
+        const response = await api.get(url);
+        setPointLists(response.data.result);
+        console.log(response.data.result);
+      } catch (error) {
+        console.error("가게 세부 정보 가져오기 실패", error);
+      }
+    };
+
+    PointListsApi();
+  }, []);
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -34,14 +52,18 @@ export default function PointSearch() {
             </SearchSelect>
           </SearchNav>
 
-          <PointSearchDiv>
-            <PointSearchPDiv>
-              <PointSearchP1>00식당 비방문객 혼잡도 체크</PointSearchP1>
-              <PointSearchP2>2023.01.04</PointSearchP2>
-            </PointSearchPDiv>
-            <PointSearchP3>+10P</PointSearchP3>
-          </PointSearchDiv>
-          <PointSearchLine />
+          {PointLists.map((list, index) => (
+            <React.Fragment key={index}>
+              <PointSearchDiv>
+                <PointSearchPDiv>
+                  <PointSearchP1>{list.note}</PointSearchP1>
+                  <PointSearchP2>2023.01.04</PointSearchP2>
+                </PointSearchPDiv>
+                <PointSearchP3>+10P</PointSearchP3>
+              </PointSearchDiv>
+              <PointSearchLine />
+            </React.Fragment>
+          ))}
         </Div>
       </WrapperDiv>
     </BodyDiv>

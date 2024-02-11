@@ -36,6 +36,25 @@ export default function Point() {
     }
   };
 
+  const [allPoint, setallPoint] = useState();
+
+  useEffect(() => {
+    const allPointApi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/point/myTotalPoint`;
+
+        const response = await api.get(url);
+        setallPoint(response.data.result);
+        console.log(response.data.result);
+      } catch (error) {
+        console.error("가게 세부 정보 가져오기 실패", error);
+      }
+    };
+
+    allPointApi();
+  }, []);
+
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -50,7 +69,7 @@ export default function Point() {
               <MainPointImg src={mainPoint} alt="mainPoint" />
               <MainPointPDiv>
                 <MainPointP1>밥좋아님의 보유 포인트는?</MainPointP1>
-                <MainPointP2>15000P</MainPointP2>
+                <MainPointP2>{allPoint}P</MainPointP2>
               </MainPointPDiv>
             </MainPointWrapper>
           </MainWrapper>
