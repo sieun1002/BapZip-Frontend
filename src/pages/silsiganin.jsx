@@ -11,7 +11,7 @@ import Restaurant5 from "../components/silsiganin/Restaurant5";
 export default function Silsiganin() {
   return (
     <div className="App">
-      <div>
+      <div style={{ height: "109vh" }}>
         <Header />
         <Searchbar />
         <Restaurant />

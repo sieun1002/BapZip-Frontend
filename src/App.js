@@ -12,8 +12,8 @@ import SelectMajor from "./components/Login/SelectMajor";
 import SineUpCompletion from "./components/Login/SineUpCompletion";
 
 // // BottomNav2---------------------------------------------------------------
-// import BottomNav2 from "./pages/BottomNav2";git
-// import WriteReview from "./pages/WriteReview";
+import BottomNav2 from "./pages/BottomNav2";
+import WriteReview from "./pages/WriteReview";
 
 // BottomNav---------------------------------------------------------------
 
@@ -66,8 +66,8 @@ function App() {
               <Route path="/Silsiganin" element={<Silsiganin />} />
               <Route path="/Silsiganout" element={<Silsiganout />} />
               <Route path="/List" element={<BottomNav3 />} />
-              <Route path="/ListIn" element={<ListIn />} />
-              <Route path="/ListOut" element={<ListOut />} />
+              <Route path="/Listin" element={<ListIn />} />
+              <Route path="/Listout" element={<ListOut />} />
               <Route path="/SilsiganRanking" element={<SilsiganRanking />} />
 
               <Route path="/Review" element={<BottomNav2 />} />

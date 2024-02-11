@@ -37,11 +37,11 @@ const Line = styled.div`
 `;
 
 const ModalContent = styled.div`
-  position: absolute;
+  position: fixed;
   width: 480px;
   height: 465px;
-  left: 388px;
-  top: 379px;
+  top: 452px;
+  margin-left: -30px;
   background: #ffffff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px 20px 0px 0px;
@@ -127,6 +127,16 @@ const schoolTextStyle3 = {
   textalign: "center",
 };
 
+const LineStyle = {
+  position: "absolute",
+  width: "512px",
+  height: "0px",
+  right: "90px",
+  top: "400px",
+  border: "1px solid #D9D9D9",
+  transform: "rotate(-90deg)",
+};
+
 const Silsi = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const modalRef = useRef();
@@ -156,6 +166,7 @@ const Silsi = () => {
       <Box onClick={handleBoxClick} />
       {isModalOpen && (
         <ModalContent ref={modalRef}>
+          <div style={LineStyle}></div>
           <div style={schoolTextStyle}>학교 선택</div>
           <SearchBar>
             <img src={SearchIcon} alt="Search Icon" />

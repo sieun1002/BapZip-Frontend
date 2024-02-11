@@ -13,7 +13,7 @@ const Cont = styled.div`
 
 export default function ListIn() {
   return (
-    <div className="container-BottomNav2">
+    <div className="App">
       <Header />
       <Searchbar />
       <RestaurantBar />

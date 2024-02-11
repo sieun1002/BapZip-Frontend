@@ -7,12 +7,11 @@ import Review from "../components/BottomNav1/reviewimage";
 import Todayplace from "../components/BottomNav1/todayplace";
 import Recommend from "../components/BottomNav1/recommend";
 import BottomNav from "../components/BottomNav";
-import "../../index.css";
 
 export default function BottomNav1() {
   return (
     <div className="App">
-      <div className="container-BottomNav2">
+      <div>
         <Searchbar />
         <Silsi />
         <Honjap />
