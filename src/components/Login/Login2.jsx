@@ -181,12 +181,12 @@ export default function Login2() {
                 자동 로그인
               </AutomaticLoginDiv>
 
-              {validLogin ? (
+              {validLogin === false ? (
+                <Submit type="submit" value="로그인" />
+              ) : (
                 <Link to="/Home" style={{ textDecoration: "none" }}>
                   <Submit type="submit" value="로그인" />
                 </Link>
-              ) : (
-                <Submit type="submit" value="로그인" />
               )}
             </Form>
 
