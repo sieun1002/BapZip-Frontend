@@ -8,7 +8,7 @@ export default function ManageReview() {
   const [options,setOptions]=useState([true,false]);
   return (
     <div className='App'>
-      <div className='manageReview-BottomNav4'>
+      <div className='manageReview-BottomNav4' style={{position:"relative"}}>
           <Header />
           <SelectBar options={options} setOptions={setOptions}/>
           {options[0]?<MyReview />:<ZipReview />}

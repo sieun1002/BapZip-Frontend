@@ -12,29 +12,30 @@ export default function ReviewTimeline() {
     false,
   ]);
   let index = 0;
+  let categoryList = ["ALL", "KOREA", "CHINA", "JAPAN", "WESTERN", "CAFE"];
   function clickBtn(x) {
     const bools = [false, false, false, false, false, false];
     index = x;
     bools[index] = true;
     setclick(bools);
+    getReview(categoryList[x]);
   }
 
   // api연결
   const storedUserId = localStorage.getItem("schoolId"); 
-  const schoolId = 7;
   const [reviewData, setData] = useState({});
-  function getReview() {
-    const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/timeline?schoolId=${schoolId}&categoryName=ALL`;
+  function getReview(category = "ALL") {
+    const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/timeline?schoolId=${storedUserId}&categoryName=${category}`;
     api
       .get(urlget)
       .then(function (response) {
         setData(response.data.result);
-        console.log(storedUserId);
       })
       .catch(function (error) {
         console.log(error.message);
       });
   }
+  //처음 랜더링시 연결
   if (!reviewData[0]) {
     getReview();
   }
