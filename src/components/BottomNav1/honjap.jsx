@@ -14,6 +14,7 @@ import Out2 from "../../images/BottomNav1/Out2.svg";
 import A1 from "../../images/BottomNav1/a1.svg";
 import A2 from "../../images/BottomNav1/a2.svg";
 import Hotplace from "../../images/BottomNav1/Hotplace.svg";
+import "../../index.css";
 
 const Container = styled.div`
   margin-top: 20px;
@@ -156,30 +157,32 @@ const Hot = styled.img`
 
 const Honjap = () => {
   return (
-    <Container>
-      <A3 src={A1} alt="IN2" />
-      <A4 src={A2} alt="IN2" />
+    <div>
+      <Container>
+        <A3 src={A1} alt="IN2" />
+        <A4 src={A2} alt="IN2" />
 
-      <Container1>
-        <Link to="/silsiganin">
-          <BackgroundImage src={background} alt="배경" />
-          <ZandiImage src={zandi} alt="Zandi" />
-          <SchoolImage src={school} alt="School" />
-          <HumanImage src={human} alt="Human" />
-          <In src={IN} alt="IN" />
-          <In2 src={IN2} alt="IN2" />
-          <In3 src={IN3} alt="IN3" />
-        </Link>
-      </Container1>
-      <Container2>
-        <Link to="/silsiganout">
-          <OutBackgroundImage src={Outbackground} alt="배경" />
-          <Out3 src={Out} alt=">" />
-          <Out4 src={Out2} alt="교외식당" />
-        </Link>
-      </Container2>
-      <Hot src={Hotplace} alt="교외식당" />
-    </Container>
+        <Container1>
+          <Link to="/silsiganin">
+            <BackgroundImage src={background} alt="배경" />
+            <ZandiImage src={zandi} alt="Zandi" />
+            <SchoolImage src={school} alt="School" />
+            <HumanImage src={human} alt="Human" />
+            <In src={IN} alt="IN" />
+            <In2 src={IN2} alt="IN2" />
+            <In3 src={IN3} alt="IN3" />
+          </Link>
+        </Container1>
+        <Container2>
+          <Link to="/silsiganout">
+            <OutBackgroundImage src={Outbackground} alt="배경" />
+            <Out3 src={Out} alt=">" />
+            <Out4 src={Out2} alt="교외식당" />
+          </Link>
+        </Container2>
+        <Hot src={Hotplace} alt="교외식당" />
+      </Container>
+    </div>
   );
 };
 

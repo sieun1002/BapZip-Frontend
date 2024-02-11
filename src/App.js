@@ -12,14 +12,24 @@ import SelectMajor from "./components/Login/SelectMajor";
 import SineUpCompletion from "./components/Login/SineUpCompletion";
 
 // // BottomNav2---------------------------------------------------------------
-// import BottomNav2 from "./pages/BottomNav2";git
-// import WriteReview from "./pages/WriteReview";
+import BottomNav2 from "./pages/BottomNav2";
+import WriteReview from "./pages/WriteReview";
 
 // BottomNav---------------------------------------------------------------
 
 import BottomNav1 from "./pages/BottomNav1";
 import Arlim from "./pages/Arlim";
 import Silsiganin from "./pages/silsiganin";
+
+import Silsiganout from "./pages/silsiganout";
+
+// BottomNav3---------------------------------------------------------------
+
+import BottomNav3 from "./pages/BottomNav3";
+import ListIn from "./pages/ListIn";
+import ListOut from "./pages/ListOut";
+import SilsiganRanking from "./pages/SilsiganRanking";
+
 // BottomNav4---------------------------------------------------------------
 import BottomNav4 from "./pages/BottomNav4";
 
@@ -48,6 +58,17 @@ function App() {
                 element={<SineUpCompletion />}
               />
               <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
+
+              <Route path="/Review" element={<BottomNav2 />} />
+              <Route path="/WriteReview" element={<WriteReview />} />
+              <Route path="/Home" element={<BottomNav1 />} />
+              <Route path="/Arlim" element={<Arlim />} />
+              <Route path="/Silsiganin" element={<Silsiganin />} />
+              <Route path="/Silsiganout" element={<Silsiganout />} />
+              <Route path="/List" element={<BottomNav3 />} />
+              <Route path="/ListIn" element={<ListIn />} />
+              <Route path="/ListOut" element={<ListOut />} />
+              <Route path="/SilsiganRanking" element={<SilsiganRanking />} />
 
               <Route path="/Review" element={<BottomNav2 />} />
               <Route path="/WriteReview" element={<WriteReview />} />

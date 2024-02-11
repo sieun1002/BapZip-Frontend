@@ -6,6 +6,7 @@ import logoicon from "../../images/BottomNav1/logo.svg";
 import SearchIcon from "../../images/BottomNav1/icon_search.svg";
 import Bellicon from "../../images/BottomNav1/Component 35.svg";
 import Haticon from "../../images/BottomNav1/Component 36.svg";
+import api from "../../api/LoginTokenApi";
 
 const AppContainer = styled.div`
   display: flex;
@@ -147,6 +148,29 @@ const ModalPoint = styled.text`
 `;
 
 const Searchbar = () => {
+  const [MypageModal, setMypageModal] = useState({});
+
+  //URL에서 storeId 추출
+  // const {storeId} = useParams();
+  const { storeId } = 5;
+
+  useEffect(() => {
+    const MypageModalapi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/myPage/info`;
+
+        const response = await api.get(url);
+        setMypageModal(response.data.result);
+        console.log("마이페이지 api 호출", MypageModal);
+      } catch (error) {
+        console.error("가게 세부 정보 가져오기 실패", error);
+      }
+    };
+
+    MypageModalapi();
+  }, []);
+
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [isModalVisible, setModalVisibility] = useState(false);
@@ -219,8 +243,8 @@ const Searchbar = () => {
       >
         {/* 내용 추가 */}
         <ModalImage />
-        <ModalId>밥좋아</ModalId>
-        <ModalSchool>밥ZIP대학교</ModalSchool>
+        <ModalId>{MypageModal.nickname}</ModalId>
+        <ModalSchool>{MypageModal.schoolName}</ModalSchool>
         <ModalPoint>8000P</ModalPoint>
       </Modal>
     </AppContainer>

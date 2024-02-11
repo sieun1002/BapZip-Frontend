@@ -10,14 +10,16 @@ import Restaurant5 from "../components/silsiganout/Restaurant5";
 
 export default function Silsiganout() {
   return (
-    <div>
-      <Header />
-      <Searchbar />
-      <Restaurant />
-      <Restaurant2 />
-      <Restaurant3 />
-      <Restaurant4 />
-      <Restaurant5 />
+    <div className="App">
+      <div style={{ height: "109vh" }}>
+        <Header />
+        <Searchbar />
+        <Restaurant />
+        <Restaurant2 />
+        <Restaurant3 />
+        <Restaurant4 />
+        <Restaurant5 />
+      </div>
     </div>
   );
 }
