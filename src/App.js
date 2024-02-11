@@ -30,6 +30,9 @@ import RestaurantInfo from "./pages/RestaurantInfo";
 import Setting from "./pages/Setting";
 import ManageReview from "./pages/ManageReview";
 
+//Point
+import Point from "./pages/Point";
+
 function App() {
   return (
     <Provider store={store}>
@@ -56,6 +59,8 @@ function App() {
               <Route path="/MyPage" element={<BottomNav4 />} />
               <Route path="/Setting" element={<Setting />} />
               <Route path="/ManageReivew" element={<ManageReview />} />
+
+              <Route path="/Mypage/Point" element={<Point />} />
             </Routes>
           </BrowserRouter>
         </div>
