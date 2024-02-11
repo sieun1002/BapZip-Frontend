@@ -194,7 +194,7 @@ export default function SineUpCompletion() {
 
           {isSubmitActive ? (
             <Link
-              to="#"
+              to="/users/auth/sigin"
               style={{
                 textDecoration: "none",
               }}

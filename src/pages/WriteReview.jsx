@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/LoginTokenApi";
+
 import Header from "../components/WriteReview/Header";
 import SearchStore from "../components/WriteReview/SearchStore";
 import StarRating from "../components/WriteReview/StarRating";
@@ -87,25 +88,7 @@ export default function WriteReview() {
       imgScr: input,
     });
   }
-  const urlpost =
-    "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/signin";
-  function getToken() {
-    axios
-      .post(urlpost, {
-        userId: "id1",
-        password: "1234",
-      })
-      .then(function (response) {
-        //getStore
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${response.data.result.token}`;
-        submitReview();
-      })
-      .catch(function (error) {
-        console.log(error.message);
-      });
-  }
+
   const url =
     "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews";
   function submitReview() {
@@ -122,15 +105,16 @@ export default function WriteReview() {
     formData.append("reviewText", reviewDetail.reviewText);
     formData.append("images1", reviewDetail.imgScr);
 
-    axios({
+    api({
       method: "post",
+
       url: url,
       data: formData,
     });
   }
   function clickBtn() {
     setModal(true);
-    getToken();
+    submitReview();
   }
   return (
     <div className="App">

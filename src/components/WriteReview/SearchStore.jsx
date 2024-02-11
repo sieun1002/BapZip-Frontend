@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import api from "../../api/LoginTokenApi";
 import scrSearchBtn from '../../images/WriteReview/storeSearchBtn.png'
 import scrSearchIcon from '../../images/WriteReview/searchIcon.png'
 import scrUnknownIcon from '../../images/WriteReview/unknownIcon.png'
@@ -8,28 +8,12 @@ import scrRatingIcon from '../../images/WriteReview/ratingIcon.png'
 export default function SearchStore(props) {
   const [modalState,setModal] = useState(false);
   const [input,setInput] = useState("");
-  const [storeId, setId] = useState();
-  const urlpost = 'http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/signin';
-  function getToken(){
-    axios.post(urlpost,
-      {
-        "userId": "id1",
-        "password": "1234"
-      })
-      .then(function(response){
-        //getStore
-        axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.result.token}`;
-        getStore();
-      })
-      .catch(function(error){
-        console.log(error.message);
-      });
-  }; 
+  const [storeId, setId] = useState(); 
 
   const [storeData,setData] = useState({});
   function getStore(){
     const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/search?name=${input}`;
-    axios.get(urlget,input)
+    api.get(urlget,input)
     .then(function(response){
       setData(response.data.result);
     })
@@ -40,7 +24,7 @@ export default function SearchStore(props) {
   const [storeDetail,setDetail] = useState({});
   function getDetail(){
     const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/info`;
-    axios.get(urlget)
+    api.get(urlget)
     .then(function(response){
       setDetail(response.data.result);
     })
@@ -49,7 +33,7 @@ export default function SearchStore(props) {
     })
   };
   useEffect(()=>{
-    getToken();
+    getStore();
     },[input]);
   useEffect(()=>{
     props.setStore(storeDetail.name);
