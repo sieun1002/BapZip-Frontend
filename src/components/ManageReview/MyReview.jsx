@@ -14,6 +14,7 @@ export default function MyReview() {
   const [selectBtn,setSelBtn] = useState([]);
 
   const [viewModal,setModal] = useState(false);
+  
   const [reviewData,setData] = useState([]);
 
   const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/myReviews`;
@@ -76,9 +77,7 @@ export default function MyReview() {
   if(!reviewData[0]){
     getReview();
   }
-  useEffect(()=>{
-    console.log("do");
-  },[viewModal]);
+  
   return (
     <div className='myReview-ManageReview'>
       <div className='deleteBar-myReview'>
