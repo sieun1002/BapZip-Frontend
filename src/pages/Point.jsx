@@ -23,6 +23,7 @@ import arrowLeft from "../images/Login/arrowLeft.svg";
 
 import PointSearch from "../components/Point/PointSearch";
 import PointChange from "../components/Point/PointChange";
+import { Link } from "react-router-dom";
 
 export default function Point() {
   const [currentTab, setCurrentTab] = useState("pointSearch");
@@ -60,7 +61,9 @@ export default function Point() {
       <WrapperDiv>
         <Div>
           <HeaderDiv>
-            <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
+            <Link to="/MyPage">
+              <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
+            </Link>
             포인트
           </HeaderDiv>
           <MainWrapper>

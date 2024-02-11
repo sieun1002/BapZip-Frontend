@@ -16,6 +16,8 @@ import {
   FailedConvertP,
 } from "../../styles/Point/PointChange.styled";
 
+import GetCoupon from "./GetCoupon";
+
 export default function PointChange(props) {
   const allPoint = props.allPoint;
 
@@ -27,6 +29,8 @@ export default function PointChange(props) {
   });
 
   const [changePoints, setChangePoints] = useState(form.changePoints);
+  const [getCouponValid, setgetCouponValid] = useState(false);
+
   //포인트 입력
   const handlePointsCh = (e, allPoint) => {
     const changePoint = parseInt(e.target.value, 10);
@@ -110,12 +114,18 @@ export default function PointChange(props) {
 
           <FinalCoupon>
             <FinalP1>할인 쿠폰 금액</FinalP1>
-            <FinalP2>3,000P</FinalP2>
+            <FinalP2>{form.changePoints}P</FinalP2>
           </FinalCoupon>
           {/* <Button type="button" onClick={validConvertFunc}>
             전환하기
           </Button> */}
-          <Button type="button" onClick={convertPointApi}>
+          <Button
+            type="button"
+            onClick={() => {
+              convertPointApi();
+              setgetCouponValid(true);
+            }}
+          >
             전환하기
           </Button>
 
@@ -124,6 +134,12 @@ export default function PointChange(props) {
             마이페이지 쿠폰함에서 바코드를 보여줄 시에 이용할 수 있습니다.{" "}
             <br />- 포인트는 1,000점 이상부터 1,000단위로 전환할 수 있습니다.
           </CautionDiv>
+
+          {/* <GetCoupon /> */}
+
+          {getCouponValid === true ? (
+            <GetCoupon setgetCouponValid={setgetCouponValid} />
+          ) : null}
         </Div>
       </WrapperDiv>
     </BodyDiv>
