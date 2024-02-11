@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../../features/user/userSlice";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import {
   BodyDiv,
@@ -105,7 +106,7 @@ export default function Login2() {
       });
 
       // 로그인 성공 처리
-      console.log("Login successful", response.data.result.token);
+      console.log("Login successful");
       const userId = form.id;
       const token = response.data.result.token;
       dispatch(setCredentials({ userId, token }));
@@ -179,7 +180,14 @@ export default function Login2() {
                 <CircleImage src={Circle ? checkCircle : emptyCircle} />
                 자동 로그인
               </AutomaticLoginDiv>
-              <Submit type="submit" value="로그인" />
+
+              {validLogin ? (
+                <Link to="/Home" style={{ textDecoration: "none" }}>
+                  <Submit type="submit" value="로그인" />
+                </Link>
+              ) : (
+                <Submit type="submit" value="로그인" />
+              )}
             </Form>
 
             <SearchDiv>
