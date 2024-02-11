@@ -114,7 +114,9 @@ export default function PointChange(props) {
 
           <FinalCoupon>
             <FinalP1>할인 쿠폰 금액</FinalP1>
-            <FinalP2>{form.changePoints}P</FinalP2>
+            <FinalP2>{form.changePoints ? form.changePoints : 0}P</FinalP2>
+
+            {console.log(form.changePoints, typeof form.changePoints)}
           </FinalCoupon>
           {/* <Button type="button" onClick={validConvertFunc}>
             전환하기
