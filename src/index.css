@@ -212,11 +212,13 @@ p {
   border: 1px solid #dbdbdb;
   background-color: #ffffff;
   color: #767676;
+  outline: none;
 }
 .btnActive-timeline {
   border: 1px solid #ffba35;
   background-color: #fff8ec;
   color: #ffba35;
+  outline: none;
 }
 /*review*/
 .container-review {

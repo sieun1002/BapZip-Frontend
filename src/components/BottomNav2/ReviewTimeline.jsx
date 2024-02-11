@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import Reviews from "./Reviews";
-import { useSignUp } from "../../context/SignUpContext";
 import api from "../../api/LoginTokenApi";
 
 export default function ReviewTimeline() {
-  //api 인증 test
-
   const [clicked, setclick] = useState([
     true,
     false,
@@ -24,7 +20,7 @@ export default function ReviewTimeline() {
   }
 
   // api연결
-  // const { userInfo } = useSignUp();
+  const storedUserId = localStorage.getItem("schoolId"); 
   const schoolId = 7;
   const [reviewData, setData] = useState({});
   function getReview() {
@@ -33,6 +29,7 @@ export default function ReviewTimeline() {
       .get(urlget)
       .then(function (response) {
         setData(response.data.result);
+        console.log(storedUserId);
       })
       .catch(function (error) {
         console.log(error.message);
@@ -40,8 +37,6 @@ export default function ReviewTimeline() {
   }
   if (!reviewData[0]) {
     getReview();
-  } else {
-    console.log(reviewData);
   }
 
   return (

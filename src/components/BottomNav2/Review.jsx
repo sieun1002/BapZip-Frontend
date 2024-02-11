@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import srcBtnLikeOff from '../../images/BottomNav2/likeBtn.png'
 import srcBtnLikeOn from '../../images/BottomNav2/likeBtnActive.png'
 import srcBackGround from '../../images/BottomNav2/reviewPicBack.png'
+import api from "../../api/LoginTokenApi";
 
 export default function Review(item) {
   const date = item.reviewCreateDate.substr(0, 10).split('-');
@@ -10,12 +11,17 @@ export default function Review(item) {
   const [likeState,setLike] = useState(item.like);
   const [howManyLike,sethowManyLike] = useState(21);
   let value = howManyLike;
+  const urlZip = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/zip/${item.reviewId}`;
+  const urlDelZip = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/deleteZip/${item.reviewId}`;
+
   function clickLike(){
     if(!likeState){
+      api.post(urlZip);
       sethowManyLike(++value);
       setLike(!likeState);
     }
     else{
+      api.delete(urlDelZip);
       sethowManyLike(--value);
       setLike(!likeState); 
     }

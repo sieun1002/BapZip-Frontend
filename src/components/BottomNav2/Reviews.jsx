@@ -7,7 +7,7 @@ export default function Reviews(props) {
         {
           props.reviews.map((item) => {
             return (
-              <Review {...item} key={item.name}/>
+              <Review {...item} key={item.reviewId}/>
 
             )
           })
