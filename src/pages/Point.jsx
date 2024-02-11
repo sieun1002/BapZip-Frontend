@@ -23,10 +23,11 @@ import arrowLeft from "../images/Login/arrowLeft.svg";
 
 import PointSearch from "../components/Point/PointSearch";
 import PointChange from "../components/Point/PointChange";
+import { useLocation } from "react-router-dom";
 
 export default function Point() {
   const [currentTab, setCurrentTab] = useState("pointSearch");
-
+  const location = useLocation();
   const renderTabComponent = () => {
     switch (currentTab) {
       case "pointChange":
@@ -49,7 +50,8 @@ export default function Point() {
               <MainPointDiv></MainPointDiv>
               <MainPointImg src={mainPoint} alt="mainPoint" />
               <MainPointPDiv>
-                <MainPointP1>밥좋아님의 보유 포인트는?</MainPointP1>
+                {location.state?.userName?<MainPointP1>{location.state?.userName}님의 보유 포인트는?</MainPointP1>:""}
+                
                 <MainPointP2>15000P</MainPointP2>
               </MainPointPDiv>
             </MainPointWrapper>

@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import api from "../../api/LoginTokenApi";
 
 import scraddImgBtn from '../../images/BottomNav4/addImgBtn.png'
 
-export default function Profile() {
+export default function Profile(props) {
   const [imgFile, setImgFile] = useState("");
   const [imgSrc, setScr] = useState("");
   const imgRef = useRef();
@@ -45,6 +45,9 @@ export default function Profile() {
   if(!userData.nickname){
     getProfile();
   }
+  useEffect(()=>{
+    props.setName(userData.nickname);
+  },[userData]);
   const name = userData.nickname;
   const school = userData.schoolName;
   const major = userData.major;
