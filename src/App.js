@@ -66,8 +66,8 @@ function App() {
               <Route path="/Silsiganin" element={<Silsiganin />} />
               <Route path="/Silsiganout" element={<Silsiganout />} />
               <Route path="/List" element={<BottomNav3 />} />
-              <Route path="/Listin" element={<ListIn />} />
-              <Route path="/Listout" element={<ListOut />} />
+              <Route path="/ListIn" element={<ListIn />} />
+              <Route path="/ListOut" element={<ListOut />} />
               <Route path="/SilsiganRanking" element={<SilsiganRanking />} />
 
               <Route path="/Review" element={<BottomNav2 />} />

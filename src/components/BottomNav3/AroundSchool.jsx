@@ -177,7 +177,7 @@ const AroundSchool = () => {
     <Container>
       <StyledText>우리학교 식당 둘러보기</StyledText>
       <Container1>
-        <Link to="/Listin">
+        <Link to="/ListIn">
           <BackgroundImage src={background} alt="배경" />
           <ZandiImage src={zandi} alt="Zandi" />
           <SchoolImage src={school} alt="School" />
@@ -188,7 +188,7 @@ const AroundSchool = () => {
         </Link>
       </Container1>
       <Container2>
-        <Link to="/Listout">
+        <Link to="/ListOut">
           <OutBackgroundImage src={Outbackground} alt="배경" />
           <Out3 src={Out} alt=">" />
           <Out4 src={Out2} alt="교외식당" />

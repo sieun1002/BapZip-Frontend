@@ -157,7 +157,7 @@ const Hot = styled.img`
 
 const Honjap = () => {
   return (
-    <div className="App">
+    <div>
       <Container>
         <A3 src={A1} alt="IN2" />
         <A4 src={A2} alt="IN2" />
