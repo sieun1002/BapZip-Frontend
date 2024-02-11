@@ -140,6 +140,8 @@ export const InfoNav = styled.div`
   color: ${(props) => props.color || "#767676"};
 
   ${flexCenter()}; /* background-color: #c4ffcc32; */
+
+  cursor: pointer;
 `;
 
 export const CongestionDiv = styled.div`

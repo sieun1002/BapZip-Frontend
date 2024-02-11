@@ -70,15 +70,8 @@ export default function InfoHome() {
     <BodyDiv>
       <WrapperDiv>
         <Div height="100%">
-          {/* <InfoNavDiv>
-            <InfoNav color="#FFBA35">홈</InfoNav>
-            <InfoNav>메뉴</InfoNav>
-            <InfoNav>리뷰</InfoNav>
-            <InfoNav>실시간 채팅</InfoNav>
-          </InfoNavDiv> */}
           <InfoDiv>
             <InfoMainP1>가게정보</InfoMainP1>
-            {/*벡 정보 가져와야 함. 반복문 써야할 듯*/}
 
             <InfoPdiv>
               <InfoTitleP>평균 웨이팅</InfoTitleP>
