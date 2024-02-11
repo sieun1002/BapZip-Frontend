@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import api from "../../api/LoginTokenApi";
 import { CopyToClipboard } from "react-copy-to-clipboard/src";
-import { useParams } from "react-router-dom";
 import {
   BodyDiv,
   WrapperDiv,

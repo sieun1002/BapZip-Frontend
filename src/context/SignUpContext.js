@@ -33,6 +33,13 @@ export const SignUpProvider = ({ children }) => {
     isSchoolEmailValid: null,
   });
 
+  const [congestion, setCongestion] = useState({
+    congestionLevel: "",
+    visitStatus: "",
+    occupancyCount: 0,
+    waitTime: 0,
+  });
+
   return (
     <SignUpContext.Provider
       value={{
@@ -40,6 +47,8 @@ export const SignUpProvider = ({ children }) => {
         setUserInfo,
         validations,
         setValidations,
+        congestion,
+        setCongestion,
       }}
     >
       {children}

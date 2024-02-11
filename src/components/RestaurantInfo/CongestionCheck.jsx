@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSignUp } from "../../context/SignUpContext";
 import {
   BodyDiv,
   WrapperDiv,
@@ -15,6 +16,7 @@ import {
   CongestionButton,
   XImg,
 } from "../../styles/RestaurantInfo/CongestionCheck.styled";
+
 import X from "../../images/Login/X.svg";
 
 export default function CongestionCheck({
@@ -31,6 +33,8 @@ export default function CongestionCheck({
     setCongestionCheck(false);
     setCongestionCheck3(true);
   };
+
+  const { congestion, setCongestion } = useSignUp();
 
   return (
     <BodyDiv>
@@ -50,13 +54,19 @@ export default function CongestionCheck({
               <CongestionButtonDiv>
                 <CongestionButton
                   type="button"
-                  onClick={handleCongestionCheck2}
+                  onClick={() => {
+                    handleCongestionCheck2();
+                    setCongestion({ ...congestion, visitStatus: "NONVISIT" });
+                  }}
                 >
                   비방문객
                 </CongestionButton>
                 <CongestionButton
                   type="button"
-                  onClick={handleCongestionCheck3}
+                  onClick={() => {
+                    handleCongestionCheck3();
+                    setCongestion({ ...congestion, visitStatus: "VISIT" });
+                  }}
                 >
                   방문객
                 </CongestionButton>
