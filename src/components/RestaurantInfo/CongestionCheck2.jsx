@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSignUp } from "../../context/SignUpContext";
+import api from "../../api/LoginTokenApi";
 import {
   BodyDiv,
   WrapperDiv,
@@ -17,13 +19,11 @@ import {
   CongestionMainPDiv2,
 } from "../../styles/RestaurantInfo/CongestionCheck.styled";
 
+import SavePoint from "./SavePoint";
+
 import X from "../../images/Login/X.svg";
 
-export default function CongestionCheck2({
-  setCongestionCheck,
-  setCongestionCheck2,
-  setCongestionCheck3,
-}) {
+export default function CongestionCheck2({ setCongestionCheck2 }) {
   const [button1, setButton1] = useState(false);
   const [button2, setButton2] = useState(false);
   const [button3, setButton3] = useState(false);
@@ -31,7 +31,8 @@ export default function CongestionCheck2({
   const [button5, setButton5] = useState(false);
   const [button6, setButton6] = useState(false);
   const [button7, setButton7] = useState(false);
-  const [button8, setButton8] = useState(false);
+
+  const [point, setPoint] = useState(false);
 
   const handleButton1 = () => {
     setButton1(!button1);
@@ -61,6 +62,36 @@ export default function CongestionCheck2({
     setButton7(!button7);
   };
 
+  const { congestion, setCongestion } = useSignUp();
+
+  const storeId = 5;
+  //congestion api
+  const congestionApi = async () => {
+    try {
+      //API 요청 URL
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/congestion/${storeId}`;
+
+      //요청 본문에 포함될 데이터
+      const data = {
+        congestionLevel: congestion.congestionLevel,
+        visitStatus: congestion.visitStatus,
+        occupancyCount: congestion.occupancyCount,
+        waitTime: congestion.waitTime,
+      };
+
+      //axios.post 메소드를 사용하여 요청을 보냄
+      const response = await api.post(url, data);
+
+      console.log("congestion successful", response.data.message);
+    } catch (error) {
+      console.error(
+        "congestion error",
+        error.response ? error.response.data : error
+      );
+      //에러 상황에 대한 처리 로직 추가.
+    }
+  };
+
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -84,7 +115,10 @@ export default function CongestionCheck2({
               <CongestionButtonDiv>
                 <CongestionButton
                   type="button"
-                  onClick={handleButton1}
+                  onClick={() => {
+                    handleButton1();
+                    setCongestion({ ...congestion, occupancyCount: 10 });
+                  }}
                   backgroundColor={button1 ? "#ffba35" : "#FFFFFF"}
                   color={button1 ? "#ffffff" : "#767676"}
                 >
@@ -92,7 +126,10 @@ export default function CongestionCheck2({
                 </CongestionButton>
                 <CongestionButton
                   type="button"
-                  onClick={handleButton2}
+                  onClick={() => {
+                    handleButton2();
+                    setCongestion({ ...congestion, occupancyCount: 15 });
+                  }}
                   backgroundColor={button2 ? "#ffba35" : "#FFFFFF"}
                   color={button2 ? "#ffffff" : "#767676"}
                 >
@@ -100,7 +137,10 @@ export default function CongestionCheck2({
                 </CongestionButton>
                 <CongestionButton
                   type="button"
-                  onClick={handleButton3}
+                  onClick={() => {
+                    handleButton3();
+                    setCongestion({ ...congestion, occupancyCount: 20 });
+                  }}
                   backgroundColor={button3 ? "#ffba35" : "#FFFFFF"}
                   color={button3 ? "#ffffff" : "#767676"}
                 >
@@ -108,7 +148,10 @@ export default function CongestionCheck2({
                 </CongestionButton>
                 <CongestionButton
                   type="button"
-                  onClick={handleButton4}
+                  onClick={() => {
+                    handleButton4();
+                    setCongestion({ ...congestion, occupancyCount: 25 });
+                  }}
                   backgroundColor={button4 ? "#ffba35" : "#FFFFFF"}
                   color={button4 ? "#ffffff" : "#767676"}
                 >
@@ -120,7 +163,10 @@ export default function CongestionCheck2({
               <CongestionButtonDiv>
                 <CongestionButton
                   type="button"
-                  onClick={handleButton5}
+                  onClick={() => {
+                    handleButton5();
+                    setCongestion({ ...congestion, congestionLevel: "SPARSE" });
+                  }}
                   backgroundColor={button5 ? "#ffba35" : "#FFFFFF"}
                   color={button5 ? "#ffffff" : "#767676"}
                 >
@@ -128,7 +174,13 @@ export default function CongestionCheck2({
                 </CongestionButton>
                 <CongestionButton
                   type="button"
-                  onClick={handleButton6}
+                  onClick={() => {
+                    handleButton6();
+                    setCongestion({
+                      ...congestion,
+                      congestionLevel: "MODERATE",
+                    });
+                  }}
                   backgroundColor={button6 ? "#ffba35" : "#FFFFFF"}
                   color={button6 ? "#ffffff" : "#767676"}
                 >
@@ -136,7 +188,13 @@ export default function CongestionCheck2({
                 </CongestionButton>
                 <CongestionButton
                   type="button"
-                  onClick={handleButton7}
+                  onClick={() => {
+                    handleButton7();
+                    setCongestion({
+                      ...congestion,
+                      congestionLevel: "CROWDED",
+                    });
+                  }}
                   backgroundColor={button7 ? "#ffba35" : "#FFFFFF"}
                   color={button7 ? "#ffffff" : "#767676"}
                 >
@@ -160,12 +218,22 @@ export default function CongestionCheck2({
                       ? "#ffffff"
                       : "#767676"
                   }
+                  onClick={() => {
+                    congestionApi();
+                    setPoint(true);
+                  }}
                 >
                   등록
                 </CongestionButton>
               </CongestionButtonDiv>
             </CongestionCheckDiv>
           </CongestionCheckWrapper>
+          {point === true ? (
+            <SavePoint
+              setPoint={setPoint}
+              setCongestionCheck={setCongestionCheck2}
+            />
+          ) : null}
         </Div>
       </WrapperDiv>
     </BodyDiv>
