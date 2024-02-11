@@ -194,3 +194,18 @@ export const HeartImg = styled.img`
 
   cursor: pointer;
 `;
+
+export const NoneReviewDiv = styled.div`
+  margin: 20px 0 0 0;
+  width: 420px;
+  height: 130px;
+  background-color: #f6f6f6;
+  border-radius: 10px;
+
+  ${flexCenter()}
+  text-align: center;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: #767676;
+`;

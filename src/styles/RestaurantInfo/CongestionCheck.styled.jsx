@@ -90,3 +90,78 @@ export const XImg = styled.img`
 
   cursor: pointer;
 `;
+
+export const PointImg = styled.img`
+  width: 200px;
+  height: 140px;
+  margin-bottom: 20px;
+`;
+
+export const PointDiv = styled.div`
+  width: 318px;
+  height: 291px;
+
+  background-color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0 #00000040;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 10;
+`;
+export const PointP = styled.p`
+  font-size: 20px;
+  font-weight: 600;
+  color: #191919;
+  margin: 0;
+  margin-bottom: 20px;
+`;
+
+export const PointButton = styled.button`
+  width: 285.64px;
+  height: 42px;
+  background-color: #ffba35;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+
+  border: 0px;
+  border-radius: 10px;
+`;
+
+export const BodDiv = styled.div`
+  width: 100vw;
+  height: 500px;
+  ${flexCenter()}
+
+  z-index: 10;
+`;
+
+export const WrappeDiv = styled.div`
+  width: 480px;
+  height: 100%;
+  /* height: auto; */
+  background-color: #191919b2;
+  ${flexCenter()}
+  justify-content: ${(props) => props.justifyContent || "center"};
+  flex-direction: column;
+  position: ${(props) => props.position};
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+  z-index: 4;
+
+  position: fixed;
+  top: 50%;
+  transform: translate(0, -50%);
+`;

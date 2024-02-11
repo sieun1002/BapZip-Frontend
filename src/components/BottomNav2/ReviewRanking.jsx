@@ -1,28 +1,11 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+import api from "../../api/LoginTokenApi";
 
 export default function ReviewRanking() {
-    const urlpost = 'http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/signin';
-    function getToken(){
-    axios.post(urlpost,
-        {
-        "userId": "id1",
-        "password": "1234"
-        })
-        .then(function(response){
-        //getRancking
-        axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.result.token}`;
-        getRancking();
-        })
-        .catch(function(error){
-        console.log(error.message);
-        });
-    }; 
-
     const [userData,setData] = useState({});
     function getRancking(){
     const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/ranking`;
-    axios.get(urlget)
+    api.get(urlget)
     .then(function(response){
         setData(response.data.result);
     })
@@ -32,7 +15,7 @@ export default function ReviewRanking() {
     };
 
     if(!userData[0]){
-    getToken();
+    getRancking();
     }
     return (
         <div className='container-reviewRanking'>
