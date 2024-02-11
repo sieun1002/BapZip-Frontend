@@ -23,7 +23,7 @@ import getCoupon from "../../images/Point/getCuoponLayer.svg";
 import getCouponLine from "../../images/Point/getCouponLine.svg";
 import getCouponBarcode from "../../images/Point/getCouponBarcode.svg";
 
-export default function GetCoupon(setgetCouponValid) {
+export default function GetCoupon({ setgetCouponValid, changePoint }) {
   return (
     <div>
       <BodDiv>
@@ -41,7 +41,7 @@ export default function GetCoupon(setgetCouponValid) {
           </PointDiv> */}
 
           <CouponWrapper>
-            <MainP>3,000원 할인 쿠폰이 지급되었습니다.</MainP>
+            <MainP>{changePoint}원 할인 쿠폰이 지급되었습니다.</MainP>
             <ImgWrapper>
               <GetCouponImg src={getCoupon} alt="getCoupon" />
               <GetCouponLineImg src={getCouponLine} alt="getCouponLine" />
@@ -49,7 +49,7 @@ export default function GetCoupon(setgetCouponValid) {
                 src={getCouponBarcode}
                 alt="GetCouponBarcode"
               />
-              <GetCouponP>3,000원</GetCouponP>
+              <GetCouponP>{changePoint}원</GetCouponP>
             </ImgWrapper>
             <Botton
               type="button"

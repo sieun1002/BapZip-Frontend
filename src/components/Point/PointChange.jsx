@@ -138,7 +138,10 @@ export default function PointChange(props) {
           {/* <GetCoupon /> */}
 
           {getCouponValid === true ? (
-            <GetCoupon setgetCouponValid={setgetCouponValid} />
+            <GetCoupon
+              setgetCouponValid={setgetCouponValid}
+              changePoint={form.changePoints}
+            />
           ) : null}
         </Div>
       </WrapperDiv>
