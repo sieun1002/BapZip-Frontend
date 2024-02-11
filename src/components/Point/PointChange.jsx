@@ -12,41 +12,137 @@ import {
   FinalP2,
   Button,
   CautionDiv,
+  FailedConvertDiv,
+  FailedConvertP,
 } from "../../styles/Point/PointChange.styled";
 
-export default function PointChange() {
+import GetCoupon from "./GetCoupon";
+
+export default function PointChange(props) {
+  const allPoint = props.allPoint;
+
+  const [convertPoint, setConvertPoint] = useState({});
+  // const [validConvert, setValidConvert] = useState(null);
+  const [remainingPoint, setRemainingPoint] = useState(0);
+  const [form, setForm] = useState({
+    changePoints: 0,
+  });
+
+  const [changePoints, setChangePoints] = useState(form.changePoints);
+  const [getCouponValid, setgetCouponValid] = useState(false);
+
+  //포인트 입력
+  const handlePointsCh = (e, allPoint) => {
+    const changePoint = parseInt(e.target.value, 10);
+
+    setForm({ ...form, changePoints: changePoint });
+    // setForm((prevForm) => ({ ...prevForm, changePoint }));
+    if (form.changePoints > allPoint) {
+      setForm({ ...form, changePoints: allPoint });
+    }
+
+    if (e.target.value === "") {
+      setRemainingPoint(0);
+    } else {
+      setRemainingPoint(allPoint - changePoint);
+    }
+
+    // console.log("dd", form.changePoints % 1000);
+    // console.log("changePoints ", form.changePoints, typeof form.changePoints);
+    // if (form.changePoints % 1000 !== 0) {
+    //   setValidConvert(false);
+    // } else {
+    //   setValidConvert(true);
+    // }
+  };
+  const convertPointApi = async () => {
+    try {
+      //API 요청 URL
+      const url =
+        "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/coupon/convertPoint";
+
+      //요청 본문에 포함될 데이터
+      const data = {
+        issuedPoints: form.changePoints,
+        totalPoints: allPoint,
+      };
+
+      //axios.post 메소드를 사용하여 요청을 보냄
+      const response = await api.post(url, data);
+
+      console.log("convertApi successful", response.data.result);
+      setConvertPoint(response.data.result);
+    } catch (error) {
+      console.error(
+        "convertApi error",
+        error.response ? error.response.data : error
+      );
+      //에러 상황에 대한 처리 로직 추가.
+    }
+  };
+
+  // const validConvertFunc = () => {
+  //   console.log("dd", form.changePoints % 1000);
+  //   console.log("changePoints ", form.changePoints, typeof form.changePoints);
+  //   if (form.changePoints % 1000 !== 0) {
+  //     setValidConvert(false);
+  //   } else {
+  //     setValidConvert(true);
+  //   }
+  // };
   return (
     <BodyDiv>
       <WrapperDiv>
         <Div height="100%">
           <PointForm>
             <PointFormLable>전환 포인트</PointFormLable>
+
             <PointFormInput
-              type="text"
+              type="number"
               id="changePoint"
               placeholder="전환할 포인트를 입력하세요"
+              onChange={(e) => handlePointsCh(e, allPoint)}
             />
+            {/* {validConvert === false ? (
+              <FailedConvertDiv>
+                <FailedConvertP>1,000 단위로 입력해주세요.</FailedConvertP>
+              </FailedConvertDiv>
+            ) : null} */}
             <PointFormLable>예정 잔여 포인트</PointFormLable>
-            <PointFormInput
-              type="text"
-              id="changePoint"
-              value="12,000P"
-              color="#191919"
-              fontWeight="600"
-            />
+            <PointFormInput id="changePoint" value={remainingPoint} />
           </PointForm>
 
           <FinalCoupon>
             <FinalP1>할인 쿠폰 금액</FinalP1>
-            <FinalP2>3,000P</FinalP2>
+            <FinalP2>{form.changePoints}P</FinalP2>
           </FinalCoupon>
-          <Button>전환하기</Button>
+          {/* <Button type="button" onClick={validConvertFunc}>
+            전환하기
+          </Button> */}
+          <Button
+            type="button"
+            onClick={() => {
+              convertPointApi();
+              setgetCouponValid(true);
+            }}
+          >
+            전환하기
+          </Button>
 
           <CautionDiv>
-            - 포인트 1000점당 할인 쿠폰 1,000원으로 전환됩니다. <br />
-            - 마이페이지 쿠폰함에서 바코드를 보여줄 시에 이용할 수 있습니다.{" "}
+            - 포인트 1000점당 할인 쿠폰 1,000원으로 전환됩니다. <br />-
+            마이페이지 쿠폰함에서 바코드를 보여줄 시에 이용할 수 있습니다.{" "}
             <br />- 포인트는 1,000점 이상부터 1,000단위로 전환할 수 있습니다.
           </CautionDiv>
+
+          {/* <GetCoupon /> */}
+
+          {getCouponValid === true ? (
+            <GetCoupon
+              setgetCouponValid={setgetCouponValid}
+              changePoint={form.changePoints}
+            />
+          ) : null}
         </Div>
       </WrapperDiv>
     </BodyDiv>

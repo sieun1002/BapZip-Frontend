@@ -8,18 +8,20 @@ const flexCenter = () => `
 
 export const PointForm = styled.form`
   width: 420px;
-  height: 250px;
+  min-height: 250px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 20px 0 20px 0;
+  box-sizing: border-box;
 
   /* background-color: bisque; */
 `;
 
 export const PointFormLable = styled.div`
   width: 420px;
-  height: 40px;
+  min-height: 40px;
 
   font-size: 16px;
   font-weight: 600;
@@ -33,15 +35,23 @@ export const PointFormLable = styled.div`
 
 export const PointFormInput = styled.input`
   width: 420px;
-  height: 55px;
+  min-height: 55px;
   border-radius: 10px;
   border: solid 1px #c0c0c0;
 
-  color: ${(props) => props.color || "#C0C0C0"};
+  color: #191919;
   font-size: 14px;
-  font-weight: ${(props) => props.fontWeight || "500"};
+  font-weight: 600;
 
   margin-bottom: 10px;
+
+  padding-left: 15px;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: #c0c0c0;
+    font-weight: 500;
+  }
 `;
 
 export const FinalCoupon = styled.div`
@@ -94,4 +104,19 @@ export const CautionDiv = styled.div`
   color: #767676;
 
   margin-bottom: 50px;
+`;
+
+export const FailedConvertDiv = styled.div`
+  width: 420px;
+  height: 40px;
+  /* background-color: beige; */
+  margin: 0 0 0 7px;
+  /* margin: 0; */
+`;
+export const FailedConvertP = styled.p`
+  color: #e32525;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 19.07px;
+  margin: 0;
 `;

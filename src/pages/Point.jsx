@@ -23,14 +23,15 @@ import arrowLeft from "../images/Login/arrowLeft.svg";
 
 import PointSearch from "../components/Point/PointSearch";
 import PointChange from "../components/Point/PointChange";
+import { Link } from "react-router-dom";
 
 export default function Point() {
   const [currentTab, setCurrentTab] = useState("pointSearch");
 
-  const renderTabComponent = () => {
+  const renderTabComponent = (allPoint) => {
     switch (currentTab) {
       case "pointChange":
-        return <PointChange />;
+        return <PointChange allPoint={allPoint} />;
       default:
         return <PointSearch />;
     }
@@ -46,6 +47,7 @@ export default function Point() {
 
         const response = await api.get(url);
         setallPoint(response.data.result);
+        // setallPoint(3010);
         console.log(response.data.result);
       } catch (error) {
         console.error("가게 세부 정보 가져오기 실패", error);
@@ -60,7 +62,9 @@ export default function Point() {
       <WrapperDiv>
         <Div>
           <HeaderDiv>
-            <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
+            <Link to="/MyPage">
+              <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
+            </Link>
             포인트
           </HeaderDiv>
           <MainWrapper>
@@ -90,7 +94,7 @@ export default function Point() {
               포인트 전환
             </ManuButton>
           </MenuDiv>
-          {renderTabComponent()}
+          {renderTabComponent(allPoint)}
 
           {/* <PointSearch /> */}
           {/* <PointChange /> */}
