@@ -118,9 +118,11 @@ export default function InfoReview(props) {
         <ReviewStarNum>{Review.rating}.0</ReviewStarNum>
       </ReviewStarDiv>
       <ReviewContentDiv>{Review.reviewText}</ReviewContentDiv>
-      {Review.reviewImage !== "" ? (
-        <ReviewImg src={Review.reviewImage} alt="reviewImage" />
-      ) : null}
+      {Review.reviewImages.length !== 0
+        ? Review.reviewImages.map((ReviewImgUrl, index) => (
+            <ReviewImg src={ReviewImgUrl} alt="reviewImage" key={index} />
+          ))
+        : null}
       <ReviewDate>
         {Review.createdAt ? Review.createdAt.split("T")[0] : ""}
       </ReviewDate>
