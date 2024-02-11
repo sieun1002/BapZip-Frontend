@@ -145,6 +145,7 @@ export const ActiveChatDivMe = styled.div`
 export const ProfileImg = styled.img`
   width: 54px;
   height: 54px;
+  border-radius: 50%;
 
   margin-right: 10px;
 `;
@@ -152,7 +153,7 @@ export const ProfileImg = styled.img`
 export const ProfileImgMe = styled.img`
   width: 54px;
   height: 54px;
-
+  border-radius: 50%;
   margin-left: 10px;
 `;
 

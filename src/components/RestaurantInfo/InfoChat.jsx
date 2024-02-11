@@ -158,7 +158,12 @@ export default function InfoChat() {
                   msg.userId === userId ? (
                     // msg.token === token ? (
                     <ActiveChatDivMe key={index}>
-                      <ProfileImgMe src={profile} />
+                      {msg.imageUrl ? (
+                        <ProfileImgMe src={msg.imageUrl} />
+                      ) : (
+                        <ProfileImgMe src={profile} />
+                      )}
+
                       <ActiveChatPDivMe>
                         <ProfileNickName>나</ProfileNickName>
                         <ChatAndTimeMe>
@@ -171,7 +176,12 @@ export default function InfoChat() {
                     </ActiveChatDivMe>
                   ) : (
                     <ActiveChatDiv key={index}>
-                      <ProfileImg src={profile} />
+                      {msg.imageUrl ? (
+                        <ProfileImg src={msg.imageUrl} />
+                      ) : (
+                        <ProfileImg src={profile} />
+                      )}
+
                       <ActiveChatPDiv>
                         <ProfileNickName>{msg.nickname}</ProfileNickName>
                         <ChatAndTime>
