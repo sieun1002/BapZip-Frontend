@@ -7,6 +7,12 @@ import {
   SearchDetailSetting,
   ArrowBottomImg,
   SearchSelect,
+  PointSearchDiv,
+  PointSearchPDiv,
+  PointSearchP1,
+  PointSearchP2,
+  PointSearchP3,
+  PointSearchLine,
 } from "../../styles/Point/PointSearch.styled";
 
 import arrowBottom from "../../images/Point/arrowBottom.svg";
@@ -27,6 +33,15 @@ export default function PointSearch() {
               <ArrowBottomImg src={arrowBottom} />
             </SearchSelect>
           </SearchNav>
+
+          <PointSearchDiv>
+            <PointSearchPDiv>
+              <PointSearchP1>00식당 비방문객 혼잡도 체크</PointSearchP1>
+              <PointSearchP2>2023.01.04</PointSearchP2>
+            </PointSearchPDiv>
+            <PointSearchP3>+10P</PointSearchP3>
+          </PointSearchDiv>
+          <PointSearchLine />
         </Div>
       </WrapperDiv>
     </BodyDiv>

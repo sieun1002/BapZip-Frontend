@@ -15,14 +15,27 @@ import {
   ArrowLeftImage,
   MenuDiv,
   ManuButton,
+  MainWrapper,
 } from "../styles/Point/Point.styled";
 
 import mainPoint from "../images/Point/mainPoint.svg";
 import arrowLeft from "../images/Login/arrowLeft.svg";
 
 import PointSearch from "../components/Point/PointSearch";
+import PointChange from "../components/Point/PointChange";
 
 export default function Point() {
+  const [currentTab, setCurrentTab] = useState("pointSearch");
+
+  const renderTabComponent = () => {
+    switch (currentTab) {
+      case "pointChange":
+        return <PointChange />;
+      default:
+        return <PointSearch />;
+    }
+  };
+
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -31,21 +44,37 @@ export default function Point() {
             <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
             포인트
           </HeaderDiv>
-          <MainPointWrapper>
-            <MainPointDiv></MainPointDiv>
-            <MainPointImg src={mainPoint} alt="mainPoint" />
-            <MainPointPDiv>
-              <MainPointP1>밥좋아님의 보유 포인트는?</MainPointP1>
-              <MainPointP2>15000P</MainPointP2>
-            </MainPointPDiv>
-          </MainPointWrapper>
+          <MainWrapper>
+            <MainPointWrapper>
+              <MainPointDiv></MainPointDiv>
+              <MainPointImg src={mainPoint} alt="mainPoint" />
+              <MainPointPDiv>
+                <MainPointP1>밥좋아님의 보유 포인트는?</MainPointP1>
+                <MainPointP2>15000P</MainPointP2>
+              </MainPointPDiv>
+            </MainPointWrapper>
+          </MainWrapper>
 
           <MenuDiv>
-            <ManuButton>포인트 조회</ManuButton>
-            <ManuButton>포인트 전환</ManuButton>
+            <ManuButton
+              color={currentTab === "pointSearch" ? "#FFBA35" : undefined}
+              bottomColor={currentTab === "pointSearch" ? "#FFBA35" : undefined}
+              onClick={() => setCurrentTab("pointSearch")}
+            >
+              포인트 조회
+            </ManuButton>
+            <ManuButton
+              color={currentTab === "pointChange" ? "#FFBA35" : undefined}
+              bottomColor={currentTab === "pointChange" ? "#FFBA35" : undefined}
+              onClick={() => setCurrentTab("pointChange")}
+            >
+              포인트 전환
+            </ManuButton>
           </MenuDiv>
+          {renderTabComponent()}
 
-          <PointSearch />
+          {/* <PointSearch /> */}
+          {/* <PointChange /> */}
         </Div>
       </WrapperDiv>
     </BodyDiv>

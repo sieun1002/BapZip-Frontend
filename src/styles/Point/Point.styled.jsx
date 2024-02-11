@@ -39,9 +39,9 @@ export const Div = styled.div`
 
 export const HeaderDiv = styled.div`
   width: 420px;
-  height: 66px;
+  min-height: 66px;
 
-  background-color: beige;
+  /* background-color: beige; */
   ${flexCenter()}
 
   font-size: 18px;
@@ -81,8 +81,14 @@ export const MainPointWrapper = styled.div`
   border-radius: 10px;
 
   position: relative;
+`;
 
-  margin: 30px 0 60px 0;
+export const MainWrapper = styled.div`
+  width: 420px;
+  min-height: 250px;
+
+  /* background-color: bisque; */
+  ${flexCenter()}
 `;
 
 export const MainPointPDiv = styled.div`
@@ -114,17 +120,18 @@ export const MainPointP2 = styled.p`
 export const MenuDiv = styled.div`
   width: 480px;
   height: 50px;
-  background-color: beige;
+  /* background-color: beige; */
 
   display: flex;
+
+  margin-bottom: 4px;
 `;
 
 export const ManuButton = styled.div`
   width: 240px;
   height: 50px;
 
-  border-bottom: solid 2px;
-  border-bottom-color: ${(props) => props.color || "#D9D9D9"};
+  border-bottom: solid 2px ${(props) => props.bottomColor || "#D9D9D9"};
 
   font-size: 16px;
   font-weight: 500;
