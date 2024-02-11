@@ -17,7 +17,7 @@ export default function Profile() {
     })
   }
   
-  if(!userData.name){
+  if(!userData.nickname){
     getProfile();
   }
   const name = userData.nickname;

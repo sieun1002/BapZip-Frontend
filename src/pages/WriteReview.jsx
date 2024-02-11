@@ -93,6 +93,9 @@ export default function WriteReview() {
       url: url,
       data: formData,
     })
+    .catch(function(error){
+      console.log(error.message);
+    });
   }; 
   function clickBtn(){
     setModal(true);

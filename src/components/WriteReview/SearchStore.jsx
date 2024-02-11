@@ -9,7 +9,6 @@ export default function SearchStore(props) {
   const [modalState,setModal] = useState(false);
   const [input,setInput] = useState("");
   const [storeId, setId] = useState(); 
-
   const [storeData,setData] = useState({});
   function getStore(){
     const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/search?name=${input}`;

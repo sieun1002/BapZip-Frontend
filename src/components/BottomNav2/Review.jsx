@@ -9,19 +9,25 @@ export default function Review(item) {
   const formattedDate = `${date[0]}.${date[1]}.${date[2]}`;
 
   const [likeState,setLike] = useState(item.like);
-  const [howManyLike,sethowManyLike] = useState(21);
+  const [howManyLike,sethowManyLike] = useState(item.likesCount);
   let value = howManyLike;
   const urlZip = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/zip/${item.reviewId}`;
   const urlDelZip = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/deleteZip/${item.reviewId}`;
 
   function clickLike(){
     if(!likeState){
-      api.post(urlZip);
+      api.post(urlZip)
+      .catch(function(error){
+        console.log(error.message);
+      });
       sethowManyLike(++value);
       setLike(!likeState);
     }
     else{
-      api.delete(urlDelZip);
+      api.delete(urlDelZip)
+      .catch(function(error){
+        console.log(error.message);
+      });
       sethowManyLike(--value);
       setLike(!likeState); 
     }
