@@ -57,9 +57,14 @@ export default function PointSearch() {
               <PointSearchDiv>
                 <PointSearchPDiv>
                   <PointSearchP1>{list.note}</PointSearchP1>
-                  <PointSearchP2>2023.01.04</PointSearchP2>
+                  {/* api에 날짜가 없음 */}
+                  <PointSearchP2>2024.01.04</PointSearchP2>
                 </PointSearchPDiv>
-                <PointSearchP3>+10P</PointSearchP3>
+                {list.point > 0 ? (
+                  <PointSearchP3>+{list.point}P</PointSearchP3>
+                ) : (
+                  <PointSearchP3>{list.point}P</PointSearchP3>
+                )}
               </PointSearchDiv>
               <PointSearchLine />
             </React.Fragment>
