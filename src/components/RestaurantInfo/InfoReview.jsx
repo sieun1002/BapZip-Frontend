@@ -102,7 +102,7 @@ export default function InfoReview() {
           <MainTitleDiv>
             <MainTitleP1>리뷰</MainTitleP1>
             <MainTitleP2>{storeReview.length}개</MainTitleP2>
-            <Link to="#">
+            <Link to="/WriteReview">
               <ReviewWriteImg src={reviewWrite} alt="reviewWrite" />
             </Link>
           </MainTitleDiv>
