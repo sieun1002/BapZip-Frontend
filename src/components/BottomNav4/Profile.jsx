@@ -1,33 +1,14 @@
-import React, { useCallback, useState } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react'
+import api from "../../api/LoginTokenApi";
 
 import scraddImgBtn from '../../images/BottomNav4/addImgBtn.png'
 
 export default function Profile() {
   const [userData,setData] = useState({});
-  const [stateAxios,setAxios] = useState(true);
   const urlgetPF = 'http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/myPage/info';
-  const urlpost = 'http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/signin';
-  function getToken(){
-    if(stateAxios){
-      setAxios(false);
-      axios.post(urlpost,
-        {
-          "userId": "id1",
-          "password": "1234"
-        })
-        .then(function(response){
-          //getProfile
-          axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.result.token}`
-          getProfile();
-        })
-        .catch(function(error){
-          console.log('fail');
-        });
-    }
-  }
+  
   function getProfile(){
-    axios.get(urlgetPF)
+    api.get(urlgetPF)
     .then(function(response){
       setData(response.data.result);
     })
@@ -36,10 +17,9 @@ export default function Profile() {
     })
   }
   
-  getToken();
-  // if(!userData.name){
-  //   getProfile();
-  // }
+  if(!userData.name){
+    getProfile();
+  }
   const name = userData.nickname;
   const school = userData.schoolName;
   const major = userData.major;

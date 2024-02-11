@@ -2,29 +2,38 @@ import React, { useState } from 'react'
 import srcBtnLikeOff from '../../images/BottomNav2/likeBtn.png'
 import srcBtnLikeOn from '../../images/BottomNav2/likeBtnActive.png'
 import srcBackGround from '../../images/BottomNav2/reviewPicBack.png'
+import api from "../../api/LoginTokenApi";
 
 export default function Review(item) {
-  const [likeState,setLike] = useState(false);
-  const [howManyLike,sethowManyLike] = useState(item.likes);
+  const date = item.reviewCreateDate.substr(0, 10).split('-');
+  const formattedDate = `${date[0]}.${date[1]}.${date[2]}`;
+
+  const [likeState,setLike] = useState(item.like);
+  const [howManyLike,sethowManyLike] = useState(21);
   let value = howManyLike;
+  const urlZip = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/zip/${item.reviewId}`;
+  const urlDelZip = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/deleteZip/${item.reviewId}`;
+
   function clickLike(){
     if(!likeState){
+      api.post(urlZip);
       sethowManyLike(++value);
       setLike(!likeState);
     }
     else{
+      api.delete(urlDelZip);
       sethowManyLike(--value);
       setLike(!likeState); 
     }
   }
   return (
-    <div className='container-review' style={{position: 'relative', backgroundImage: `url(${item.picturePath})`, backgroundSize: "cover"}} >
+    <div className='container-review' style={{position: 'relative', backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover"}} >
       <div style={{position: 'absolute', backgroundImage: `url(${srcBackGround})`, backgroundSize: "cover", width:'420px', height: '180px'}} />
       <div className='contents-review' style={{position: 'absolute'}}>
-        <p className='name-review'>{item.name}</p>
+        <p className='name-review'>{item.storeName}</p>
         <div className='topReview-review'>
-          <p className='txt-review'>"{item.topReviewTxt}"</p>
-          <p className='userDetail-review'>{item.topReviewUser}({item.topReviewDate})</p>
+          <p className='txt-review'>"{item.reviewText}"</p>
+          <p className='userDetail-review'>{item.nickname}({formattedDate})</p>
         </div>
       </div>
       <div className='likes-review' style={{position: 'absolute', left: '375px'}}>
