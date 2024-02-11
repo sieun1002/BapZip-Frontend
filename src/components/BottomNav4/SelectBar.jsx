@@ -8,15 +8,15 @@ import scrCouponBtn from '../../images/BottomNav4/viewCouponBtn.png'
 export default function SelectBar() {
   return (
     <div className='selectBar-BottomNav4'>
-        <Link to="/ManageReivew" className='manageReview-selectBar' style={{ textDecoration: "none"}}>
+        <Link to="/MyPage/ManageReivew" className='manageReview-selectBar' style={{ textDecoration: "none"}}>
             <img src={scrReviewBtn} alt="이미지" className='image-selectBar'/>
             <p className='text-selectBar'>리뷰 관리</p>
         </Link>
-        <Link to="/" className='point-selectBar' style={{ textDecoration: "none"}}>
+        <Link to="/Mypage/Point" className='point-selectBar' style={{ textDecoration: "none"}}>
             <img src={scrPointBtn} alt="이미지" className='image-selectBar'/>
             <p className='text-selectBar'>포인트</p>
         </Link>
-        <Link to="/" className='coupon-selectBar' style={{ textDecoration: "none"}}>
+        <Link to="/MyPage/Coupon" className='coupon-selectBar' style={{ textDecoration: "none"}}>
             <img src={scrCouponBtn} alt="이미지" className='image-selectBar'/>
             <p className='text-selectBar'>쿠폰함</p>
         </Link>

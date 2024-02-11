@@ -29,6 +29,7 @@ import RestaurantInfo from "./pages/RestaurantInfo";
 // Setting---------------------------------------------------------------
 import Setting from "./pages/Setting";
 import ManageReview from "./pages/ManageReview";
+import Coupon from "./pages/Coupon";
 
 //Point
 import Point from "./pages/Point";
@@ -57,10 +58,10 @@ function App() {
               <Route path="/Home" element={<BottomNav1 />} />
               <Route path="/arlim" element={<Arlim />} />
               <Route path="/MyPage" element={<BottomNav4 />} />
-              <Route path="/Setting" element={<Setting />} />
-              <Route path="/ManageReivew" element={<ManageReview />} />
-
+              <Route path="/MyPage/Setting" element={<Setting />} />
+              <Route path="/MyPage/ManageReivew" element={<ManageReview />} />
               <Route path="/Mypage/Point" element={<Point />} />
+              <Route path="/MyPage/Coupon" element={<Coupon />} />
             </Routes>
           </BrowserRouter>
         </div>
