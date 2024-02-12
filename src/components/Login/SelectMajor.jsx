@@ -48,6 +48,8 @@ export default function SelectMajor() {
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url);
 
+      console.log(response.data.result);
+
       // 전공 이름 저장
       const major = response.data.result[0].name;
       setForm({ ...form, major });
@@ -74,7 +76,7 @@ export default function SelectMajor() {
   return (
     <BodyDiv>
       <WrapperDiv>
-        <Div>
+        <Div height="100%">
           <HeaderDiv justifyContent="space-between">
             <Link to="/SineUp/Select_school">
               <ArrowLeftImage src={arrowLeft} alt="arrowLeft" />
