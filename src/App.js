@@ -64,7 +64,10 @@ function App() {
                 path="/users/auth/agreement"
                 element={<SineUpCompletion />}
               />
-              <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
+              <Route
+                path="/RestaurantInfo/:storeId"
+                element={<RestaurantInfo />}
+              />
 
               <Route path="/Review" element={<BottomNav2 />} />
               <Route path="/WriteReview" element={<WriteReview />} />
