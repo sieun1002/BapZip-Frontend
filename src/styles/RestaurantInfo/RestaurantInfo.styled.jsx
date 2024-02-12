@@ -35,6 +35,8 @@ export const Div = styled.div`
   justify-content: flex-start;
 
   position: relative;
+
+  padding-bottom: 50px;
 `;
 
 export const RestaurantImage = styled.img`
@@ -165,7 +167,7 @@ export const CongestionButton = styled.button`
   line-height: 16.34px;
   color: #ffffff;
   position: fixed;
-  bottom: 70px;
+  bottom: 30px;
 
   box-shadow: 0 0 4px 0 #00000040;
 

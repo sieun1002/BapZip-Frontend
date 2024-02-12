@@ -42,7 +42,7 @@ export default function InfoReview() {
 
   //URL에서 storeId 추출
   // const {storeId} = useParams();
-  const storeId = 7;
+  const storeId = 11;
 
   useEffect(() => {
     const storeReviewApi = async () => {
