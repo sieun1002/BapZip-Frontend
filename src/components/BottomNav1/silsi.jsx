@@ -42,7 +42,7 @@ const ModalContent = styled.div`
   position: fixed;
   width: 480px;
   height: 465px;
-  top: 452px;
+  top: 320px;
   margin-left: -30px;
   background: #ffffff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
@@ -139,23 +139,38 @@ const LineStyle = {
   transform: "rotate(-90deg)",
 };
 
-const ScrollContainer = styled.div`
+const ScrollContainer = styled.div` 
   position: absolute;
   overflow-y: scroll;
-  width: 72px;
-  height: 100px;
-  left: 268px;
+  width: 150px;
+  height: 290px;
+  left: 330px;
   z-index: 2;
+  bottom: 10px;
+`;
+
+const ScrollContainer2 = styled.div` 
+  position: absolute;
+  overflow-y: scroll;
+  width: 100px;
+  height: 300px;
+  right: 350px;
+  z-index: 2;
+  bottom: 10px;
+`;
+
+const ScrollText = styled.div` 
+left: 300px;
 `;
 
 const Silsi = () => {
   const [Region, setRegion] = useState({});
-
+  const [School, setSchool] = useState({});
   //URL에서 storeId 추출
   // const {storeId} = useParams();
   const { storeId } = 5;
 
-  useEffect(() => {
+  
     const Regionapi = async () => {
       try {
         // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
@@ -170,7 +185,25 @@ const Silsi = () => {
     };
 
     Regionapi();
-  }, []);
+ 
+
+  
+    const Schoolapi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school`;
+
+        const response = await api.get(url);
+        setSchool(response.data.result);
+        console.log("마이페이지 api 호출", School);
+      } catch (error) {
+        console.error("가게 세부 정보 가져오기 실패", error);
+      }
+    };
+
+    Schoolapi();
+  
+
 
   const [isModalOpen, setModalOpen] = useState(false);
   const modalRef = useRef();
@@ -201,13 +234,17 @@ const Silsi = () => {
       {isModalOpen && (
         <ModalContent ref={modalRef}>
           <ScrollContainer>
-            <p>asdasdsadasdsad</p>
-            <p>asdasdsadasdsad</p>
-            <p>asdasdsadasdsad</p>
-            <p>asdasdsadasdsad</p>
-            <p>asdasdsadasdsad</p>
-            <p>asdasdsadasdsad</p>
+            <ScrollText>
+            <p>{School.name}</p>
+            
+            </ScrollText>
           </ScrollContainer>
+          <ScrollContainer2>
+          <ScrollText>
+            <p>{Region[0].name}</p>
+  
+            </ScrollText>
+          </ScrollContainer2>
           <div style={LineStyle}></div>
           <div style={schoolTextStyle}>학교 선택</div>
           <SearchBar>

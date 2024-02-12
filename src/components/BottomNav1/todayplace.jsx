@@ -30,7 +30,7 @@ const MySwiperComponent = () => {
   }, []);
 
   return (
-    <div className="swiper mySwiper"style={{ top: "-50px" , zIndex: 100}}>
+    <div className="swiper mySwiper"style={{ top: "-50px" , zIndex: -10}}>
       
       <div className="swiper-wrapper">
         <img
