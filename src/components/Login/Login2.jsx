@@ -188,6 +188,7 @@ export default function Login2() {
                   <Submit type="submit" value="로그인" />
                 </Link>
               )}
+              {/* <Submit type="submit" value="로그인" /> */}
             </Form>
 
             <SearchDiv>
