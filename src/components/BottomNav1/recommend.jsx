@@ -72,19 +72,19 @@ const Recommend = () => {
             className="swiper-slide"
             src={Hot1}
             alt="Hot2"
-            style={{ width: "440px", height: "200px" }}
+            style={{ width: "400px", height: "180px" }}
           />
           <img
             className="swiper-slide"
             src={Hot2}
             alt="Hot2"
-            style={{ width: "440px", height: "200px" }}
+            style={{ width: "400px", height: "180px" }}
           />
           <img
             className="swiper-slide"
             src={Hot3}
             alt="Hot2"
-            style={{ width: "440px", height: "200px" }}
+            style={{ width: "400px", height: "180px" }}
           />
         </div>
         <div className="swiper-button-next"></div>
