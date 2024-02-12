@@ -14,7 +14,7 @@ const SearchBox = styled.input`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding-left: 45px;
   background: #ffffff;
   border: 1.5px solid #ffba35;
   border-radius: 10px;
@@ -52,7 +52,7 @@ const SearchImage = styled.img`
   width: 20px;
   height: 20px;
   right: 385px;
-  top: 17px;
+  top: 15px;
 `;
 
 const SearchBar = () => {
