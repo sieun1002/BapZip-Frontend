@@ -44,6 +44,9 @@ import Coupon from "./pages/Coupon";
 //Point
 import Point from "./pages/Point";
 
+//WaitingRank
+import WaitingRank from "./components/WaitingRank/WaitingRank";
+
 function App() {
   return (
     <Provider store={store}>
@@ -83,6 +86,8 @@ function App() {
               <Route path="/MyPage/ManageReivew" element={<ManageReview />} />
               <Route path="/Mypage/Point" element={<Point />} />
               <Route path="/MyPage/Coupon" element={<Coupon />} />
+
+              <Route path="/WaitingRank" element={<WaitingRank />} />
             </Routes>
           </BrowserRouter>
         </div>
