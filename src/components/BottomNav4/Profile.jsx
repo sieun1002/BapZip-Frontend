@@ -4,30 +4,37 @@ import api from "../../api/LoginTokenApi";
 import scraddImgBtn from '../../images/BottomNav4/addImgBtn.png'
 
 export default function Profile(props) {
-  const [imgFile, setImgFile] = useState("");
+  const [imgFile, setImgFile] = useState({});
   const [imgSrc, setScr] = useState("");
   const imgRef = useRef();
 
   const handleButtonClick = (e) => {
       imgRef.current.click();
-  }
+  };
 
   const handleChange = (e) => {
       const file = imgRef.current.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-          setImgFile(file);
-          setScr(reader.result);
-          postImage();
-          };
+        setImgFile(file);
+        setScr(reader.result);
+        postImage();
+        };
   }
   const urlPost = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/myPage/api/img/snapshot`;
   function postImage(){
-    api.post(urlPost,imgFile)
+    console.log(imgFile);
+    const formData = new FormData();
+    formData.append("images",imgFile);
+    api({
+      method: "post",
+      url: urlPost,
+      data: formData,
+    })
     .catch(function(error){
       console.log(error.message);
-    })
+    });
   };
   const [userData,setData] = useState({});
   const urlgetPF = 'http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/myPage/info';
