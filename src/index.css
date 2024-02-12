@@ -177,12 +177,13 @@ p {
   margin-left: 30px;
   text-align: left;
 }
-.title-timeline2 {
+.title-timeline2 { /*추천식당 css*/
   font-size: 20px;
   font-weight: 600;
   line-height: 27px;
-  margin-left: 10px;
+  margin-left: 34px;
   text-align: left;
+  margin-top: -7px;
 }
 .menuBtnSection-timeline {
   display: flex;
@@ -197,9 +198,10 @@ p {
     margin-right: 3%;
   }
 }
-.menuBtnSection-timeline2 {
+.menuBtnSection-timeline2 { /* 메인페이지 추천식당 버튼들 */
   display: flex;
-  margin-right: 20px;
+  margin-right: 37px;
+  margin-left: 20px;
   button {
     width: 74px;
     height: 33px;

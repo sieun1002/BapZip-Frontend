@@ -30,26 +30,26 @@ const MySwiperComponent = () => {
   }, []);
 
   return (
-    <div className="swiper mySwiper">
+    <div className="swiper mySwiper"style={{ top: "-50px" , zIndex: -10}}>
       
       <div className="swiper-wrapper">
         <img
           className="swiper-slide"
           src={Hot1}
           alt="Hot2"
-          style={{ width: "440px", height: "200px", zIndex: 2 }}
+          style={{ width: "400px", height: "180px" }}
         />
         <img
           className="swiper-slide"
           src={Hot2}
           alt="Hot2"
-          style={{ width: "440px", height: "200px", zIndex: 2 }}
+          style={{ width: "400px", height: "180px"}}
         />
         <img
           className="swiper-slide"
           src={Hot3}
           alt="Hot2"
-          style={{ width: "440px", height: "200px", zIndex: 2 }}
+          style={{ width: "400px", height: "180px" }}
         />
       </div>
       
