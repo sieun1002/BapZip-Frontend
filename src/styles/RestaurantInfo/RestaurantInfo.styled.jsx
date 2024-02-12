@@ -23,8 +23,8 @@ export const WrapperDiv = styled.div`
   justify-content: ${(props) => props.justifyContent || "center"};
   flex-direction: column;
   position: ${(props) => props.position};
-  border-left: solid 1px black;
-  border-right: solid 1px black;
+  /* border-left: solid 1px black;
+  border-right: solid 1px black; */
 `;
 
 export const Div = styled.div`
