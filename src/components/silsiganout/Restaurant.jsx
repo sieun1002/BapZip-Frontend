@@ -1,33 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import Cafe from "../../images/Silsiganin/Cafe.png";
+import Bunsik from "../../images/Silsiganin/bunsik.png";
 import HumanRed from "../../images/Silsiganin/human.png";
 import HumanGreen from "../../images/Silsiganin/HumanGreen.png";
 import HumanYellow from "../../images/Silsiganin/HumanYellow.png";
 import AlarmRed from "../../images/Silsiganin/alarm.png";
 import AlarmYellow from "../../images/Silsiganin/AlarmYellow.png";
 import AlarmGreen from "../../images/Silsiganin/AlarmGreen.png";
-import Rank3 from "../../images/Silsiganin/Rank3.png";
+import Rank1 from "../../images/Silsiganin/Rank1.png";
 
 const Container = styled.div`
   position: relative;
   width: 420px;
   height: 129px;
   left: 28px;
-  top: 150px;
+  top: 70px;
   bottom: 0%;
   background: #ffffff;
   box-shadow: 0px 0px 5px #dbdbdb;
   border-radius: 10px;
-`;
-
-const Rankimg = styled.img`
-  position: absolute;
-  left: 2.86%;
-  right: 89.29%;
-  top: 0%;
-  bottom: 68.99%;
-  z-index: 1;
 `;
 
 const ImageStyleFood = styled.img`
@@ -37,6 +28,15 @@ const ImageStyleFood = styled.img`
   width: 128px;
   height: 129px;
   border-radius: 10px;
+`;
+
+const Rankimg = styled.img`
+  position: absolute;
+  left: 2.86%;
+  right: 89.29%;
+  top: 0%;
+  bottom: 68.99%;
+  z-index: 2;
 `;
 
 const ImageStyleHuman = styled.img`
@@ -157,25 +157,25 @@ const getImageSource = (numberOfPeople, type) => {
   }
 };
 
-const Restaurant2 = () => {
-  const numberOfPeople = 7;
+const Restaurant = () => {
+  const numberOfPeople = 30;
   const estimatedTime = numberOfPeople * 5; // Calculate estimated time based on 5 minutes per person
 
   return (
     <Container>
-      <Rankimg src={Rank3} alt="Ranking" />
-      <ImageStyleFood src={Cafe} alt="Bunsik" />
+      <Rankimg src={Rank1} alt="Ranking" />
+      <ImageStyleFood src={Bunsik} alt="Bunsik" />
       <ImageStyleHuman numberOfPeople={numberOfPeople} alt="Human" />
       <AlarmImg numberOfPeople={numberOfPeople} alt="Alarm" />
       <TextPeople numberOfPeople={numberOfPeople}>
         {numberOfPeople}명
       </TextPeople>
       <TextMinute numberOfPeople={numberOfPeople}>{estimatedTime}분</TextMinute>
-      <MenuTxt>블랑카페</MenuTxt>
+      <MenuTxt>학식당 - 분식</MenuTxt>
       <WaitingPeople>대기 인원</WaitingPeople>
       <EstimatedTime>예상 시간</EstimatedTime>
     </Container>
   );
 };
 
-export default Restaurant2;
+export default Restaurant;

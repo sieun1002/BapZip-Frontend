@@ -5,7 +5,7 @@ import Update from "../components/Arlim/Update";
 
 export default function Arlim() {
   return (
-    <div className="container-BottomNav2">
+    <div className="App">
       <Header />
       <Silsigan />
       <Update />

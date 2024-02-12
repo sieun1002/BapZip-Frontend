@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import SearchIcon from "../../images/BottomNav1/SearchIcon.png";
+import api from "../../api/LoginTokenApi";
 
 const Container = styled.div`
   margin-top: 20px;
@@ -12,6 +13,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   display: flex;
+  top: 10px;
 `;
 
 const Box = styled.div`
@@ -30,18 +32,18 @@ const Line = styled.div`
   position: absolute;
   width: 36px;
   height: 0px;
-  left: 50%;
+  left: 46%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(90deg);
   border: 1px solid #ffba35;
 `;
 
 const ModalContent = styled.div`
-  position: absolute;
+  position: fixed;
   width: 480px;
   height: 465px;
-  left: 388px;
-  top: 379px;
+  top: 452px;
+  margin-left: -30px;
   background: #ffffff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px 20px 0px 0px;
@@ -127,7 +129,49 @@ const schoolTextStyle3 = {
   textalign: "center",
 };
 
+const LineStyle = {
+  position: "absolute",
+  width: "512px",
+  height: "0px",
+  right: "90px",
+  top: "400px",
+  border: "1px solid #D9D9D9",
+  transform: "rotate(-90deg)",
+};
+
+const ScrollContainer = styled.div`
+  position: absolute;
+  overflow-y: scroll;
+  width: 72px;
+  height: 100px;
+  left: 268px;
+  z-index: 2;
+`;
+
 const Silsi = () => {
+  const [Region, setRegion] = useState({});
+
+  //URL에서 storeId 추출
+  // const {storeId} = useParams();
+  const { storeId } = 5;
+
+  useEffect(() => {
+    const Regionapi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/region`;
+
+        const response = await api.get(url);
+        setRegion(response.data.result);
+        console.log("마이페이지 api 호출", Region);
+      } catch (error) {
+        console.error("가게 세부 정보 가져오기 실패", error);
+      }
+    };
+
+    Regionapi();
+  }, []);
+
   const [isModalOpen, setModalOpen] = useState(false);
   const modalRef = useRef();
 
@@ -156,6 +200,15 @@ const Silsi = () => {
       <Box onClick={handleBoxClick} />
       {isModalOpen && (
         <ModalContent ref={modalRef}>
+          <ScrollContainer>
+            <p>asdasdsadasdsad</p>
+            <p>asdasdsadasdsad</p>
+            <p>asdasdsadasdsad</p>
+            <p>asdasdsadasdsad</p>
+            <p>asdasdsadasdsad</p>
+            <p>asdasdsadasdsad</p>
+          </ScrollContainer>
+          <div style={LineStyle}></div>
           <div style={schoolTextStyle}>학교 선택</div>
           <SearchBar>
             <img src={SearchIcon} alt="Search Icon" />

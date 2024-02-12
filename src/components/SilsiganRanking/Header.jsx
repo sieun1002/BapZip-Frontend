@@ -6,10 +6,10 @@ import scrBackBtn from "../../images/WriteReview/backBtn.png";
 export default function Header() {
   return (
     <div className="header-WriteReview">
-      <Link to="/Home">
+      <Link to="/List">
         <img src={scrBackBtn} alt="뒤로가기" />
       </Link>
-      <p className="title-header">실시간 식당 혼잡도 OUT</p>
+      <p className="title-header">실시간 웨이팅 랭킹</p>
     </div>
   );
 }
