@@ -1,6 +1,7 @@
 body {
   margin: 0;
   overflow-y: scroll;
+  background-color: #ffba35;
 }
 
 .App {
@@ -8,7 +9,8 @@ body {
   text-align: center;
   margin: 0 auto;
   padding-bottom: 70px;
-  border: solid 1px black;
+  background-color: #ffffff;
+  border: solid 2px #ffba35;
 }
 
 /*default font*/
