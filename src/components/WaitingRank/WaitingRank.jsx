@@ -15,6 +15,7 @@ import {
 import Ad1 from "../../images/WaitingRank/Ad1.svg";
 
 export default function WaitingRank() {
+  const title = "실시간 웨이팅 랭킹"; //나중에 props로 받아올거임.
   const [currentTab, setCurrentTab] = useState("ALL");
 
   const renderTabComponent = () => {
@@ -56,7 +57,7 @@ export default function WaitingRank() {
   return (
     <div className="App">
       <div style={{ height: "100%" }}>
-        <Header />
+        <Header title={title} />
         <SearchBar />
 
         <MenuDiv>
