@@ -42,7 +42,7 @@ export default function InfoReview() {
 
   //URL에서 storeId 추출
   // const {storeId} = useParams();
-  const storeId = 7;
+  const storeId = 11;
 
   useEffect(() => {
     const storeReviewApi = async () => {
@@ -80,7 +80,7 @@ export default function InfoReview() {
     data.forEach((item) => {
       sum += item.label * item.value;
     });
-    const average = sum / (storeReview.length * 2);
+    const average = (sum / (storeReview.length * 2)).toFixed(1);
     return <StarP1>{average}</StarP1>;
   };
 

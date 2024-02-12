@@ -58,7 +58,7 @@ export default function PointSearch() {
                 <PointSearchPDiv>
                   <PointSearchP1>{list.note}</PointSearchP1>
                   {/* api에 날짜가 없음 */}
-                  <PointSearchP2>2024.01.04</PointSearchP2>
+                  <PointSearchP2>{list.date}</PointSearchP2>
                 </PointSearchPDiv>
                 {list.point > 0 ? (
                   <PointSearchP3>+{list.point}P</PointSearchP3>
