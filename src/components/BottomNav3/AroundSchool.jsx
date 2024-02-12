@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import background from "../../images/BottomNav1/background.svg";
 import human from "../../images/BottomNav1/human.svg";
@@ -10,9 +11,6 @@ import IN3 from "../../images/BottomNav1/IN3.svg";
 import Outbackground from "../../images/BottomNav1/Outbackground.svg";
 import Out from "../../images/BottomNav1/Out.svg";
 import Out2 from "../../images/BottomNav1/Out2.svg";
-import A1 from "../../images/BottomNav1/a1.svg";
-import A2 from "../../images/BottomNav1/a2.svg";
-import Hotplace from "../../images/BottomNav1/Hotplace.svg";
 
 const Container = styled.div`
   margin-top: 20px;
@@ -31,14 +29,14 @@ const Container1 = styled.div`
   text-align: center;
   padding: 20px;
   margin-left: -20px;
-  margin-top: 350px;
+  margin-top: 290px;
 `;
 
 const Container2 = styled.div`
   position: absolute;
   text-align: center;
   padding: 20px;
-  margin-top: 130px;
+  margin-top: 70px;
 `;
 
 const BackgroundImage = styled.img`
@@ -46,14 +44,6 @@ const BackgroundImage = styled.img`
   width: 200px; /* 조정된 너비 */
   height: 199px; /* 조정된 높이 */
   z-index: 1;
-`;
-
-const ImageWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 `;
 
 const ZandiImage = styled.img`
@@ -124,7 +114,7 @@ const Out3 = styled.img`
   top: 0;
   right: 0;
   z-index: 2;
-  margin-right: -380px;
+  margin-right: -365px;
   margin-top: 35px;
 `;
 
@@ -137,52 +127,79 @@ const Out4 = styled.img`
   margin-top: 200px;
 `;
 
-const A3 = styled.img`
+const StyledText = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
-  margin-right: 265px;
-  margin-top: 40px;
+  width: 224px;
+  height: 27px;
+  right: 200px;
+  top: 20px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  color: #191919;
 `;
 
-const A4 = styled.img`
+const StyledText2 = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
-  margin-right: 106px;
-  margin-top: 70px;
+  width: 224px;
+  height: 27px;
+  right: 220px;
+  top: 300px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  color: #191919;
 `;
 
-const Hot = styled.img`
+const StyledText3 = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
-  margin-right: 160px;
-  margin-top: 340px;
+  width: 79px;
+  height: 16px;
+  right: 3px;
+  top: 305px;
+
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: right;
+
+  color: #767676;
 `;
 
-const Honjap = () => {
+const AroundSchool = () => {
   return (
     <Container>
-      <A3 src={A1} alt="IN2" />
-      <A4 src={A2} alt="IN2" />
+      <StyledText>우리학교 식당 둘러보기</StyledText>
       <Container1>
-        <BackgroundImage src={background} alt="배경" />
-        <ZandiImage src={zandi} alt="Zandi" />
-        <SchoolImage src={school} alt="School" />
-        <HumanImage src={human} alt="Human" />
-        <In src={IN} alt="IN" />
-        <In2 src={IN2} alt="IN2" />
-        <In3 src={IN3} alt="IN3" />
+        <Link to="/ListIn">
+          <BackgroundImage src={background} alt="배경" />
+          <ZandiImage src={zandi} alt="Zandi" />
+          <SchoolImage src={school} alt="School" />
+          <HumanImage src={human} alt="Human" />
+          <In src={IN} alt="IN" />
+          <In2 src={IN2} alt="IN2" />
+          <In3 src={IN3} alt="IN3" />
+        </Link>
       </Container1>
       <Container2>
-        <OutBackgroundImage src={Outbackground} alt="배경" />
-        <Out3 src={Out} alt=">" />
-        <Out4 src={Out2} alt="교외식당" />
+        <Link to="/ListOut">
+          <OutBackgroundImage src={Outbackground} alt="배경" />
+          <Out3 src={Out} alt=">" />
+          <Out4 src={Out2} alt="교외식당" />
+        </Link>
       </Container2>
-      <Hot src={Hotplace} alt="교외식당" />
+      <StyledText2>실시간 웨이팅 랭킹</StyledText2>
+      <Link to="/SilsiganRanking">
+        <StyledText3>더보기</StyledText3>
+      </Link>
     </Container>
   );
 };
 
-export default Honjap;
+export default AroundSchool;

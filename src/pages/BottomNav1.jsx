@@ -11,7 +11,7 @@ import BottomNav from "../components/BottomNav";
 export default function BottomNav1() {
   return (
     <div className="App">
-      <div className="container-BottomNav2">
+      <div>
         <BottomNav menu="Home" />
         <Searchbar />
         <Silsi />

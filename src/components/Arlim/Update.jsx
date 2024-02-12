@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios"; // axios를 import합니다.
 import UpdateImage from "../../images/Arlim/updateimage.PNG"; // Updateimage에 이미지 경로를 적절히 수정
 
 export default function Arlim() {

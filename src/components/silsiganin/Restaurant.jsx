@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Bunsik from "../../images/Silsiganin/bunsik.png";
 import HumanRed from "../../images/Silsiganin/human.png";
@@ -7,6 +7,8 @@ import HumanYellow from "../../images/Silsiganin/HumanYellow.png";
 import AlarmRed from "../../images/Silsiganin/alarm.png";
 import AlarmYellow from "../../images/Silsiganin/AlarmYellow.png";
 import AlarmGreen from "../../images/Silsiganin/AlarmGreen.png";
+import Rank1 from "../../images/Silsiganin/Rank1.png";
+import api from "../../api/LoginTokenApi";
 
 const Container = styled.div`
   position: relative;
@@ -27,6 +29,15 @@ const ImageStyleFood = styled.img`
   width: 128px;
   height: 129px;
   border-radius: 10px;
+`;
+
+const Rankimg = styled.img`
+  position: absolute;
+  left: 2.86%;
+  right: 89.29%;
+  top: 0%;
+  bottom: 68.99%;
+  z-index: 2;
 `;
 
 const ImageStyleHuman = styled.img`
@@ -148,19 +159,43 @@ const getImageSource = (numberOfPeople, type) => {
 };
 
 const Restaurant = () => {
+  const [Rest1, setRest1] = useState({});
+
+  //URL에서 storeId 추출
+  // const {storeId} = useParams();
+  const { storeId } = 5;
+
+  useEffect(() => {
+    const Rest1api = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/list/score`;
+
+        const response = await api.get(url);
+        setRest1(response.data.result);
+        console.log("레스토랑 api 호출", Rest1);
+      } catch (error) {
+        console.error("가게 세부 정보 가져오기 실패", error);
+      }
+    };
+
+    Rest1api();
+  }, []);
+
   const numberOfPeople = 30;
   const estimatedTime = numberOfPeople * 5; // Calculate estimated time based on 5 minutes per person
 
   return (
     <Container>
-      <ImageStyleFood src={Bunsik} alt="Bunsik" />
+      <Rankimg src={Rank1} alt="Ranking" />
+      <ImageStyleFood src={Rest1.imageurl} alt="Bunsik" />
       <ImageStyleHuman numberOfPeople={numberOfPeople} alt="Human" />
       <AlarmImg numberOfPeople={numberOfPeople} alt="Alarm" />
       <TextPeople numberOfPeople={numberOfPeople}>
         {numberOfPeople}명
       </TextPeople>
       <TextMinute numberOfPeople={numberOfPeople}>{estimatedTime}분</TextMinute>
-      <MenuTxt>학식당 - 분식</MenuTxt>
+      <MenuTxt>{Rest1.name}</MenuTxt>
       <WaitingPeople>대기 인원</WaitingPeople>
       <EstimatedTime>예상 시간</EstimatedTime>
     </Container>
