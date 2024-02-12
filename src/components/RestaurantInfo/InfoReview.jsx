@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import api from "../../api/LoginTokenApi";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import {
   BodyDiv,
@@ -41,8 +42,7 @@ export default function InfoReview() {
   const [data, setData] = useState(initialData);
 
   //URL에서 storeId 추출
-  // const {storeId} = useParams();
-  const storeId = 11;
+  const { storeId } = useParams();
 
   useEffect(() => {
     const storeReviewApi = async () => {

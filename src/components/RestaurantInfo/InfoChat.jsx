@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import {
   BodyDiv,
@@ -46,7 +47,7 @@ export default function InfoChat() {
   const socketRef = useRef(null); // useRef를 사용하여 WebSocket 인스턴스 참조 저장
 
   const userId = localStorage.getItem("userId");
-  const storeId = 2;
+  const { storeId } = useParams();
 
   const today = new Date().toLocaleDateString("fr-CA");
 

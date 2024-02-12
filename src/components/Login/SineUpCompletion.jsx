@@ -135,7 +135,7 @@ export default function SineUpCompletion() {
   return (
     <BodyDiv>
       <WrapperDiv>
-        <Div>
+        <Div height="100%">
           <LogoDiv>
             <LogoImage src={logo} alt="logo" />
           </LogoDiv>
