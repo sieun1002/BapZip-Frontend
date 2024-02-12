@@ -24,23 +24,21 @@ export default function Profile(props) {
   }
   const urlPost = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/myPage/api/img/snapshot`;
   function postImage(input){
-    console.log(input);
-    if(input){
-      console.log("do");
-      const formData = new FormData();
-      formData.append("images",imgFile);
-      api({
-        method: "post",
-        url: urlPost,
-        data: formData,
-      })
-      .catch(function(error){
-        console.log(error);
-      });
-    }
-    else{
-      console.log("File is null");
-    }
+    let formData = new FormData();
+    formData.append("images", input); // 'file'은 업로드할 이미지 파일입니다.
+    const config = {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+    };
+    api.post(urlPost, formData, config)
+    .then(response => {
+      setData(response.data.result);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
   };
   const [userData,setData] = useState({});
   const urlgetPF = 'http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/myPage/info';

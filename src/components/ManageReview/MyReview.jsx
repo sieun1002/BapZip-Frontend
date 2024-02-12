@@ -17,6 +17,7 @@ export default function MyReview() {
   
   const [reviewData,setData] = useState([]);
 
+  const [A,setA] = useState();
   const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/myReviews`;
   function getReview(){
     api.get(urlget)
@@ -31,6 +32,9 @@ export default function MyReview() {
     for(let i=0 ;i<deleteID.length; i++){
       const urlDel = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/delete/${deleteID[i]}`;
       api.delete(urlDel)
+      .then(function(response){
+        setA(response.message);
+      })
       .catch(function(error){
         console.log(error.message);
       });
@@ -78,8 +82,8 @@ export default function MyReview() {
     getReview();
   }
   useEffect(()=>{
-
-  },[]);
+    getReview();
+  },[A]);
   return (
     <div className='myReview-ManageReview'>
       <div className='deleteBar-myReview'>
