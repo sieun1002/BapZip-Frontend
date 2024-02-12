@@ -5,7 +5,7 @@ import scraddImgBtn from "../../images/BottomNav4/addImgBtn.png";
 
 export default function Profile(props) {
   const [imgFile, setImgFile] = useState({});
-  const [imgSrc, setScr] = useState("");
+  const [imgSrc, setScr] = useState();
   const imgRef = useRef();
 
   const handleButtonClick = (e) => {
@@ -19,22 +19,28 @@ export default function Profile(props) {
       reader.onloadend = () => {
         setImgFile(file);
         setScr(reader.result);
-        postImage();
+        postImage(file);
         };
   }
   const urlPost = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/myPage/api/img/snapshot`;
-  function postImage(){
-    console.log(imgFile);
-    const formData = new FormData();
-    formData.append("images",imgFile);
-    api({
-      method: "post",
-      url: urlPost,
-      data: formData,
-    })
-    .catch(function(error){
-      console.log(error.message);
-    });
+  function postImage(input){
+    console.log(input);
+    if(input){
+      console.log("do");
+      const formData = new FormData();
+      formData.append("images",imgFile);
+      api({
+        method: "post",
+        url: urlPost,
+        data: formData,
+      })
+      .catch(function(error){
+        console.log(error);
+      });
+    }
+    else{
+      console.log("File is null");
+    }
   };
   const [userData,setData] = useState({});
   const urlgetPF = 'http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/myPage/info';
@@ -58,11 +64,10 @@ export default function Profile(props) {
   const name = userData.nickname;
   const school = userData.schoolName;
   const major = userData.major;
-  const imgurl = userData.imageUrl;
   return (
     <div className="profile-BottomNav4">
       <div className="imageSection-profile">
-        <div className="img-profile" style={{ backgroundImage: imgurl }} />
+        <div className="img-profile" style={{backgroundImage: `url(${userData.imageUrl})`, backgroundSize: "cover"}} />
         <img
           src={scraddImgBtn}
           alt="추가버튼"

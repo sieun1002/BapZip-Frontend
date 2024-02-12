@@ -77,7 +77,9 @@ export default function MyReview() {
   if(!reviewData[0]){
     getReview();
   }
-  
+  useEffect(()=>{
+
+  },[]);
   return (
     <div className='myReview-ManageReview'>
       <div className='deleteBar-myReview'>
