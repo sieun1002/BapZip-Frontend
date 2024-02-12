@@ -21,6 +21,7 @@ const OuterContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 20px;
+  margin-top: 13px;
 `;
 
 const Circle = styled.div`
@@ -36,9 +37,9 @@ const Circle = styled.div`
 `;
 
 const Logo = styled.img`
-  height: 45px;
-  width: 45px;
-  margin-right: 20px;
+  height: 33px;
+  width: 33px;
+  margin-right: 10px;
 `;
 
 const SearchInput = styled.input`
@@ -47,7 +48,7 @@ const SearchInput = styled.input`
   border: none;
   outline: none;
   font-family: "Noto Sans";
-  font-size: 16px;
+  font-size: 12px;
   background: transparent;
   margin-left: 40px;
   box-sizing: border-box;

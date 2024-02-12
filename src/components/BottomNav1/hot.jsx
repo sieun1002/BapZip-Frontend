@@ -17,7 +17,7 @@ const SliderContainer = styled.div`
 
 const ImageSlider = styled.div`
   display: flex;
-  max-width: 300px;
+  max-width: 400px;
   margin: 0 auto;
   transition: transform 0.3s ease;
   & > * {

@@ -13,6 +13,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   display: flex;
+  top: 10px;
 `;
 
 const Box = styled.div`
@@ -31,7 +32,7 @@ const Line = styled.div`
   position: absolute;
   width: 36px;
   height: 0px;
-  left: 50%;
+  left: 46%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(90deg);
   border: 1px solid #ffba35;

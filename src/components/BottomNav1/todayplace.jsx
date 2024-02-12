@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
 import Swiper from "swiper";
+import styled from "styled-components";
 import "swiper/css";
 import Hot1 from "../../images/BottomNav1/hot1.svg";
 import Hot2 from "../../images/BottomNav1/hot2.svg";
 import Hot3 from "../../images/BottomNav1/hot3.svg";
+
+
+const SwipeCont = styled.div`
+top: 100px;
+`;
+
 
 const MySwiperComponent = () => {
   useEffect(() => {
@@ -24,6 +31,7 @@ const MySwiperComponent = () => {
 
   return (
     <div className="swiper mySwiper">
+      
       <div className="swiper-wrapper">
         <img
           className="swiper-slide"
@@ -44,6 +52,7 @@ const MySwiperComponent = () => {
           style={{ width: "440px", height: "200px", zIndex: 2 }}
         />
       </div>
+      
       <div className="swiper-button-next"></div>
       <div className="swiper-button-prev"></div>
       <div className="swiper-pagination"></div>
