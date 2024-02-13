@@ -6,6 +6,7 @@ body {
 
 .App {
   width: 480px;
+  
   text-align: center;
   margin: 0 auto;
   padding-bottom: 70px;
@@ -1284,4 +1285,33 @@ p {
       color: #C0C0C0;
     }
   }
+}
+/* --------------------------StoreListIn--------------------------- */
+/* SearchStore */
+.SearchStore-BottomNav3{
+  padding: 30px;
+  border-bottom: 4px solid #f6f6f6;
+}
+.search-SearchStore {
+  display: flex;
+  flex-direction: row;
+  width: 420px;
+  height: 54px;
+  border-radius: 10px;
+  border: 1px solid #ffba35;
+  background-color: #ffffff;
+  img {
+    margin: 13px;
+  }
+}
+.input-SearchStore {
+  width: 350px;
+  height: 19px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #707070;
+  border: none;
+  outline: none;
+  margin-top: 16px;
+  margin-bottom: 10px;
 }
