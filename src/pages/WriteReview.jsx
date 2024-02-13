@@ -32,7 +32,7 @@ export default function WriteReview() {
       reviewDetail.storeName &&
       reviewDetail.rating !== 0 &&
       reviewDetail.hashtags.length !== 0 &&
-      reviewDetail.reviewText.length >= 100
+      reviewDetail.reviewText.length >= 20
     ) {
       return true;
     } else {

@@ -34,7 +34,7 @@ export default function ExpiredC() {
                 </div>
               </div>
               <div className='btn-ExpiredC'>
-                <p className='text-btn'>바로 사용하기</p>
+                <p className='text-btn'>기간 만료</p>
                 <img src={srcCouponBtn} alt="" style={{width:'38px', height:'38px'}}/>
               </div>
             </div>

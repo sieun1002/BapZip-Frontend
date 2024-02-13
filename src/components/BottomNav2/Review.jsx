@@ -14,6 +14,10 @@ export default function Review(item) {
   const urlZip = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/zip/${item.reviewId}`;
   const urlDelZip = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/deleteZip/${item.reviewId}`;
 
+  let reviewText = item.reviewText;
+  if(reviewText.length > 50){
+    reviewText = reviewText.substr(0,50) + "...";
+  }
   function clickLike(){
     if(!likeState){
       api.post(urlZip)
@@ -38,7 +42,7 @@ export default function Review(item) {
       <div className='contents-review' style={{position: 'absolute'}}>
         <p className='name-review'>{item.storeName}</p>
         <div className='topReview-review'>
-          <p className='txt-review'>"{item.reviewText}"</p>
+          <p className='txt-review'>"{reviewText}"</p>
           <p className='userDetail-review'>{item.nickname}({formattedDate})</p>
         </div>
       </div>
