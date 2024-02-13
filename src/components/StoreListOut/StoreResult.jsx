@@ -35,7 +35,7 @@ export default function StoreResult() {
   function getStore(){
     api.get(urlget)
     .then(function(response){
-      setData(response.data.result.filter((item)=>item.inOut==="IN"));
+      setData(response.data.result.filter((item)=>item.inOut==="OUT"));
     })
     .catch(function(error){
       console.log(error.message);

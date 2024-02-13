@@ -44,6 +44,7 @@ import Coupon from "./pages/Coupon";
 //Point
 import Point from "./pages/Point";
 import StoreListIn from "./pages/StoreListIn";
+import StoreListOut from "./pages/StoreListOut";
 
 function App() {
   return (
@@ -72,7 +73,7 @@ function App() {
               <Route path="/Silsiganout" element={<Silsiganout />} />
               <Route path="/List" element={<BottomNav3 />} />
               <Route path="/ListIn" element={<StoreListIn />} />
-              <Route path="/ListOut" element={<ListOut />} />
+              <Route path="/ListOut" element={<StoreListOut />} />
               <Route path="/SilsiganRanking" element={<SilsiganRanking />} />
               <Route path="/MyPage" element={<BottomNav4 />} />
               <Route path="/MyPage/Setting" element={<Setting />} />
