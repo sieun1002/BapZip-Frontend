@@ -80,84 +80,87 @@ export default function RstaurantList(props) {
     }
   };
   return (
-    <Link to={`/RestaurantInfo/${storeId}`}>
-      <Container>
-        {scrap === true ? (
-          <ScrapImage
-            src={scrapImg}
-            alt="scrapImg"
-            onClick={() => {
-              deleteStoreScrapApi();
-            }}
-          />
-        ) : (
-          <ScrapImage
-            src={noneScrapImg}
-            alt="nonScrap"
-            onClick={() => {
-              addStoreScrapApi();
-            }}
-          />
-        )}
-        <RankP>{index + 1}</RankP>
-        <Rankimg src={Rank} alt="Ranking" />
-
-        <ImageStyleFood src={Restaurant.storeImageURL} alt="Bunsik" />
-        <ImageStyleHuman
-          src={
-            Restaurant.congestionAV > 20
-              ? redPeople
-              : Restaurant.congestionAV > 10
-              ? yellowPeople
-              : greedPeople
-          }
-          alt="Human"
+    // <Link to={`/RestaurantInfo/${storeId}`}>
+    <Container>
+      {scrap === true ? (
+        <ScrapImage
+          src={scrapImg}
+          alt="scrapImg"
+          onClick={() => {
+            deleteStoreScrapApi();
+          }}
         />
-
-        <AlarmImg
-          src={
-            Restaurant.congestionAV > 20
-              ? redWatch
-              : Restaurant.congestionAV > 10
-              ? yellowWatch
-              : greenWatch
-          }
-          alt="Alarm"
+      ) : (
+        <ScrapImage
+          src={noneScrapImg}
+          alt="nonScrap"
+          onClick={() => {
+            addStoreScrapApi();
+          }}
         />
-        {/* <TextPeople>{Restaurant.occupancyCount}명</TextPeople> */}
-        <TextPeople
-          color={
-            Restaurant.congestionAV > 20
-              ? "#E32525"
-              : Restaurant.congestionAV > 10
-              ? "#FFBA35"
-              : "#4AD917"
-          }
-        >
-          {Restaurant.occupancyCount === null
-            ? "-"
-            : Restaurant.occupancyCount + "명"}
-        </TextPeople>
+      )}
+      <Link to={`/RestaurantInfo/${storeId}`}>
+        <div style={{ width: "91%", height: "100%" }}>
+          <RankP>{index + 1}</RankP>
+          <Rankimg src={Rank} alt="Ranking" />
 
-        {/* <TextMinute>{Restaurant.waitingTime}분</TextMinute> */}
-        <TextMinute
-          color={
-            Restaurant.congestionAV > 20
-              ? "#E32525"
-              : Restaurant.congestionAV > 10
-              ? "#FFBA35"
-              : "#4AD917"
-          }
-        >
-          {Restaurant.waitingTime === null
-            ? "-"
-            : Restaurant.waitingTime + "분"}
-        </TextMinute>
+          <ImageStyleFood src={Restaurant.storeImageURL} alt="Bunsik" />
+          <ImageStyleHuman
+            src={
+              Restaurant.congestionAV > 20
+                ? redPeople
+                : Restaurant.congestionAV > 10
+                ? yellowPeople
+                : greedPeople
+            }
+            alt="Human"
+          />
 
-        <MenuTxt>{Restaurant.storeName}</MenuTxt>
-        <WaitingPeople>대기 인원</WaitingPeople>
-        <EstimatedTime>예상 시간</EstimatedTime>
-      </Container>
-    </Link>
+          <AlarmImg
+            src={
+              Restaurant.congestionAV > 20
+                ? redWatch
+                : Restaurant.congestionAV > 10
+                ? yellowWatch
+                : greenWatch
+            }
+            alt="Alarm"
+          />
+          {/* <TextPeople>{Restaurant.occupancyCount}명</TextPeople> */}
+          <TextPeople
+            color={
+              Restaurant.congestionAV > 20
+                ? "#E32525"
+                : Restaurant.congestionAV > 10
+                ? "#FFBA35"
+                : "#4AD917"
+            }
+          >
+            {Restaurant.occupancyCount === null
+              ? "-"
+              : Restaurant.occupancyCount + "명"}
+          </TextPeople>
+
+          {/* <TextMinute>{Restaurant.waitingTime}분</TextMinute> */}
+          <TextMinute
+            color={
+              Restaurant.congestionAV > 20
+                ? "#E32525"
+                : Restaurant.congestionAV > 10
+                ? "#FFBA35"
+                : "#4AD917"
+            }
+          >
+            {Restaurant.waitingTime === null
+              ? "-"
+              : Restaurant.waitingTime + "분"}
+          </TextMinute>
+
+          <MenuTxt>{Restaurant.storeName}</MenuTxt>
+          <WaitingPeople>대기 인원</WaitingPeople>
+          <EstimatedTime>예상 시간</EstimatedTime>
+        </div>
+      </Link>
+    </Container>
   );
 }
