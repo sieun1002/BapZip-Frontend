@@ -8,8 +8,10 @@ import SelectBenefit from "../components/WriteReview/SelectGood";
 import WriteTxt from "../components/WriteReview/WriteTxt";
 import UploadImg from "../components/WriteReview/UploadImg";
 import ModalGetPoint10 from "../components/WriteReview/ModalGetPoint10";
+import { useLocation } from "react-router";
 
 export default function WriteReview() {
+  const location = useLocation();
   const [reviewDetail, setReview] = useState({
     storeName: "",
     rating: 0,
@@ -122,7 +124,7 @@ export default function WriteReview() {
   return (
     <div className="App">
       <div className="container-writeReview" style={{ position: "relative" }}>
-        <Header />
+        <Header preLink={location.state?.preLink}/>
         <SearchStore setStore={setStore} />
         <StarRating setRate={setRate} />
         <SelectBenefit setBenefit={setBenefit} />

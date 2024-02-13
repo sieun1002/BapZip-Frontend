@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 import scrBackBtn from '../../images/WriteReview/backBtn.png'
 
-export default function Header() {
+export default function Header(props) {
   return (
     <div className='header-WriteReview'>
-        <Link to="/Review">
+        <Link to={props.preLink ? props.preLink :"/Review"}>
             <img src={scrBackBtn} alt="뒤로가기" />
         </Link>
         <p className='title-header'>리뷰 작성</p>
