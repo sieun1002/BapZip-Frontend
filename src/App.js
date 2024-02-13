@@ -43,6 +43,8 @@ import Coupon from "./pages/Coupon";
 
 //Point
 import Point from "./pages/Point";
+import StoreListIn from "./pages/StoreListIn";
+import StoreListOut from "./pages/StoreListOut";
 
 //WaitingRank
 import WaitingRank from "./components/WaitingRank/WaitingRank";
@@ -76,14 +78,9 @@ function App() {
               <Route path="/Silsiganin" element={<Silsiganin />} />
               <Route path="/Silsiganout" element={<Silsiganout />} />
               <Route path="/List" element={<BottomNav3 />} />
-              <Route path="/ListIn" element={<ListIn />} />
-              <Route path="/ListOut" element={<ListOut />} />
+              <Route path="/ListIn" element={<StoreListIn />} />
+              <Route path="/ListOut" element={<StoreListOut />} />
               <Route path="/SilsiganRanking" element={<SilsiganRanking />} />
-
-              <Route path="/Review" element={<BottomNav2 />} />
-              <Route path="/WriteReview" element={<WriteReview />} />
-              <Route path="/Home" element={<BottomNav1 />} />
-              <Route path="/arlim" element={<Arlim />} />
               <Route path="/MyPage" element={<BottomNav4 />} />
               <Route path="/MyPage/Setting" element={<Setting />} />
               <Route path="/MyPage/ManageReivew" element={<ManageReview />} />

@@ -36,7 +36,7 @@ export default function Profile(props) {
       setData(response.data.result);
     })
     .catch(error => {
-      console.log(error);
+      console.log(error.message);
     });
 
   };
