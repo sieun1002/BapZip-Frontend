@@ -1307,6 +1307,9 @@ p {
 }
 /* --------------------------StoreListIn--------------------------- */
 /* SearchStore */
+.BottomNav3-StoreListIn{
+  min-height: calc( 100vh - 58px );
+}
 .SearchStore-BottomNav3{
   padding: 30px;
   border-bottom: 4px solid #f6f6f6;

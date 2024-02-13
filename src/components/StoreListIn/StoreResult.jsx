@@ -4,6 +4,7 @@ import scrMenuDetail from "../../images/StoreListIn/menudetail.png"
 import scrRatingIcon from "../../images/WriteReview/ratingIcon.png";
 import scrBookmarkBtn from "../../images/StoreListIn/bookmarkBtn.png"
 import scrEmBookmarkBtn from "../../images/StoreListIn/embookmarkBtn.png"
+import { Link } from 'react-router-dom';
 
 export default function StoreResult() {
   const [menuBar,setMenuBar] = useState(false);
@@ -79,24 +80,28 @@ export default function StoreResult() {
           return(
             <div className="container-MyReview" key={item.storeId}>
               <div className="basicInfo-MyReview" style={{ position: "relative" }}>
-                <img src={item.imageUrl} alt=""
-                  style={{
-                    width: "128px",
-                    height: "129px",
-                    borderRadius: "10px 0px 00px 10px",
-                    backgroundColor: "#D9D9D9",
-                  }}
-                />
-                <div className="detailReview-MyReview">
-                  <p className="name-StoreResult">{item.name}</p>
-                  <p className="date-StoreResult">{item.category}ㆍ{item.inOut==="IN"? "교내" : "교외"}</p>
-                  <div className="rating-MyReview">
-                    <img src={scrRatingIcon} alt="" style={{ width: "17px", height: "16px" }}
-                    />
-                    <p className="rating-rating">{item.score}</p>
-                    <p className='reviewCount-rating'>({item.reviewCount})</p>
+                <Link to={`/RestaurantInfo/${item.storeId}`} style={{ textDecoration: "none", color:'black'}}>
+                  <img src={item.imageUrl} alt=""
+                    style={{
+                      width: "128px",
+                      height: "129px",
+                      borderRadius: "10px 0px 00px 10px",
+                      backgroundColor: "#D9D9D9",
+                    }}
+                  />
+                </Link>
+                <Link to={`/RestaurantInfo/${item.storeId}`} style={{ textDecoration: "none", color:'black'}}>
+                  <div className="detailReview-MyReview">
+                    <p className="name-StoreResult">{item.name}</p>
+                    <p className="date-StoreResult">{item.category}ㆍ{item.inOut==="IN"? "교내" : "교외"}</p>
+                    <div className="rating-MyReview">
+                      <img src={scrRatingIcon} alt="" style={{ width: "17px", height: "16px" }}
+                      />
+                      <p className="rating-rating">{item.score}</p>
+                      <p className='reviewCount-rating'>({item.reviewCount})</p>
+                    </div>
                   </div>
-                </div>
+                </Link>
                 <div className="btn-MyReview">
                   <img src={item.isMyZip?scrBookmarkBtn:scrEmBookmarkBtn} alt="" style={{ width: "31px", height: "31px" }}
                     onClick={() => {clickBookmark(item.storeId, item.isMyZip)}}

@@ -5,6 +5,7 @@ import scrDeletBtn from "../../images/ManageReview/deletBtn.png";
 import scrDetailBtn from "../../images/ManageReview/detailBtn.png";
 import srcSelBtn from "../../images/ManageReview/selectBtn.png";
 import srcSelActBtn from "../../images/ManageReview/selectActiveBtn.png";
+import { Link } from "react-router-dom";
 
 export default function MyReview() {
   const [detailBtn, setDetail] = useState([]);
@@ -139,18 +140,20 @@ export default function MyReview() {
                         backgroundColor: "#D9D9D9",
                       }}
                     />
-                    <div className="detailReview-MyReview">
-                      <p className="date-MyReview">{item.visitDate} 방문</p>
-                      <p className="name-MyReview">{item.storeName}</p>
-                      <div className="rating-MyReview">
-                        <img
-                          src={scrRatingIcon}
-                          alt=""
-                          style={{ width: "17px", height: "16px" }}
-                        />
-                        <p className="rating-rating">{item.rating}.0</p>
+                    <Link to={`/RestaurantInfo/${item.storeId}`} style={{ textDecoration: "none" , color:"black"}}>
+                      <div className="detailReview-MyReview">
+                        <p className="date-MyReview">{item.visitDate} 방문</p>
+                        <p className="name-MyReview">{item.storeName}</p>
+                        <div className="rating-MyReview">
+                          <img
+                            src={scrRatingIcon}
+                            alt=""
+                            style={{ width: "17px", height: "16px" }}
+                          />
+                          <p className="rating-rating">{item.rating}.0</p>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                     <div className="btn-MyReview">
                       <img
                         src={scrDeletBtn}

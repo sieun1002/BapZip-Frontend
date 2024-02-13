@@ -26,8 +26,6 @@ import Silsiganout from "./pages/silsiganout";
 // BottomNav3---------------------------------------------------------------
 
 import BottomNav3 from "./pages/BottomNav3";
-import ListIn from "./pages/ListIn";
-import ListOut from "./pages/ListOut";
 import SilsiganRanking from "./pages/SilsiganRanking";
 
 // BottomNav4---------------------------------------------------------------
