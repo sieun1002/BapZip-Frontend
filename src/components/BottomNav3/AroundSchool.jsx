@@ -195,7 +195,7 @@ const AroundSchool = () => {
         </Link>
       </Container2>
       <StyledText2>실시간 웨이팅 랭킹</StyledText2>
-      <Link to="/WaitingRank">
+      <Link to="/WaitingRank" state={{ navBar: "ALL" }}>
         <StyledText3>더보기</StyledText3>
       </Link>
     </Container>

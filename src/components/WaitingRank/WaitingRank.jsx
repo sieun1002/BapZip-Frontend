@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import api from "../../api/LoginTokenApi";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import Header from "../ListIn/Header";
 import SearchBar from "../ListIn/Searchbar";
@@ -15,23 +17,19 @@ import {
 import Ad1 from "../../images/WaitingRank/Ad1.svg";
 
 export default function WaitingRank() {
+  const location = useLocation();
   const title = "실시간 웨이팅 랭킹"; //나중에 props로 받아올거임.
-  const [currentTab, setCurrentTab] = useState("ALL");
+  const [currentTab, setCurrentTab] = useState("");
 
-  const renderTabComponent = () => {
-    switch (currentTab) {
-      case "IN":
-        return;
-      case "OUT":
-        return;
-      default:
-        return;
+  useEffect(() => {
+    if (location.state?.navBar) {
+      setCurrentTab(location.state.navBar);
+    } else {
+      setCurrentTab("ALL");
     }
-  };
+  }, [location.state]);
 
   const [allRestaurantList, setAllRestaurantList] = useState([]);
-
-  // const classification = "ALL";
   const classification = currentTab;
 
   const schoolId = localStorage.getItem("schoolId");

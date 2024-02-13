@@ -163,7 +163,7 @@ const Honjap = () => {
         <A4 src={A2} alt="IN2" />
 
         <Container1>
-          <Link to="/silsiganin">
+          <Link to="/WaitingRank" state={{ navBar: "IN" }}>
             <BackgroundImage src={background} alt="배경" />
             <ZandiImage src={zandi} alt="Zandi" />
             <SchoolImage src={school} alt="School" />
@@ -174,7 +174,7 @@ const Honjap = () => {
           </Link>
         </Container1>
         <Container2>
-          <Link to="/silsiganout">
+          <Link to="/WaitingRank" state={{ navBar: "OUT" }}>
             <OutBackgroundImage src={Outbackground} alt="배경" />
             <Out3 src={Out} alt=">" />
             <Out4 src={Out2} alt="교외식당" />
