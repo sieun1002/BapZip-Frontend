@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import api from "../api/LoginTokenApi";
 import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   BodyDiv,
   WrapperDiv,
@@ -90,7 +91,16 @@ export default function RestaurantInfo() {
   };
 
   // 'home', 'menu', 'review', 'chat' 중 하나를 현재 상태로 관리합니다.
-  const [currentTab, setCurrentTab] = useState("home");
+  const location = useLocation();
+  const [currentTab, setCurrentTab] = useState("");
+
+  useEffect(() => {
+    if (location.state?.navBar) {
+      setCurrentTab(location.state.navBar);
+    } else {
+      setCurrentTab("home");
+    }
+  }, [location.state]);
 
   //CongestionCheck 상태 관리
   const [congestionCheck, setCongestionCheck] = useState(false);
