@@ -103,7 +103,6 @@ export default function RstaurantList(props) {
           }}
         />
       )}
-      {/* <Link to={`/RestaurantInfo/${storeId}`} state={{ preLink: "/Review" }}> */}
       <Link
         to={`/RestaurantInfo/${storeId}`}
         state={{ preLink: "/Review", restaurantPreLink: { restaurantPreLink } }}
