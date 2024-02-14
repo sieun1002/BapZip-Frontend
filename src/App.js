@@ -26,8 +26,6 @@ import Silsiganout from "./pages/silsiganout";
 // BottomNav3---------------------------------------------------------------
 
 import BottomNav3 from "./pages/BottomNav3";
-import ListIn from "./pages/ListIn";
-import ListOut from "./pages/ListOut";
 import SilsiganRanking from "./pages/SilsiganRanking";
 
 // BottomNav4---------------------------------------------------------------
@@ -39,6 +37,15 @@ import RestaurantInfo from "./pages/RestaurantInfo";
 // Setting---------------------------------------------------------------
 import Setting from "./pages/Setting";
 import ManageReview from "./pages/ManageReview";
+import Coupon from "./pages/Coupon";
+
+//Point
+import Point from "./pages/Point";
+import StoreListIn from "./pages/StoreListIn";
+import StoreListOut from "./pages/StoreListOut";
+
+//WaitingRank
+import WaitingRank from "./components/WaitingRank/WaitingRank";
 
 function App() {
   return (
@@ -57,7 +64,10 @@ function App() {
                 path="/users/auth/agreement"
                 element={<SineUpCompletion />}
               />
-              <Route path="/RestaurantInfo" element={<RestaurantInfo />} />
+              <Route
+                path="/RestaurantInfo/:storeId"
+                element={<RestaurantInfo />}
+              />
 
               <Route path="/Review" element={<BottomNav2 />} />
               <Route path="/WriteReview" element={<WriteReview />} />
@@ -66,17 +76,16 @@ function App() {
               <Route path="/Silsiganin" element={<Silsiganin />} />
               <Route path="/Silsiganout" element={<Silsiganout />} />
               <Route path="/List" element={<BottomNav3 />} />
-              <Route path="/ListIn" element={<ListIn />} />
-              <Route path="/ListOut" element={<ListOut />} />
+              <Route path="/ListIn" element={<StoreListIn />} />
+              <Route path="/ListOut" element={<StoreListOut />} />
               <Route path="/SilsiganRanking" element={<SilsiganRanking />} />
-
-              <Route path="/Review" element={<BottomNav2 />} />
-              <Route path="/WriteReview" element={<WriteReview />} />
-              <Route path="/Home" element={<BottomNav1 />} />
-              <Route path="/arlim" element={<Arlim />} />
               <Route path="/MyPage" element={<BottomNav4 />} />
-              <Route path="/Setting" element={<Setting />} />
-              <Route path="/ManageReivew" element={<ManageReview />} />
+              <Route path="/MyPage/Setting" element={<Setting />} />
+              <Route path="/MyPage/ManageReivew" element={<ManageReview />} />
+              <Route path="/Mypage/Point" element={<Point />} />
+              <Route path="/MyPage/Coupon" element={<Coupon />} />
+
+              <Route path="/WaitingRank" element={<WaitingRank />} />
             </Routes>
           </BrowserRouter>
         </div>

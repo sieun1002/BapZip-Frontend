@@ -1,9 +1,23 @@
-import React from 'react'
-import srcFirstZip from '../../images/BottomNav4/firstZip.png'
-import srcSecondZip from '../../images/BottomNav4/secondZip.png'
-import srcThirdZip from '../../images/BottomNav4/thirdZip.png'
+import React, { useState } from 'react'
+import api from "../../api/LoginTokenApi";
 
 export default function MyZipStore() {
+  const [zipData,setData] = useState([]);
+  const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/myZip`;
+  
+  function getZip(){
+    api.get(urlget)
+    .then(function(response){
+      setData(response.data.result);
+    })
+    .catch(function(error){
+      console.log(error.message);
+    })
+  }
+  
+  if(!zipData[0]){
+    getZip();
+  }
   return (
     <div className='MyZipStore-BottomNav4'>
       <div className='text-MyZipStore'>
@@ -11,18 +25,16 @@ export default function MyZipStore() {
         <p className='viewAll-MyZipStore'>전체보기</p>
       </div>
       <div className='Stores-MyZipStore'>
-        <div className='firstStore-Stores'>
-          <img src={srcFirstZip} alt="사진" className='image-MyZipStore'/>
-          <p className='name-MyZipSore'>한식당-한식</p>
-        </div>
-        <div className='secondStore-Stores'>
-          <img src={srcSecondZip} alt="사진" className='image-MyZipStore'/>
-          <p className='name-MyZipSore'>연어식당</p>
-        </div>
-        <div className='thirdStore-Stores'>
-          <img src={srcThirdZip} alt="사진" className='image-MyZipStore'/>
-          <p className='name-MyZipSore'>블랑카페</p>
-        </div>
+        {zipData.length?<div className='result-SearchModal'>
+            {zipData.map((item)=>{
+              return(
+                <div className='store-Stores'  key={item.id}>
+                  <img src={item.imageUrl} alt="사진" className='image-MyZipStore'/>
+                  <p className='name-MyZipSore'>{item.name}</p>
+                </div>
+              )
+            })}
+        </div>:""}
       </div>
       
     </div>

@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <div className='header-BottomNav4'>
         <p className='title-header'>마이페이지</p>
-        <Link to="/Setting">
+        <Link to="/MyPage/Setting">
             <img src={scrBackBtn} alt="설정" />
         </Link>
     </div>

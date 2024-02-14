@@ -41,8 +41,7 @@ export default function RestaurantInfo() {
   //가게 기본 정보 api 연결
   const [restaurantInfo, setRestaurantInfo] = useState({});
   //URL에서 storeId 추출
-  // const {storeId} = useParams();
-  const storeId = 5;
+  const { storeId } = useParams();
 
   useEffect(() => {
     const basicRestaurantInfoApi = async () => {

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import api from "../../api/LoginTokenApi";
+import { useParams } from "react-router-dom";
 import {
   BodyDiv,
   WrapperDiv,
@@ -54,14 +55,12 @@ export default function InfoHome() {
   const [signatureMenu, setSignatureMenu] = useState([]);
 
   //URL에서 storeId 추출
-  // const {storeId} = useParams();
-  const { storeId } = 5;
+  const { storeId } = useParams();
 
   useEffect(() => {
     const manuPanApi = async () => {
       try {
-        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/printedMenu`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/5/printedMenu`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/printedMenu`;
 
         const response = await api.get(url);
         setMenuPan(response.data.result);
@@ -74,8 +73,7 @@ export default function InfoHome() {
 
     const signatureMenunApi = async () => {
       try {
-        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/menu`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/stores/11/menu`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/stores/${storeId}/menu`;
 
         const response = await api.get(url);
         setSignatureMenu(response.data.result);

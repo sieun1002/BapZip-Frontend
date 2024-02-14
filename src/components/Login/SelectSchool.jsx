@@ -71,7 +71,7 @@ export default function SelectSchool() {
   return (
     <BodyDiv>
       <WrapperDiv>
-        <Div>
+        <Div height="100%">
           <HeaderDiv justifyContent="flex-end">
             <Link to="/users/auth/signup">
               <XImage src={X} alt="X" />

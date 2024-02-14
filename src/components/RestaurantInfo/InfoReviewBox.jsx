@@ -48,12 +48,12 @@ export default function InfoReview(props) {
       const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/zip/${reviewId}`;
 
       // 요청 본문에 포함될 데이터
-      const data = {
-        userId: localStorage.getItem("userId"),
-      };
+      // const data = {
+      //   userId: localStorage.getItem("userId"),
+      // };
 
       // axios.post 메소드를 사용하여 요청을 보냄
-      await api.post(url, data);
+      await api.post(url);
 
       // 리뷰 좋아요 성공 처리
       setHeart(true);
@@ -76,12 +76,12 @@ export default function InfoReview(props) {
       const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/deleteZip/${reviewId}`;
 
       // 요청 본문에 포함될 데이터
-      const data = {
-        userId: localStorage.getItem("userId"),
-      };
+      // const data = {
+      //   userId: localStorage.getItem("userId"),
+      // };
 
       // axios.post 메소드를 사용하여 요청을 보냄
-      await api.delete(url, data);
+      await api.delete(url);
 
       // 리뷰 좋아요 삭제 성공 처리
       setHeart(false);
@@ -118,9 +118,11 @@ export default function InfoReview(props) {
         <ReviewStarNum>{Review.rating}.0</ReviewStarNum>
       </ReviewStarDiv>
       <ReviewContentDiv>{Review.reviewText}</ReviewContentDiv>
-      {Review.reviewImage !== "" ? (
-        <ReviewImg src={Review.reviewImage} alt="reviewImage" />
-      ) : null}
+      {Review.reviewImages.length !== 0
+        ? Review.reviewImages.map((ReviewImgUrl, index) => (
+            <ReviewImg src={ReviewImgUrl} alt="reviewImage" key={index} />
+          ))
+        : null}
       <ReviewDate>
         {Review.createdAt ? Review.createdAt.split("T")[0] : ""}
       </ReviewDate>

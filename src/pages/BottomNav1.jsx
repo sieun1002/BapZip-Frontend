@@ -12,6 +12,7 @@ export default function BottomNav1() {
   return (
     <div className="App">
       <div>
+        <BottomNav menu="Home" />
         <Searchbar />
         <Silsi />
         <Honjap />
@@ -19,7 +20,6 @@ export default function BottomNav1() {
         <Review />
         <Todayplace />
         <Recommend />
-        <BottomNav menu="Home" />
       </div>
     </div>
   );

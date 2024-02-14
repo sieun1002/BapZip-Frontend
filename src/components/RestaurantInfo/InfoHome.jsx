@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
 import api from "../../api/LoginTokenApi";
 import { CopyToClipboard } from "react-copy-to-clipboard/src";
 import {
@@ -33,14 +34,12 @@ export default function InfoHome() {
   const [notice, setNotice] = useState({});
 
   //URL에서 storeId 추출
-  // const {storeId} = useParams();
-  const { storeId } = 5;
+  const { storeId } = useParams();
 
   useEffect(() => {
     const detailRestaurantInfoApi = async () => {
       try {
-        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/11/detailinfo/`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo/`;
 
         const response = await api.get(url);
         setDetailRestaurantInfo(response.data.result);

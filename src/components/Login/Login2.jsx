@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../../features/user/userSlice";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   BodyDiv,
@@ -35,6 +35,7 @@ import secret from "../../images/Login/secret.svg";
 
 export default function Login2() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [validLogin, setValidLogin] = useState(null);
 
@@ -72,7 +73,7 @@ export default function Login2() {
     setForm({ ...form, password });
 
     if (password.trim() === "") {
-      setVaildPassword(null); //값이 없는 경우 null로 설정
+      setVaildPassword(null);
     }
   };
 
@@ -81,56 +82,48 @@ export default function Login2() {
     setForm({ ...form, id });
 
     if (id.trim() === "") {
-      setVaildId(null); //값이 없는 경우 null로 설정
+      setVaildId(null);
     }
   };
 
-  // 로그인 함수
   const handleLogin = async () => {
     try {
-      // API 요청 URL
       const url =
         "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/signin";
 
-      // 요청 본문에 포함될 데이터
       const data = {
         userId: form.id,
         password: form.password,
       };
 
-      // axios.post 메소드를 사용하여 요청을 보냄
       const response = await axios.post(url, data, {
         headers: {
-          "Content-Type": "application/json", // 명시적으로 Content-Type 헤더 설정
+          "Content-Type": "application/json",
         },
       });
 
-      // 로그인 성공 처리
-      console.log("Login successful");
       const userId = form.id;
       const token = response.data.result.token;
       dispatch(setCredentials({ userId, token }));
       localStorage.setItem("token", token);
-
       localStorage.setItem("userId", form.id);
       localStorage.setItem("schoolId", response.data.result.schoolId);
 
       setValidLogin(true);
+
+      // 로그인 성공 후에 페이지 이동
+      navigate("/home");
     } catch (error) {
-      // 로그인 실패 또는 에러 처리
       console.error(
         "Login error",
         error.response ? error.response.data : error
       );
       setValidLogin(false);
-      // 에러 상황에 대한 처리 로직을 추가하세요. 예: 사용자에게 에러 메시지 표시
     }
   };
 
-  //폼 제출 핸들러 수정
   const handleSubmit = (e) => {
-    e.preventDefault(); // 폼 기본 제출 동작 방지
-    console.log("handleSubmit called"); // 디버깅 메시지
+    e.preventDefault();
     handleLogin();
   };
 
@@ -184,9 +177,7 @@ export default function Login2() {
               {validLogin === false ? (
                 <Submit type="submit" value="로그인" />
               ) : (
-                <Link to="/Home" style={{ textDecoration: "none" }}>
-                  <Submit type="submit" value="로그인" />
-                </Link>
+                <Submit type="submit" value="로그인" />
               )}
             </Form>
 

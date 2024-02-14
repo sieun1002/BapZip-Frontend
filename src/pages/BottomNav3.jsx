@@ -3,24 +3,24 @@ import styled from "styled-components";
 import Header from "../components/BottomNav3/Header";
 import AroundSchool from "../components/BottomNav3/AroundSchool";
 import BottomNav from "../components/BottomNav";
-import Restaurant from "../components/silsiganin/Restaurant";
-import Restaurant2 from "../components/silsiganin/Restaurant2";
-import Restaurant3 from "../components/silsiganin/Restaurant3";
+import MainWaitingRank from "../components/BottomNav3/MainWaitingRank";
 const Cont = styled.div`
+  height: 67%;
   margin-top: 250px;
 `;
 export default function BottomNav3() {
   return (
-    <div className="App">
-      <div style={{ height: "100vh" }}>
+    <div className="App" style={{ height: "100vh", position: "relative" }}>
+      <div style={{ height: "100%" }}>
         <Header />
         <AroundSchool />
-        <Cont>
-          <Restaurant />
-          <Restaurant2 />
-          <Restaurant3 />
+        <Cont style={{ position: "absolute", zIndex: "0" }}>
+          <MainWaitingRank />
         </Cont>
-        <BottomNav menu="List" />
+        <BottomNav
+          menu="List"
+          style={{ position: "absolute", zIndex: "110" }}
+        />
       </div>
     </div>
   );

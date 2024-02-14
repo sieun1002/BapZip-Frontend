@@ -8,8 +8,10 @@ import SelectBenefit from "../components/WriteReview/SelectGood";
 import WriteTxt from "../components/WriteReview/WriteTxt";
 import UploadImg from "../components/WriteReview/UploadImg";
 import ModalGetPoint10 from "../components/WriteReview/ModalGetPoint10";
+import { useLocation } from "react-router";
 
 export default function WriteReview() {
+  const location = useLocation();
   const [reviewDetail, setReview] = useState({
     storeName: "",
     rating: 0,
@@ -32,7 +34,7 @@ export default function WriteReview() {
       reviewDetail.storeName &&
       reviewDetail.rating !== 0 &&
       reviewDetail.hashtags.length !== 0 &&
-      reviewDetail.reviewText.length >= 100
+      reviewDetail.reviewText.length >= 20
     ) {
       return true;
     } else {
@@ -110,16 +112,19 @@ export default function WriteReview() {
 
       url: url,
       data: formData,
+    })
+    .catch(function(error){
+      console.log(error.message);
     });
-  }
-  function clickBtn() {
+  }; 
+  function clickBtn(){
     setModal(true);
     submitReview();
   }
   return (
     <div className="App">
       <div className="container-writeReview" style={{ position: "relative" }}>
-        <Header />
+        <Header preLink={location.state?.preLink}/>
         <SearchStore setStore={setStore} />
         <StarRating setRate={setRate} />
         <SelectBenefit setBenefit={setBenefit} />
