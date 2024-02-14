@@ -33,8 +33,6 @@ export default function RstaurantList(props) {
 
   const restaurantPreLink = window.location.href;
 
-  console.log(restaurantPreLink);
-
   const [scrap, setScrap] = useState();
   const [restaurantInfo, setRestaurantInfo] = useState({});
 
