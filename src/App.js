@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SignUpProvider } from "./context/SignUpContext";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import ScrollToTop from "../src/ScrollToTop";
 // Login---------------------------------------------------------------
 import Login1 from "./pages/Login1";
 import Login2 from "./components/Login/Login2";
@@ -54,6 +55,7 @@ function App() {
         <div className="root-wrap">
           {/* <div className="App"> */}
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Login1 />} />
               <Route path="/users/auth/sigin" element={<Login2 />} />
