@@ -18,22 +18,22 @@ export default function MyReview() {
 
   const [reviewData, setData] = useState([]);
 
-  const [needR,setRender] = useState(true);
+  const [needR, setRender] = useState(true);
   const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/myReviews`;
   function getReview() {
-    api.get(urlget)
-    .then(function (response) {
-      setData(response.data.result);
-    })
-    .catch(function (error) {
-      console.log(error.message);
-    });
+    api
+      .get(urlget)
+      .then(function (response) {
+        setData(response.data.result);
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      });
   }
   function delReview() {
     for (let i = 0; i < deleteID.length; i++) {
       const urlDel = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/delete/${deleteID[i]}`;
-      api.delete(urlDel)
-      .catch(function(error){
+      api.delete(urlDel).catch(function (error) {
         console.log(error.message);
       });
     }
@@ -78,11 +78,11 @@ export default function MyReview() {
   if (!reviewData[0]) {
     getReview();
   }
-  useEffect(()=>{
+  useEffect(() => {
     setTimeout(() => {
       getReview();
     }, 500);
-  },[needR]);
+  }, [needR]);
   return (
     <div className="myReview-ManageReview">
       <div className="deleteBar-myReview">
@@ -140,7 +140,10 @@ export default function MyReview() {
                         backgroundColor: "#D9D9D9",
                       }}
                     />
-                    <Link to={`/RestaurantInfo/${item.storeId}`} style={{ textDecoration: "none" , color:"black"}}>
+                    <Link
+                      to={`/RestaurantInfo/${item.storeId}`}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
                       <div className="detailReview-MyReview">
                         <p className="date-MyReview">{item.visitDate} 방문</p>
                         <p className="name-MyReview">{item.storeName}</p>

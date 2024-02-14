@@ -84,6 +84,44 @@ const AdditionalBox = styled.div`
   background: #f6f6f6;
 `;
 
+const AdditionalInfo = styled.div`
+  position: absolute;
+  width: 220px;
+  height: 36px;
+  left: -25px;
+  top: -80px;
+`;
+
+const NameInfo = styled.div`
+  position: absolute;
+  width: 108px;
+  height: 22px;
+  left: 235px;
+  top: 94px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #191919;
+  white-space: nowrap;
+`;
+
+const TimeInfo = styled.div`
+  position: absolute;
+  width: 58px;
+  height: 22px;
+  left: 376px;
+  top: 94px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: right;
+  color: #e32525;
+`;
+
 const schoolTextStyle = {
   position: "absolute",
   width: "85px",
@@ -139,7 +177,7 @@ const LineStyle = {
   transform: "rotate(-90deg)",
 };
 
-const ScrollContainer = styled.div` 
+const ScrollContainer = styled.div`
   position: absolute;
   overflow-y: scroll;
   width: 150px;
@@ -149,7 +187,7 @@ const ScrollContainer = styled.div`
   bottom: 10px;
 `;
 
-const ScrollContainer2 = styled.div` 
+const ScrollContainer2 = styled.div`
   position: absolute;
   overflow-y: scroll;
   width: 100px;
@@ -159,8 +197,8 @@ const ScrollContainer2 = styled.div`
   bottom: 10px;
 `;
 
-const ScrollText = styled.div` 
-left: 300px;
+const ScrollText = styled.div`
+  left: 300px;
 `;
 
 const Silsi = () => {
@@ -170,7 +208,7 @@ const Silsi = () => {
   // const {storeId} = useParams();
   const { storeId } = 5;
 
-  
+  useEffect(() => {
     const Regionapi = async () => {
       try {
         // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
@@ -185,25 +223,22 @@ const Silsi = () => {
     };
 
     Regionapi();
- 
+  }, []);
+  /** 
+  const Schoolapi = async () => {
+    try {
+      // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school`;
 
-  
-    const Schoolapi = async () => {
-      try {
-        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school`;
+      const response = await api.get(url);
+      setSchool(response.data.result);
+      console.log("마이페이지 api 호출", School);
+    } catch (error) {
+      console.error("가게 세부 정보 가져오기 실패", error);
+    }
+  };
 
-        const response = await api.get(url);
-        setSchool(response.data.result);
-        console.log("마이페이지 api 호출", School);
-      } catch (error) {
-        console.error("가게 세부 정보 가져오기 실패", error);
-      }
-    };
-
-    Schoolapi();
-  
-
+  Schoolapi(); */
 
   const [isModalOpen, setModalOpen] = useState(false);
   const modalRef = useRef();
@@ -235,14 +270,14 @@ const Silsi = () => {
         <ModalContent ref={modalRef}>
           <ScrollContainer>
             <ScrollText>
-            <p>{School.name}</p>
-            
+              <p>{School.name}</p>
             </ScrollText>
           </ScrollContainer>
           <ScrollContainer2>
-          <ScrollText>
-            <p>{Region[0].name}</p>
-  
+            <ScrollText>
+              {Region.map((item, index) => (
+                <p key={index}>{item.name}</p>
+              ))}
             </ScrollText>
           </ScrollContainer2>
           <div style={LineStyle}></div>
@@ -260,6 +295,10 @@ const Silsi = () => {
           </AdditionalBox>
         </ModalContent>
       )}
+      <AdditionalInfo>
+        <NameInfo>1 학식당 - 분식</NameInfo>
+        <TimeInfo>40min</TimeInfo>
+      </AdditionalInfo>
       <Line />
     </Container>
   );
