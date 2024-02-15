@@ -33,7 +33,9 @@ export default function ZipReview() {
           const formattedDate = `${date[0]}.${date[1]}.${date[2]}`;
           return(
             <div className='container-ZipReview' key={item.reviewId}>
-              <Link to={`/RestaurantInfo/${item.storeId}`} style={{ textDecoration: "none" , color:"black"}}>
+              <Link to={`/RestaurantInfo/${item.storeId}`}
+              state={{ navBar: "review" , restaurantPreLink: "/MyPage/ManageReivew" }}
+              style={{ textDecoration: "none" , color:"black"}}>
                 <div className='storeName-ZipReview'>
                   <p>{item.storeName}</p>
                   <img src={srcGoBtn} alt="" style={{width:'7px', height:'16px'}}/>
@@ -49,7 +51,18 @@ export default function ZipReview() {
                   <p className='rating-detail'>{item.rating}.0</p>
                 </div>
                 <p className='text-detail'>{item.reviewText}</p>
-                {item.imageUrls[0]? <img src={item.imageUrls[0]} alt="" style={{width:'140px', height:'140px'}}/> : ""}
+                <div className="images-moreInfo">
+                  {item.imageUrls[0] ? item.imageUrls.map((image)=>{
+                    return(
+                      <img
+                        key={item.imageUrls.indexOf(image)}
+                        src={image}
+                        alt=""
+                        style={{ width: "140px", height: "140px" }}
+                      />
+                    )
+                  }) : ("")}
+                </div>
                 <p className='date-detail'>{formattedDate}</p> 
               </div>
             </div>

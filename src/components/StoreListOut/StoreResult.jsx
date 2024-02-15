@@ -80,7 +80,9 @@ export default function StoreResult() {
           return(
             <div className="container-MyReview" key={item.storeId}>
               <div className="basicInfo-MyReview" style={{ position: "relative" }}>
-                <Link to={`/RestaurantInfo/${item.storeId}`} style={{ textDecoration: "none", color:'black'}}>
+                <Link to={`/RestaurantInfo/${item.storeId}`} 
+                state={{ navBar: "home" , restaurantPreLink: "/ListOut" }}
+                style={{ textDecoration: "none", color:'black'}}>
                   <img src={item.imageUrl} alt=""
                     style={{
                       width: "128px",
@@ -90,7 +92,9 @@ export default function StoreResult() {
                     }}
                   />
                 </Link>
-                <Link to={`/RestaurantInfo/${item.storeId}`} style={{ textDecoration: "none", color:'black'}}>
+                <Link to={`/RestaurantInfo/${item.storeId}`} 
+                state={{ navBar: "home" , restaurantPreLink: "/ListOut" }}
+                style={{ textDecoration: "none", color:'black'}}>
                   <div className="detailReview-MyReview">
                     <p className="name-StoreResult">{item.name}</p>
                     <p className="date-StoreResult">{item.category}ㆍ{item.inOut==="IN"? "교내" : "교외"}</p>
