@@ -33,6 +33,8 @@ import yellowCircle from "../../images/Login/yellowCircle.svg";
 export default function SelectMajor() {
   const { userInfo, setUserInfo, validations, setValidations } = useSignUp();
   const [majorCheck, setMajorCheck] = useState(false);
+  const [majorList, setMajorList] = useState([]);
+  const [selectBox, setSelectBox] = useState(false);
 
   const schoolId = userInfo.school_id;
 
@@ -50,18 +52,24 @@ export default function SelectMajor() {
 
       console.log(response.data.result);
 
+      setMajorList(response.data.result);
+
+      setSelectBox(true);
+
+      setMajorCheck(true);
+
       // 전공 이름 저장
-      const major = response.data.result[0].name;
-      setForm({ ...form, major });
+      // const major = response.data.result[0].name;
+      // setForm({ ...form, major });
 
-      //전공 아이디 저장
-      const major_id = response.data.result[0].id;
+      // //전공 아이디 저장
+      // const major_id = response.data.result[0].id;
 
-      setUserInfo((userInfo) => ({
-        ...userInfo,
-        major: major,
-        major_id: major_id,
-      }));
+      // setUserInfo((userInfo) => ({
+      //   ...userInfo,
+      //   major: major,
+      //   major_id: major_id,
+      // }));
       setMajorCheck(true);
       setValidations({ ...validations, isSchoolAndMajor: true });
     } catch (error) {

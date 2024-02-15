@@ -49,7 +49,7 @@ export default function SelectSchool() {
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url);
 
-      console.log(response.data.result);
+      // console.log(response.data.result);
       setSchoolList(response.data.result);
 
       setSelectBox(true);
