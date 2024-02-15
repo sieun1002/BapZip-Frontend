@@ -108,3 +108,26 @@ export const CircleImage = styled.img`
   width: 9px;
   height: 9px;
 `;
+
+export const SearchListWrapper = styled.div`
+  width: 420px;
+  min-height: 500px;
+
+  position: fixed;
+  top: 320px;
+
+  background-color: beige;
+`;
+
+export const SearchListDiv = styled.div`
+  width: 420px;
+  height: 50px;
+  ${flexCenter()}
+  justify-content: flex-start;
+
+  padding-left: 10px;
+  box-sizing: border-box;
+
+  margin-bottom: 5px;
+  background-color: #ffff3b;
+`;
