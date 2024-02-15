@@ -31,6 +31,8 @@ export default function RstaurantList(props) {
   const index = props.index;
   const storeId = Restaurant.storeId;
 
+  const restaurantPreLink = window.location.href;
+
   const [scrap, setScrap] = useState();
   const [restaurantInfo, setRestaurantInfo] = useState({});
 
@@ -99,7 +101,10 @@ export default function RstaurantList(props) {
           }}
         />
       )}
-      <Link to={`/RestaurantInfo/${storeId}`}>
+      <Link
+        to={`/RestaurantInfo/${storeId}`}
+        state={{ preLink: "/Review", restaurantPreLink: { restaurantPreLink } }}
+      >
         <div style={{ width: "91%", height: "100%" }}>
           <RankP>{index + 1}</RankP>
           <Rankimg src={Rank} alt="Ranking" />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import api from "../api/LoginTokenApi";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   BodyDiv,
   WrapperDiv,
@@ -26,6 +27,7 @@ import star from "../images/RestaurantInfo/star.svg";
 import good from "../images/RestaurantInfo/good.svg";
 import nonScrapImg from "../images/RestaurantInfo/noneScrap.svg";
 import ScrapImg from "../images/RestaurantInfo/scrap1.svg";
+import whiteArrowLeftImg from "../images/RestaurantInfo/whiteArrowLeft.svg";
 
 import InfoHome from "../components/RestaurantInfo/InfoHome";
 import InfoMenu from "../components/RestaurantInfo/InfoMenu";
@@ -90,7 +92,23 @@ export default function RestaurantInfo() {
   };
 
   // 'home', 'menu', 'review', 'chat' 중 하나를 현재 상태로 관리합니다.
-  const [currentTab, setCurrentTab] = useState("home");
+  const location = useLocation();
+  const [currentTab, setCurrentTab] = useState("");
+  const [restaurantPreLink, setrestaurantPreLink] = useState("#");
+
+  useEffect(() => {
+    if (location.state?.navBar) {
+      setCurrentTab(location.state.navBar);
+    } else {
+      setCurrentTab("home");
+    }
+
+    if (location.state?.restaurantPreLink) {
+      setrestaurantPreLink(location.state.restaurantPreLink.restaurantPreLink);
+    } else {
+      setrestaurantPreLink("#");
+    }
+  }, [location.state]);
 
   //CongestionCheck 상태 관리
   const [congestionCheck, setCongestionCheck] = useState(false);
@@ -117,8 +135,20 @@ export default function RestaurantInfo() {
     <BodyDiv>
       <WrapperDiv>
         <Div>
-          {/* <RestaurantImage src={restaurant} alt="restaurant" /> */}
-          <RestaurantImage src={restaurantInfo.images?.[0]} alt="restaurant" />
+          <div style={{ width: "100%", height: "100%", position: "relative" }}>
+            <Link to={restaurantPreLink}>
+              <img
+                src={whiteArrowLeftImg}
+                alt="whiteArrowLeftImg"
+                style={{ position: "absolute", top: "20px", left: "25px" }}
+              />
+            </Link>
+
+            <RestaurantImage
+              src={restaurantInfo.images?.[0]}
+              alt="restaurant"
+            />
+          </div>
 
           <RestaurantMainInfoDiv>
             {scrap === true ? (

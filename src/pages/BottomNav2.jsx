@@ -17,7 +17,7 @@ export default function BottomNav2() {
         <Ad />
         <ReviewTimeline />
         <BottomNav menu="Review" />
-        <Link to="/WriteReview" className="LinktoWriteReview">
+        <Link to="/WriteReview" className="LinktoWriteReview" state={{ preLink: "/Review"}}>
           <img className="WriteBtn-BottomNav2" src={scrWriteBtn} alt="작성버튼" />
         </Link>
       </div>      

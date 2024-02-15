@@ -170,7 +170,10 @@ export default function InfoChat() {
                         <ChatAndTimeMe>
                           <ChatContentMe>{msg.message}</ChatContentMe>
                           <TimeMe>
-                            {new Date(msg.timestamp).toLocaleTimeString()}
+                            {new Date(msg.timestamp).toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
                           </TimeMe>
                         </ChatAndTimeMe>
                       </ActiveChatPDivMe>
@@ -188,7 +191,10 @@ export default function InfoChat() {
                         <ChatAndTime>
                           <ChatContent>{msg.message}</ChatContent>
                           <Time>
-                            {new Date(msg.timestamp).toLocaleTimeString()}
+                            {new Date(msg.timestamp).toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
                           </Time>
                         </ChatAndTime>
                       </ActiveChatPDiv>
