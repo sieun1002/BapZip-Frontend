@@ -35,6 +35,7 @@ export default function SelectSchool() {
   const [schoolCheck, setSchoolCheck] = useState(false);
   const [schoolList, setSchoolList] = useState([]);
   const { userInfo, setUserInfo } = useSignUp();
+  const [selectBox, setSelectBox] = useState(false);
 
   const [form, setForm] = useState({
     school: "",
@@ -51,19 +52,7 @@ export default function SelectSchool() {
       console.log(response.data.result);
       setSchoolList(response.data.result);
 
-      // 학교 이름 저장
-      const school = response.data.result[0].name;
-      setForm({ ...form, school });
-
-      //학교 아이디 저장
-      //나중에 id 순서 바꾸기
-      const school_id = response.data.result[0].id;
-
-      setUserInfo((userInfo) => ({
-        ...userInfo,
-        school: school,
-        school_id: school_id,
-      }));
+      setSelectBox(true);
 
       setSchoolCheck(true);
     } catch (error) {
@@ -74,6 +63,18 @@ export default function SelectSchool() {
       //에러 상황에 대한 처리 로직 추가
     }
   };
+
+  const clickSchool = (id, name) => {
+    setForm((prevForm) => ({ ...prevForm, school: name }));
+    setUserInfo((prevUserInfo) => ({
+      ...prevUserInfo,
+      school: name,
+      school_id: id,
+    }));
+
+    setSelectBox(false);
+  };
+
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -104,15 +105,28 @@ export default function SelectSchool() {
 
             <SearchImag onClick={handleSchoolApi} src={search} alt="search" />
           </SearchBoxDiv>
-          {/* {allRestaurantList.map((Restaurant, index) => {
-            return <RstaurantList Restaurant={Restaurant} index={index} />;
-          })} */}
-          <SearchListWrapper>
-            {schoolList.map((school, index) => {
-              return <SearchListDiv>{school.name}</SearchListDiv>;
-            })}
-          </SearchListWrapper>
 
+          {selectBox ? (
+            schoolList.length === 0 ? (
+              <SearchListWrapper>
+                <SearchListDiv>입력한 결과가 없습니다.</SearchListDiv>
+              </SearchListWrapper>
+            ) : (
+              <SearchListWrapper>
+                {schoolList.map((school) => {
+                  return (
+                    <SearchListDiv
+                      key={school.id}
+                      onClick={() => clickSchool(school.id, school.name)}
+                      bgColor="#fff8ec"
+                    >
+                      {school.name}
+                    </SearchListDiv>
+                  );
+                })}
+              </SearchListWrapper>
+            )
+          ) : null}
           <ExPDiv>
             <ExP1>입력 예시</ExP1>
             <ExP2>덕성여자대학교 (O)</ExP2>

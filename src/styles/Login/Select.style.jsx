@@ -111,12 +111,12 @@ export const CircleImage = styled.img`
 
 export const SearchListWrapper = styled.div`
   width: 420px;
-  min-height: 500px;
+  height: 300px;
 
   position: fixed;
   top: 320px;
 
-  background-color: beige;
+  background-color: #ffffff;
 `;
 
 export const SearchListDiv = styled.div`
@@ -125,9 +125,10 @@ export const SearchListDiv = styled.div`
   ${flexCenter()}
   justify-content: flex-start;
 
-  padding-left: 10px;
+  padding-left: 20px;
   box-sizing: border-box;
 
-  margin-bottom: 5px;
-  background-color: #ffff3b;
+  &:hover {
+    background-color: ${(props) => props.bgColor};
+  }
 `;
