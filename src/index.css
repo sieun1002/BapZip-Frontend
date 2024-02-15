@@ -181,7 +181,8 @@ p {
   margin-left: 30px;
   text-align: left;
 }
-.title-timeline2 { /*추천식당 css*/
+.title-timeline2 {
+  /*추천식당 css*/
   font-size: 20px;
   font-weight: 600;
   line-height: 27px;
@@ -202,7 +203,8 @@ p {
     margin-right: 3%;
   }
 }
-.menuBtnSection-timeline2 { /* 메인페이지 추천식당 버튼들 */
+.menuBtnSection-timeline2 {
+  /* 메인페이지 추천식당 버튼들 */
   display: flex;
   margin-right: 37px;
   margin-left: 20px;
@@ -429,8 +431,8 @@ p {
     color: #c0c0c0;
   }
 }
-.searchModal-SearchStore{
-  .result-SearchModal{
+.searchModal-SearchStore {
+  .result-SearchModal {
     overflow-y: scroll;
     overflow-x: hidden;
     height: 272px;
@@ -909,14 +911,14 @@ p {
     color: #767676;
   }
 }
-.Stores-MyZipStore{
+.Stores-MyZipStore {
   .result-SearchModal {
     display: flex;
     flex-direction: row;
     justify-content: left;
     margin-left: 6px;
     margin-right: 30px;
-    .store-Stores{
+    .store-Stores {
       margin-left: 24px;
     }
     img {
@@ -1307,10 +1309,10 @@ p {
 }
 /* --------------------------StoreListIn--------------------------- */
 /* SearchStore */
-.BottomNav3-StoreListIn{
-  min-height: calc( 100vh - 58px );
+.BottomNav3-StoreListIn {
+  min-height: calc(100vh - 58px);
 }
-.SearchStore-BottomNav3{
+.SearchStore-BottomNav3 {
   padding: 30px;
   border-bottom: 4px solid #f6f6f6;
 }
@@ -1337,41 +1339,41 @@ p {
   margin-top: 16px;
   margin-bottom: 10px;
 }
-.content-StoreResult{
+.content-StoreResult {
   display: flex;
   justify-content: space-between;
   margin: 20px 30px 0px 30px;
-  .text-StoreResult{
+  .text-StoreResult {
     font-weight: 550;
     font-size: 16px;
     margin-top: 0;
   }
-  .menubar-StoreResult{
-    .menuBtn-StoreResult{
+  .menubar-StoreResult {
+    .menuBtn-StoreResult {
       display: flex;
       align-items: center;
-      p{
+      p {
         font-weight: 600;
         font-size: 16px;
         margin: 0px;
         margin-right: 10px;
       }
-      img{
+      img {
         margin-top: 4px;
       }
     }
   }
-  .menuList-StoreResult{
+  .menuList-StoreResult {
     position: absolute;
     z-index: 1;
     right: 30px;
     width: 97px;
     height: 113px;
     border-radius: 10px;
-    border: 1px solid #D9D9D9;
+    border: 1px solid #d9d9d9;
     background-color: #ffffff;
     text-align: right;
-    p{
+    p {
       width: 66px;
       height: 27px;
       font-weight: 500;
@@ -1398,8 +1400,24 @@ p {
   font-size: 12px;
   color: #767676;
 }
-.reviewCount-rating{
+.reviewCount-rating {
   font-size: 14px;
   font-weight: 500;
   color: #767676;
+}
+
+@keyframes slide-out {
+  /*메인페이지 혼잡도 top5  슬라이드 css */
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: slide-out 4s ease-in-out forwards;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import SearchIcon from "../../images/BottomNav1/SearchIcon.png";
 import api from "../../api/LoginTokenApi";
 
@@ -204,6 +204,45 @@ const ScrollText = styled.div`
 const Silsi = () => {
   const [Region, setRegion] = useState({});
   const [School, setSchool] = useState({});
+  const [selectedRegion, setSelectedRegion] = useState(null);
+
+  const [additionalInfoText, setAdditionalInfoText] = useState([
+    { name: "1 학식당 - 분식", time: "40min" },
+    { name: "2 김밥천국", time: "35min" },
+    { name: "3 학식당 - 한식", time: "25min" },
+    { name: "4 블랑카페", time: "15min" },
+    { name: "5 서브웨이", time: "10min" },
+  ]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [fadeClass, setFadeClass] = useState("");
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setFadeClass("fade-out");
+      setTimeout(() => {
+        setCurrentIndex((currentIndex + 1) % additionalInfoText.length);
+        setFadeClass("");
+      }, 1000);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [currentIndex, additionalInfoText]);
+
+  const convertTimeToMinutes = (time) => {
+    return parseInt(time.replace("min", ""), 10);
+  };
+
+  const getColorByTime = (time) => {
+    //인원수만큼 min의 색깔을 변경
+    const minutes = convertTimeToMinutes(time);
+    if (minutes < 20) {
+      return "#4AD917";
+    } else if (minutes < 40) {
+      return "#FFBA35";
+    } else {
+      return "#E32525";
+    }
+  };
   //URL에서 storeId 추출
   // const {storeId} = useParams();
   const { storeId } = 5;
@@ -224,21 +263,23 @@ const Silsi = () => {
 
     Regionapi();
   }, []);
-  /** 
-  const Schoolapi = async () => {
-    try {
-      // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school`;
 
-      const response = await api.get(url);
-      setSchool(response.data.result);
-      console.log("마이페이지 api 호출", School);
-    } catch (error) {
-      console.error("가게 세부 정보 가져오기 실패", error);
-    }
-  };
+  useEffect(() => {
+    const Schoolapi = async () => {
+      try {
+        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school`;
 
-  Schoolapi(); */
+        const response = await api.get(url);
+        setSchool(response.data.result);
+        console.log("마이페이지 api 호출", School);
+      } catch (error) {
+        console.error("가게 세부 정보 가져오기 실패", error);
+      }
+    };
+
+    Schoolapi();
+  }, [selectedRegion]);
 
   const [isModalOpen, setModalOpen] = useState(false);
   const modalRef = useRef();
@@ -263,20 +304,33 @@ const Silsi = () => {
     }
   };
 
+  const handleRegionSelect = async (selectedRegion) => {
+    try {
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school?regionId=${selectedRegion.id}`;
+      const response = await api.get(url);
+      setSchool(response.data.result);
+      console.log("지역 선택 - 학교 목록 호출", School);
+      setSelectedRegion(selectedRegion);
+      setModalOpen(false); // 선택 후 모달을 닫을 수 있도록
+    } catch (error) {
+      console.error("지역 선택 - 학교 목록 호출 실패", error);
+    }
+  };
+
   return (
     <Container>
       <Box onClick={handleBoxClick} />
       {isModalOpen && (
         <ModalContent ref={modalRef}>
           <ScrollContainer>
-            <ScrollText>
-              <p>{School.name}</p>
-            </ScrollText>
+            <ScrollText>{School && <p>{School.name}</p>}</ScrollText>
           </ScrollContainer>
           <ScrollContainer2>
             <ScrollText>
               {Region.map((item, index) => (
-                <p key={index}>{item.name}</p>
+                <p key={index} onClick={() => handleRegionSelect(item)}>
+                  {item.name}
+                </p>
               ))}
             </ScrollText>
           </ScrollContainer2>
@@ -295,10 +349,20 @@ const Silsi = () => {
           </AdditionalBox>
         </ModalContent>
       )}
+
       <AdditionalInfo>
-        <NameInfo>1 학식당 - 분식</NameInfo>
-        <TimeInfo>40min</TimeInfo>
+        <div className={fadeClass}>
+          <NameInfo>{additionalInfoText[currentIndex].name}</NameInfo>
+          <TimeInfo
+            style={{
+              color: getColorByTime(additionalInfoText[currentIndex].time),
+            }}
+          >
+            {additionalInfoText[currentIndex].time}
+          </TimeInfo>
+        </div>
       </AdditionalInfo>
+
       <Line />
     </Container>
   );
