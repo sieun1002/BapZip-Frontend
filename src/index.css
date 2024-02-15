@@ -1105,6 +1105,15 @@ p {
     padding-bottom: 10px;
     color: #767676;
   }
+  .images-moreInfo{
+    display: flex;
+    width: 380px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    img{
+      margin-right: 5px;
+    }
+  }
 }
 .modalDel-MyReview {
   position: absolute;
@@ -1201,6 +1210,15 @@ p {
       font-weight: 500;
       padding-bottom: 10px;
       color: #767676;
+    }
+    .images-moreInfo{
+      display: flex;
+      width: 380px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      img{
+        margin-right: 5px;
+      }
     }
   }
 }

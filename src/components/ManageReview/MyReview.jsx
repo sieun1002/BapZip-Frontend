@@ -130,17 +130,23 @@ export default function MyReview() {
                         selecState ? { display: "block" } : { display: "none" }
                       }
                     />
-                    <img
-                      src={item.imageUrls[0]}
-                      alt=""
-                      style={{
-                        width: "128px",
-                        height: "129px",
-                        borderRadius: "10px 0px 00px 10px",
-                        backgroundColor: "#D9D9D9",
-                      }}
-                    />
-                    <Link to={`/RestaurantInfo/${item.storeId}`} style={{ textDecoration: "none" , color:"black"}}>
+                    <Link to={`/RestaurantInfo/${item.storeId}`}
+                    state={{ navBar: "review" , restaurantPreLink: "/MyPage/ManageReivew" }}
+                    style={{ textDecoration: "none" , color:"black"}}>
+                      <img
+                        src={item.imageUrls[0]}
+                        alt=""
+                        style={{
+                          width: "128px",
+                          height: "129px",
+                          borderRadius: "10px 0px 00px 10px",
+                          backgroundColor: "#D9D9D9",
+                        }}
+                      />
+                    </Link>
+                    <Link to={`/RestaurantInfo/${item.storeId}`}
+                      state={{ navBar: "review" , restaurantPreLink: "/MyPage/ManageReivew" }}
+                      style={{ textDecoration: "none" , color:"black"}}>
                       <div className="detailReview-MyReview">
                         <p className="date-MyReview">{item.visitDate} 방문</p>
                         <p className="name-MyReview">{item.storeName}</p>
@@ -209,15 +215,18 @@ export default function MyReview() {
                       <p className="rating-rating">{item.rating}.0</p>
                     </div>
                     <p className="text-moreInfo">{item.reviewText}</p>
-                    {item.imageUrls[0] ? (
-                      <img
-                        src={item.imageUrls[0]}
-                        alt=""
-                        style={{ width: "140px", height: "140px" }}
-                      />
-                    ) : (
-                      ""
-                    )}
+                    <div className="images-moreInfo">
+                      {item.imageUrls[0] ? item.imageUrls.map((image)=>{
+                        return(
+                          <img
+                            key={item.imageUrls.indexOf(image)}
+                            src={image}
+                            alt=""
+                            style={{ width: "140px", height: "140px" }}
+                          />
+                        )
+                      }) : ("")}
+                    </div>
                     <p className="date-moreInfo">{item.visitDate}</p>
                   </div>
                 </div>
