@@ -18,13 +18,13 @@ export const MainP = styled.p`
   font-weight: 600;
   color: #191919;
   margin-top: ${(props) => props.marginTop || "40px"};
+  margin-bottom: ${(props) => props.marginBottom};
 `;
 
 export const SliderContainer = styled.div`
   max-width: 420px; /* 변경: 너비 100%로 설정 */
-  max-height: 115px;
+  height: auto;
   overflow: hidden;
-  /* margin-top: 50px; */
 
   /* background-color: #0c4e4e; */
 `;
@@ -33,13 +33,12 @@ export const ImageSlider = styled.div`
   display: flex;
   width: 420px; /* Set your desired maximum width */
   margin: 0 auto; /* Center the slider */
-  transition: transform 0.3s ease;
+  /* transition: transform 0.3s ease; */
 `;
 
 export const SlideImage = styled.img`
   width: 115px;
   height: 115px;
-  height: auto;
   margin: 0 5px;
 
   border-radius: 10px;

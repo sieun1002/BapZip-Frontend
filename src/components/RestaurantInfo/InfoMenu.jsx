@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import api from "../../api/LoginTokenApi";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import { useParams } from "react-router-dom";
 import {
   BodyDiv,
@@ -93,25 +95,29 @@ export default function InfoHome() {
       <WrapperDiv>
         <Div height="100%">
           <MenuPanDiv>
-            <MainP>메뉴판</MainP>
+            <MainP marginBottom="0">메뉴판</MainP>
 
             {menuPan.length === 0 ? (
               <NotMenuDiv>등록된 메뉴판 사진이 없어요.</NotMenuDiv>
             ) : (
-              <SliderContainer
-                ref={sliderRef}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
-              >
-                <ImageSlider
-                  style={{ transform: `translateX(${translate}px)` }}
+              <SliderContainer>
+                <Swiper
+                  spaceBetween={100}
+                  slidesPerView={4}
+                  onSlideChange={() => console.log("slide change")}
+                  // onSwiper={(swiper) => console.log(swiper)}
+                  style={{ margin: "0" }}
                 >
                   {menuPan.map((img, index) => (
-                    <SlideImage key={index} src={img.imageUrl} alt="Image 1" />
+                    <SwiperSlide>
+                      <SlideImage
+                        key={index}
+                        src={img.imageUrl}
+                        alt="Image 1"
+                      />
+                    </SwiperSlide>
                   ))}
-                </ImageSlider>
+                </Swiper>
               </SliderContainer>
             )}
           </MenuPanDiv>
