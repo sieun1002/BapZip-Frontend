@@ -1,32 +1,22 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
+import "swiper/css";
 
 import api from "../../api/LoginTokenApi";
 import styled from "styled-components";
-import review1 from "../../images/BottomNav1/review.svg";
 import smallStar from "../../images/RestaurantInfo/smallStar.svg";
 import rank from "../../images/WaitingRank/Rank.svg";
 
-const SliderContainer = styled.div`
+const Container = styled.div`
   max-width: 420px;
-  max-height: 216px;
+  height: auto;
   overflow: hidden;
   margin: 0 auto;
-  margin-top: 350px;
+  margin-top: 305px;
   cursor: grab;
-`;
 
-const ImageSlider = styled.div`
-  display: flex;
-  max-width: 450px;
-  margin: 0 auto;
-  transition: transform 0.3s ease;
-  & > * {
-    margin-right: 15px;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
+  /* background-color: #eded3e; */
 `;
 
 const SlideImage = styled.img`
@@ -131,30 +121,6 @@ const ReviewImage = styled.img`
 `;
 
 const ImageSliderComponent = () => {
-  const [dragStartX, setDragStartX] = useState(0);
-  const [dragging, setDragging] = useState(false);
-  const [sliderTransform, setSliderTransform] = useState(0);
-
-  const sliderRef = useRef(null);
-
-  const handleMouseDown = (event) => {
-    setDragStartX(event.clientX);
-    setDragging(true);
-  };
-
-  const handleMouseMove = (event) => {
-    if (dragging) {
-      const dragDistance = event.clientX - dragStartX;
-      setSliderTransform(sliderTransform + dragDistance);
-      setDragStartX(event.clientX);
-      sliderRef.current.style.transform = `translateX(${sliderTransform}px)`;
-    }
-  };
-
-  const handleMouseUp = () => {
-    setDragging(false);
-  };
-
   const [hots, setHots] = useState([]);
 
   useEffect(() => {
@@ -164,7 +130,7 @@ const ImageSliderComponent = () => {
 
         const response = await api.get(url);
         setHots(response.data.result);
-        console.log(response.data.result);
+        // console.log(response.data.result);
       } catch (error) {
         console.error("메뉴판 가져오기 실패", error);
       }
@@ -174,60 +140,74 @@ const ImageSliderComponent = () => {
   }, []);
 
   return (
-    <SliderContainer
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-    >
-      <ImageSlider
-        ref={sliderRef}
-        style={{ transform: `translateX(${sliderTransform}px)` }}
+    <Container>
+      {/* <ImageWrapper> */}
+      <Swiper
+        spaceBetween={115}
+        slidesPerView={3}
+        onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
+        style={{ margin: "0" }}
       >
-        {/* <SlideImage src={A1} alt="Image 1" /> */}
         {hots.map((hot, index) => (
-          <SlideDiv>
-            <SlideImageDiv>
-              <RankImageDiv>
-                <RankP>{index + 1}</RankP>
-                <RankImage src={rank} />
-              </RankImageDiv>
+          <SwiperSlide>
+            <Link
+              to={`/RestaurantInfo/${hot.storeId}`}
+              state={{
+                preLink: "/Review",
+                restaurantPreLink: "/home",
+              }}
+              style={{ textDecoration: "none" }}
+            >
+              <SlideDiv>
+                <SlideImageDiv>
+                  <RankImageDiv>
+                    <RankP>{index + 1}</RankP>
+                    <RankImage src={rank} />
+                  </RankImageDiv>
 
-              <SlideImage key={index} src={hot.imageUrl} alt={hot.storeId} />
-            </SlideImageDiv>
+                  <SlideImage
+                    key={index}
+                    src={hot.imageUrl}
+                    alt={hot.storeId}
+                  />
+                </SlideImageDiv>
 
-            <SlideBottomDiv>
-              <SlidePDiv>
-                <SlideP1>{hot.name}</SlideP1>
-                <SlideP2>
-                  {hot.category} · {hot.inOut}
-                </SlideP2>
-              </SlidePDiv>
-              <SlideRateDiv>
-                <img
-                  style={{
-                    width: "15.76px",
-                    height: "15.28px",
-                    margin: "4px 0 3px 0 ",
-                  }}
-                  src={smallStar}
-                />
-                <p
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: "500",
-                    color: "#191919",
-                    margin: "0",
-                  }}
-                >
-                  {hot.score}
-                </p>
-              </SlideRateDiv>
-            </SlideBottomDiv>
-          </SlideDiv>
+                <SlideBottomDiv>
+                  <SlidePDiv>
+                    <SlideP1>{hot.name}</SlideP1>
+                    <SlideP2>
+                      {hot.category} · {hot.inOut}
+                    </SlideP2>
+                  </SlidePDiv>
+                  <SlideRateDiv>
+                    <img
+                      style={{
+                        width: "15.76px",
+                        height: "15.28px",
+                        margin: "4px 0 3px 0 ",
+                      }}
+                      src={smallStar}
+                    />
+                    <p
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "500",
+                        color: "#191919",
+                        margin: "0",
+                      }}
+                    >
+                      {hot.score}
+                    </p>
+                  </SlideRateDiv>
+                </SlideBottomDiv>
+              </SlideDiv>
+            </Link>
+          </SwiperSlide>
         ))}
-      </ImageSlider>
-      <ReviewImage src={review1} alt="Review Image" />
-    </SliderContainer>
+      </Swiper>
+      {/* </ImageWrapper> */}
+    </Container>
   );
 };
 
