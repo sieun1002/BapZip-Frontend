@@ -52,7 +52,9 @@ export default function StoreResult() {
   }
   
   useEffect(()=>{
-    getStore();
+    setTimeout(() => {
+      getStore();
+    }, 200);
   },[menu,needR]);
 
   return (

@@ -38,7 +38,7 @@ export default function Review(item) {
     }
   }
   return (
-    <div className='container-review' style={{position: 'relative', backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover"}} >
+    <div className='container-review' style={{position: 'relative', backgroundImage: `url(${item.imageUrl})`, backgroundSize: "cover", backgroundPosition: "center"}} >
       <div style={{position: 'absolute', backgroundImage: `url(${srcBackGround})`, backgroundSize: "cover", width:'420px', height: '180px'}} />
       <Link to={`/RestaurantInfo/${item.storeId}`} style={{ textDecoration: "none", color:'black'}}>
         <div className='contents-review' style={{position: 'absolute'}}>

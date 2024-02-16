@@ -1,35 +1,74 @@
 import React, { useEffect, useState } from "react";
-import Swiper from "swiper";
-import "swiper/css";
-import Hot1 from "../../images/BottomNav1/hot1.svg";
-import Hot2 from "../../images/BottomNav1/hot2.svg";
-import Hot3 from "../../images/BottomNav1/hot3.svg";
+import { Link } from "react-router-dom";
+import api from "../../api/LoginTokenApi";
+import srcBackGround from '../../images/BottomNav2/reviewPicBack.png'
+import scrBookmarkBtn from "../../images/StoreListIn/bookmarkBtn.png"
+import scrEmBookmarkBtn from "../../images/StoreListIn/embookmarkBtn.png"
 
 const Recommend = () => {
+  const [needR,setRender] = useState(true);
+
+  function clickBookmark(id, isBook) {
+    if(isBook){
+      const urlDel = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/deleteZip?storeId=${id}`
+      api.delete(urlDel)
+      .catch(function(error){
+        console.log(error.message);
+      });
+    }
+    else{
+      const urlPost = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/zip?storeId=${id}`
+      api.post(urlPost)
+      .catch(function(error){
+        console.log(error.message);
+      });
+    }
+    setRender(!needR);
+  }
+
   const [clicked, setclick] = useState([true, false, false, false, false]);
   let index = 0;
+  const categoryList = ["KOREA", "CHINA", "WESTERN", "JAPAN",  "CAFE"];
+  const [category, setCategory] = useState("KOREA");
   function clickBtn(x) {
     const bools = [false, false, false, false, false];
     index = x;
     bools[index] = true;
     setclick(bools);
+    setCategory(categoryList[x]);
+    getReview(category);
+    console.log(storeData);
   }
-
-  useEffect(() => {
-    const swiper = new Swiper(".mySwiper", {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-  }, []);
+  const [storeData, setData] = useState({});
+  function getReview(category = "KOREA") {
+    const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/recommend/${category}`;
+    api
+      .get(urlget)
+      .then(function (response) {
+        setData(response.data.result);
+      })
+      .catch(function (error) {
+        console.log(error.message);
+      });
+  }
+  //처음 랜더링시 연결
+  let reviewText = "";
+  if (!storeData.storeName) {
+    getReview(category);
+  }
+  else{
+    if(storeData.content > 50){
+    reviewText = storeData.content.substr(0,50) + "...";
+    }
+    else{
+      reviewText = storeData.content;
+    }
+  }
+  useEffect(()=>{
+    setTimeout(() => {
+      getReview(category);
+    }, 200);
+  },[needR, category]);
 
   return (
     <div className="recommend-container">
@@ -39,19 +78,19 @@ const Recommend = () => {
           onClick={() => clickBtn(0)}
           className={clicked[0] ? "btnActive-timeline" : "btn-timeline"}
         >
-          전체
+          한식
         </button>
         <button
           onClick={() => clickBtn(1)}
           className={clicked[1] ? "btnActive-timeline" : "btn-timeline"}
         >
-          한식
+          중식
         </button>
         <button
           onClick={() => clickBtn(2)}
           className={clicked[2] ? "btnActive-timeline" : "btn-timeline"}
         >
-          중식
+          양식
         </button>
         <button
           onClick={() => clickBtn(3)}
@@ -66,30 +105,22 @@ const Recommend = () => {
           카페
         </button>
       </div>
-      <div className="swiper mySwiper" style={{  zIndex: -100}}>
-        <div className="swiper-wrapper">
-          <img
-            className="swiper-slide"
-            src={Hot1}
-            alt="Hot2"
-            style={{ width: "400px", height: "180px" }}
-          />
-          <img
-            className="swiper-slide"
-            src={Hot2}
-            alt="Hot2"
-            style={{ width: "400px", height: "180px" }}
-          />
-          <img
-            className="swiper-slide"
-            src={Hot3}
-            alt="Hot2"
-            style={{ width: "400px", height: "180px" }}
+      <div className='container-review' style={{position: 'relative', backgroundImage: `url(${storeData.imageURL})`, backgroundSize: "cover", backgroundPosition: "center", zIndex: 0}} >
+        <div style={{position: 'absolute', backgroundImage: `url(${srcBackGround})`, backgroundSize: "cover", width:'420px', height: '180px'}} />
+        <Link to={`/RestaurantInfo/${storeData.storeId}`} style={{ textDecoration: "none", color:'black'}}>
+          <div className='contents-review' style={{position: 'absolute'}}>
+            <p className='name-review'>{storeData.storeName}</p>
+            <div className='topReview-review'>
+              <p className='txt-review'>"{reviewText}"</p>
+              <p className='userDetail-review'>{storeData.userName}</p>
+            </div>
+          </div>
+        </Link>
+        <div className='likes-review' style={{position: 'absolute', left: '375px', marginTop: '14px'}}>
+          <img src={storeData.bookmark?scrBookmarkBtn:scrEmBookmarkBtn} alt="" style={{ width: "31px", height: "31px" }}
+            onClick={() => {clickBookmark(storeData.storeId, storeData.bookmark)}}
           />
         </div>
-        <div className="swiper-button-next"></div>
-        <div className="swiper-button-prev"></div>
-        <div className="swiper-pagination"></div>
       </div>
     </div>
   );
