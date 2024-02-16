@@ -287,9 +287,9 @@ const Silsi = () => {
 
         const response = await api.get(url);
         setRegion(response.data.result);
-        console.log("마이페이지 api 호출", Region);
+        console.log("학교 api 호출", Region);
       } catch (error) {
-        console.error("가게 세부 정보 가져오기 실패", error);
+        console.error("학교 api 가져오기 실패", error);
       }
     };
 
