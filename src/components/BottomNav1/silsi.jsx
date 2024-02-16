@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import SearchIcon from "../../images/BottomNav1/SearchIcon.png";
 import api from "../../api/LoginTokenApi";
+import Mark123 from "../../images/BottomNav1/Mark123.png";
+import SchoolMark from "../../images/BottomNav1/SchoolMark.png";
 
 const Container = styled.div`
   margin-top: 20px;
@@ -83,13 +85,42 @@ const AdditionalBox = styled.div`
   top: 110px;
   background: #f6f6f6;
 `;
-
+//실시간 혼잡도 top5 div
 const AdditionalInfo = styled.div`
   position: absolute;
   width: 220px;
   height: 36px;
   left: -25px;
   top: -80px;
+`;
+//학교선택 div
+const SchoolInfo = styled.div`
+  position: absolute;
+  width: 220px;
+  height: 36px;
+  left: -80px;
+  top: 13px;
+`;
+
+const SchoolInfo2 = styled.div`
+  position: absolute;
+  width: 220px;
+  height: 36px;
+  left: 60px;
+  top: 13px;
+`;
+
+const SchoolInfotxt = styled.div`
+  position: absolute;
+  width: 161px;
+  height: 22px;
+  left: 23px;
+  top: -2px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
 `;
 
 const NameInfo = styled.div`
@@ -319,7 +350,17 @@ const Silsi = () => {
 
   return (
     <Container>
-      <Box onClick={handleBoxClick} />
+      <Box onClick={handleBoxClick}>
+        <SchoolInfo>
+          <img src={SchoolMark} alt="학교마크" />
+        </SchoolInfo>
+        <SchoolInfo2>
+          <img src={Mark123} alt="화살표마크" />
+        </SchoolInfo2>
+        <SchoolInfotxt>
+          <p>덕성여자대학교</p>
+        </SchoolInfotxt>
+      </Box>
       {isModalOpen && (
         <ModalContent ref={modalRef}>
           <ScrollContainer>
