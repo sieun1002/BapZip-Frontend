@@ -53,8 +53,6 @@ export default function SelectSchool() {
       setSchoolList(response.data.result);
 
       setSelectBox(true);
-
-      // setSchoolCheck(true);
     } catch (error) {
       console.error(
         "school check error",
