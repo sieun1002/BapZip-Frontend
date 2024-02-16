@@ -20,7 +20,6 @@ export default function BottomNav1() {
         <Todayplace />
         <Recommend />
         <BottomNav menu="Home" />
-
       </div>
     </div>
   );
