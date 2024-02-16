@@ -136,7 +136,6 @@ const NameInfo = styled.div`
   line-height: 22px;
   color: #191919;
   white-space: nowrap;
-  text-align: left;
 `;
 
 const TimeInfo = styled.div`
@@ -296,23 +295,6 @@ const Silsi = () => {
     Regionapi();
   }, []);
 
-  useEffect(() => {
-    const Schoolapi = async () => {
-      try {
-        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school`;
-
-        const response = await api.get(url);
-        setSchool(response.data.result);
-        console.log("마이페이지 api 호출", School);
-      } catch (error) {
-        console.error("가게 세부 정보 가져오기 실패", error);
-      }
-    };
-
-    Schoolapi();
-  }, [selectedRegion]);
-
   const [isModalOpen, setModalOpen] = useState(false);
   const modalRef = useRef();
 
@@ -343,7 +325,6 @@ const Silsi = () => {
       setSchool(response.data.result);
       console.log("지역 선택 - 학교 목록 호출", School);
       setSelectedRegion(selectedRegion);
-      setModalOpen(false); // 선택 후 모달을 닫을 수 있도록
     } catch (error) {
       console.error("지역 선택 - 학교 목록 호출 실패", error);
     }
@@ -365,7 +346,13 @@ const Silsi = () => {
       {isModalOpen && (
         <ModalContent ref={modalRef}>
           <ScrollContainer>
-            <ScrollText>{School && <p>{School.name}</p>}</ScrollText>
+            <ScrollText>
+              {School && School.map((item, index) => (
+                <p key={index}>
+                  {item.name}
+                </p>
+              ))}
+              </ScrollText>
           </ScrollContainer>
           <ScrollContainer2>
             <ScrollText>
