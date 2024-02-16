@@ -136,6 +136,7 @@ const NameInfo = styled.div`
   line-height: 22px;
   color: #191919;
   white-space: nowrap;
+  text-align: left;
 `;
 
 const TimeInfo = styled.div`

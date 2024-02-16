@@ -11,40 +11,36 @@ import { Link } from "react-router-dom";
 
 export default function BottomNav(props) {
   return (
-    <nav className="container-bottomNav">
-      <div className="btnHome" style={{ position: "relative", zIndex: 2 }}>
+    <nav className="container-bottomNav" style={{ zIndex: 1000 }}>
+      <div className="btnHome">
         <Link to="/Home">
           <img
             src={props.menu === "Home" ? srcBtnHomeOn : srcBtnHomeOff}
             alt="btn"
-            style={{ zIndex: 0 }}
           />
         </Link>
       </div>
-      <div className="btnReview" style={{ position: "relative", zIndex: 2 }}>
+      <div className="btnReview">
         <Link to="/Review">
           <img
             src={props.menu === "Review" ? srcBtnReviewOn : srcBtnReviewOff}
             alt="btn"
-            style={{ zIndex: 0 }}
           />
         </Link>
       </div>
-      <div className="btnList" style={{ position: "relative", zIndex: 2 }}>
+      <div className="btnList">
         <Link to="/List">
           <img
             src={props.menu === "List" ? srcBtnListOn : srcBtnListOff}
             alt="btn"
-            style={{ zIndex: 0 }}
           />
         </Link>
       </div>
-      <div className="btnMyPage" style={{ position: "relative", zIndex: 2 }}>
+      <div className="btnMyPage">
         <Link to="/MyPage">
           <img
             src={props.menu === "MyPage" ? srcBtnMypageOn : srcBtnMypageOff}
             alt="btn"
-            style={{ zIndex: 0 }}
           />
         </Link>
       </div>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logoicon from "../../images/BottomNav1/logo.svg";
-import SearchIcon from "../../images/BottomNav1/icon_search.svg";
+import scrSearchIcon from "../../images/WriteReview/searchIcon.png";
 import Bellicon from "../../images/BottomNav1/Component 35.svg";
 import Haticon from "../../images/BottomNav1/Component 36.svg";
 import api from "../../api/LoginTokenApi";
@@ -212,9 +212,10 @@ const Searchbar = () => {
     <AppContainer>
       <OuterContainer>
         <Logo src={logoicon} alt="Logo" />
+
         <Circle>
           <Placeholder>
-            <Icon1 src={SearchIcon} alt="Search Icon" />
+            <Icon1 src={scrSearchIcon} alt="Search Icon" />
           </Placeholder>
           <SearchInput
             type="text"
@@ -223,6 +224,7 @@ const Searchbar = () => {
             onChange={(e) => setSearchText(e.target.value)}
           />
         </Circle>
+
         <AdditionalIcons>
           <Icon
             src={Haticon}

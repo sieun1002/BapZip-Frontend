@@ -66,7 +66,7 @@ const Recommend = () => {
           카페
         </button>
       </div>
-      <div className="swiper mySwiper" style={{  zIndex: -100}}>
+      <div className="swiper mySwiper" style={{ zIndex: -100 }}>
         <div className="swiper-wrapper">
           <img
             className="swiper-slide"
