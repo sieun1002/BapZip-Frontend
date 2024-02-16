@@ -6,11 +6,9 @@ import Hot1 from "../../images/BottomNav1/hot1.svg";
 import Hot2 from "../../images/BottomNav1/hot2.svg";
 import Hot3 from "../../images/BottomNav1/hot3.svg";
 
-
 const SwipeCont = styled.div`
-top: 100px;
+  top: 100px;
 `;
-
 
 const MySwiperComponent = () => {
   useEffect(() => {
@@ -30,8 +28,10 @@ const MySwiperComponent = () => {
   }, []);
 
   return (
-    <div className="swiper mySwiper"style={{ top: "-50px" , zIndex: -10}}>
-      
+    <div
+      className="swiper mySwiper"
+      style={{ position: "relative", top: "-50px" }}
+    >
       <div className="swiper-wrapper">
         <img
           className="swiper-slide"
@@ -43,7 +43,7 @@ const MySwiperComponent = () => {
           className="swiper-slide"
           src={Hot2}
           alt="Hot2"
-          style={{ width: "400px", height: "180px"}}
+          style={{ width: "400px", height: "180px" }}
         />
         <img
           className="swiper-slide"
@@ -52,7 +52,7 @@ const MySwiperComponent = () => {
           style={{ width: "400px", height: "180px" }}
         />
       </div>
-      
+
       <div className="swiper-button-next"></div>
       <div className="swiper-button-prev"></div>
       <div className="swiper-pagination"></div>

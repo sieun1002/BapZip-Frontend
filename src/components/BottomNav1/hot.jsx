@@ -12,7 +12,7 @@ const SliderContainer = styled.div`
   overflow: hidden;
   margin: 0 auto;
   margin-top: 350px;
-  cursor: grab; /* 추가: 커서를 grab으로 변경하여 드래그 가능하게 만듦 */
+  cursor: grab;
 `;
 
 const ImageSlider = styled.div`
@@ -53,20 +53,16 @@ const ImageSliderComponent = () => {
   };
 
   const handleMouseMove = (event) => {
-    if (!dragging) return;
-
-    const dragDistance = event.clientX - dragStartX;
-    setSliderTransform(dragDistance);
+    if (dragging) {
+      const dragDistance = event.clientX - dragStartX;
+      setSliderTransform(sliderTransform + dragDistance);
+      setDragStartX(event.clientX);
+      sliderRef.current.style.transform = `translateX(${sliderTransform}px)`;
+    }
   };
 
   const handleMouseUp = () => {
     setDragging(false);
-    setDragStartX(0);
-
-    // 추가: 슬라이더 위치 업데이트
-    if (sliderRef.current) {
-      sliderRef.current.style.transform = `translateX(${sliderTransform}px)`;
-    }
   };
 
   return (
@@ -88,7 +84,7 @@ const ImageSliderComponent = () => {
         <SlideImage src={A4} alt="Image 7" />
         <SlideImage src={A4} alt="Image 8" />
       </ImageSlider>
-      <ReviewImage src={review1} alt="Image 8" />
+      <ReviewImage src={review1} alt="Review Image" />
     </SliderContainer>
   );
 };
