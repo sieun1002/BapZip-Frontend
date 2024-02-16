@@ -21,7 +21,6 @@ import WriteReview from "./pages/WriteReview";
 import BottomNav1 from "./pages/BottomNav1";
 import Arlim from "./pages/Arlim";
 import Silsiganin from "./pages/silsiganin";
-import MainSearch from "./pages/MainSearch";
 import Silsiganout from "./pages/silsiganout";
 
 // BottomNav3---------------------------------------------------------------
@@ -77,7 +76,7 @@ function App() {
               <Route path="/Arlim" element={<Arlim />} />
               <Route path="/Silsiganin" element={<Silsiganin />} />
               <Route path="/Silsiganout" element={<Silsiganout />} />
-              <Route path="/MainSearch" element={<MainSearch />} />
+
               <Route path="/List" element={<BottomNav3 />} />
               <Route path="/ListIn" element={<StoreListIn />} />
               <Route path="/ListOut" element={<StoreListOut />} />
