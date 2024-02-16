@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import api from "../../api/LoginTokenApi";
+import { Link } from 'react-router-dom';
 
 export default function MyZipStore() {
   const [zipData,setData] = useState([]);
@@ -28,10 +29,14 @@ export default function MyZipStore() {
         {zipData.length?<div className='result-SearchModal'>
             {zipData.map((item)=>{
               return(
-                <div className='store-Stores'  key={item.id}>
-                  <img src={item.imageUrl} alt="사진" className='image-MyZipStore'/>
-                  <p className='name-MyZipSore'>{item.name}</p>
-                </div>
+                <Link key={item.id} to={`/RestaurantInfo/${item.id}`}
+                  state={{ navBar: "review" , restaurantPreLink: "/MyPage" }}
+                  style={{ textDecoration: "none" , color:"black"}}>
+                  <div className='store-Stores'>
+                    <img src={item.imageUrl} alt="사진" className='image-MyZipStore'/>
+                    <p className='name-MyZipSore'>{item.name}</p>
+                  </div>
+                </Link>  
               )
             })}
         </div>:""}

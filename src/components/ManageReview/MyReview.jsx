@@ -212,15 +212,20 @@ export default function MyReview() {
                       <p className="rating-rating">{item.rating}.0</p>
                     </div>
                     <p className="text-moreInfo">{item.reviewText}</p>
-                    {item.imageUrls[0] ? (
-                      <img
-                        src={item.imageUrls[0]}
-                        alt=""
-                        style={{ width: "140px", height: "140px" }}
-                      />
-                    ) : (
-                      ""
-                    )}
+                    <div className="images-moreInfo">
+                      {item.imageUrls[0]
+                        ? item.imageUrls.map((image) => {
+                            return (
+                              <img
+                                key={item.imageUrls.indexOf(image)}
+                                src={image}
+                                alt=""
+                                style={{ width: "140px", height: "140px" }}
+                              />
+                            );
+                          })
+                        : ""}
+                    </div>
                     <p className="date-moreInfo">{item.visitDate}</p>
                   </div>
                 </div>

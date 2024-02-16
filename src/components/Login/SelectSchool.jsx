@@ -20,6 +20,8 @@ import {
   ExP2,
   CircleImgDiv,
   CircleImage,
+  SearchListWrapper,
+  SearchListDiv,
 } from "../../styles/Login/Select.style";
 
 import { Link } from "react-router-dom";
@@ -31,6 +33,7 @@ import grayCircle from "../../images/Login/grayCircle.svg";
 
 export default function SelectSchool() {
   const [schoolCheck, setSchoolCheck] = useState(false);
+  const [schoolList, setSchoolList] = useState([]);
   const { userInfo, setUserInfo } = useSignUp();
 
   const [form, setForm] = useState({
@@ -44,6 +47,9 @@ export default function SelectSchool() {
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url);
+
+      console.log(response.data.result);
+      setSchoolList(response.data.result);
 
       // 학교 이름 저장
       const school = response.data.result[0].name;
@@ -98,6 +104,14 @@ export default function SelectSchool() {
 
             <SearchImag onClick={handleSchoolApi} src={search} alt="search" />
           </SearchBoxDiv>
+          {/* {allRestaurantList.map((Restaurant, index) => {
+            return <RstaurantList Restaurant={Restaurant} index={index} />;
+          })} */}
+          <SearchListWrapper>
+            {schoolList.map((school, index) => {
+              return <SearchListDiv>{school.name}</SearchListDiv>;
+            })}
+          </SearchListWrapper>
 
           <ExPDiv>
             <ExP1>입력 예시</ExP1>
