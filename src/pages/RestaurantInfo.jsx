@@ -104,7 +104,7 @@ export default function RestaurantInfo() {
     }
 
     if (location.state?.restaurantPreLink) {
-      setrestaurantPreLink(location.state.restaurantPreLink.restaurantPreLink);
+      setrestaurantPreLink(location.state?.restaurantPreLink);
     } else {
       setrestaurantPreLink("#");
     }
