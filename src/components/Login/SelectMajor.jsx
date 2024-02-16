@@ -21,6 +21,8 @@ import {
   CircleImgDiv,
   CircleImage,
   ArrowLeftImage,
+  SearchListWrapper,
+  SearchListDiv,
 } from "../../styles/Login/Select.style";
 
 import { Link } from "react-router-dom";
@@ -56,21 +58,6 @@ export default function SelectMajor() {
 
       setSelectBox(true);
 
-      setMajorCheck(true);
-
-      // 전공 이름 저장
-      // const major = response.data.result[0].name;
-      // setForm({ ...form, major });
-
-      // //전공 아이디 저장
-      // const major_id = response.data.result[0].id;
-
-      // setUserInfo((userInfo) => ({
-      //   ...userInfo,
-      //   major: major,
-      //   major_id: major_id,
-      // }));
-      setMajorCheck(true);
       setValidations({ ...validations, isSchoolAndMajor: true });
     } catch (error) {
       console.error(
@@ -79,6 +66,18 @@ export default function SelectMajor() {
       );
       //에러 상황에 대한 처리 로직 추가
     }
+  };
+
+  const clickMajor = (id, name) => {
+    setForm((prevForm) => ({ ...prevForm, major: name }));
+    setUserInfo((prevUserInfo) => ({
+      ...prevUserInfo,
+      major: name,
+      major_id: id,
+    }));
+
+    setSelectBox(false);
+    setMajorCheck(true);
   };
 
   return (
@@ -115,6 +114,28 @@ export default function SelectMajor() {
 
             <SearchImag onClick={handleMajorApi} src={search} alt="search" />
           </SearchBoxDiv>
+
+          {selectBox ? (
+            majorList.length === 0 ? (
+              <SearchListWrapper>
+                <SearchListDiv>입력한 결과가 없습니다.</SearchListDiv>
+              </SearchListWrapper>
+            ) : (
+              <SearchListWrapper>
+                {majorList.map((major) => {
+                  return (
+                    <SearchListDiv
+                      key={major.id}
+                      onClick={() => clickMajor(major.id, major.name)}
+                      bgColor="#fff8ec"
+                    >
+                      {major.name}
+                    </SearchListDiv>
+                  );
+                })}
+              </SearchListWrapper>
+            )
+          ) : null}
 
           <ExPDiv>
             <ExP1>입력 예시</ExP1>

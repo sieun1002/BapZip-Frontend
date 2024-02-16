@@ -54,7 +54,7 @@ export default function SelectSchool() {
 
       setSelectBox(true);
 
-      setSchoolCheck(true);
+      // setSchoolCheck(true);
     } catch (error) {
       console.error(
         "school check error",
@@ -73,6 +73,7 @@ export default function SelectSchool() {
     }));
 
     setSelectBox(false);
+    setSchoolCheck(true);
   };
 
   return (
