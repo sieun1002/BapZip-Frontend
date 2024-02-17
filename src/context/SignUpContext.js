@@ -1,5 +1,5 @@
 //전역 상태를 관리할 Context 생성.
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const SignUpContext = createContext();
 
@@ -40,6 +40,27 @@ export const SignUpProvider = ({ children }) => {
     waitTime: 0,
   });
 
+  const [schoolName, setSchoolName] = useState(
+    localStorage.getItem("schoolName") || ""
+  );
+
+  // schoolName을 업데이트하는 함수
+  const updateSchoolName = (newName) => {
+    localStorage.setItem("schoolName", newName); // localStorage 업데이트
+    setSchoolName(newName); // 상태 업데이트
+  };
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setSchoolName(localStorage.getItem("schoolName") || "");
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
   return (
     <SignUpContext.Provider
       value={{
@@ -49,6 +70,8 @@ export const SignUpProvider = ({ children }) => {
         setValidations,
         congestion,
         setCongestion,
+        schoolName,
+        setSchoolName,
       }}
     >
       {children}
