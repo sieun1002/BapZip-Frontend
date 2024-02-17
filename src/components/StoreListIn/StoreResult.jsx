@@ -54,7 +54,7 @@ export default function StoreResult() {
   useEffect(()=>{
     setTimeout(() => {
       getStore();
-    }, 200);
+    }, 100);
   },[menu,needR]);
 
   return (
