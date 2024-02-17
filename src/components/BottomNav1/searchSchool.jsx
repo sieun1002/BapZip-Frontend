@@ -36,6 +36,9 @@ export default function SearchSchool({ setValidSearchSchool }) {
   const [schoolId1, setSchoolId1] = useState();
   const [schoolName1, setSchoolName1] = useState();
 
+  const [selectedCityId, setSelectedCityId] = useState(null);
+  const [selectedSchoolId, setSelectedSchoolId] = useState(null);
+
   const [form, setForm] = useState({
     school: "",
   });
@@ -109,10 +112,13 @@ export default function SearchSchool({ setValidSearchSchool }) {
     }
   };
 
-  const handleRegion = (regionId) => {
+  const clickRegion = (regionId) => {
     console.log(regionId);
     setRegionId(regionId);
     setForm({ ...form, school: "" });
+
+    setSelectedCityId(regionId);
+    setSelectedSchoolId(null);
   };
 
   const handleOnKeyPress = (e) => {
@@ -126,7 +132,14 @@ export default function SearchSchool({ setValidSearchSchool }) {
     console.log("변경된 학교아이디", schoolId);
     setSchoolName1(schoolName);
     setSchoolId1(schoolId);
+
+    setSelectedSchoolId(schoolId);
   };
+
+  // const clickCityClick = (regionId) => {
+  //   setSelectedCityId(regionId);
+  //   setSelectedSchoolId(null);
+  // };
 
   const clickButton = () => {
     localStorage.setItem("schoolId", schoolId1);
@@ -161,14 +174,25 @@ export default function SearchSchool({ setValidSearchSchool }) {
       <AllDiv>
         <AllCityAndDoWrapper>
           <AllCityAndDoDiv>
-            <CityAndDoDiv fw="500" onClick={() => handleRegion(0)}>
+            <CityAndDoDiv
+              fw="500"
+              onClick={() => clickRegion(0)}
+              style={{
+                backgroundColor:
+                  selectedCityId === 0 ? "#fff8ec" : "transparent",
+              }}
+            >
               전국
             </CityAndDoDiv>
             {cityAndDos.map((cityAndDo, index) => (
               <CityAndDoDiv
                 fw="500"
                 key={index}
-                onClick={() => handleRegion(cityAndDo.id)}
+                onClick={() => clickRegion(cityAndDo.id)}
+                style={{
+                  backgroundColor:
+                    selectedCityId === cityAndDo.id ? "#fff8ec" : "transparent",
+                }}
               >
                 {cityAndDo.name}
               </CityAndDoDiv>
@@ -186,6 +210,12 @@ export default function SearchSchool({ setValidSearchSchool }) {
                         clickSchool(school.id, school.name);
                       }}
                       key={index}
+                      style={{
+                        backgroundColor:
+                          selectedSchoolId === school.id
+                            ? "#fff8ec"
+                            : "transparent",
+                      }}
                     >
                       {school.name}
                     </SchoolDiv>
@@ -196,6 +226,12 @@ export default function SearchSchool({ setValidSearchSchool }) {
                         clickSchool(school.id, school.name);
                       }}
                       key={index}
+                      style={{
+                        backgroundColor:
+                          selectedSchoolId === school.id
+                            ? "#fff8ec"
+                            : "transparent",
+                      }}
                     >
                       {school.name}
                     </SchoolDiv>
@@ -204,6 +240,12 @@ export default function SearchSchool({ setValidSearchSchool }) {
                   <SchoolDiv
                     onClick={() => {
                       clickSchool(school.id, school.name);
+                    }}
+                    style={{
+                      backgroundColor:
+                        selectedSchoolId === school.id
+                          ? "#fff8ec"
+                          : "transparent",
                     }}
                     key={index}
                   >
