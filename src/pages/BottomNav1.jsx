@@ -11,6 +11,7 @@ import SearchSchool from "../components/BottomNav1/searchSchool";
 
 export default function BottomNav1() {
   const [validSearchSchool, setValidSearchSchool] = useState(false);
+  const [searchbarPreLink, setSearchbarPreLink] = useState("#");
   return (
     <div className="App">
       <div>
@@ -18,7 +19,7 @@ export default function BottomNav1() {
           <SearchSchool setValidSearchSchool={setValidSearchSchool} />
         ) : null}
 
-        <Searchbar />
+        <Searchbar searchbarPreLink={searchbarPreLink} />
         <Silsi setValidSearchSchool={setValidSearchSchool} />
         <Honjap />
         <Hot />
