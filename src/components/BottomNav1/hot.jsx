@@ -122,11 +122,13 @@ const ReviewImage = styled.img`
 
 const ImageSliderComponent = () => {
   const [hots, setHots] = useState([]);
+  const schoolId = localStorage.getItem("schoolId");
+  console.log(schoolId);
 
   useEffect(() => {
     const hotApi = async () => {
       try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/hotPlace`;
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/hotPlace?schoolId=${schoolId}`;
 
         const response = await api.get(url);
         setHots(response.data.result);
@@ -137,7 +139,7 @@ const ImageSliderComponent = () => {
     };
 
     hotApi();
-  }, []);
+  }, [schoolId]);
 
   return (
     <Container>
