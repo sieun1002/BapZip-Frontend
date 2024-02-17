@@ -31,8 +31,9 @@ export default function StoreResult() {
     setRender(!needR);
   }
 
+  const storedUserId = localStorage.getItem("schoolId"); 
   const [storeData,setData] = useState([]);
-  const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/list/${menuListApi[menu]}`;
+  const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/list/${menuListApi[menu]}?schoolId=${storedUserId}`;
   function getStore(){
     api.get(urlget)
     .then(function(response){

@@ -39,9 +39,10 @@ const Recommend = () => {
     getReview(category);
     console.log(storeData);
   }
+  const storedUserId = localStorage.getItem("schoolId"); 
   const [storeData, setData] = useState({});
   function getReview(category = "KOREA") {
-    const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/recommend/${category}`;
+    const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/recommend/${category}?schoolId=${storedUserId}`;
     api
       .get(urlget)
       .then(function (response) {
