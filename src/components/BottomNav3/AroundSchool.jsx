@@ -173,6 +173,7 @@ const StyledText3 = styled.div`
 `;
 
 const AroundSchool = () => {
+  const honjapPreLink = "/List";
   return (
     <Container>
       <StyledText>우리학교 식당 둘러보기</StyledText>
@@ -195,7 +196,10 @@ const AroundSchool = () => {
         </Link>
       </Container2>
       <StyledText2>실시간 웨이팅 랭킹</StyledText2>
-      <Link to="/WaitingRank" state={{ navBar: "ALL" }}>
+      <Link
+        to="/WaitingRank"
+        state={{ navBar: "ALL", honjapPreLink: honjapPreLink }}
+      >
         <StyledText3>더보기</StyledText3>
       </Link>
     </Container>

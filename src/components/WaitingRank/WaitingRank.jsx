@@ -19,12 +19,19 @@ export default function WaitingRank() {
   const location = useLocation();
   const title = "실시간 웨이팅 랭킹"; //나중에 props로 받아올거임.
   const [currentTab, setCurrentTab] = useState("");
+  const [honjapPreLink, setHonjapPreLink] = useState("#");
 
   useEffect(() => {
     if (location.state?.navBar) {
       setCurrentTab(location.state.navBar);
     } else {
       setCurrentTab("ALL");
+    }
+
+    if (location.state?.honjapPreLink) {
+      setHonjapPreLink(location.state?.honjapPreLink);
+    } else {
+      setHonjapPreLink("#");
     }
   }, [location.state]);
 
@@ -54,7 +61,7 @@ export default function WaitingRank() {
   return (
     <div className="App">
       <div style={{ height: "100%" }}>
-        <Header title={title} />
+        <Header title={title} honjapPreLink={honjapPreLink} />
         <SearchBar />
 
         <MenuDiv>

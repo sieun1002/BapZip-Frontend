@@ -156,6 +156,7 @@ const Hot = styled.img`
 `;
 
 const Honjap = () => {
+  const honjapPreLink = "/Home";
   return (
     <div>
       <Container>
@@ -163,7 +164,10 @@ const Honjap = () => {
         <A4 src={A2} alt="IN2" />
 
         <Container1>
-          <Link to="/WaitingRank" state={{ navBar: "IN" }}>
+          <Link
+            to="/WaitingRank"
+            state={{ navBar: "IN", honjapPreLink: honjapPreLink }}
+          >
             <BackgroundImage src={background} alt="배경" />
             <ZandiImage src={zandi} alt="Zandi" />
             <SchoolImage src={school} alt="School" />
@@ -174,7 +178,10 @@ const Honjap = () => {
           </Link>
         </Container1>
         <Container2>
-          <Link to="/WaitingRank" state={{ navBar: "OUT" }}>
+          <Link
+            to="/WaitingRank"
+            state={{ navBar: "OUT", honjapPreLink: honjapPreLink }}
+          >
             <OutBackgroundImage src={Outbackground} alt="배경" />
             <Out3 src={Out} alt=">" />
             <Out4 src={Out2} alt="교외식당" />
