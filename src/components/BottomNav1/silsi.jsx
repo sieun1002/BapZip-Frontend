@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useSignUp } from "../../context/SignUpContext";
 import styled, { keyframes } from "styled-components";
 import SearchIcon from "../../images/BottomNav1/SearchIcon.png";
 import api from "../../api/LoginTokenApi";
-import Mark123 from "../../images/BottomNav1/Mark123.png";
+import Mark123 from "../../images/BottomNav1/Mark123.svg";
 import SchoolMark from "../../images/BottomNav1/SchoolMark.png";
 
 const Container = styled.div`
@@ -16,18 +17,23 @@ const Container = styled.div`
   flex-direction: column;
   display: flex;
   top: 10px;
+
+  background-color: #7c7c30;
+  background: #ffffff;
+  border: 1px solid #ffba35;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px #ffdf77;
 `;
 
 const Box = styled.div`
   box-sizing: border-box;
   position: absolute;
-  width: 100%;
+  width: 45%;
   height: 100%;
-  background: #ffffff;
-  border: 1px solid #ffba35;
-  box-shadow: 0px 0px 5px #ffdf77;
-  border-radius: 10px;
+  border: 0px;
   cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+
+  /* background-color: beige; */
 `;
 
 const Line = styled.div`
@@ -38,43 +44,6 @@ const Line = styled.div`
   top: 50%;
   transform: translate(-50%, -50%) rotate(90deg);
   border: 1px solid #ffba35;
-`;
-
-const ModalContent = styled.div`
-  position: fixed;
-  width: 480px;
-  height: 465px;
-  top: 320px;
-  margin-left: -30px;
-  background: #ffffff;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px 20px 0px 0px;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const SearchBar = styled.div`
-  position: absolute;
-  width: 380px;
-  height: 42px;
-  left: 30px;
-  top: 50px;
-  background: #f6f6f6;
-  border-radius: 40px;
-  display: flex;
-  align-items: center;
-  padding: 0 15px;
-`;
-
-const SearchInput = styled.input`
-  width: 100%;
-  height: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
 `;
 
 const AdditionalBox = styled.div`
@@ -96,18 +65,22 @@ const AdditionalInfo = styled.div`
 //학교선택 div
 const SchoolInfo = styled.div`
   position: absolute;
-  width: 220px;
+  width: 40px;
   height: 36px;
-  left: -80px;
+  left: 10px;
   top: 13px;
+
+  /* background-color: aqua; */
 `;
 
 const SchoolInfo2 = styled.div`
   position: absolute;
-  width: 220px;
+  width: 30px;
   height: 36px;
-  left: 60px;
+  left: 155px;
   top: 13px;
+
+  /* background-color: #6200ff36; */
 `;
 
 const SchoolInfotxt = styled.div`
@@ -123,11 +96,11 @@ const SchoolInfotxt = styled.div`
   line-height: 22px;
 `;
 
-const NameInfo = styled.div`
+const RankInfo = styled.div`
   position: absolute;
   width: 108px;
   height: 22px;
-  left: 235px;
+  left: 188px;
   top: 94px;
   font-family: "Noto Sans";
   font-style: normal;
@@ -136,6 +109,23 @@ const NameInfo = styled.div`
   line-height: 22px;
   color: #191919;
   white-space: nowrap;
+`;
+
+const NameInfo = styled.div`
+  position: absolute;
+  width: auto;
+  height: 22px;
+  left: 260px;
+  top: 94px;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #191919;
+  white-space: nowrap;
+
+  /* background-color: aqua; */
 `;
 
 const TimeInfo = styled.div`
@@ -150,189 +140,51 @@ const TimeInfo = styled.div`
   font-size: 16px;
   line-height: 22px;
   text-align: right;
-  color: #e32525;
+  color: ${(props) => props.color};
 `;
 
-const schoolTextStyle = {
-  position: "absolute",
-  width: "85px",
-  height: "27px",
-  left: "30px",
-  top: "10px",
-  fontFamily: "Noto Sans",
-  fontStyle: "normal",
-  fontWeight: "700",
-  fontSize: "20px",
-  lineHeight: "27px",
-  color: "#191919",
-  whiteSpace: "nowrap",
-};
-const schoolTextStyle2 = {
-  position: "absolute",
-  width: "73px",
-  height: "22px",
-  left: "268px",
-  top: "10px",
-  fontFamily: "Noto Sans",
-  fontStyle: "normal",
-  fontWeight: "600",
-  fontSize: "16px",
-  lineHeight: "22px",
-  color: "#191919",
-  whiteSpace: "nowrap",
-  textalign: "center",
-};
-const schoolTextStyle3 = {
-  position: "absolute",
-  width: "73px",
-  height: "22px",
-  left: "28px",
-  top: "10px",
-  fontFamily: "Noto Sans",
-  fontStyle: "normal",
-  fontWeight: "600",
-  fontSize: "16px",
-  lineHeight: "22px",
-  color: "#191919",
-  whiteSpace: "nowrap",
-  textalign: "center",
-};
-
-const LineStyle = {
-  position: "absolute",
-  width: "512px",
-  height: "0px",
-  right: "90px",
-  top: "400px",
-  border: "1px solid #D9D9D9",
-  transform: "rotate(-90deg)",
-};
-
-const ScrollContainer = styled.div`
-  position: absolute;
-  overflow-y: scroll;
-  width: 150px;
-  height: 290px;
-  left: 330px;
-  z-index: 2;
-  bottom: 10px;
-`;
-
-const ScrollContainer2 = styled.div`
-  position: absolute;
-  overflow-y: scroll;
-  width: 100px;
-  height: 300px;
-  right: 350px;
-  z-index: 2;
-  bottom: 10px;
-`;
-
-const ScrollText = styled.div`
-  left: 300px;
-`;
-
-const Silsi = () => {
-  const [Region, setRegion] = useState({});
-  const [School, setSchool] = useState({});
-  const [selectedRegion, setSelectedRegion] = useState(null);
-
-  const [additionalInfoText, setAdditionalInfoText] = useState([
-    { name: "1 학식당 - 분식", time: "40min" },
-    { name: "2 김밥천국", time: "35min" },
-    { name: "3 학식당 - 한식", time: "25min" },
-    { name: "4 블랑카페", time: "15min" },
-    { name: "5 서브웨이", time: "10min" },
-  ]);
+const Silsi = ({ setValidSearchSchool }) => {
+  const { schoolName, setSchoolName } = useSignUp();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fadeClass, setFadeClass] = useState("");
+  const schoolId = localStorage.getItem("schoolId");
+  const [rankTop5, setRankTop5] = useState([]);
+
+  useEffect(() => {
+    const rankTop5Api = async () => {
+      try {
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/congestion/ranking/top5?schoolId=${schoolId}`;
+
+        const response = await api.get(url);
+        setRankTop5(response.data.result);
+
+        console.log("혼잡도 5 가져오기", response.data.result);
+      } catch (error) {
+        console.error("혼잡도 5 가져오기 실패", error);
+      }
+    };
+    rankTop5Api();
+  }, [schoolId]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setFadeClass("fade-out");
       setTimeout(() => {
-        setCurrentIndex((currentIndex + 1) % additionalInfoText.length);
+        setCurrentIndex((currentIndex + 1) % rankTop5.length);
         setFadeClass("");
       }, 1000);
     }, 5000);
 
     return () => clearInterval(intervalId);
-  }, [currentIndex, additionalInfoText]);
-
-  const convertTimeToMinutes = (time) => {
-    return parseInt(time.replace("min", ""), 10);
-  };
-
-  const getColorByTime = (time) => {
-    //인원수만큼 min의 색깔을 변경
-    const minutes = convertTimeToMinutes(time);
-    if (minutes < 20) {
-      return "#4AD917";
-    } else if (minutes < 40) {
-      return "#FFBA35";
-    } else {
-      return "#E32525";
-    }
-  };
-  //URL에서 storeId 추출
-  // const {storeId} = useParams();
-  const { storeId } = 5;
-
-  useEffect(() => {
-    const Regionapi = async () => {
-      try {
-        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/region`;
-
-        const response = await api.get(url);
-        setRegion(response.data.result);
-        console.log("마이페이지 api 호출", Region);
-      } catch (error) {
-        console.error("가게 세부 정보 가져오기 실패", error);
-      }
-    };
-
-    Regionapi();
-  }, []);
-
-  const [isModalOpen, setModalOpen] = useState(false);
-  const modalRef = useRef();
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setModalOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  const handleBoxClick = (event) => {
-    if (event.nativeEvent.offsetX <= event.currentTarget.clientWidth / 2) {
-      setModalOpen(true);
-    }
-  };
-
-  const handleRegionSelect = async (selectedRegion) => {
-    try {
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school?regionId=${selectedRegion.id}`;
-      const response = await api.get(url);
-      setSchool(response.data.result);
-      console.log("지역 선택 - 학교 목록 호출", School);
-      setSelectedRegion(selectedRegion);
-    } catch (error) {
-      console.error("지역 선택 - 학교 목록 호출 실패", error);
-    }
-  };
+  }, [currentIndex, rankTop5]);
 
   return (
     <Container>
-      <Box onClick={handleBoxClick}>
+      <Box
+        onClick={() => {
+          setValidSearchSchool(true);
+        }}
+      >
         <SchoolInfo>
           <img src={SchoolMark} alt="학교마크" />
         </SchoolInfo>
@@ -340,55 +192,33 @@ const Silsi = () => {
           <img src={Mark123} alt="화살표마크" />
         </SchoolInfo2>
         <SchoolInfotxt>
-          <p>덕성여자대학교</p>
+          <p>{schoolName}</p>
         </SchoolInfotxt>
       </Box>
-      {isModalOpen && (
-        <ModalContent ref={modalRef}>
-          <ScrollContainer>
-            <ScrollText>
-              {School && School.map((item, index) => (
-                <p key={index}>
-                  {item.name}
-                </p>
-              ))}
-              </ScrollText>
-          </ScrollContainer>
-          <ScrollContainer2>
-            <ScrollText>
-              {Region.map((item, index) => (
-                <p key={index} onClick={() => handleRegionSelect(item)}>
-                  {item.name}
-                </p>
-              ))}
-            </ScrollText>
-          </ScrollContainer2>
-          <div style={LineStyle}></div>
-          <div style={schoolTextStyle}>학교 선택</div>
-          <SearchBar>
-            <img src={SearchIcon} alt="Search Icon" />
-            <SearchInput
-              type="text"
-              placeholder="학교를 입력하세요. 예) 경희대학교"
-            />
-          </SearchBar>
-          <AdditionalBox>
-            <div style={schoolTextStyle2}>학교명</div>
-            <div style={schoolTextStyle3}>시·도</div>
-          </AdditionalBox>
-        </ModalContent>
-      )}
 
       <AdditionalInfo>
         <div className={fadeClass}>
-          <NameInfo>{additionalInfoText[currentIndex].name}</NameInfo>
-          <TimeInfo
-            style={{
-              color: getColorByTime(additionalInfoText[currentIndex].time),
-            }}
-          >
-            {additionalInfoText[currentIndex].time}
-          </TimeInfo>
+          {rankTop5.length > 0 && (
+            <>
+              <RankInfo>{rankTop5[currentIndex]?.ranking}</RankInfo>
+              <NameInfo>{rankTop5[currentIndex]?.storeName}</NameInfo>
+              {rankTop5[currentIndex]?.congestionAV != null ? (
+                <TimeInfo
+                  color={
+                    rankTop5[currentIndex]?.congestionAV
+                      ? "#E32525"
+                      : rankTop5[currentIndex]?.congestionAV > 10
+                      ? "#FFBA35"
+                      : "#4AD917"
+                  }
+                >
+                  {rankTop5[currentIndex]?.congestionAV} min
+                </TimeInfo>
+              ) : (
+                <TimeInfo color="#4AD917">0 min</TimeInfo>
+              )}
+            </>
+          )}
         </div>
       </AdditionalInfo>
 
