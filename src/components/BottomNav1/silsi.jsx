@@ -46,14 +46,6 @@ const Line = styled.div`
   border: 1px solid #ffba35;
 `;
 
-const AdditionalBox = styled.div`
-  position: absolute;
-  width: 480px;
-  height: 45px;
-  left: 0px;
-  top: 110px;
-  background: #f6f6f6;
-`;
 //실시간 혼잡도 top5 div
 const AdditionalInfo = styled.div`
   position: absolute;
@@ -73,6 +65,11 @@ const SchoolInfo = styled.div`
   /* background-color: aqua; */
 `;
 
+const LogoImg = styled.img`
+  width: 28px;
+  height: 28px;
+`;
+
 const SchoolInfo2 = styled.div`
   position: absolute;
   width: 30px;
@@ -85,15 +82,18 @@ const SchoolInfo2 = styled.div`
 
 const SchoolInfotxt = styled.div`
   position: absolute;
-  width: 161px;
+  width: auto;
   height: 22px;
-  left: 23px;
-  top: -2px;
+  left: 52px;
+  top: 15px;
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
+
+  display: flex;
+  justify-content: flex-start;
 `;
 
 const RankInfo = styled.div`
@@ -149,6 +149,7 @@ const Silsi = ({ setValidSearchSchool }) => {
   const [fadeClass, setFadeClass] = useState("");
   const schoolId = localStorage.getItem("schoolId");
   const [rankTop5, setRankTop5] = useState([]);
+  const [schoolLogo, setSchoolLogo] = useState({});
 
   useEffect(() => {
     const rankTop5Api = async () => {
@@ -163,7 +164,21 @@ const Silsi = ({ setValidSearchSchool }) => {
         console.error("혼잡도 5 가져오기 실패", error);
       }
     };
+
+    const schoolLogoApi = async () => {
+      try {
+        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/logo?schoolId=${schoolId}`;
+
+        const response = await api.get(url);
+        setSchoolLogo(response.data.result);
+
+        console.log("학교 로고 가져오기", response.data.result);
+      } catch (error) {
+        console.error("학교 로고 가져오기 실패", error);
+      }
+    };
     rankTop5Api();
+    schoolLogoApi();
   }, [schoolId]);
 
   useEffect(() => {
@@ -186,13 +201,13 @@ const Silsi = ({ setValidSearchSchool }) => {
         }}
       >
         <SchoolInfo>
-          <img src={SchoolMark} alt="학교마크" />
+          <LogoImg src={schoolLogo.logo} alt="학교마크" />
         </SchoolInfo>
         <SchoolInfo2>
           <img src={Mark123} alt="화살표마크" />
         </SchoolInfo2>
         <SchoolInfotxt>
-          <p>{schoolName}</p>
+          <p style={{ margin: "0" }}>{schoolName}</p>
         </SchoolInfotxt>
       </Box>
 
