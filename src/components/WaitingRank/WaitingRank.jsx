@@ -15,17 +15,26 @@ import {
 
 import Ad1 from "../../images/WaitingRank/Ad1.svg";
 
-export default function WaitingRank() {
+export default function WaitingRank(props) {
   const location = useLocation();
-  const title = "실시간 웨이팅 랭킹"; //나중에 props로 받아올거임.
+  const title = "실시간 웨이팅 랭킹";
   const [currentTab, setCurrentTab] = useState("");
   const [honjapPreLink, setHonjapPreLink] = useState("#");
+  const [placeholder, setPlaceholder] = useState("내가 가고싶은 식당은?");
 
   useEffect(() => {
     if (location.state?.navBar) {
       setCurrentTab(location.state.navBar);
+      if (location.state.navBar === "ALL") {
+        setPlaceholder("내가 가고 싶은 식당은?");
+      } else if (location.state.navBar === "IN") {
+        setPlaceholder("교내에서 내가 가고 싶은 식당은?");
+      } else {
+        setPlaceholder("교외에서 내가 가고 싶은 식당은?");
+      }
     } else {
       setCurrentTab("ALL");
+      setPlaceholder("내가 가고싶은 식당은?");
     }
 
     if (location.state?.honjapPreLink) {
@@ -62,27 +71,36 @@ export default function WaitingRank() {
     <div className="App">
       <div style={{ height: "100%" }}>
         <Header title={title} honjapPreLink={honjapPreLink} />
-        <SearchBar />
+        <SearchBar placeholder={placeholder} />
 
         <MenuDiv>
           <ManuButton
             color={currentTab === "ALL" ? "#FFBA35" : undefined}
             bottomColor={currentTab === "ALL" ? "#FFBA35" : undefined}
-            onClick={() => setCurrentTab("ALL")}
+            onClick={() => {
+              setCurrentTab("ALL");
+              setPlaceholder("내가 가고 싶은 식당은?");
+            }}
           >
             전체
           </ManuButton>
           <ManuButton
             color={currentTab === "IN" ? "#FFBA35" : undefined}
             bottomColor={currentTab === "IN" ? "#FFBA35" : undefined}
-            onClick={() => setCurrentTab("IN")}
+            onClick={() => {
+              setCurrentTab("IN");
+              setPlaceholder("교내에서 내가 가고 싶은 식당은?");
+            }}
           >
             교내
           </ManuButton>
           <ManuButton
             color={currentTab === "OUT" ? "#FFBA35" : undefined}
             bottomColor={currentTab === "OUT" ? "#FFBA35" : undefined}
-            onClick={() => setCurrentTab("OUT")}
+            onClick={() => {
+              setCurrentTab("OUT");
+              setPlaceholder("교외에서 내가 가고 싶은 식당은?");
+            }}
           >
             교외
           </ManuButton>

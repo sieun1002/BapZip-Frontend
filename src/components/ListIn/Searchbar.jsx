@@ -55,7 +55,10 @@ const SearchImage = styled.img`
   top: 15px;
 `;
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+  const placeholder = props.placeholder;
+  console.log(placeholder);
+
   const [searchText, setSearchText] = useState("");
   const [showText, setShowText] = useState(true);
 
@@ -69,14 +72,10 @@ const SearchBar = () => {
       <SearchImage src={Searchimage} alt="Search" />
       <SearchBox
         type="text"
-        placeholder=""
+        placeholder={placeholder}
         value={searchText}
         onChange={handleSearchChange}
       />
-
-      {showText && (
-        <PlaceholderText>교내에서 내가 가고싶은 식당은?</PlaceholderText>
-      )}
     </SearchContainer>
   );
 };

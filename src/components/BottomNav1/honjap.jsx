@@ -166,7 +166,11 @@ const Honjap = () => {
         <Container1>
           <Link
             to="/WaitingRank"
-            state={{ navBar: "IN", honjapPreLink: honjapPreLink }}
+            state={{
+              navBar: "IN",
+              honjapPreLink: honjapPreLink,
+              placeholder: "교내에서 내가 가고 싶은 식당은?",
+            }}
           >
             <BackgroundImage src={background} alt="배경" />
             <ZandiImage src={zandi} alt="Zandi" />
@@ -180,7 +184,11 @@ const Honjap = () => {
         <Container2>
           <Link
             to="/WaitingRank"
-            state={{ navBar: "OUT", honjapPreLink: honjapPreLink }}
+            state={{
+              navBar: "OUT",
+              honjapPreLink: honjapPreLink,
+              placeholder: "교외에서 내가 가고 싶은 식당은?",
+            }}
           >
             <OutBackgroundImage src={Outbackground} alt="배경" />
             <Out3 src={Out} alt=">" />
