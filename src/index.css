@@ -393,6 +393,7 @@ p {
 .search-SearchModal {
   display: flex;
   flex-direction: row;
+  align-items: center;
   width: 420px;
   height: 42px;
   border-radius: 40px;
@@ -1438,4 +1439,108 @@ p {
 
 .fade-out {
   animation: slide-out 4s ease-in-out forwards;
+}
+/* --------------------------MainSearch--------------------------- */
+.MainSearch-BottomNav1{
+  min-height: calc(100vh - 70px);
+}
+/* header */
+.header-MainSearch{
+  display: flex;
+  align-items: center;
+  border-bottom: 4px solid #f6f6f6;
+  padding: 15px;
+  img{
+    margin-right: 10px;
+    margin-left: 12px;
+  }
+  .search-SearchModal{
+    width: 384px;
+    height: 35px;
+  }
+}
+/* SearchResult */
+.beforeSearch-MainSearch{
+  text-align: left;
+  margin-left: 30px;
+  p{
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .recommendSearch-beforeSearch{
+    .keyword-recommendSearch{
+      width: 74px;
+      max-width: 83px;
+      height: 33px;
+      border-radius: 40px;
+      border: 1px solid #DBDBDB;
+      background-color: #ffffff;
+      font-family: "Noto Sans KR", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      margin-right: 12px;
+      margin-bottom: 18px;
+    }
+  }
+}
+.afterSearch-MainSearch{
+  padding-top: 20px;
+  .storeName-afterSearch{
+    display: flex;
+    text-align: left;
+    padding-left: 42px;
+    height: 56px;
+    border-bottom: 1px solid #EDEDED;
+    p{
+      font-weight: 500;
+      font-size: 16px;
+    }
+  }
+  .storeName-afterSearch:hover{
+    background-color: #fff8ec;
+  }
+  .unKnownStore-afterSearch{
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    border-bottom: 4px solid #f6f6f6;
+    align-items: center;
+    justify-content: center;
+    .info-unknownStore{
+      display: flex;
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .txt-unknownStore{
+      margin: 0;
+      font-weight: 500;
+      font-size: 14px;
+      color: #c0c0c0;
+    }
+  }
+}
+/* Ranking */
+.Ranking-MainSearch{
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+  
+  .title-Ranking{
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .storeName-Ranking{
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    p{
+      font-size: 16px;
+      font-weight: 600;
+      margin-right: 12px;
+    }
+    border-bottom: 1px solid #EDEDED;
+  }
+  .storeName-Ranking:hover{
+    background-color: #fff8ec;
+  }
 }

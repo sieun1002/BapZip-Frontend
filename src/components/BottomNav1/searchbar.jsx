@@ -28,12 +28,10 @@ const Circle = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 320px;
   height: 35px;
   background-color: #f6f6f6;
   border-radius: 25px;
-  cursor: text;
 `;
 
 const Logo = styled.img`
@@ -43,7 +41,7 @@ const Logo = styled.img`
 `;
 
 const SearchInput = styled.input`
-  width: calc(100% - 16px);
+  width: 320px;
   height: 100%;
   border: none;
   outline: none;
@@ -151,10 +149,6 @@ const ModalPoint = styled.text`
 const Searchbar = () => {
   const [MypageModal, setMypageModal] = useState({});
 
-  //URL에서 storeId 추출
-  // const {storeId} = useParams();
-  const { storeId } = 5;
-
   useEffect(() => {
     const MypageModalapi = async () => {
       try {
@@ -173,7 +167,6 @@ const Searchbar = () => {
   }, []);
 
   const navigate = useNavigate();
-  const [searchText, setSearchText] = useState("");
   const [isModalVisible, setModalVisibility] = useState(false);
   const [modalPosition, setModalPosition] = useState({
     top: 0,
@@ -213,17 +206,17 @@ const Searchbar = () => {
       <OuterContainer>
         <Logo src={logoicon} alt="Logo" />
 
-        <Circle>
-          <Placeholder>
-            <Icon1 src={scrSearchIcon} alt="Search Icon" />
-          </Placeholder>
-          <SearchInput
-            type="text"
-            placeholder="오늘 내가 가고 싶은 식당은?"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-          />
-        </Circle>
+        <Link to="/Home/MainSearch" style={{ textDecoration: "none", color:'black'}}>
+          <Circle>
+            <Placeholder>
+              <Icon1 src={scrSearchIcon} alt="Search Icon" />
+            </Placeholder>
+            <SearchInput
+              placeholder="오늘 내가 가고 싶은 식당은?"
+            />
+          </Circle>
+        </Link>
+
 
         <AdditionalIcons>
           <Icon

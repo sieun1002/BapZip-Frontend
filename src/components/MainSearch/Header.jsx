@@ -1,27 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import scrSearchIcon from "../../images/WriteReview/searchIcon.png";
 import scrBackBtn from "../../images/WriteReview/backBtn.png";
 
-export default function Header() {
-  const [input, setInput] = useState("");
+export default function Header(props) {
   return (
-    <div className="header-WriteReview">
+    <div className="header-MainSearch">
       <Link to="/Home">
-        <img src={scrBackBtn} alt="뒤로가기" />
+        <img src={scrBackBtn} alt="뒤로가기" style={{width:"26px", height:"26px"}}/>
       </Link>
       <div className="search-SearchModal">
         <img
           src={scrSearchIcon}
           alt="찾기 아이콘"
-          style={{ width: "23px", height: "23px" }}
+          style={{ width: "20px", height: "20px" }}
         />
         <input
           className="input-SearchModal"
           type="text"
-          placeholder="식당명을 입력하세요. 예) 도봉 한식"
+          placeholder={props.text.length === 0 ? "오늘 내가 가고싶은 식당은?" : props.text}
           maxLength="15"
-          onKeyUp={(e) => setInput(e.target.value)}
+          onKeyUp={(e) => props.setTxt(e.target.value)}
+          style={{height:"17px", fontSize:"12px", fontWeight:500}}
         />
       </div>
     </div>

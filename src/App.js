@@ -87,7 +87,7 @@ function App() {
               <Route path="/MyPage/ManageReivew" element={<ManageReview />} />
               <Route path="/Mypage/Point" element={<Point />} />
               <Route path="/MyPage/Coupon" element={<Coupon />} />
-
+              <Route path="/Home/MainSearch" element={<MainSearch />} />
               <Route path="/WaitingRank" element={<WaitingRank />} />
             </Routes>
           </BrowserRouter>
