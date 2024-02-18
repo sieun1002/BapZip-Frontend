@@ -12,13 +12,15 @@ export default function UploadImg(props) {
     }
 
     const handleChange = (e) => {
-        const file = imgRef.current.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            setImgFile(file);
-            setScr(reader.result);
-           };
+        if(imgRef.current.files[0]){
+            const file = imgRef.current.files[0];
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                setImgFile(file);
+                setScr(reader.result);
+            };
+        }
     }
     useEffect(()=>{
         props.setImgScr(imgFile);

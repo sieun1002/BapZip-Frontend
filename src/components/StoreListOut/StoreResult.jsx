@@ -4,9 +4,11 @@ import scrMenuDetail from "../../images/StoreListIn/menudetail.png"
 import scrRatingIcon from "../../images/WriteReview/ratingIcon.png";
 import scrBookmarkBtn from "../../images/StoreListIn/bookmarkBtn.png"
 import scrEmBookmarkBtn from "../../images/StoreListIn/embookmarkBtn.png"
+import scrUnknownIcon from "../../images/WriteReview/unknownIcon.png";
+
 import { Link } from 'react-router-dom';
 
-export default function StoreResult() {
+export default function StoreResult(props) {
   const [menuBar,setMenuBar] = useState(false);
   const menuList = ["추천순", "별점순", "리뷰많은순"];
   const menuListApi = ["score", "score", "reviewcount"];
@@ -30,33 +32,32 @@ export default function StoreResult() {
     }
     setRender(!needR);
   }
-
   const storedUserId = localStorage.getItem("schoolId"); 
   const [storeData,setData] = useState([]);
   const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/list/${menuListApi[menu]}?schoolId=${storedUserId}`;
   function getStore(){
     api.get(urlget)
     .then(function(response){
-      setData(response.data.result.filter((item)=>item.inOut==="OUT"));
+      setData(response.data.result.filter((item)=>item.inOut==="OUT" && item.name.includes(props.input)));
     })
     .catch(function(error){
       console.log(error.message);
     });
-  }
-  if(!storeData[0]){
-    getStore();
   }
 
   function clickMenu(index){
     setMenu(index);
     setMenuBar(false);
   }
-  
+  useEffect(()=>{
+    getStore();
+  },[props.input]);
   useEffect(()=>{
     setTimeout(() => {
       getStore();
     }, 100);
   },[menu,needR]);
+  
 
   return (
     <div className='StoreResult-StoreListIn'>
@@ -84,7 +85,7 @@ export default function StoreResult() {
             <div className="container-MyReview" key={item.storeId}>
               <div className="basicInfo-MyReview" style={{ position: "relative" }}>
                 <Link to={`/RestaurantInfo/${item.storeId}`} 
-                state={{ navBar: "home" , restaurantPreLink: "/ListOut" }}
+                state={{ navBar: "home" , restaurantPreLink: "/ListIn" }}
                 style={{ textDecoration: "none", color:'black'}}>
                   <img src={item.imageUrl} alt=""
                     style={{
@@ -96,7 +97,7 @@ export default function StoreResult() {
                   />
                 </Link>
                 <Link to={`/RestaurantInfo/${item.storeId}`} 
-                state={{ navBar: "home" , restaurantPreLink: "/ListOut" }}
+                state={{ navBar: "home" , restaurantPreLink: "/ListIn" }}
                 style={{ textDecoration: "none", color:'black'}}>
                   <div className="detailReview-MyReview">
                     <p className="name-StoreResult">{item.name}</p>
@@ -118,7 +119,20 @@ export default function StoreResult() {
             </div>
           )
         })}
-      </div>:""}
+      </div>:
+      <div className="unknownStore-SearchModal">
+        <img
+          src={scrUnknownIcon}
+          alt="아이콘"
+          style={{ width: "90px", height: "90px" }}
+        />
+        <div className="info-unknownStore" style={{justifyContent:'center'}}>
+          <p style={{ color: "#FFBA35" }}>`{props.input}` </p>
+          <p style={{ color: "#767676" }}>에 대한 결과가 없습니다.</p>
+        </div>
+        <p className="txt-unknownStore">비슷한 다른 검색어를 입력해보세요.</p>
+      </div>
+    }
     </div>
   )
 }
