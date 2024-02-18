@@ -50,22 +50,22 @@ export default function WaitingRank(props) {
   const classification = currentTab;
 
   const schoolId = localStorage.getItem("schoolId");
+  const AllRestaurantListApi = async () => {
+    try {
+      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/congestion/ranking?classification=${classification}&schoolId=${schoolId}`;
 
+      const response = await api.get(url);
+      setAllRestaurantList(response.data.result.filter((item)=>item.storeName.includes(searchText)));
+    } catch (error) {
+      console.error("혼잡도 랭킹 api 가져오기 실패", error);
+    }
+  };
   useEffect(() => {
-    const AllRestaurantListApi = async () => {
-      try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/congestion/ranking?classification=${classification}&schoolId=${schoolId}`;
-
-        const response = await api.get(url);
-        setAllRestaurantList(response.data.result.filter((item)=>item.storeName.includes(searchText)));
-      } catch (error) {
-        console.error("혼잡도 랭킹 api 가져오기 실패", error);
-      }
-    };
-
     AllRestaurantListApi();
-  }, [currentTab, searchText]);
-
+  }, [currentTab]);
+  useEffect(() => {
+    AllRestaurantListApi();
+  }, [searchText]);
   return (
     <div className="App">
       <div style={{ height: "100%" }}>
@@ -112,7 +112,7 @@ export default function WaitingRank(props) {
           })
           :
           (
-            <div className="unknownStore-SearchModal">
+            <div className="unknownStore-SearchModal" style={{marginLeft:"60px"}}>
               <img
                 src={scrUnknownIcon}
                 alt="아이콘"

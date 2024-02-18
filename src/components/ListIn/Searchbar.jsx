@@ -70,6 +70,7 @@ const SearchBar = (props) => {
         placeholder={placeholder}
         value={props.searchText}
         onChange={handleSearchChange}
+        maxLength={10}
       />
     </SearchContainer>
   );
