@@ -51,7 +51,7 @@ function App() {
       <SignUpProvider>
         <div className="root-wrap">
           {/* <div className="App"> */}
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<Login1 />} />
