@@ -438,6 +438,13 @@ p {
     overflow-y: scroll;
     overflow-x: hidden;
     height: 272px;
+    &::-webkit-scrollbar{
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb{
+      background: #999999;
+      border-radius: 40px;
+    }
   }
 }
 .store-resultSearch {
@@ -1116,6 +1123,14 @@ p {
     overflow-y: hidden;
     img{
       margin-right: 5px;
+      margin-bottom: 5px;
+    }
+    &::-webkit-scrollbar{
+      height: 4px;
+    }
+    &::-webkit-scrollbar-thumb{
+      background: #999999;
+      border-radius: 40px;
     }
   }
 }
@@ -1222,6 +1237,14 @@ p {
       overflow-y: hidden;
       img{
         margin-right: 5px;
+        margin-bottom: 5px;
+      }
+      &::-webkit-scrollbar{
+        height: 4px;
+      }
+      &::-webkit-scrollbar-thumb{
+        background: #999999;
+        border-radius: 40px;
       }
     }
   }

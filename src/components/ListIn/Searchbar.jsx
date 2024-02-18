@@ -57,14 +57,9 @@ const SearchImage = styled.img`
 
 const SearchBar = (props) => {
   const placeholder = props.placeholder;
-  console.log(placeholder);
-
-  const [searchText, setSearchText] = useState("");
-  const [showText, setShowText] = useState(true);
 
   const handleSearchChange = (event) => {
-    setSearchText(event.target.value);
-    setShowText(event.target.value === "");
+    props.setSearchText(event.target.value);
   };
 
   return (
@@ -73,7 +68,7 @@ const SearchBar = (props) => {
       <SearchBox
         type="text"
         placeholder={placeholder}
-        value={searchText}
+        value={props.searchText}
         onChange={handleSearchChange}
       />
     </SearchContainer>
