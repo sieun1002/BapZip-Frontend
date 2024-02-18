@@ -32,21 +32,6 @@ const SearchBox = styled.input`
   }
 `;
 
-const PlaceholderText = styled.label`
-  position: absolute;
-  width: 241px;
-  height: 22px;
-  left: 40px;
-  top: 14px;
-  font-family: "Noto Sans";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
-  color: #707070;
-  pointer-events: none; /* Prevents interaction with the label */
-`;
-
 const SearchImage = styled.img`
   position: absolute;
   width: 20px;

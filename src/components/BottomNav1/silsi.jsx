@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useSignUp } from "../../context/SignUpContext";
-import styled, { keyframes } from "styled-components";
-import SearchIcon from "../../images/BottomNav1/SearchIcon.png";
+import styled from "styled-components";
 import api from "../../api/LoginTokenApi";
 import Mark123 from "../../images/BottomNav1/Mark123.svg";
-import SchoolMark from "../../images/BottomNav1/SchoolMark.png";
 
 const Container = styled.div`
   margin-top: 20px;

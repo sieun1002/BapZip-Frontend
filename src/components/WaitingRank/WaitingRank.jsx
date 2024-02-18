@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import api from "../../api/LoginTokenApi";
 import { useLocation } from "react-router-dom";
 
@@ -55,7 +55,11 @@ export default function WaitingRank(props) {
       const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/congestion/ranking?classification=${classification}&schoolId=${schoolId}`;
 
       const response = await api.get(url);
-      setAllRestaurantList(response.data.result.filter((item)=>item.storeName.includes(searchText)));
+      setAllRestaurantList(
+        response.data.result.filter((item) =>
+          item.storeName.includes(searchText)
+        )
+      );
     } catch (error) {
       console.error("혼잡도 랭킹 api 가져오기 실패", error);
     }
@@ -70,7 +74,11 @@ export default function WaitingRank(props) {
     <div className="App">
       <div style={{ height: "100%" }}>
         <Header title={title} honjapPreLink={honjapPreLink} />
-        <SearchBar placeholder={placeholder} searchText={searchText} setSearchText={setSearchText}/>
+        <SearchBar
+          placeholder={placeholder}
+          searchText={searchText}
+          setSearchText={setSearchText}
+        />
 
         <MenuDiv>
           <ManuButton
@@ -106,23 +114,30 @@ export default function WaitingRank(props) {
         </MenuDiv>
 
         <RestaurantWrapper>
-          {allRestaurantList.length?
-          allRestaurantList.map((Restaurant, index) => {
-            return <RstaurantList Restaurant={Restaurant} index={index} />;
-          })
-          :
-          (
-            <div className="unknownStore-SearchModal" style={{marginLeft:"60px"}}>
+          {allRestaurantList.length ? (
+            allRestaurantList.map((Restaurant, index) => {
+              return <RstaurantList Restaurant={Restaurant} index={index} />;
+            })
+          ) : (
+            <div
+              className="unknownStore-SearchModal"
+              style={{ marginLeft: "60px" }}
+            >
               <img
                 src={scrUnknownIcon}
                 alt="아이콘"
                 style={{ width: "90px", height: "90px" }}
               />
-              <div className="info-unknownStore" style={{justifyContent:'center'}}>
+              <div
+                className="info-unknownStore"
+                style={{ justifyContent: "center" }}
+              >
                 <p style={{ color: "#FFBA35" }}>`{searchText}` </p>
                 <p style={{ color: "#767676" }}>에 대한 결과가 없습니다.</p>
               </div>
-              <p className="txt-unknownStore">비슷한 다른 검색어를 입력해보세요.</p>
+              <p className="txt-unknownStore">
+                비슷한 다른 검색어를 입력해보세요.
+              </p>
             </div>
           )}
         </RestaurantWrapper>
