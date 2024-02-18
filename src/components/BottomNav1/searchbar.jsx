@@ -190,7 +190,7 @@ const Searchbar = () => {
           />
           <div className="imgarlim">
             <Link to="/arlim">
-              <Icon src={Bellicon} alt="Additional Icon 2" />
+              <Icon src={Bellicon} alt="Additional Icon 2" style={{marginTop:'5px'}}/>
             </Link>
           </div>
         </AdditionalIcons>
