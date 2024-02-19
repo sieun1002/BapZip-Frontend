@@ -116,7 +116,7 @@ export const PointDiv = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  z-index: 10;
+  z-index: 30000;
 `;
 export const PointP = styled.p`
   font-size: 20px;
