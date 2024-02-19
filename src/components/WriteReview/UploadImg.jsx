@@ -32,6 +32,7 @@ export default function UploadImg(props) {
         arrayFile.splice(index,1);
         arraySrc.splice(index,1);
         setImgFile(arrayFile);
+        console.log(imgFile);
         setSrc(arraySrc);
     }
     useEffect(()=>{
