@@ -31,7 +31,7 @@ const MySwiperComponent = () => {
   return (
     <div
       className="swiper mySwiper"
-      style={{ position: "relative", top: "-50px" }}
+      style={{ position: "relative", top: "-55px" }}
     >
       <div className="swiper-wrapper">
         <img

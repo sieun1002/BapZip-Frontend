@@ -144,7 +144,7 @@ const A4 = styled.img`
   top: 0;
   right: 0;
   margin-right: 106px;
-  margin-top: 70px;
+  margin-top: 66px;
 `;
 
 const Hot = styled.img`
@@ -152,7 +152,7 @@ const Hot = styled.img`
   top: 0;
   right: 0;
   margin-right: 160px;
-  margin-top: 340px;
+  margin-top: 348px;
 `;
 
 const Honjap = () => {

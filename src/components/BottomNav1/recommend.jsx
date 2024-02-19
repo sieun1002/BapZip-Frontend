@@ -67,8 +67,13 @@ const Recommend = () => {
   }, [needR, category]);
 
   return (
-    <div className="recommend-container" style={{marginBottom:'40px'}}>
-      <p className="title-timeline2">추천식당</p>
+    <div className="recommend-container" style={{ marginBottom: "40px" }}>
+      <p
+        className="title-timeline2"
+        style={{ marginBottom: "15px", marginTop: "-15px" }}
+      >
+        추천식당
+      </p>
       <div className="menuBtnSection-timeline2">
         <button
           onClick={() => clickBtn(0)}
