@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-
+import scrDeletBtn from "../../images/ManageReview/deletBtn.png";
 import scrUploadBtn from '../../images/WriteReview/uploadBtn.png'
 
 export default function UploadImg(props) {
-    const [imgFile, setImgFile] = useState("");
-    const [imgSrc, setScr] = useState("");
+    const [imgFile, setImgFile] = useState([]);
+    const [imgSrc, setSrc] = useState([]);
     const imgRef = useRef();
 
     const handleButtonClick = (e) => {
@@ -12,15 +12,27 @@ export default function UploadImg(props) {
     }
 
     const handleChange = (e) => {
-        if(imgRef.current.files[0]){
+        if(imgRef.current.files[0] && imgFile.length < 6){
             const file = imgRef.current.files[0];
             const reader = new FileReader();
+            const arrayFile = Array.from(imgFile);
+            const arraySrc = Array.from(imgSrc);
             reader.readAsDataURL(file);
             reader.onloadend = () => {
-                setImgFile(file);
-                setScr(reader.result);
+                arrayFile.push(file);
+                arraySrc.push(reader.result);
+                setImgFile(arrayFile);
+                setSrc(arraySrc);
             };
         }
+    }
+    function delImage(index){
+        const arrayFile = Array.from(imgFile);
+        const arraySrc = Array.from(imgSrc);
+        arrayFile.splice(index,1);
+        arraySrc.splice(index,1);
+        setImgFile(arrayFile);
+        setSrc(arraySrc);
     }
     useEffect(()=>{
         props.setImgScr(imgFile);
@@ -29,7 +41,7 @@ export default function UploadImg(props) {
     <div className='uploadImg-WriteReview'>
         <div className='txt-uploadImg'>
             <p className='title-uploadImg'>사진 업로드</p>
-            <p className='detail-uploadImg'>사진 첨부(선택)</p>
+            <p className='detail-uploadImg'>사진 첨부(5장 선택)</p>
         </div>
         <div className='img-uploadImg'>
             <button className='uploadBtn-uploadImg' style={{backgroundImage: `url(${scrUploadBtn})`, backgroundSize: "cover"}}
@@ -40,8 +52,18 @@ export default function UploadImg(props) {
             onChange={handleChange}
             ref={imgRef}
             />
-            {imgFile.length!==0?
-            <button className='uploadBtn-uploadImg' style={{backgroundImage: `url(${imgSrc})`, backgroundSize: "cover", backgroundPosition: "center"}}/>
+            {imgSrc.length!==0?
+            imgSrc.map((item, index)=>{
+                return(
+                    <div className='images-uploadImg' key={index} style={{position: 'relative'}}>
+                        <button className='uploadBtn-uploadImg'
+                        style={{backgroundImage: `url(${item})`, backgroundSize: "cover", backgroundPosition: "center"}}/>
+                        <img src={scrDeletBtn} alt=""
+                        style={{ width: "31px", height: "31px", position: 'absolute', top:'5px', right: '15px' }} onClick={() => {delImage(index)}}
+                        />
+                    </div>
+                ); 
+            })
             :""}
         </div>
     </div>
