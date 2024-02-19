@@ -34,6 +34,8 @@ export const InputDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
+  margin: ${(props) => props.margin};
   /* background-color: #7cc2ff; */
 `;
 

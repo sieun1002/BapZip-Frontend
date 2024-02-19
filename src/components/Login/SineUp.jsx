@@ -282,7 +282,7 @@ export default function SineUp() {
             </SearchLink>
             <PDiv>회원가입</PDiv>
           </HeaderDiv>
-          <Form margin="auto" padding="45px 0">
+          <Form margin="auto" padding="45px 0 20px 0">
             <Label htmlFor="nickName">닉네임</Label>
             <InputDiv>
               <Input
@@ -362,7 +362,7 @@ export default function SineUp() {
               />
             </InputDiv>
 
-            <InputDiv>
+            <InputDiv margin="13px 0 0 0">
               <Input
                 type="password"
                 id="passwordCheck"
@@ -444,7 +444,7 @@ export default function SineUp() {
               )}
             </InputDiv>
 
-            <InputDiv>
+            <InputDiv margin="13px 0 0 0">
               <Input
                 type="text"
                 id="schoolEmailCheck"
@@ -490,7 +490,7 @@ export default function SineUp() {
               <Submit
                 onClick={handleSignUpApi}
                 type="submit"
-                value="회원 가입"
+                value="회원가입"
                 backgroundColor="#ffba35"
                 marginBottom="30px"
               />
