@@ -72,7 +72,9 @@ function App() {
               <Route path="/WriteReview" element={<WriteReview />} />
               <Route path="/Home" element={<BottomNav1 />} />
               <Route path="/Arlim" element={<Arlim />} />
+
               <Route path="/MainSearch" element={<MainSearch />} />
+
               <Route path="/List" element={<BottomNav3 />} />
               <Route path="/ListIn" element={<StoreListIn />} />
               <Route path="/ListOut" element={<StoreListOut />} />
