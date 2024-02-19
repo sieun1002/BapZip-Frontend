@@ -629,13 +629,23 @@ p {
 .img-uploadImg {
   display: flex;
   margin-top: 30px;
+  overflow-y: hidden;
+  overflow-x: auto;
   .uploadBtn-uploadImg {
-    width: 132px;
+    min-width: 132px;
     height: 132px;
     outline: none;
     border: none;
     border-radius: 10px;
     margin-right: 10px;
+    margin-bottom: 5px;
+  }
+  &::-webkit-scrollbar{
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: #999999;
+    border-radius: 40px;
   }
 }
 /* SubmitBtn */
@@ -1146,14 +1156,14 @@ p {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 45%;
-    left: 39%;
+    top: 30%;
     background-color: #ffffff;
-    width: 318px;
+    width: 320px;
     height: 157px;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
+    margin: 80px;
   }
   .title-modalDel {
     width: 185px;

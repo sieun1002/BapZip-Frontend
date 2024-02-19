@@ -15,7 +15,7 @@ export default function WriteTxt(props) {
                 <p style={{color:'red'}}>*</p>
             </div>
             <div className='txtArea-writeTxt'>
-                <textarea className='txtBox-writeTxt' placeholder='리뷰를 작성하면 10 포인트를 적립해드립니다!&#13;*100자 이상'
+                <textarea className='txtBox-writeTxt' placeholder='리뷰를 작성하면 10 포인트를 적립해드립니다!&#13;*20자 이상'
                 value={textValue} onChange={(e)=>{handleSetValue(e)}}>
                 </textarea>
             </div>

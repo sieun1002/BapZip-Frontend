@@ -17,7 +17,7 @@ export default function WriteReview() {
     rating: 0,
     hashtags: [],
     reviewText: "",
-    imgScr: {},
+    imgScr: [],
   });
   const [completeWrite, setComplete] = useState(false);
   const [modalState, setModal] = useState(false);
@@ -45,13 +45,13 @@ export default function WriteReview() {
   function setStore(input) {
     setReview({
       ...reviewDetail,
-      storeName: input,
+      storeName: input
     });
   }
   function setRate(input) {
     setReview({
       ...reviewDetail,
-      rating: input,
+      rating: input
     });
   }
   const hashtagAll = [
@@ -75,19 +75,19 @@ export default function WriteReview() {
     }
     setReview({
       ...reviewDetail,
-      hashtags: hashtag,
+      hashtags: hashtag
     });
   }
   function setTxt(input) {
     setReview({
       ...reviewDetail,
-      reviewText: input,
+      reviewText: input
     });
   }
   function setImgScr(input) {
     setReview({
       ...reviewDetail,
-      imgScr: input,
+      imgScr: input
     });
   }
 
@@ -105,8 +105,9 @@ export default function WriteReview() {
     formData.append("rating", reviewDetail.rating);
     formData.append("hashtags", reviewDetail.hashtags);
     formData.append("reviewText", reviewDetail.reviewText);
-    formData.append("images1", reviewDetail.imgScr);
-
+    for(let i = 0; i<reviewDetail.imgScr.length; i++){
+      formData.append(`images1`, reviewDetail.imgScr[i]);
+    }
     api({
       method: "post",
 
