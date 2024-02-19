@@ -150,7 +150,7 @@ const A4 = styled.img`
 const Hot = styled.img`
   position: absolute;
   top: 0;
-  right: 0;
+  left: 1px;
   margin-right: 160px;
   margin-top: 348px;
 `;
