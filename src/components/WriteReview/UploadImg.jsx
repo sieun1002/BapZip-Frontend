@@ -12,7 +12,7 @@ export default function UploadImg(props) {
     }
 
     const handleChange = (e) => {
-        if(imgRef.current.files[0] && imgFile.length < 6){
+        if(imgRef.current.files[0] && imgFile.length < 5){
             const file = imgRef.current.files[0];
             const reader = new FileReader();
             const arrayFile = Array.from(imgFile);

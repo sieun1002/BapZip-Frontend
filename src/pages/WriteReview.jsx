@@ -92,7 +92,7 @@ export default function WriteReview() {
   }
 
   const url =
-    "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews";
+    "http://babzip.seunga.shop/reviews";
   function submitReview() {
     const today = new Date();
     const formattedDate = `${today.getFullYear()}-${today
