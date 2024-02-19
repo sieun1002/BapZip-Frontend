@@ -44,7 +44,7 @@ export default function SelectSchool() {
   const handleSchoolApi = async () => {
     try {
       //API 요청 URL
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/search?schoolName=${form.school}`;
+      const url = `https://babzip.seunga.shop/school/search?schoolName=${form.school}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url);

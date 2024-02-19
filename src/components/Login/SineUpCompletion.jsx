@@ -99,8 +99,7 @@ export default function SineUpCompletion() {
   const handleAgreementApi = async () => {
     try {
       //API 요청 URL
-      const url =
-        "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/agreement";
+      const url = "https://babzip.seunga.shop/users/auth/agreement";
 
       //요청 본문에 포함될 데이터
       const term1 = Circle1 ? "CHECKED" : "NOT_CHECKED";

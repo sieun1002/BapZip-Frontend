@@ -39,7 +39,7 @@ export default function InfoHome() {
   useEffect(() => {
     const detailRestaurantInfoApi = async () => {
       try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo/`;
+        const url = `https://babzip.seunga.shop/stores/${storeId}/detailinfo/`;
 
         const response = await api.get(url);
         setDetailRestaurantInfo(response.data.result);
@@ -51,8 +51,7 @@ export default function InfoHome() {
 
     const noticeApi = async () => {
       try {
-        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/5/notice`;
+        const url = `https://babzip.seunga.shop/stores/5/notice`;
 
         const response = await api.get(url);
         setNotice(response.data.result);

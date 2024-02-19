@@ -48,7 +48,7 @@ export default function InfoReview() {
     const storeReviewApi = async () => {
       try {
         const schoolId = localStorage.getItem("schoolId");
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/${storeId}?schoolId=${schoolId}`;
+        const url = `https://babzip.seunga.shop/reviews/${storeId}?schoolId=${schoolId}`;
 
         const response = await api.get(url);
         setStoreReview(response.data.result);

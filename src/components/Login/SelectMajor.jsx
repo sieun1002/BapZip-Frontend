@@ -47,7 +47,7 @@ export default function SelectMajor() {
   const handleMajorApi = async () => {
     try {
       //API 요청 URL
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/major?schoolId=${schoolId}&majorName=${form.major}`;
+      const url = `https://babzip.seunga.shop/school/major?schoolId=${schoolId}&majorName=${form.major}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url);

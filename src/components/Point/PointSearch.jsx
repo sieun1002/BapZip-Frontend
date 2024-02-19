@@ -23,8 +23,7 @@ export default function PointSearch() {
   useEffect(() => {
     const PointListsApi = async () => {
       try {
-        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/point/myPoint`;
+        const url = `https://babzip.seunga.shop/point/myPoint`;
 
         const response = await api.get(url);
         setPointLists(response.data.result);

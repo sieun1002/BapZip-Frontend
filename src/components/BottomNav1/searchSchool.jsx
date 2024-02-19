@@ -46,7 +46,7 @@ export default function SearchSchool({ setValidSearchSchool }) {
   useEffect(() => {
     const cityApi = async () => {
       try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/region`;
+        const url = `https://babzip.seunga.shop/school/region`;
 
         const response = await api.get(url);
         setcityAndDos(response.data.result);
@@ -59,7 +59,7 @@ export default function SearchSchool({ setValidSearchSchool }) {
 
     const allSchoolApi = async () => {
       try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/all`;
+        const url = `https://babzip.seunga.shop/school/all`;
 
         const response = await api.get(url);
         setAllSchool(response.data.result);
@@ -77,7 +77,7 @@ export default function SearchSchool({ setValidSearchSchool }) {
   useEffect(() => {
     const regionSchoolApi = async () => {
       try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school?regionId=${regionId}`;
+        const url = `https://babzip.seunga.shop/school?regionId=${regionId}`;
 
         const response = await api.get(url);
         setRegionSchool(response.data.result);
@@ -96,7 +96,7 @@ export default function SearchSchool({ setValidSearchSchool }) {
   const searchSchoolApi = async () => {
     try {
       //API 요청 URL
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/search?schoolName=${form.school}`;
+      const url = `https://babzip.seunga.shop/school/search?schoolName=${form.school}`;
       console.log("form.school", form.school);
 
       //axios.get 메소드를 사용하여 요청을 보냄

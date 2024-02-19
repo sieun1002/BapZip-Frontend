@@ -22,10 +22,10 @@ export default function ReviewTimeline() {
   }
 
   // api연결
-  const storedUserId = localStorage.getItem("schoolId"); 
+  const storedUserId = localStorage.getItem("schoolId");
   const [reviewData, setData] = useState({});
   function getReview(category = "ALL") {
-    const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/timeline?schoolId=${storedUserId}&categoryName=${category}`;
+    const urlget = `https://babzip.seunga.shop/reviews/timeline?schoolId=${storedUserId}&categoryName=${category}`;
     api
       .get(urlget)
       .then(function (response) {

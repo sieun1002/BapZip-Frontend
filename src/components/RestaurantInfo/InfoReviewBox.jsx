@@ -45,7 +45,7 @@ export default function InfoReview(props) {
   const addHeartApi = async (reviewId) => {
     try {
       // API 요청 URL
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/zip/${reviewId}`;
+      const url = `https://babzip.seunga.shop/reviews/zip/${reviewId}`;
 
       // 요청 본문에 포함될 데이터
       // const data = {
@@ -73,7 +73,7 @@ export default function InfoReview(props) {
   const deleteHeartApi = async (reviewId) => {
     try {
       // API 요청 URL
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/deleteZip/${reviewId}`;
+      const url = `https://babzip.seunga.shop/reviews/deleteZip/${reviewId}`;
 
       // 요청 본문에 포함될 데이터
       // const data = {

@@ -39,7 +39,7 @@ export default function RstaurantList(props) {
   useEffect(() => {
     const basicRestaurantInfoApi = async () => {
       try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/info`;
+        const url = `https://babzip.seunga.shop/stores/${storeId}/info`;
 
         const response = await api.get(url);
         setRestaurantInfo(response.data.result);
@@ -56,8 +56,7 @@ export default function RstaurantList(props) {
   //가게 zip 하기
   const addStoreScrapApi = async () => {
     try {
-      // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/info`;
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/zip?storeId=${storeId}`;
+      const url = `https://babzip.seunga.shop/stores/zip?storeId=${storeId}`;
 
       const response = await api.post(url);
       // 리뷰 좋아요 성공 처리
@@ -71,7 +70,7 @@ export default function RstaurantList(props) {
   //가게 zip 해제 하기
   const deleteStoreScrapApi = async () => {
     try {
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/deleteZip?storeId=${storeId}`;
+      const url = `https://babzip.seunga.shop/stores/deleteZip?storeId=${storeId}`;
 
       const response = await api.delete(url);
       // 가게 스크랩 해제  성공 처리

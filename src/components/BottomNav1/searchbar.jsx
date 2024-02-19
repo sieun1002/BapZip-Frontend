@@ -29,7 +29,7 @@ const Logo = styled.img`
   height: 33px;
   width: 33px;
   margin-right: 9px;
-  margin-left: 14px
+  margin-left: 14px;
 `;
 
 const Icon = styled.img`
@@ -114,7 +114,7 @@ const Searchbar = () => {
     const MypageModalapi = async () => {
       try {
         // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/myPage/info`;
+        const url = `https://babzip.seunga.shop/myPage/info`;
 
         const response = await api.get(url);
         setMypageModal(response.data.result);
@@ -166,21 +166,38 @@ const Searchbar = () => {
       <OuterContainer>
         <Logo src={logoicon} alt="Logo" />
 
-          <div className="search-SearchModal" style={{ width: "320px", height: "35px", marginTop:"2px", marginRight:"18px"}}>
-            <img
-              src={scrSearchIcon}
-              alt="찾기 아이콘"
-              style={{ width: "20px", height: "20px" }}
-            />
-          <Link to="/Home/MainSearch" style={{ textDecoration: "none", color:'black'}}>
-
+        <div
+          className="search-SearchModal"
+          style={{
+            width: "320px",
+            height: "35px",
+            marginTop: "2px",
+            marginRight: "18px",
+          }}
+        >
+          <img
+            src={scrSearchIcon}
+            alt="찾기 아이콘"
+            style={{ width: "20px", height: "20px" }}
+          />
+          <Link
+            to="/Home/MainSearch"
+            style={{ textDecoration: "none", color: "black" }}
+          >
             <p
-              style={{height:"18px", width:"270px", fontSize:"12px", fontWeight:500, color:"#707070", textAlign:"left"}}
-            >오늘 내가 가고싶은 식당은?</p>
-            </Link>
-          </div>
-        
-
+              style={{
+                height: "18px",
+                width: "270px",
+                fontSize: "12px",
+                fontWeight: 500,
+                color: "#707070",
+                textAlign: "left",
+              }}
+            >
+              오늘 내가 가고싶은 식당은?
+            </p>
+          </Link>
+        </div>
 
         <AdditionalIcons>
           <Icon
@@ -190,17 +207,18 @@ const Searchbar = () => {
           />
           <div className="imgarlim">
             <Link to="/arlim">
-              <Icon src={Bellicon} alt="Additional Icon 2" style={{marginTop:'5px'}}/>
+              <Icon
+                src={Bellicon}
+                alt="Additional Icon 2"
+                style={{ marginTop: "5px" }}
+              />
             </Link>
           </div>
         </AdditionalIcons>
       </OuterContainer>
-      <Modal
-        ref={modalRef}
-        visible={isModalVisible}
-      >
+      <Modal ref={modalRef} visible={isModalVisible}>
         {/* 내용 추가 */}
-        <ModalImage src={MypageModal.imageUrl}/>
+        <ModalImage src={MypageModal.imageUrl} />
         <ModalId>{MypageModal.nickname}</ModalId>
         <ModalSchool>{MypageModal.schoolName}</ModalSchool>
         <ModalPoint>{MypageModal.totalPoint}P</ModalPoint>

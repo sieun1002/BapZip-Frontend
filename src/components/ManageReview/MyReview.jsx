@@ -19,7 +19,7 @@ export default function MyReview() {
   const [reviewData, setData] = useState([]);
 
   const [needR, setRender] = useState(true);
-  const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/myReviews`;
+  const urlget = `https://babzip.seunga.shop/reviews/myReviews`;
   function getReview() {
     api
       .get(urlget)
@@ -32,7 +32,7 @@ export default function MyReview() {
   }
   function delReview() {
     for (let i = 0; i < deleteID.length; i++) {
-      const urlDel = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews/delete/${deleteID[i]}`;
+      const urlDel = `https://babzip.seunga.shop/reviews/delete/${deleteID[i]}`;
       api.delete(urlDel).catch(function (error) {
         console.log(error.message);
       });

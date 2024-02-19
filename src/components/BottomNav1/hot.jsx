@@ -128,7 +128,7 @@ const ImageSliderComponent = () => {
   useEffect(() => {
     const hotApi = async () => {
       try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/hotPlace?schoolId=${schoolId}`;
+        const url = `https://babzip.seunga.shop/stores/hotPlace?schoolId=${schoolId}`;
 
         const response = await api.get(url);
         setHots(response.data.result);

@@ -22,7 +22,6 @@ export default function PointChange(props) {
   const allPoint = props.allPoint;
 
   const [convertPoint, setConvertPoint] = useState({});
-  // const [validConvert, setValidConvert] = useState(null);
   const [remainingPoint, setRemainingPoint] = useState(0);
   const [form, setForm] = useState({
     changePoints: 0,
@@ -36,7 +35,6 @@ export default function PointChange(props) {
     const changePoint = parseInt(e.target.value, 10);
 
     setForm({ ...form, changePoints: changePoint });
-    // setForm((prevForm) => ({ ...prevForm, changePoint }));
     if (form.changePoints > allPoint) {
       setForm({ ...form, changePoints: allPoint });
     }
@@ -46,20 +44,11 @@ export default function PointChange(props) {
     } else {
       setRemainingPoint(allPoint - changePoint);
     }
-
-    // console.log("dd", form.changePoints % 1000);
-    // console.log("changePoints ", form.changePoints, typeof form.changePoints);
-    // if (form.changePoints % 1000 !== 0) {
-    //   setValidConvert(false);
-    // } else {
-    //   setValidConvert(true);
-    // }
   };
   const convertPointApi = async () => {
     try {
       //API 요청 URL
-      const url =
-        "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/coupon/convertPoint";
+      const url = "https://babzip.seunga.shop/coupon/convertPoint";
 
       //요청 본문에 포함될 데이터
       const data = {
@@ -81,15 +70,6 @@ export default function PointChange(props) {
     }
   };
 
-  // const validConvertFunc = () => {
-  //   console.log("dd", form.changePoints % 1000);
-  //   console.log("changePoints ", form.changePoints, typeof form.changePoints);
-  //   if (form.changePoints % 1000 !== 0) {
-  //     setValidConvert(false);
-  //   } else {
-  //     setValidConvert(true);
-  //   }
-  // };
   return (
     <BodyDiv>
       <WrapperDiv>
@@ -103,11 +83,6 @@ export default function PointChange(props) {
               placeholder="전환할 포인트를 입력하세요"
               onChange={(e) => handlePointsCh(e, allPoint)}
             />
-            {/* {validConvert === false ? (
-              <FailedConvertDiv>
-                <FailedConvertP>1,000 단위로 입력해주세요.</FailedConvertP>
-              </FailedConvertDiv>
-            ) : null} */}
             <PointFormLable>예정 잔여 포인트</PointFormLable>
             <PointFormInput id="changePoint" value={remainingPoint} />
           </PointForm>
@@ -118,9 +93,6 @@ export default function PointChange(props) {
 
             {console.log(form.changePoints, typeof form.changePoints)}
           </FinalCoupon>
-          {/* <Button type="button" onClick={validConvertFunc}>
-            전환하기
-          </Button> */}
           <Button
             type="button"
             onClick={() => {

@@ -152,7 +152,7 @@ const Silsi = ({ setValidSearchSchool }) => {
   useEffect(() => {
     const rankTop5Api = async () => {
       try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/congestion/ranking/top5?schoolId=${schoolId}`;
+        const url = `https://babzip.seunga.shop/congestion/ranking/top5?schoolId=${schoolId}`;
 
         const response = await api.get(url);
         setRankTop5(response.data.result);
@@ -165,7 +165,7 @@ const Silsi = ({ setValidSearchSchool }) => {
 
     const schoolLogoApi = async () => {
       try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/school/logo?schoolId=${schoolId}`;
+        const url = `https://babzip.seunga.shop/school/logo?schoolId=${schoolId}`;
 
         const response = await api.get(url);
         setSchoolLogo(response.data.result);

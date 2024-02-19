@@ -62,7 +62,7 @@ export default function InfoHome() {
   useEffect(() => {
     const manuPanApi = async () => {
       try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/printedMenu`;
+        const url = `https://babzip.seunga.shop/stores/${storeId}/printedMenu`;
 
         const response = await api.get(url);
         setMenuPan(response.data.result);
@@ -75,7 +75,7 @@ export default function InfoHome() {
 
     const signatureMenunApi = async () => {
       try {
-        const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/stores/${storeId}/menu`;
+        const url = `https://babzip.seunga.shop/stores/stores/${storeId}/menu`;
 
         const response = await api.get(url);
         setSignatureMenu(response.data.result);

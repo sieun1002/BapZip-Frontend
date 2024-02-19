@@ -52,7 +52,7 @@ export default function WaitingRank(props) {
   const schoolId = localStorage.getItem("schoolId");
   const AllRestaurantListApi = async () => {
     try {
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/congestion/ranking?classification=${classification}&schoolId=${schoolId}`;
+      const url = `https://babzip.seunga.shop/congestion/ranking?classification=${classification}&schoolId=${schoolId}`;
 
       const response = await api.get(url);
       setAllRestaurantList(

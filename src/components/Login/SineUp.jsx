@@ -74,7 +74,7 @@ export default function SineUp() {
     try {
       // 닉네임 입력 값 가져오기
       //API 요청 URL
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/checkNickname?nickname=${form.nickName}`;
+      const url = `https://babzip.seunga.shop/users/auth/checkNickname?nickname=${form.nickName}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url);
@@ -112,7 +112,7 @@ export default function SineUp() {
     try {
       // 아이디 입력 값 가져오기
       //API 요청 URL
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/checkUserid?userid=${form.id}`;
+      const url = `https://babzip.seunga.shop/users/auth/checkUserid?userid=${form.id}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url);
@@ -195,7 +195,7 @@ export default function SineUp() {
   const handleSchoolEmailApi = async () => {
     try {
       //API 요청 URL
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/mail?mail=${form.schoolEmail}`;
+      const url = `https://babzip.seunga.shop/mail?mail=${form.schoolEmail}`;
 
       //axios.get 메소드를 사용하여 요청을 보냄
       const response = await axios.get(url);
@@ -242,8 +242,7 @@ export default function SineUp() {
   const handleSignUpApi = async () => {
     try {
       //API 요청 URL
-      const url =
-        "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/signup";
+      const url = "https://babzip.seunga.shop/users/auth/signup";
 
       //요청 본문에 포함될 데이터
       const data = {

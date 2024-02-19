@@ -53,9 +53,7 @@ export default function InfoChat() {
 
   useEffect(() => {
     // WebSocket 연결
-    socketRef.current = new WebSocket(
-      "ws://Babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/chat"
-    );
+    socketRef.current = new WebSocket("ws://babzip.seunga.shop/chat");
 
     const socket = socketRef.current;
 
@@ -93,8 +91,7 @@ export default function InfoChat() {
   }, [messages]); // messages 배열이 변경될 때마다 실행
 
   function fetchPreviousMessages() {
-    const baseUrl =
-      "http://Babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com";
+    const baseUrl = "https://babzip.seunga.shop";
     axios
       .get(`${baseUrl}/chat/${storeId}/messages`)
       .then((response) => {

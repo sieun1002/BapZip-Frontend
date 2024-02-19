@@ -11,7 +11,7 @@ export default function SearchStore(props) {
   const [storeId, setId] = useState();
   const [storeData, setData] = useState({});
   function getStore() {
-    const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/search?name=${input}`;
+    const urlget = `https://babzip.seunga.shop/stores/search?name=${input}`;
     api
       .get(urlget, input)
       .then(function (response) {
@@ -23,7 +23,7 @@ export default function SearchStore(props) {
   }
   const [storeDetail, setDetail] = useState({});
   function getDetail() {
-    const urlget = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/info`;
+    const urlget = `https://babzip.seunga.shop/stores/${storeId}/info`;
     api
       .get(urlget)
       .then(function (response) {

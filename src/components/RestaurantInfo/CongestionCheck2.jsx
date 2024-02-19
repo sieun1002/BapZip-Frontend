@@ -69,7 +69,7 @@ export default function CongestionCheck2({ setCongestionCheck2 }) {
   const congestionApi = async () => {
     try {
       //API 요청 URL
-      const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/congestion/${storeId}`;
+      const url = `https://babzip.seunga.shop/congestion/${storeId}`;
 
       //요청 본문에 포함될 데이터
       const data = {
