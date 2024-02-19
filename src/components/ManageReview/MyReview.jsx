@@ -130,18 +130,31 @@ export default function MyReview() {
                         selecState ? { display: "block" } : { display: "none" }
                       }
                     />
-                    <img
-                      src={item.imageUrls[0]}
-                      alt=""
-                      style={{
-                        width: "128px",
-                        height: "129px",
-                        borderRadius: "10px 0px 00px 10px",
-                        backgroundColor: "#D9D9D9",
-                      }}
-                    />
                     <Link
                       to={`/RestaurantInfo/${item.storeId}`}
+                      state={{
+                        navBar: "review",
+                        restaurantPreLink: "/MyPage/ManageReivew",
+                      }}
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <img
+                        src={item.imageUrls[0]}
+                        alt=""
+                        style={{
+                          width: "128px",
+                          height: "129px",
+                          borderRadius: "10px 0px 00px 10px",
+                          backgroundColor: "#D9D9D9",
+                        }}
+                      />
+                    </Link>
+                    <Link
+                      to={`/RestaurantInfo/${item.storeId}`}
+                      state={{
+                        navBar: "review",
+                        restaurantPreLink: "/MyPage/ManageReivew",
+                      }}
                       style={{ textDecoration: "none", color: "black" }}
                     >
                       <div className="detailReview-MyReview">

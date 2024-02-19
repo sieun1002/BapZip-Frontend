@@ -125,7 +125,7 @@ export default function WriteReview() {
   return (
     <div className="App">
       <div className="container-writeReview" style={{ position: "relative" }}>
-        <Header preLink={location.state?.preLink}/>
+        <Header preLink={location.state?.preLink} restaurantPreLink={location.state?.restaurantPreLink}/>
         <SearchStore setStore={setStore} />
         <StarRating setRate={setRate} />
         <SelectBenefit setBenefit={setBenefit} />

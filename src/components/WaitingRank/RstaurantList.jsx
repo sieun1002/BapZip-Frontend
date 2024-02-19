@@ -44,7 +44,6 @@ export default function RstaurantList(props) {
         const response = await api.get(url);
         setRestaurantInfo(response.data.result);
         setScrap(response.data.result.bookmark);
-        console.log(response.data.result);
       } catch (error) {
         console.error("storeId: ", storeId, "가게 정보 가져오기 실패", error);
       }
@@ -102,7 +101,7 @@ export default function RstaurantList(props) {
       )}
       <Link
         to={`/RestaurantInfo/${storeId}`}
-        state={{ preLink: "/Review", restaurantPreLink: "/WaitingRank" }}
+        state={{ restaurantPreLink: props.restaurantPreLink ? props.restaurantPreLink : "/WaitingRank" }}
       >
         <div style={{ width: "91%", height: "100%" }}>
           <RankP>{index + 1}</RankP>

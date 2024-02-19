@@ -123,7 +123,7 @@ export default function RestaurantInfo() {
       case "menu":
         return <InfoMenu />;
       case "review":
-        return <InfoReview />;
+        return <InfoReview restaurantPreLink={restaurantPreLink}/>;
       case "chat":
         return <InfoChat />;
       default:

@@ -20,7 +20,6 @@ export default function WaitingRank(props) {
   const location = useLocation();
   const title = "실시간 웨이팅 랭킹";
   const [currentTab, setCurrentTab] = useState("");
-  const [honjapPreLink, setHonjapPreLink] = useState("#");
   const [placeholder, setPlaceholder] = useState("내가 가고싶은 식당은?");
   const [searchText, setSearchText] = useState("");
 
@@ -37,12 +36,6 @@ export default function WaitingRank(props) {
     } else {
       setCurrentTab("ALL");
       setPlaceholder("내가 가고싶은 식당은?");
-    }
-
-    if (location.state?.honjapPreLink) {
-      setHonjapPreLink(location.state?.honjapPreLink);
-    } else {
-      setHonjapPreLink("#");
     }
   }, [location.state]);
 
@@ -73,7 +66,7 @@ export default function WaitingRank(props) {
   return (
     <div className="App">
       <div style={{ height: "100%" }}>
-        <Header title={title} honjapPreLink={honjapPreLink} />
+        <Header title={title} honjapPreLink={"/List"} />
         <SearchBar
           placeholder={placeholder}
           searchText={searchText}

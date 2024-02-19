@@ -29,7 +29,7 @@ import InfoReviewBox from "./InfoReviewBox";
 import bigStar from "../../images/RestaurantInfo/bigStar.svg";
 import reviewWrite from "../../images/RestaurantInfo/reviewWrite.svg";
 
-export default function InfoReview() {
+export default function InfoReview(props) {
   const initialData = [
     { label: 5, value: 0 },
     { label: 4, value: 0 },
@@ -105,7 +105,7 @@ export default function InfoReview() {
             <Link
               to="/WriteReview"
               state={{
-                preLink: `/RestaurantInfo/${storeId}`,
+                preLink: `/RestaurantInfo/${storeId}`, restaurantPreLink: props.restaurantPreLink
               }}
             >
               <ReviewWriteImg src={reviewWrite} alt="reviewWrite" />

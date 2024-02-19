@@ -31,7 +31,7 @@ export default function MainWaitingRank() {
     <RestaurantWrapper>
       {allRestaurantList.slice(0, 3).map((Restaurant, index) => {
         return (
-          <RstaurantList Restaurant={Restaurant} index={index} key={index} />
+          <RstaurantList Restaurant={Restaurant} index={index} key={index} restaurantPreLink={"/List"}/>
         );
       })}
     </RestaurantWrapper>
