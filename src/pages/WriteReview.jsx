@@ -45,13 +45,13 @@ export default function WriteReview() {
   function setStore(input) {
     setReview({
       ...reviewDetail,
-      storeName: input
+      storeName: input,
     });
   }
   function setRate(input) {
     setReview({
       ...reviewDetail,
-      rating: input
+      rating: input,
     });
   }
   const hashtagAll = [
@@ -75,24 +75,24 @@ export default function WriteReview() {
     }
     setReview({
       ...reviewDetail,
-      hashtags: hashtag
+      hashtags: hashtag,
     });
   }
   function setTxt(input) {
     setReview({
       ...reviewDetail,
-      reviewText: input
+      reviewText: input,
     });
   }
   function setImgScr(input) {
     setReview({
       ...reviewDetail,
-      imgScr: input
+      imgScr: input,
     });
   }
 
-  const url =
-    "http://babzip.seunga.shop/reviews";
+  const url = "http://babzip.seunga.shop/reviews";
+
   function submitReview() {
     const today = new Date();
     const formattedDate = `${today.getFullYear()}-${today
@@ -105,7 +105,7 @@ export default function WriteReview() {
     formData.append("rating", reviewDetail.rating);
     formData.append("hashtags", reviewDetail.hashtags);
     formData.append("reviewText", reviewDetail.reviewText);
-    for(let i = 0; i<reviewDetail.imgScr.length; i++){
+    for (let i = 0; i < reviewDetail.imgScr.length; i++) {
       formData.append(`images1`, reviewDetail.imgScr[i]);
     }
     api({
@@ -113,19 +113,22 @@ export default function WriteReview() {
 
       url: url,
       data: formData,
-    })
-    .catch(function(error){
+    }).catch(function (error) {
       console.log(error.message);
     });
-  }; 
-  function clickBtn(){
+  }
+  function clickBtn() {
     setModal(true);
     submitReview();
   }
   return (
     <div className="App">
       <div className="container-writeReview" style={{ position: "relative" }}>
-        <Header preLink={location.state?.preLink} restaurantPreLink={location.state?.restaurantPreLink}/>
+        <Header
+          preLink={location.state?.preLink}
+          restaurantPreLink={location.state?.restaurantPreLink}
+        />
+
         <SearchStore setStore={setStore} />
         <StarRating setRate={setRate} />
         <SelectBenefit setBenefit={setBenefit} />

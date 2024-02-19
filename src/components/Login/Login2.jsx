@@ -88,8 +88,6 @@ export default function Login2() {
 
   const handleLogin = async () => {
     try {
-      // const url =
-      //   "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/users/auth/signin";
       const url = "https://babzip.seunga.shop/users/auth/signin";
 
       const data = {

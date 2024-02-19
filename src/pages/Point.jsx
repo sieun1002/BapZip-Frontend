@@ -46,7 +46,6 @@ export default function Point() {
   useEffect(() => {
     const allPointApi = async () => {
       try {
-        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
         const url = `http://babzip.seunga.shop/point/myTotalPoint`;
 
         const response = await api.get(url);
