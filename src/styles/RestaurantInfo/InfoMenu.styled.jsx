@@ -17,7 +17,7 @@ export const MainP = styled.p`
   font-size: 20px;
   font-weight: 600;
   color: #191919;
-  margin-top: ${(props) => props.marginTop || "40px"};
+  margin-top: ${(props) => props.marginTop || "30px"};
   margin-bottom: ${(props) => props.marginBottom};
 `;
 

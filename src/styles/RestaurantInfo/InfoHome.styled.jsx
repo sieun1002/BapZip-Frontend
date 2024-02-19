@@ -17,7 +17,7 @@ export const InfoMainP1 = styled.p`
   color: #191919;
   font-size: 20px;
   font-weight: 600;
-  margin-top: 40px;
+  margin-top: ${(props) => props.marginTop};
 `;
 
 export const InfoPdiv = styled.div`
@@ -25,7 +25,8 @@ export const InfoPdiv = styled.div`
   height: auto;
   display: flex;
   align-items: flex-start;
-  margin-bottom: 15px;
+  margin-bottom: ${(props) => props.marginBottom || "30px"};
+
   /* background-color: #0000ff34; */
 `;
 
@@ -34,7 +35,8 @@ export const InfoTitleP = styled.p`
   color: #191919;
   font-size: 14px;
   font-weight: 600;
-  margin: 0 0 30px 0;
+  /* margin: 0 0 30px 0; */
+  margin: 0;
 `;
 
 export const InfoContentDiv = styled.div`
@@ -74,7 +76,7 @@ export const BreakLine = styled.div`
   width: 480px;
   height: 4px;
   background-color: #f6f6f6;
-  margin: 40px 0;
+  margin: 30px 0;
   margin-bottom: ${(props) => props.marginBottom};
 `;
 

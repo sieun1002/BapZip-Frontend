@@ -69,7 +69,7 @@ export default function InfoHome() {
       <WrapperDiv>
         <Div height="100%">
           <InfoDiv>
-            <InfoMainP1>가게정보</InfoMainP1>
+            <InfoMainP1 marginTop="30px">가게정보</InfoMainP1>
 
             <InfoPdiv>
               <InfoTitleP>평균 웨이팅</InfoTitleP>
@@ -94,7 +94,7 @@ export default function InfoHome() {
                 <InfoContentP>{detailRestaurantInfo.closedDay}</InfoContentP>
               </InfoContentDiv>
             </InfoPdiv>
-            <InfoPdiv>
+            <InfoPdiv marginBottom="0px">
               <InfoTitleP>위치</InfoTitleP>
 
               <InfoContentDiv>
@@ -128,7 +128,7 @@ export default function InfoHome() {
               <TodayNoticeContentDiv>{notice.notice}</TodayNoticeContentDiv>
             )}
           </TodayNoticeDiv>
-          <BreakLine></BreakLine>
+          <BreakLine marginBottom="0px"></BreakLine>
           <InfoChat></InfoChat>
         </Div>
       </WrapperDiv>
