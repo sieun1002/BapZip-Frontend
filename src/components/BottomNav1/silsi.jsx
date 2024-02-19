@@ -169,6 +169,7 @@ const Silsi = ({ setValidSearchSchool }) => {
 
         const response = await api.get(url);
         setSchoolLogo(response.data.result);
+        setSchoolName(response.data.result.name);
 
         console.log("학교 로고 가져오기", response.data.result);
       } catch (error) {

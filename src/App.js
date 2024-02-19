@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { SignUpProvider } from "./context/SignUpContext";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
@@ -51,7 +51,7 @@ function App() {
       <SignUpProvider>
         <div className="root-wrap">
           {/* <div className="App"> */}
-          <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <Router basename="/">
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<Login1 />} />
@@ -84,7 +84,7 @@ function App() {
               <Route path="/Home/MainSearch" element={<MainSearch />} />
               <Route path="/WaitingRank" element={<WaitingRank />} />
             </Routes>
-          </BrowserRouter>
+          </Router>
         </div>
       </SignUpProvider>
     </Provider>
