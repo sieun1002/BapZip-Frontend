@@ -24,72 +24,46 @@ import SavePoint from "./SavePoint";
 import X from "../../images/Login/X.svg";
 
 export default function CongestionCheck2({ setCongestionCheck2 }) {
-  const [button1, setButton1] = useState(false);
-  const [button2, setButton2] = useState(false);
-  const [button3, setButton3] = useState(false);
-  const [button4, setButton4] = useState(false);
-  const [button5, setButton5] = useState(false);
-  const [button6, setButton6] = useState(false);
-  const [button7, setButton7] = useState(false);
-
+  // 인원 수 선택 상태
+  const [occupancyCount, setOccupancyCount] = useState(null);
+  // 혼잡도 선택 상태
+  const [congestionLevel, setCongestionLevel] = useState(null);
   const [point, setPoint] = useState(false);
-
-  const handleButton1 = () => {
-    setButton1(!button1);
-  };
-
-  const handleButton2 = () => {
-    setButton2(!button2);
-  };
-
-  const handleButton3 = () => {
-    setButton3(!button3);
-  };
-
-  const handleButton4 = () => {
-    setButton4(!button4);
-  };
-
-  const handleButton5 = () => {
-    setButton5(!button5);
-  };
-
-  const handleButton6 = () => {
-    setButton6(!button6);
-  };
-
-  const handleButton7 = () => {
-    setButton7(!button7);
-  };
 
   const { congestion, setCongestion } = useSignUp();
 
   const storeId = 5;
-  //congestion api
+
+  // 혼잡도 API 호출 함수
   const congestionApi = async () => {
     try {
-      //API 요청 URL
       const url = `https://babzip.seunga.shop/congestion/${storeId}`;
-
-      //요청 본문에 포함될 데이터
       const data = {
         congestionLevel: congestion.congestionLevel,
         visitStatus: congestion.visitStatus,
         occupancyCount: congestion.occupancyCount,
         waitTime: congestion.waitTime,
       };
-
-      //axios.post 메소드를 사용하여 요청을 보냄
       const response = await api.post(url, data);
-
       console.log("congestion successful", response.data.message);
     } catch (error) {
       console.error(
         "congestion error",
         error.response ? error.response.data : error
       );
-      //에러 상황에 대한 처리 로직 추가.
     }
+  };
+
+  // 인원 수 선택 핸들러
+  const handleOccupancyCountChange = (count) => {
+    setOccupancyCount(count);
+    setCongestion({ ...congestion, occupancyCount: count });
+  };
+
+  // 혼잡도 선택 핸들러
+  const handleCongestionLevelChange = (level) => {
+    setCongestionLevel(level);
+    setCongestion({ ...congestion, congestionLevel: level });
   };
 
   return (
@@ -113,93 +87,39 @@ export default function CongestionCheck2({ setCongestionCheck2 }) {
                 현재 식당의 대략적인 인원을 선택해주세요.
               </CongestionP2>
               <CongestionButtonDiv>
-                <CongestionButton
-                  type="button"
-                  onClick={() => {
-                    handleButton1();
-                    setCongestion({ ...congestion, occupancyCount: 10 });
-                  }}
-                  backgroundColor={button1 ? "#ffba35" : "#FFFFFF"}
-                  color={button1 ? "#ffffff" : "#767676"}
-                >
-                  10명~
-                </CongestionButton>
-                <CongestionButton
-                  type="button"
-                  onClick={() => {
-                    handleButton2();
-                    setCongestion({ ...congestion, occupancyCount: 15 });
-                  }}
-                  backgroundColor={button2 ? "#ffba35" : "#FFFFFF"}
-                  color={button2 ? "#ffffff" : "#767676"}
-                >
-                  15명~
-                </CongestionButton>
-                <CongestionButton
-                  type="button"
-                  onClick={() => {
-                    handleButton3();
-                    setCongestion({ ...congestion, occupancyCount: 20 });
-                  }}
-                  backgroundColor={button3 ? "#ffba35" : "#FFFFFF"}
-                  color={button3 ? "#ffffff" : "#767676"}
-                >
-                  20명~
-                </CongestionButton>
-                <CongestionButton
-                  type="button"
-                  onClick={() => {
-                    handleButton4();
-                    setCongestion({ ...congestion, occupancyCount: 25 });
-                  }}
-                  backgroundColor={button4 ? "#ffba35" : "#FFFFFF"}
-                  color={button4 ? "#ffffff" : "#767676"}
-                >
-                  25명~
-                </CongestionButton>
+                {[10, 15, 20, 25].map((count) => (
+                  <CongestionButton
+                    key={count}
+                    type="button"
+                    onClick={() => handleOccupancyCountChange(count)}
+                    backgroundColor={
+                      occupancyCount === count ? "#ffba35" : "#FFFFFF"
+                    }
+                    color={occupancyCount === count ? "#ffffff" : "#767676"}
+                  >
+                    {count}명~
+                  </CongestionButton>
+                ))}
               </CongestionButtonDiv>
 
               <CongestionP2>이곳의 혼잡 정도를 평가해주세요.</CongestionP2>
               <CongestionButtonDiv>
-                <CongestionButton
-                  type="button"
-                  onClick={() => {
-                    handleButton5();
-                    setCongestion({ ...congestion, congestionLevel: "SPARSE" });
-                  }}
-                  backgroundColor={button5 ? "#ffba35" : "#FFFFFF"}
-                  color={button5 ? "#ffffff" : "#767676"}
-                >
-                  한가함
-                </CongestionButton>
-                <CongestionButton
-                  type="button"
-                  onClick={() => {
-                    handleButton6();
-                    setCongestion({
-                      ...congestion,
-                      congestionLevel: "MODERATE",
-                    });
-                  }}
-                  backgroundColor={button6 ? "#ffba35" : "#FFFFFF"}
-                  color={button6 ? "#ffffff" : "#767676"}
-                >
-                  보통
-                </CongestionButton>
-                <CongestionButton
-                  type="button"
-                  onClick={() => {
-                    handleButton7();
-                    setCongestion({
-                      ...congestion,
-                      congestionLevel: "CROWDED",
-                    });
-                  }}
-                  backgroundColor={button7 ? "#ffba35" : "#FFFFFF"}
-                  color={button7 ? "#ffffff" : "#767676"}
-                >
-                  혼잡함
-                </CongestionButton>
+                {["SPARSE", "MODERATE", "CROWDED"].map((level, index) => {
+                  const buttonText = ["한가함", "보통", "혼잡함"][index];
+                  return (
+                    <CongestionButton
+                      key={level}
+                      type="button"
+                      onClick={() => handleCongestionLevelChange(level)}
+                      backgroundColor={
+                        congestionLevel === level ? "#ffba35" : "#FFFFFF"
+                      }
+                      color={congestionLevel === level ? "#ffffff" : "#767676"}
+                    >
+                      {buttonText}
+                    </CongestionButton>
+                  );
+                })}
               </CongestionButtonDiv>
 
               <CongestionMainPDiv></CongestionMainPDiv>
@@ -207,16 +127,10 @@ export default function CongestionCheck2({ setCongestionCheck2 }) {
                 <CongestionButton
                   type="button"
                   backgroundColor={
-                    (button1 || button2 || button3 || button4) &&
-                    (button5 || button6 || button7)
-                      ? "#ffba35"
-                      : "#FFFFFF"
+                    occupancyCount && congestionLevel ? "#ffba35" : "#FFFFFF"
                   }
                   color={
-                    (button1 || button2 || button3 || button4) &&
-                    (button5 || button6 || button7)
-                      ? "#ffffff"
-                      : "#767676"
+                    occupancyCount && congestionLevel ? "#ffffff" : "#767676"
                   }
                   onClick={() => {
                     congestionApi();
@@ -228,7 +142,7 @@ export default function CongestionCheck2({ setCongestionCheck2 }) {
               </CongestionButtonDiv>
             </CongestionCheckDiv>
           </CongestionCheckWrapper>
-          {point === true ? (
+          {point ? (
             <SavePoint
               setPoint={setPoint}
               setCongestionCheck={setCongestionCheck2}
