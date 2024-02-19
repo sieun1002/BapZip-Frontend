@@ -19,17 +19,18 @@ const flexCenter = () => `
 
 export const Label = styled.label`
   width: 420px;
-  height: 30px;
+  height: 33px;
   /* background-color: #eac4b5; */
 
   font-size: 16px;
   font-weight: 700;
   margin-top: 10px;
+  margin-left: 5px;
 `;
 
 export const InputDiv = styled.div`
   width: 420px;
-  height: 60px;
+  height: 43px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -38,7 +39,7 @@ export const InputDiv = styled.div`
 
 export const Input = styled.input`
   width: ${(props) => props.width || "420px"};
-  height: 55px;
+  height: 38px;
   /* background-color: "#eab9b5"; */
   border: solid 0px;
   border-bottom: solid 1px #c0c0c0;
@@ -47,6 +48,12 @@ export const Input = styled.input`
 
   font-size: 14px;
   font-weight: 500;
+
+  &::placeholder {
+    color: #c0c0c0;
+    font-size: 14px;
+    font-weight: 500;
+  }
 `;
 
 export const CheckDivX = styled.div`
