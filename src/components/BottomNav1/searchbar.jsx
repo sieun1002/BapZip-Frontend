@@ -50,7 +50,7 @@ const Modal = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 50px;
+  top: 61px;
   right: 50px;
   width: 152px;
   height: 212px;
