@@ -91,8 +91,7 @@ export default function WriteReview() {
     });
   }
 
-  const url =
-    "http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/reviews";
+  const url = "https://babzip.seunga.shop/reviews";
   function submitReview() {
     const today = new Date();
     const formattedDate = `${today.getFullYear()}-${today
@@ -112,19 +111,18 @@ export default function WriteReview() {
 
       url: url,
       data: formData,
-    })
-    .catch(function(error){
+    }).catch(function (error) {
       console.log(error.message);
     });
-  }; 
-  function clickBtn(){
+  }
+  function clickBtn() {
     setModal(true);
     submitReview();
   }
   return (
     <div className="App">
       <div className="container-writeReview" style={{ position: "relative" }}>
-        <Header preLink={location.state?.preLink}/>
+        <Header preLink={location.state?.preLink} />
         <SearchStore setStore={setStore} />
         <StarRating setRate={setRate} />
         <SelectBenefit setBenefit={setBenefit} />

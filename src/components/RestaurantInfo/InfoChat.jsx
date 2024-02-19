@@ -53,7 +53,7 @@ export default function InfoChat() {
 
   useEffect(() => {
     // WebSocket 연결
-    socketRef.current = new WebSocket("ws://babzip.seunga.shop/chat");
+    socketRef.current = new WebSocket("wss://babzip.seunga.shop/chat");
 
     const socket = socketRef.current;
 
@@ -108,6 +108,7 @@ export default function InfoChat() {
             return messageDate === clientToday;
           });
           setMessages(todayMessages);
+          console.log("todayMessages", todayMessages);
         }
       })
       .catch((error) =>

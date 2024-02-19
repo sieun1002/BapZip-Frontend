@@ -113,7 +113,6 @@ const Searchbar = () => {
   useEffect(() => {
     const MypageModalapi = async () => {
       try {
-        // const url = `http://babzip-beanstalk-env.eba-y4csfs2a.ap-northeast-2.elasticbeanstalk.com/stores/${storeId}/detailinfo`;
         const url = `https://babzip.seunga.shop/myPage/info`;
 
         const response = await api.get(url);
