@@ -144,7 +144,7 @@ export default function SineUp() {
     } else {
       //비번 유효성 체크
       const isValidPassword =
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/.test(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&^#()])[A-Za-z\d@$!%*?&^#()]{8,12}$/.test(
           password
         );
       setValidPassword(isValidPassword);
