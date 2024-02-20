@@ -56,6 +56,10 @@ export default function Review(item) {
       <Link
         to={`/RestaurantInfo/${item.storeId}`}
         style={{ textDecoration: "none", color: "black" }}
+        state={{
+          navBar: "review",
+          restaurantPreLink: "/Review",
+        }}
       >
         <div className="contents-review" style={{ position: "absolute" }}>
           <p className="name-review">{item.storeName}</p>

@@ -172,13 +172,19 @@ const Searchbar = () => {
             height: "35px",
             marginTop: "2px",
             marginRight: "18px",
+            padding: 0
           }}
         >
+          <Link
+            to="/Home/MainSearch"
+            style={{ textDecoration: "none", color: "black" }}
+          >
           <img
-            src={scrSearchIcon}
-            alt="찾기 아이콘"
-            style={{ width: "20px", height: "20px" }}
-          />
+              src={scrSearchIcon}
+              alt="찾기 아이콘"
+              style={{ width: "20px", height: "20px", marginTop:"14px"}}
+            />
+          </Link>
           <Link
             to="/Home/MainSearch"
             style={{ textDecoration: "none", color: "black" }}

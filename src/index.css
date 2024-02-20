@@ -194,14 +194,23 @@ p {
 .menuBtnSection-timeline {
   display: flex;
   margin-left: 30px;
+  overflow-x: auto;
   button {
-    width: 74px;
+    min-width: 74px;
     height: 33px;
     border-radius: 40px;
     font-family: "Noto Sans KR", sans-serif;
     font-size: 16px;
     font-weight: 500;
     margin-right: 3%;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  button.scroll {
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
   }
 }
 .menuBtnSection-timeline2 {
@@ -1504,8 +1513,7 @@ p {
   }
   .recommendSearch-beforeSearch{
     .keyword-recommendSearch{
-      width: 74px;
-      max-width: 83px;
+      min-width: 74px;
       height: 33px;
       border-radius: 40px;
       border: 1px solid #DBDBDB;
@@ -1515,6 +1523,7 @@ p {
       font-size: 16px;
       margin-right: 12px;
       margin-bottom: 18px;
+      color: #191919;
     }
   }
 }

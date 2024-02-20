@@ -34,7 +34,9 @@ export default function SearchStore(props) {
       });
   }
   useEffect(() => {
-    getStore();
+    if(input){
+      getStore();
+    }
   }, [input]);
   useEffect(() => {
     props.setStore(storeDetail.name);
@@ -110,7 +112,7 @@ export default function SearchStore(props) {
               type="text"
               placeholder="식당명을 입력하세요. 예) 도봉 한식"
               maxLength="15"
-              onKeyUp={(e) => setInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value)}
             />
           </div>
         </div>

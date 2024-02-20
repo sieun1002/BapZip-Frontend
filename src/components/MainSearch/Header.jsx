@@ -20,7 +20,7 @@ export default function Header(props) {
           type="text"
           placeholder={props.text.length === 0 ? "오늘 내가 가고싶은 식당은?" : props.text}
           maxLength="15"
-          onKeyUp={(e) => props.setTxt(e.target.value)}
+          onChange={(e) => props.setTxt(e.target.value)}
           style={{height:"18px", fontSize:"12px", fontWeight:500, marginBottom:"12px"}}
         />
       </div>

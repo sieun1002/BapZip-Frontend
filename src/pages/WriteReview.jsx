@@ -91,7 +91,7 @@ export default function WriteReview() {
     });
   }
 
-  const url = "http://babzip.seunga.shop/reviews";
+  const url = "https://babzip.seunga.shop/reviews";
 
   function submitReview() {
     const today = new Date();

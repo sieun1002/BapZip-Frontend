@@ -7,7 +7,7 @@ export default function SearchStore(props) {
         <div className='search-SearchStore'>
             <img src={Searchimage} alt="찾기 아이콘" style={{width:'28px', height:'28px'}}/>
             <input className='input-SearchStore' type="text" placeholder='교외에서 내가 가고 싶은 식당은?'
-            maxLength='15' onKeyUp={(e)=>props.setInput(e.target.value)}/>
+            maxLength='15' onChange={(e)=>props.setInput(e.target.value)}/>
         </div> 
     </div>
   )

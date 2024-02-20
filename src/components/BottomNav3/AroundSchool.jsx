@@ -176,7 +176,7 @@ const AroundSchool = () => {
   const honjapPreLink = "/List";
   return (
     <Container>
-      <StyledText>우리학교 식당 둘러보기</StyledText>
+      <StyledText>우리 학교 식당 둘러보기</StyledText>
       <Container1>
         <Link to="/ListIn">
           <BackgroundImage src={background} alt="배경" />

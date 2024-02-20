@@ -177,7 +177,7 @@ export default function RestaurantInfo() {
 
             <WaitingAndStarDiv>
               <ClockImage src={clock} alt="clock" />
-              <WaitingStarP>웨이팅 예산 시간: </WaitingStarP>
+              <WaitingStarP>웨이팅 예상 시간: </WaitingStarP>
               {restaurantInfo.waitTime === null ? (
                 <WaitingStarP color="#E32525">0분</WaitingStarP>
               ) : (

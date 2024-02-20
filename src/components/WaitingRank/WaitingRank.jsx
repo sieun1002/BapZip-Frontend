@@ -26,9 +26,9 @@ export default function WaitingRank(props) {
   useEffect(() => {
     if (location.state?.navBar) {
       setCurrentTab(location.state.navBar);
-      if (location.state.navBar === "ALL") {
+      if (location.state?.navBar === "ALL") {
         setPlaceholder("내가 가고 싶은 식당은?");
-      } else if (location.state.navBar === "IN") {
+      } else if (location.state?.navBar === "IN") {
         setPlaceholder("교내에서 내가 가고 싶은 식당은?");
       } else {
         setPlaceholder("교외에서 내가 가고 싶은 식당은?");
@@ -66,7 +66,7 @@ export default function WaitingRank(props) {
   return (
     <div className="App">
       <div style={{ height: "100%" }}>
-        <Header title={title} honjapPreLink={"/List"} />
+        <Header title={title} honjapPreLink={location.state?.honjapPreLink?location.state?.honjapPreLink:"/List"} />
         <SearchBar
           placeholder={placeholder}
           searchText={searchText}
