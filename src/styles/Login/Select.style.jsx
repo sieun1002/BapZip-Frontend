@@ -113,7 +113,7 @@ export const SearchListWrapper = styled.div`
   width: 420px;
   height: 300px;
 
-  position: fixed;
+  position: absolute;
   top: 320px;
 
   background-color: #ffffff;
