@@ -46,14 +46,14 @@ export default function Point() {
   useEffect(() => {
     const allPointApi = async () => {
       try {
-        const url = `http://babzip.seunga.shop/point/myTotalPoint`;
+        const url = `https://babzip.seunga.shop/point/myTotalPoint`;
 
         const response = await api.get(url);
         setallPoint(response.data.result);
         // setallPoint(3010);
         console.log(response.data.result);
       } catch (error) {
-        console.error("가게 세부 정보 가져오기 실패", error);
+        console.error("myTotalPoint api 오류", error);
       }
     };
 
