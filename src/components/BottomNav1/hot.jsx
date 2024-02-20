@@ -82,10 +82,10 @@ const SlideBottomDiv = styled.div`
 
 const SlidePDiv = styled.div`
   width: auto;
-  height: 50px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
 
   /* background-color: #0000ff53; */
 `;
@@ -108,10 +108,10 @@ const SlideP2 = styled.p`
 
 const SlideRateDiv = styled.div`
   width: auto;
-  height: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 
   /* background-color: #0000ff53; */
 `;
@@ -134,7 +134,7 @@ const ImageSliderComponent = () => {
 
         const response = await api.get(url);
         setHots(response.data.result);
-        // console.log(response.data.result);
+        console.log("hotApi", response.data.result);
       } catch (error) {
         console.error("메뉴판 가져오기 실패", error);
       }
@@ -187,15 +187,15 @@ const ImageSliderComponent = () => {
                   <SlideRateDiv>
                     <img
                       style={{
-                        width: "15.76px",
-                        height: "15.28px",
-                        margin: "4px 0 3px 0 ",
+                        width: "20px",
+                        height: "20px",
+                        margin: "3px 0 2px 0 ",
                       }}
                       src={smallStar}
                     />
                     <p
                       style={{
-                        fontSize: "12px",
+                        fontSize: "13px",
                         fontWeight: "500",
                         color: "#191919",
                         margin: "0",
