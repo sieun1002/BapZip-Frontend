@@ -123,7 +123,7 @@ export default function RestaurantInfo() {
       case "menu":
         return <InfoMenu />;
       case "review":
-        return <InfoReview restaurantPreLink={restaurantPreLink}/>;
+        return <InfoReview restaurantPreLink={restaurantPreLink} />;
       case "chat":
         return <InfoChat />;
       default:
@@ -248,6 +248,7 @@ export default function RestaurantInfo() {
               setCongestionCheck={setCongestionCheck}
               setCongestionCheck2={setCongestionCheck2}
               setCongestionCheck3={setCongestionCheck3}
+              storeId={storeId}
             />
           ) : null}
 
@@ -256,6 +257,7 @@ export default function RestaurantInfo() {
               setCongestionCheck={setCongestionCheck}
               setCongestionCheck2={setCongestionCheck2}
               setCongestionCheck3={setCongestionCheck3}
+              storeId={storeId}
             />
           ) : null}
         </Div>

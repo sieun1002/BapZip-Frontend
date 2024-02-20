@@ -51,7 +51,7 @@ export default function PointSearch() {
             </SearchSelect>
           </SearchNav>
 
-          {PointLists.map((list, index) => (
+          {[...PointLists].reverse().map((list, index) => (
             <React.Fragment key={index}>
               <PointSearchDiv>
                 <PointSearchPDiv>
