@@ -60,7 +60,7 @@ const BarChart = ({ data }) => {
               <Bar value={(item.value / maxValue) * 100} index={index}></Bar>
             )}
           </BarDiv>
-          <BarValue>{item.value / 2}</BarValue>
+          <BarValue>{item.value}</BarValue>
         </BarContainer>
       ))}
     </BarChartContainer>

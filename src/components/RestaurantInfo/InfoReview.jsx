@@ -80,7 +80,7 @@ export default function InfoReview(props) {
     data.forEach((item) => {
       sum += item.label * item.value;
     });
-    const average = (sum / (storeReview.length * 2)).toFixed(1);
+    const average = (sum / storeReview.length).toFixed(1);
     return <StarP1>{average}</StarP1>;
   };
 
