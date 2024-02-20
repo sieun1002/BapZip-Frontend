@@ -32,6 +32,8 @@ const RankImageDiv = styled.div`
   height: 40px;
 
   position: absolute;
+  display: flex;
+  justify-content: center;
 `;
 
 const RankImage = styled.img`
@@ -45,7 +47,7 @@ const RankP = styled.p`
   color: #ffffff;
 
   position: absolute;
-  left: 22px;
+  /* left: 22px; */
   top: -18px;
 `;
 
