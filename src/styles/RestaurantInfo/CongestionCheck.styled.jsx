@@ -65,14 +65,14 @@ export const CongestionButtonDiv = styled.div`
 `;
 
 export const CongestionButton = styled.button`
-  width: 76px;
+  width: 80px;
   height: 31px;
   border: solid 1px #dbdbdb;
   border-radius: 40px;
   background-color: ${(props) => props.backgroundColor || "#ffffff"};
   color: ${(props) => props.color || "#767676"};
 
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
 
   margin-right: 15px;
