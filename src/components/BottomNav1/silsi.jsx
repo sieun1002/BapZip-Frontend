@@ -216,7 +216,7 @@ const Silsi = ({ setValidSearchSchool }) => {
             <>
               <RankInfo>{rankTop5[currentIndex]?.ranking}</RankInfo>
               <NameInfo>{rankTop5[currentIndex]?.storeName}</NameInfo>
-              {rankTop5[currentIndex]?.congestionAV != null ? (
+              {rankTop5[currentIndex]?.waitingTime != null ? (
                 <TimeInfo
                   color={
                     rankTop5[currentIndex]?.congestionAV
@@ -226,7 +226,7 @@ const Silsi = ({ setValidSearchSchool }) => {
                       : "#4AD917"
                   }
                 >
-                  {rankTop5[currentIndex]?.congestionAV} min
+                  {rankTop5[currentIndex]?.waitingTime} min
                 </TimeInfo>
               ) : (
                 <TimeInfo color="#4AD917">0 min</TimeInfo>
