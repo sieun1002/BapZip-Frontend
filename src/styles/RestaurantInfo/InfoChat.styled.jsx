@@ -207,6 +207,7 @@ export const ChatAndTimeMe = styled.div`
 `;
 
 export const ChatContent = styled.div`
+  max-width: 250px;
   font-size: 14px;
   font-weight: 500;
   color: #191919;
@@ -218,6 +219,8 @@ export const ChatContent = styled.div`
 `;
 
 export const ChatContentMe = styled.div`
+  max-width: 250px;
+
   font-size: 14px;
   font-weight: 500;
   color: #191919;
