@@ -23,7 +23,7 @@ import SavePoint from "./SavePoint";
 
 import X from "../../images/Login/X.svg";
 
-export default function CongestionCheck2({ setCongestionCheck2 }) {
+export default function CongestionCheck2({ setCongestionCheck2, storeId }) {
   // 인원 수 선택 상태
   const [occupancyCount, setOccupancyCount] = useState(null);
   // 혼잡도 선택 상태
@@ -31,8 +31,6 @@ export default function CongestionCheck2({ setCongestionCheck2 }) {
   const [point, setPoint] = useState(false);
 
   const { congestion, setCongestion } = useSignUp();
-
-  const storeId = 5;
 
   // 혼잡도 API 호출 함수
   const congestionApi = async () => {

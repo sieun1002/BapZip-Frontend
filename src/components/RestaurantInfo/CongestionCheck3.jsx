@@ -24,15 +24,13 @@ import SavePoint from "./SavePoint";
 
 import X from "../../images/Login/X.svg";
 
-export default function CongestionCheck3({ setCongestionCheck3 }) {
+export default function CongestionCheck3({ setCongestionCheck3, storeId }) {
   const [waitTime, setWaitTime] = useState(null);
   const [occupancyCount, setOccupancyCount] = useState(null);
   const [congestionLevel, setCongestionLevel] = useState(null);
   const [point, setPoint] = useState(false);
 
   const { congestion, setCongestion } = useSignUp();
-
-  const storeId = 5;
 
   const congestionApi = async () => {
     try {
