@@ -101,10 +101,14 @@ export default function RstaurantList(props) {
       )}
       <Link
         to={`/RestaurantInfo/${storeId}`}
-        state={{ restaurantPreLink: props.restaurantPreLink ? props.restaurantPreLink : "/WaitingRank" }}
+        state={{
+          restaurantPreLink: props.restaurantPreLink
+            ? props.restaurantPreLink
+            : "/WaitingRank",
+        }}
       >
         <div style={{ width: "91%", height: "100%" }}>
-          <RankP>{index + 1}</RankP>
+          <RankP>{Restaurant.ranking}</RankP>
           <Rankimg src={Rank} alt="Ranking" />
 
           <ImageStyleFood src={Restaurant.storeImageURL} alt="Bunsik" />
