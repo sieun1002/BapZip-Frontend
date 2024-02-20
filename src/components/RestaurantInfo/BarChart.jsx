@@ -57,10 +57,7 @@ const BarChart = ({ data }) => {
           <BarLabel>{`${item.label}점`}</BarLabel>
           <BarDiv>
             {item.value === 0 ? null : (
-              <Bar
-                value={(item.value / (maxValue * 2)) * 100}
-                index={index}
-              ></Bar>
+              <Bar value={(item.value / maxValue) * 100} index={index}></Bar>
             )}
           </BarDiv>
           <BarValue>{item.value / 2}</BarValue>

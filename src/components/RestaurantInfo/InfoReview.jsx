@@ -105,7 +105,8 @@ export default function InfoReview(props) {
             <Link
               to="/WriteReview"
               state={{
-                preLink: `/RestaurantInfo/${storeId}`, restaurantPreLink: props.restaurantPreLink
+                preLink: `/RestaurantInfo/${storeId}`,
+                restaurantPreLink: props.restaurantPreLink,
               }}
             >
               <ReviewWriteImg src={reviewWrite} alt="reviewWrite" />
