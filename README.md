@@ -11,7 +11,7 @@
 할 수 있도록 도움을 주고자 기획한 서비스입니다. <br>
 
 
-|      |  |  |  | 
+|    
 |------|------|------|------|
 | 성명  | 조시은 | 최선규 | 이현우 |
 | 역할  | Frontend Developer | Frontend Developer | Frontend Developer |
@@ -19,7 +19,8 @@
 
 
 
-### <주요 기능>
+## <주요 기능>
+
 ### 매인페이지
 ![image](https://github.com/BapZip/Frontend/assets/113453453/f8b30881-064c-4496-86ab-6286290b9e99)
 
