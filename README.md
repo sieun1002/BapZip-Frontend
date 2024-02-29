@@ -11,11 +11,11 @@
 할 수 있도록 도움을 주고자 기획한 서비스입니다. <br>
 
 
-|      | <img src="https://github.com/duksungDjango23/ds_DjangoTeam01/assets/136547010/1da37b01-151f-4632-a507-f608242af536" width="110" height="100"> | <img src="https://github.com/duksungDjango23/ds_DjangoTeam01/assets/136547010/c11745a4-86ed-4a44-bb33-38ad19f96fb2" width="100" height="110"> | <img src="https://github.com/duksungDjango23/ds_DjangoTeam01/assets/136547010/4ef358f0-b76d-49f5-9507-309be8678704" width="100" height="110"> | 
+|      |  |  |  | 
 |------|------|------|------|
 | 성명  | 조시은 | 최선규 | 이현우 |
 | 역할  | Frontend Developer | Frontend Developer | Frontend Developer |
-| 담당업무 | - 로그인/회원가입<br> -가게정보페이지  (메뉴 조회, 리뷰 조회, 실시간 채팅, 혼잡도 체크 ) <br>- 마이페이지 (포인트 조회/전환)<br> - 메인페이지 (핫플레이스 조회, 학교 검색, 실시간 혼잡도 가게 리스트) <br>- 메인페이지 (가게 검색, 추천 식당, 교내/외 가게 리스트) <br> - 마이페이지 전반 (리뷰 관리, 찜한 식당, 쿠폰함)    | - 리뷰페이지 (리뷰 작성, 식당 검색)| - 메인페이지 틀 구현 (html, css) |
+| 담당업무 | - 로그인/회원가입<br> -가게정보페이지  (메뉴 조회, 리뷰 조회, 실시간 채팅, 혼잡도 체크 ) <br>- 마이페이지 (포인트 조회/전환)<br> - 메인페이지 (핫플레이스 조회, 학교 검색, 실시간 혼잡도 가게 리스트) | - 마이페이지 전반 (리뷰 관리, 찜한 식당, 쿠폰함) <br>- 리뷰페이지 (리뷰 작성, 식당 검색) <br>- 메인페이지 (가게 검색, 추천 식당, 교내/외 가게 리스트)| - 메인페이지 틀 구현 (html, css) |
 
 
 
