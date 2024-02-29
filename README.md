@@ -12,6 +12,8 @@
 
 
 
+|      | | |  |
+|------|------|------|------|
 | 성명  | 조시은 | 최선규 | 이현우 |
 | 역할  | Frontend Developer | Frontend Developer | Frontend Developer |
 | 담당업무 | - 로그인/회원가입<br> -가게정보페이지  (메뉴 조회, 리뷰 조회, 실시간 채팅, 혼잡도 체크 ) <br>- 마이페이지 (포인트 조회/전환)<br> - 메인페이지 (핫플레이스 조회, 학교 검색, 실시간 혼잡도 가게 리스트) | - 마이페이지 전반 (리뷰 관리, 찜한 식당, 쿠폰함) <br>- 리뷰페이지 (리뷰 작성, 식당 검색) <br>- 메인페이지 (가게 검색, 추천 식당, 교내/외 가게 리스트)| - 메인페이지 틀 구현 (html, css) |
@@ -20,30 +22,31 @@
 
 ## <주요 기능>
 
-### 매인페이지
+### 01. 매인페이지
 ![image](https://github.com/BapZip/Frontend/assets/113453453/f8b30881-064c-4496-86ab-6286290b9e99)
 
 
 
-### 혼잡도 등록 
+### 02. 혼잡도 등록 
 ![image](https://github.com/BapZip/Frontend/assets/113453453/33f36bdf-82a1-4423-b1d3-8ca8768b1bf7)
 
 
 
-### 실시간 웨이팅 (IN/OUT)
+### 03. 실시간 웨이팅 (IN/OUT)
 ![image](https://github.com/BapZip/Frontend/assets/113453453/f0ac75b1-5afc-49aa-9c7f-6880dd75f8de)
 
 
 
-### 실시간 채팅
+### 04. 실시간 채팅
 ![image](https://github.com/BapZip/Frontend/assets/113453453/c5d72f34-7fb2-49a6-9026-5a12f92b6ae8)
 
 
 
-### 포인트 전환
+### 05. 포인트 전환
 ![image](https://github.com/BapZip/Frontend/assets/113453453/87989a7e-08f5-493a-b8cc-a2d66e473a43)
 
 
 
-### 흐름도
+## 흐름도
+
 ![image](https://github.com/BapZip/Frontend/assets/113453453/8951de38-44b2-4c96-a11c-868ba6cb24c8)
