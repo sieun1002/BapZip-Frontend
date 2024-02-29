@@ -11,7 +11,7 @@
 할 수 있도록 도움을 주고자 기획한 서비스입니다. <br>
 
 
-|    
+|      | | |  |
 |------|------|------|------|
 | 성명  | 조시은 | 최선규 | 이현우 |
 | 역할  | Frontend Developer | Frontend Developer | Frontend Developer |
