@@ -11,7 +11,7 @@
 할 수 있도록 도움을 주고자 기획한 서비스입니다. <br>
 
 
-|      
+|      | <img src="https://github.com/duksungDjango23/ds_DjangoTeam01/assets/136547010/1da37b01-151f-4632-a507-f608242af536" width="110" height="100"> | <img src="https://github.com/duksungDjango23/ds_DjangoTeam01/assets/136547010/c11745a4-86ed-4a44-bb33-38ad19f96fb2" width="100" height="110"> | <img src="https://github.com/duksungDjango23/ds_DjangoTeam01/assets/136547010/4ef358f0-b76d-49f5-9507-309be8678704" width="100" height="110"> | 
 |------|------|------|------|
 | 성명  | 조시은 | 최선규 | 이현우 |
 | 역할  | Frontend Developer | Frontend Developer | Frontend Developer |
